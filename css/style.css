@@ -94,7 +94,7 @@ div {
   overflow: hidden;
 }
 #header .site-name #logo {
-  font: bold 25px/1.12 "Times New Roman", Georgia, Times, sans-serif;
+  font: bold 28px/1.12 "Times New Roman", Georgia, Times, sans-serif;
   color: #555;
 }
 #header .site-name #logo span, #header .site-name #logo:hover {
@@ -234,7 +234,7 @@ div {
 /* title for search result or tagged posts*/
 .label-title {
   margin-top: 1.1em;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: normal;
   color: #888;
 }
