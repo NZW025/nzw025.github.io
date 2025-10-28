@@ -3,15 +3,14 @@
 	padding-top: 0px;
 	overflow: hidden;
 	zoom: 1;
-	height: 1360px;
-	margin-left: 200px;
+	height: 1660px;
 }
 .hotPic{
 	width: 1050px;
-	height: 1360px;
+	height: 1660px;
 	position: absolute;
 	overflow: hidden;
-	left: 150px;
+	left: 220px;
 }
 .hotPic .num{
 	position: absolute;
@@ -43,9 +42,11 @@
 	display: none;
 	left: 3px;
 	top: 2px;
+	left: -150px;
 }
 .hotPic .pic li img{
 	width: 1050px;
 	height: 1360Px;
 	display: block;
+	
 }
