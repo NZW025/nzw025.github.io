@@ -4,13 +4,14 @@
 	overflow: hidden;
 	zoom: 1;
 	height: 1360px;
-	margin-left: 160px;
+	margin-left: 200px;
 }
 .hotPic{
 	width: 1050px;
 	height: 1360px;
 	position: absolute;
 	overflow: hidden;
+	left: 150px;
 }
 .hotPic .num{
 	position: absolute;
