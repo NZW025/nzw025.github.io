@@ -41,14 +41,14 @@
 });
 
 </script>
-  <body data-theme="light" class="notransition">
+  <body data-theme="dark" class="notransition">
     <script defer>
       const body = document.body;
       const data = body.getAttribute("data-theme");
       const initTheme = (state) => {
-        if (state === "dark") {
-          body.setAttribute("data-theme", "dark");
-        } else if (state === "light") {
+        if (state === "light") {
+          body.setAttribute("data-theme", "light");
+        } else if (state === "dark") {
           body.removeAttribute("data-theme");
         } else {
           localStorage.setItem("theme", data);
