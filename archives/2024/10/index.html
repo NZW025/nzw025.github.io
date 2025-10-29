@@ -49,12 +49,12 @@
         if (state === "light") {
           body.setAttribute("data-theme", "light");
         } else if (state === "dark") {
-          body.removeAttribute("data-theme");
+          body.setAttribute("data-theme", "dark"); // 修复此处逻辑
         } else {
           localStorage.setItem("theme", data);
         }
       };
-   
+    
       initTheme(localStorage.getItem("theme"));
       
       setTimeout(() => body.classList.remove("notransition"), 75);
