@@ -44,18 +44,24 @@
   <body data-theme="dark" class="notransition">
     <script defer>
       const body = document.body;
-      const data = body.getAttribute("data-theme");
+      // 强制默认主题为 dark（忽略本地存储的初始值）
+      const defaultTheme = "dark";
+      // 读取本地存储，若无则用默认值
+      const savedTheme = localStorage.getItem("theme") || defaultTheme;
+      
       const initTheme = (state) => {
         if (state === "light") {
           body.setAttribute("data-theme", "light");
-        } else if (state === "dark") {
-          body.setAttribute("data-theme", "dark"); // 修复此处逻辑
         } else {
-          localStorage.setItem("theme", data);
+          // 只要不是 light，就强制用 dark
+          body.setAttribute("data-theme", "dark");
         }
+        // 保存当前主题到本地存储
+        localStorage.setItem("theme", state);
       };
     
-      initTheme(localStorage.getItem("theme"));
+      // 用 savedTheme 初始化（默认是 dark）
+      initTheme(savedTheme);
       
       setTimeout(() => body.classList.remove("notransition"), 75);
     </script>
