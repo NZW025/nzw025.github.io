@@ -1,51 +1,49 @@
-/* 友链网格布局 */
+/* 关键修复：明确控制列数，避免全排一排 */
 .links-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* 自动适配列数 */
-  gap: 1.5rem; /* 间距与现有页面一致 */
-  margin: 2rem auto;
-  max-width: 1000px; /* 限制最大宽度，避免过宽 */
-  padding: 0 1rem;
-}
-
-/* 友链项样式（继承现有主题风格） */
-.link-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.2rem 0;
-  background: var(--card-bg); /* 适配深色/浅色主题 */
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  font-size: 1.1rem;
-  font-family: 'LXGWWenKai-Bold', '京華老宋体', sans-serif; /* 与页面字体一致 */
-  color: var(--text-color); /* 文字颜色随主题变化 */
-  text-decoration: none;
-  transition: all 0.3s ease; /* 过渡效果与导航栏一致 */
-}
-
-/*  hover 效果（保持与导航链接统一） */
-.link-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-color: var(--primary-color);
-  color: var(--primary-color); /*  hover 时变色，与其他交互元素一致 */
-}
-
-/* 响应式调整（不同屏幕的列数控制） */
-@media (max-width: 1023px) {
-  .links-grid {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* 平板端一排 3 个 */
+    display: grid;
+    /* 强制最大列数为4，最小列宽160px，不足时自动减少列数 */
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem auto;
+    max-width: 1200px; /* 限制最大宽度，确保超过后换行 */
+    padding: 0 1.5rem; /* 增加左右内边距，避免边缘拥挤 */
   }
-}
-
-@media (max-width: 767px) {
-  .links-grid {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* 手机端一排 2 个 */
-    gap: 1rem;
-  }
+  
+  /* 友链项样式保持不变 */
   .link-item {
-    padding: 1rem 0;
-    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem 0.5rem; /* 增加左右内边距，避免文字溢出 */
+    background: var(--card-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    font-size: 1.1rem;
+    font-family: 'LXGWWenKai-Bold', '京華老宋体', sans-serif;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: center; /* 确保文字居中，避免长短不一导致错位 */
+    white-space: nowrap; /* 防止文字换行 */
+    overflow: hidden; /* 超出部分隐藏 */
+    text-overflow: ellipsis; /* 超出显示省略号 */
   }
-}
+  
+  /* 响应式调整（明确指定不同屏幕的最大列数） */
+  @media (min-width: 1024px) {
+    .links-grid {
+      grid-template-columns: repeat(4, 1fr); /* 桌面端强制4列 */
+    }
+  }
+  
+  @media (max-width: 1023px) and (min-width: 768px) {
+    .links-grid {
+      grid-template-columns: repeat(3, 1fr); /* 平板端强制3列 */
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .links-grid {
+      grid-template-columns: repeat(2, 1fr); /* 手机端强制2列 */
+    }
+  }
