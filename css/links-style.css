@@ -1,0 +1,82 @@
+/* 友链页面样式 */
+.links-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.link-item {
+  background-color: var(--card-background);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.link-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-color);
+}
+
+.link-item a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.link-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.link-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-color);
+  font-family: '京華老宋体', serif;
+}
+
+.link-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+  font-family: 'LXGW WenKai', serif;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .links-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .link-item {
+    padding: 1.25rem;
+  }
+}
+
+/* 深色模式适配 */
+[data-theme="dark"] .link-item {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .link-item:hover {
+  border-color: var(--primary-color);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* 浅色模式适配 */
+[data-theme="light"] .link-item {
+  background-color: #ffffff;
+  border-color: #eaeaea;
+}
+
+[data-theme="light"] .link-item:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
