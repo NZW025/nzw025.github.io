@@ -331,27 +331,116 @@
 </div>
 
 
-  <div class="comments-section" style="max-width: 1200px; margin: 0 auto; opacity: 0.5;">
+  <div class="comments-section" style="max-width: 1200px; margin: 0 auto; transition: opacity 0.3s ease; opacity: 0.5;">
     <h3 class="comments-title">评论</h3>
     <div id="giscus-container"></div>
     
-     <!--添加Giscus脚本 -->
-    <script src="https://giscus.app/client.js"
-    data-repo="NZW025/blog_comments"
-    data-repo-id="R_kgDOQLHGNw"
-    data-category="Announcements"
-    data-category-id="DIC_kwDOQLHGN84CxMZf"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="bottom"
-    data-theme="light_tritanopia"
-    data-lang="zh-CN"
-    crossorigin="anonymous"
-    async>
-</script>
+    <!-- 添加Giscus脚本 -->
+    <script>
+      // 检测当前主题（系统主题或用户设置）
+      function getCurrentTheme() {
+        // 检查文档根元素的data-theme属性（通常由主题切换器设置）
+        const docTheme = document.documentElement.getAttribute('data-theme');
+        if (docTheme) {
+          return docTheme === 'dark' ? 'dark_dimmed' : 'light';
+        }
+        
+        // 检查localStorage中的主题设置
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+          return storedTheme === 'dark' ? 'dark_dimmed' : 'light';
+        }
+        
+        // 检测系统主题偏好
+        if (window.matchMedia) {
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark_dimmed' : 'light';
+        }
+        
+        // 默认使用浅色主题
+        return 'light';
+      }
+      
+      // 创建并加载Giscus脚本
+      function loadGiscus() {
+        const theme = getCurrentTheme();
+        const script = document.createElement('script');
+        
+        // 设置Giscus配置
+        script.src = 'https://giscus.app/client.js';
+        script.setAttribute('data-repo', 'NZW025/blog_comments');
+        script.setAttribute('data-repo-id', 'R_kgDOQLHGNw');
+        script.setAttribute('data-category', 'Announcements');
+        script.setAttribute('data-category-id', 'DIC_kwDOQLHGN84CxMZf');
+        script.setAttribute('data-mapping', 'pathname');
+        script.setAttribute('data-strict', '0');
+        script.setAttribute('data-reactions-enabled', '1');
+        script.setAttribute('data-emit-metadata', '0');
+        script.setAttribute('data-input-position', 'bottom');
+        script.setAttribute('data-theme', theme);
+        script.setAttribute('data-lang', 'zh-CN');
+        script.setAttribute('crossorigin', 'anonymous');
+        script.async = true;
+        
+        // 添加加载完成处理
+        script.onload = function() {
+          // 加载完成后提高透明度
+          document.querySelector('.comments-section').style.opacity = '1';
+        };
+        
+        // 添加到页面
+        document.getElementById('giscus-container').appendChild(script);
+      }
+      
+      // 发送消息给Giscus iframe以更新主题
+      function updateGiscusTheme(theme) {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        
+        // 转换为Giscus支持的主题名称
+        const giscusTheme = theme === 'dark' ? 'dark_dimmed' : 'light';
+        
+        // 使用postMessage更新主题
+        iframe.contentWindow.postMessage({ 
+          giscus: { 
+            setConfig: { 
+              theme: giscusTheme 
+            } 
+          } 
+        }, 'https://giscus.app');
+      }
+      
+      // 监听主题变化
+      function setupThemeListener() {
+        // 监听系统主题变化
+        if (window.matchMedia) {
+          const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+          darkModeMediaQuery.addEventListener('change', function(e) {
+            const newTheme = e.matches ? 'dark' : 'light';
+            updateGiscusTheme(newTheme);
+          });
+        }
+        
+        // 监听文档根元素的data-theme属性变化（适用于自定义主题切换器）
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'data-theme') {
+              const newTheme = mutation.target.getAttribute('data-theme');
+              updateGiscusTheme(newTheme);
+            }
+          });
+        });
+        
+        observer.observe(document.documentElement, { attributes: true });
+      }
+      
+      // 页面加载完成后初始化
+      document.addEventListener('DOMContentLoaded', function() {
+        loadGiscus();
+        setupThemeListener();
+      });
+    </script>
   </div>
+
 
 
   <footer class="footer">
