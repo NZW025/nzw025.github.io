@@ -2,29 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <style>
-    /* 内联首屏关键样式 */
-    .navbar, .menu, .wrapper, .post-item {
-      /* 从main.css中提取核心布局样式 */
-    }
-    body[data-theme=dark] {
-      background: #121212;
-      color: #e0e0e0;
-    }
-    body[data-theme=light] {
-      background: #f5f5f5;
-      color: #333;
-    }
-  </style>
-  <!-- 异步加载剩余CSS -->
-  <link rel="stylesheet" href="/css/main.css" media="print" onload="this.media='all'" />
-  <!-- 预加载关键字体（只加载必要字重） -->
-<link rel="preload" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Bold/result.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="https://chinese-fonts-cdn.deno.dev/packages/jhlst/dist/%E4%BA%AC%E8%8F%AF%E8%80%81%E5%AE%8B%E4%BD%93v2_002/result.woff2" as="font" type="font/woff2" crossorigin>
-
-<!-- 异步加载字体CSS，不阻塞渲染 -->
-<link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Bold/result.css' media="print" onload="this.media='all'" />
-<link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/jhlst/dist/%E4%BA%AC%E8%8F%AF%E8%80%81%E5%AE%8B%E4%BD%93v2_002/result.css' media="print" onload="this.media='all'" />
+  <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Bold/result.css' />
+  <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/jhlst/dist/%E4%BA%AC%E8%8F%AF%E8%80%81%E5%AE%8B%E4%BD%93v2_002/result.css' />  
   
 
 
@@ -62,88 +41,30 @@
 });
 
 </script>
-</head>
   <body data-theme="dark" class="notransition">
     <script defer>
       const body = document.body;
-      // 北京时间自动切换区间（7:00-19:00为浅色）
-      const LIGHT_START_HOUR = 7;
-      const LIGHT_END_HOUR = 19;
-    
-      // 获取当前北京时间（UTC+8）
-      function getBeijingHour() {
-        const now = new Date();
-        // 转换为UTC时间后加上8小时，得到北京时间
-        const beijingTime = new Date(now.getTime() + 8 * 60 * 60 * 1000);
-        return beijingTime.getHours(); // 返回0-23的小时数
-      }
-    
-      // 根据时间判断是否应该使用浅色主题
-      function shouldUseLightTheme() {
-        const hour = getBeijingHour();
-        return hour >= LIGHT_START_HOUR && hour < LIGHT_END_HOUR;
-      }
-    
-      // 初始化主题（手动设置优先，无手动设置则按时间自动切换）
-      function initTheme() {
-        const savedTheme = localStorage.getItem("theme");
-        
-        if (savedTheme) {
-          // 有手动设置，优先使用
-          body.setAttribute("data-theme", savedTheme);
+      // 强制默认主题为 dark（忽略本地存储的初始值）
+      const defaultTheme = "dark";
+      // 读取本地存储，若无则用默认值
+      const savedTheme = localStorage.getItem("theme") || defaultTheme;
+      
+      const initTheme = (state) => {
+        if (state === "light") {
+          body.setAttribute("data-theme", "light");
         } else {
-          // 无手动设置，按时间自动切换
-          const autoTheme = shouldUseLightTheme() ? "light" : "dark";
-          body.setAttribute("data-theme", autoTheme);
+          // 只要不是 light，就强制用 dark
+          body.setAttribute("data-theme", "dark");
         }
-        
-        // 同步主题图标
-        updateModeIcon(body.getAttribute("data-theme"));
-        // 移除过渡锁
-        setTimeout(() => body.classList.remove("notransition"), 75);
-      }
+        // 保存当前主题到本地存储
+        localStorage.setItem("theme", state);
+      };
     
-      // 更新主题切换图标（太阳/月亮）
-      function updateModeIcon(theme) {
-        const moonIcon = document.querySelector('.mode-moon');
-        const sunIcon = document.querySelector('.mode-sunny');
-        if (theme === 'dark') {
-          moonIcon.style.display = 'none';
-          sunIcon.style.display = 'block';
-        } else {
-          moonIcon.style.display = 'block';
-          sunIcon.style.display = 'none';
-        }
-      }
-    
-      // 手动切换主题（保留用户设置）
-      document.getElementById('mode').addEventListener('click', () => {
-        const currentTheme = body.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        body.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme); // 保存手动设置
-        updateModeIcon(newTheme);
-      });
-    
-      // 定时检查时间，每小时更新一次主题（仅在无手动设置时生效）
-      function setupAutoThemeTimer() {
-        setInterval(() => {
-          const savedTheme = localStorage.getItem("theme");
-          if (!savedTheme) { // 无手动设置时才自动切换
-            const autoTheme = shouldUseLightTheme() ? "light" : "dark";
-            if (body.getAttribute("data-theme") !== autoTheme) {
-              body.setAttribute("data-theme", autoTheme);
-              updateModeIcon(autoTheme);
-            }
-          }
-        }, 10800000); // 每3小时检查一次（3600000毫秒）
-      }
-    
-      // 页面加载时初始化
-      initTheme();
-      setupAutoThemeTimer();
+      // 用 savedTheme 初始化（默认是 dark）
+      initTheme(savedTheme);
+      
+      setTimeout(() => body.classList.remove("notransition"), 75);
     </script>
-
   <div class="navbar" role="navigation">
     <nav class="menu">
       <input type="checkbox" id="menu-trigger" class="menu-trigger" />
@@ -450,16 +371,7 @@
       
     </main>
   </div>
-  <audio id="aud" src="https://cccimg.com/view.php/b17ade03f5074ae9a04b876248c1d859.mp3" loop preload="none"> <!-- 本地音频+预加载关闭 -->
-    您的浏览器不支持音频播放
-  </audio>
-  <script>
-    // 页面加载完成后再播放（避免阻塞首屏）
-    window.addEventListener('load', () => {
-      const audio = document.getElementById('aud');
-      audio.play().catch(e => console.log('音频自动播放失败（浏览器限制）', e));
-    });
-  </script>
+  <audio id="aud" src="https://www.joy127.com/url/134021.mp3" autoplay="" loop=""></audio>
   <footer class="footer">
     <small class="footer_copyright">
       <div id="bottom-inner">
