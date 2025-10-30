@@ -1,49 +1,82 @@
-/* 关键修复：明确控制列数，避免全排一排 */
-.links-grid {
-    display: grid;
-    /* 强制最大列数为4，最小列宽160px，不足时自动减少列数 */
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+/* 友链页面样式 */
+.links-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.link-item {
+  background-color: var(--card-background);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.link-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-color);
+}
+
+.link-item a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.link-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/*.link-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-color);
+  font-family: '京華老宋体', serif;
+}*/
+
+.link-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+  font-family: 'LXGW WenKai', serif;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .links-container {
+    grid-template-columns: 1fr;
     gap: 1.5rem;
-    margin: 2rem auto;
-    max-width: 1200px; /* 限制最大宽度，确保超过后换行 */
-    padding: 0 1.5rem; /* 增加左右内边距，避免边缘拥挤 */
   }
   
-  /* 友链项样式保持不变 */
   .link-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.2rem 0.5rem; /* 增加左右内边距，避免文字溢出 */
-    background: var(--card-bg);
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    font-size: 1.1rem;
-    font-family: 'LXGWWenKai-Bold', '京華老宋体', sans-serif;
-    color: var(--text-color);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    text-align: center; /* 确保文字居中，避免长短不一导致错位 */
-    white-space: nowrap; /* 防止文字换行 */
-    overflow: hidden; /* 超出部分隐藏 */
-    text-overflow: ellipsis; /* 超出显示省略号 */
+    padding: 1.25rem;
   }
-  
-  /* 响应式调整（明确指定不同屏幕的最大列数） */
-  @media (min-width: 1024px) {
-    .links-grid {
-      grid-template-columns: repeat(4, 1fr); /* 桌面端强制4列 */
-    }
-  }
-  
-  @media (max-width: 1023px) and (min-width: 768px) {
-    .links-grid {
-      grid-template-columns: repeat(3, 1fr); /* 平板端强制3列 */
-    }
-  }
-  
-  @media (max-width: 767px) {
-    .links-grid {
-      grid-template-columns: repeat(2, 1fr); /* 手机端强制2列 */
-    }
-  }
+}
+
+/* 深色模式适配 */
+[data-theme="dark"] .link-item {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .link-item:hover {
+  border-color: var(--primary-color);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* 浅色模式适配 */
+[data-theme="light"] .link-item {
+  background-color: #ffffff;
+  border-color: #eaeaea;
+}
+
+[data-theme="light"] .link-item:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
