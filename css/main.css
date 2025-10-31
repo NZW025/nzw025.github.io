@@ -1967,7 +1967,7 @@ body[data-theme=light] .overlay {
 /* 友链网格布局 */
 .links-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 电脑端默认4列 */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
   margin-bottom: 2rem;
 }
@@ -2061,21 +2061,6 @@ body[data-theme=dark] .link-desc {
 
 .link-url:hover::after {
   transform: translateX(3px);
-}
-
-/* iPad设备适配（768px - 1024px） */
-@media screen and (max-width: 1024px) and (min-width: 768px) {
-  .links-grid {
-    grid-template-columns: repeat(2, 1fr); /* iPad端2列 */
-  }
-}
-
-/* 手机设备适配（小于768px） */
-@media screen and (max-width: 767px) {
-  .links-grid {
-    grid-template-columns: 1fr; /* 手机端1列 */
-    gap: 1rem;
-  }
 }
 
 /* 响应式调整 */
