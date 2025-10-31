@@ -2073,8 +2073,8 @@ body[data-theme=dark] .card:hover {
   border-color: var(--link-hover, #ff5277);
 }
 .card-name {
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-weight: 200;
+  font-size: 0.5rem;
   margin: 0;
   color: inherit;
 }
@@ -2129,6 +2129,8 @@ body[data-theme=dark] .card-desc {
     padding-bottom: 10px;
   }
 }
+
+
 
 /* 代码块响应式优化 */
 @media screen and (max-width: 768px) {
@@ -2259,7 +2261,7 @@ body[data-theme=light] #toggleButton {
   padding: 0 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
+  gap: 0.1rem;
 }
 
 /* 收藏馆标题样式（如需添加标题可使用） */
@@ -2289,13 +2291,13 @@ body[data-theme=light] #toggleButton {
  /*  background: rgba(255, 255, 255, 0.7);*/
   /*backdrop-filter: blur(10px);*/
   /*border-radius: 8px;*/
-  /*padding: 1.2rem;*/
+  padding: 1.2rem;
   transition: all 0.3s ease;
   /* border: 1px solid rgba(255, 255, 255, 0.1);*/ 
-  /*height: 100%;  确保卡片高度一致 
+  height: 100%;  
   display: flex;
   align-items: center;
-  justify-content: center;*/
+  justify-content: center;
 }
 
 /* 暗色模式适配
