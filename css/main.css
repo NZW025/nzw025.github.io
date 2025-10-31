@@ -2304,15 +2304,15 @@ body[data-theme=dark] .tag-item {
   border-color: rgba(60, 60, 60, 0.3);
 }
 
-/* 卡片悬停效果 */
+/* 卡片悬停效果 
 .tag-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 body[data-theme=dark] .tag-item:hover {
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-}
+   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}*/
 
 /* 标签链接样式 */
 .tag-item a {
