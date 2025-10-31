@@ -1927,3 +1927,168 @@ body[data-theme=light] .overlay {
   font-size: 20px;
   cursor: pointer;
 }
+
+/* 友链页面整体容器 */
+.links-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* 友链页面标题 */
+.links-title {
+  text-align: center;
+  font-size: 2rem;
+  margin: 3rem 0 2rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.links-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--link-hover, #ff5277);
+  border-radius: 3px;
+}
+
+/* 友链分类标题 */
+.links-category {
+  font-size: 1.4rem;
+  margin: 2.5rem 0 1.5rem;
+  padding-left: 0.5rem;
+  border-left: 4px solid var(--link-hover, #ff5277);
+}
+
+/* 友链网格布局 */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 电脑端默认4列 */
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* 友链卡片样式 */
+.link-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  padding: 1.2rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* 深色模式适配 */
+body[data-theme=dark] .link-card {
+  background: rgba(30, 30, 30, 0.7);
+  border-color: rgba(60, 60, 60, 0.3);
+}
+
+/* 卡片悬停效果 */
+.link-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme=dark] .link-card:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* 友链头部（头像+名称） */
+.link-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* 友链头像 */
+.link-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 1rem;
+  object-fit: cover;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.link-card:hover .link-avatar {
+  border-color: var(--link-hover, #ff5277);
+}
+
+/* 友链名称 */
+.link-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0;
+  color: inherit;
+}
+
+/* 友链描述 */
+.link-desc {
+  font-size: 0.9rem;
+  color: #666;
+  flex-grow: 1;
+  margin: 0 0 1rem;
+  line-height: 1.6;
+}
+
+body[data-theme=dark] .link-desc {
+  color: #aaa;
+}
+
+/* 友链链接 */
+.link-url {
+  font-size: 0.85rem;
+  color: var(--link-hover, #ff5277);
+  text-decoration: none;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+}
+
+.link-url::after {
+  content: '→';
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.link-url:hover::after {
+  transform: translateX(3px);
+}
+
+/* iPad设备适配（768px - 1024px） */
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+  .links-grid {
+    grid-template-columns: repeat(2, 1fr); /* iPad端2列 */
+  }
+}
+
+/* 手机设备适配（小于768px） */
+@media screen and (max-width: 767px) {
+  .links-grid {
+    grid-template-columns: 1fr; /* 手机端1列 */
+    gap: 1rem;
+  }
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .links-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .links-title {
+    font-size: 1.6rem;
+  }
+  
+  .links-category {
+    font-size: 1.2rem;
+  }
+}
