@@ -9,7 +9,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Category: 视频 [ 宁作我 ]</title>
+<title>浮沉于时光的折褶里 [ 宁作我 ]</title>
 
   <link rel="icon" href="/img/favicon.ico">
 
@@ -273,24 +273,206 @@
       </div>
     </nav>
   </div>
-  
-<div class="wrapper">
-  <main class="page-content">
-  <header class="header">
-    <h1 class="header-title center">类别：视频</h1>
-  </header>
+  <button id="toTopBtn"><i class="fa-solid fa-hand-point-up " ></i></button>
+<button id="toggleButton"><i class="fa-solid fa-chart-bar " ></i></button>
+<div id="overlay" class="overlay">
+  <div class="content">
     
-    
-      <article class="post-item">
-        <h3 class="post-item-title">
-          <a href="/2025/10/03/nqlfdjt/">
-            你去了风的尽头
-          </a>
-        </h3>
-      </article>
-    
-  </main>
+    <button id="closeButton"><i class="fa-solid fa-circle-xmark"></i></button>
+  </div>
 </div>
+<div class="wrapper post">
+  <head>
+    <!-- 引入 Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css">
+  <meta name="generator" content="Hexo 8.1.0"></head>
+
+
+
+  <main class="page-content" aria-label="Content">
+      <header class="header">
+        
+          <div class="tags">
+            <a href="/tags/%E8%A7%86%E5%90%AC/" class="tag"># 视听</a>
+          </div>
+        
+        <h1 class="header-title" itemprop="headline">浮沉于时光的折褶里</h1>
+          <div class="post-meta">
+            最后更新: <time>Oct 31, 2025</time>
+            作者: <span itemprop="author">
+              <span itemprop="name">宁作我</span>
+            </span>
+            字数: <span class="post-count">4</span>
+            预计阅读时间: <span class="post-count">1min</span> 
+          </div>       
+        </header>
+          <div class="page-content"><!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+  </head>
+  <body>
+  <p align="center" color="black">
+    <a href="https://windflower2022.github.io/html/img/star.html" target="_blank">点击全屏</a>
+  </p>
+  <span id="more"></span>
+    <DIV style="POSITION: relative; WIDTH: 1600px; TOP: 120px; LEFT: -470px"><IFRAME height=4000 marginHeight=0 src="https://windflower2022.github.io/html/img/star.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no></IFRAME></DIV><br><br><br><br><br><br><br><br><br><br>
+	<audio id="aud" src="https://www.joy127.com/audio/114527.mp3" autoplay="" loop=""></audio>
+</body>
+</html>
+</div>          
+          <nav class="post-nav">
+    
+    
+    <a class="post-nav-item post-nav-next" href="/2025/10/28/qtdy/">
+      <div class="nav-arrow">OLDER&nbsp;&gt;</div>
+      <span class="post-title">秋天之约</span>
+    </a>
+    
+  </nav>
+
+   </main>
+</div>
+
+
+  <div class="comments-section" style="max-width: 1200px; margin: 0 auto; transition: opacity 0.3s ease; opacity: 0.5;">
+    <h3 class="comments-title">评论</h3>
+    <div id="giscus-container"></div>
+    
+    <!-- 添加Giscus脚本 -->
+    <script>
+      // 检测当前主题（系统主题或用户设置）
+      function getCurrentTheme() {
+        // 检查文档根元素的data-theme属性（通常由主题切换器设置）
+        const docTheme = document.documentElement.getAttribute('data-theme');
+        if (docTheme) {
+          return docTheme === 'dark' ? 'dark_dimmed' : 'light';
+        }
+        
+        // 检查localStorage中的主题设置
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+          return storedTheme === 'dark' ? 'dark_dimmed' : 'light';
+        }
+        
+        // 检测系统主题偏好
+        if (window.matchMedia) {
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark_dimmed' : 'light';
+        }
+        
+        // 默认使用浅色主题
+        return 'light';
+      }
+      
+      // 创建并加载Giscus脚本
+      function loadGiscus() {
+        const theme = getCurrentTheme();
+        const script = document.createElement('script');
+        
+        // 设置Giscus配置
+        script.src = 'https://giscus.app/client.js';
+        script.setAttribute('data-repo', 'NZW025/blog_comments');
+        script.setAttribute('data-repo-id', 'R_kgDOQLHGNw');
+        script.setAttribute('data-category', 'Announcements');
+        script.setAttribute('data-category-id', 'DIC_kwDOQLHGN84CxMZf');
+        script.setAttribute('data-mapping', 'pathname');
+        script.setAttribute('data-strict', '0');
+        script.setAttribute('data-reactions-enabled', '1');
+        script.setAttribute('data-emit-metadata', '0');
+        script.setAttribute('data-input-position', 'bottom');
+        script.setAttribute('data-theme', theme);
+        script.setAttribute('data-lang', 'zh-CN');
+        script.setAttribute('crossorigin', 'anonymous');
+        script.async = true;
+        
+        // 添加加载完成处理
+        script.onload = function() {
+          // 加载完成后提高透明度
+          document.querySelector('.comments-section').style.opacity = '1';
+        };
+        
+        // 添加到页面
+        document.getElementById('giscus-container').appendChild(script);
+      }
+      
+      // 发送消息给Giscus iframe以更新主题
+      function updateGiscusTheme(theme) {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        
+        // 转换为Giscus支持的主题名称
+        const giscusTheme = theme === 'dark' ? 'dark_dimmed' : 'light';
+        
+        // 使用postMessage更新主题
+        iframe.contentWindow.postMessage({ 
+          giscus: { 
+            setConfig: { 
+              theme: giscusTheme 
+            } 
+          } 
+        }, 'https://giscus.app');
+      }
+      
+      // 监听主题变化
+      function setupThemeListener() {
+        // 监听系统主题变化
+        if (window.matchMedia) {
+          const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+          darkModeMediaQuery.addEventListener('change', function(e) {
+            const newTheme = e.matches ? 'dark' : 'light';
+            updateGiscusTheme(newTheme);
+          });
+        }
+        
+        // 监听文档根元素的data-theme属性变化（适用于自定义主题切换器）
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'data-theme') {
+              const newTheme = mutation.target.getAttribute('data-theme');
+              updateGiscusTheme(newTheme);
+            }
+          });
+        });
+        
+        observer.observe(document.body, { attributes: true });
+      }
+      
+      // 页面加载完成后初始化
+      document.addEventListener('DOMContentLoaded', function() {
+        loadGiscus();
+        setupThemeListener();
+      });
+    </script>
+  </div>
+
+
+<script>
+  // 回到顶部按钮
+  const toTopBtn = document.getElementById('toTopBtn');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      toTopBtn.classList.add('visible');
+    } else {
+      toTopBtn.classList.remove('visible');
+    }
+  });
+  toTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // 目录切换
+  const toggleButton = document.getElementById('toggleButton');
+  const overlay = document.getElementById('overlay');
+  const closeButton = document.getElementById('closeButton');
+  
+  toggleButton.addEventListener('click', () => {
+    overlay.classList.add('active');
+  });
+  closeButton.addEventListener('click', () => {
+    overlay.classList.remove('active');
+  });
+</script>
 
   <footer class="footer">
     <small class="footer_copyright">
