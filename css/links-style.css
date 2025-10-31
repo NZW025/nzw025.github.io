@@ -32,13 +32,13 @@
   gap: 0.5rem;
 }
 
-/*.link-name {
+.link-name {
   font-size: 1.25rem;
   font-weight: 600;
   margin: 0;
   color: var(--text-color);
   font-family: '京華老宋体', serif;
-}*/
+}
 
 .link-description {
   font-size: 0.9rem;
