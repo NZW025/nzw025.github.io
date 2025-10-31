@@ -2251,3 +2251,107 @@ body[data-theme=light] #toggleButton {
   transform: scale(1.05);
   transition: transform 0.2s ease;
 }
+
+/* 收藏馆页面容器样式 */
+.tags-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* 收藏馆标题样式（如需添加标题可使用） */
+.tags-title {
+  text-align: center;
+  font-size: 2rem;
+  margin: 3rem 0 2rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+  grid-column: 1 / -1; /* 标题占满整行 */
+}
+
+.tags-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--link-hover, #ff5277);
+  border-radius: 3px;
+}
+
+/* 标签项卡片样式 */
+.tag-item {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  padding: 1.2rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: 100%; /* 确保卡片高度一致 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 暗色模式适配 */
+body[data-theme=dark] .tag-item {
+  background: rgba(30, 30, 30, 0.7);
+  border-color: rgba(60, 60, 60, 0.3);
+}
+
+/* 卡片悬停效果 */
+.tag-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme=dark] .tag-item:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* 标签链接样式 */
+.tag-item a {
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+}
+
+/* 标签描述文字样式 */
+.tag-info .tag-description {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+/* 悬停时文字颜色变化 */
+.tag-item:hover .tag-description {
+  color: var(--link-hover, #ff5277);
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .tags-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .tags-title {
+    font-size: 1.6rem;
+    margin: 2rem 0 1rem;
+  }
+  
+  .tag-item {
+    padding: 1rem;
+  }
+  
+  .tag-info .tag-description {
+    font-size: 1rem;
+  }
+}
