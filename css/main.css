@@ -1,9 +1,4 @@
 @charset "UTF-8";
-/* 全局过渡动画变量（便于统一修改） */
-:root {
-  --transition-speed: 0.3s;
-  --transition-easing: ease;
-}
 /*----在此处修改背景图片，可为明暗模式设置不同的背景图片----*/
 /* 图片路径，请将图片存放至主题文件夹下的source/img */
 body[data-theme=dark] {
@@ -62,18 +57,9 @@ body {
   background-color: transparent;
 }
 
-/* 2. 统一所有交互元素的过渡效果（放在全局*过渡之前，优先级更高） */
-a, button, .link-card, .tag-card, #toTopBtn, #toggleButton, .overlay {
-  transition: all var(--transition-speed) var(--transition-easing);
-}
-
-/* 3. 原有的全局过渡（使用变量统一参数，与上面的交互元素过渡不冲突） */
 * {
-  transition: background-color var(--transition-speed) var(--transition-easing), 
-              border-color var(--transition-speed) var(--transition-easing);
+  transition: background-color 75ms ease-in, border-color 75ms ease-in;
 }
-
-/* 禁止过渡的类（原有代码） */
 
 .notransition {
   transition: none;
@@ -899,7 +885,7 @@ pre .xml .cdata {
 
 /* 新增深色模式代码块样式 */
 body[data-theme=dark] .post code {
-  color: #e0e0e0; /* 浅色文本，与深色背景对比 */
+  background-color: #3333336b; /* 深色背景 */
 }
 
 .post pre {
@@ -909,8 +895,6 @@ body[data-theme=dark] .post code {
   text-align: left;
   padding: 15px 25px;
   line-height: 1.5em;
-  background-color: rgba(15, 15, 15, 0.8);
-  border: 1px solid rgba(60, 60, 60, 0.3); /* 增加边框区分内容区 */
 }
 
 .post .code pre {
@@ -1401,7 +1385,7 @@ body[data-theme=dark] .search-article input[type=search] {
 }
 body[data-theme=dark] .search-article input[type=search]::-webkit-input-placeholder {
   color: rgba(128, 128, 128, 0.8);
-}/*# sourceMappingURL=main.css.map */
+}
 
 body[data-theme=dark] .post code {
   font-family: "Roboto Mono", "Menlo", "Consolas", monospace;
@@ -1532,6 +1516,22 @@ body[data-theme=dark] span.toc-text{
 }
 
 
+#toTopBtn {
+  width: 10px; /* 设置宽度 */
+  height: 10px; /* 设置高度，确保是方形 */
+  background-color: rgba(255, 255, 255, 0); /* 背景颜色 */
+  border-radius: 10px; /* 圆角半径，设置圆角效果 */
+  padding: 10px; /* 内边距 */
+  border: none; /* 边框样式 */
+  position: fixed; /* 固定定位 */
+  bottom: 20vh;
+  right: 10vh;
+  z-index: 997;
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center;     /* 垂直居中 */
+}
+
 #toTopBtn:hover {
   background-color: #c902dc;
 }
@@ -1559,13 +1559,10 @@ body[data-theme=dark] table tbody tr pre{
   background-color: #0000006b;
   backdrop-filter: blur(15px); /* 毛玻璃效果：背景模糊 */
 }
-/* 浅色模式代码块 */
-.post pre {
-  background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(15px);
-  border-radius: 6px; /* 轻微圆角，更美观 */
+.post pre{
+  background-color: #ffffff6b;
+  backdrop-filter: blur(15px); /* 毛玻璃效果：背景模糊 */
 }
-
 span.type{
   color: #0049db;
 }
@@ -1855,9 +1852,8 @@ body.loaded {
   right: 30px;
   width: 40px;
   height: 40px;
-  padding: 0; /* 清除多余内边距，避免按钮过大 */
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.7); /* 深色背景 */
   color: #fff;
   border: none;
   cursor: pointer;
@@ -1865,7 +1861,7 @@ body.loaded {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.3s ease, background-color 0.3s ease; /* 合并过渡效果 */
+  transition: opacity 0.3s ease;
   z-index: 100;
 }
 body[data-theme=light] #toTopBtn {
@@ -1875,14 +1871,17 @@ body[data-theme=light] #toTopBtn {
 #toTopBtn.visible {
   opacity: 1;
 }
-#toTopBtn:hover {
-  background-color: #c902dc; /* 保留 hover 效果 */
-}
-#toTopBtn i {
-  font-size: 20px; /* 图标尺寸适配 40px 按钮 */
-}
 
 /* 目录切换按钮 */
+#toggleButton {
+  position: fixed;
+  top: 80px;
+  right: 30px;
+  width: 40px;
+  height: 40px;
+}
+
+/* 目录切换按钮完整样式 */
 #toggleButton {
   position: fixed;
   top: 80px;
@@ -1897,14 +1896,25 @@ body[data-theme=light] #toTopBtn {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease; /* 合并过渡效果 */
   z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 body[data-theme=light] #toggleButton {
   background-color: rgba(255, 255, 255, 0.9);
   color: #000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+#toggleButton.visible {
+  opacity: 1;
+}
+#toggleButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* 目录overlay样式 */
+/* 目录overlay交互优化 */
 .overlay {
   position: fixed;
   top: 0;
@@ -1913,9 +1923,9 @@ body[data-theme=light] #toggleButton {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.9);
   transform: translateX(100%); /* 默认隐藏 */
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 平滑过渡 */
   z-index: 101;
-  padding: 20px;
+  padding: 30px 20px;
   overflow-y: auto;
 }
 body[data-theme=light] .overlay {
@@ -1924,71 +1934,88 @@ body[data-theme=light] .overlay {
 .overlay.active {
   transform: translateX(0); /* 显示目录 */
 }
-.overlay .content {
-  position: relative;
-}
-
-/* 目录列表样式 */
-.overlay .content ul {
-  list-style: none; /* 移除默认列表符号 */
-  padding-left: 0;
-  margin: 0;
-}
-.overlay .content li {
-  margin-bottom: 12px;
-  padding-left: 10px;
-  border-left: 2px solid transparent; /* 左侧边框占位，hover 时显示 */
-  transition: border-color 0.3s ease;
-}
-.overlay .content li:hover {
-  border-left-color: var(--link-hover, #ff5277); /* 与链接 hover 色一致 */
-}
-.overlay .content a {
-  text-decoration: none;
-  color: inherit; /* 继承父元素颜色（适配明暗主题） */
-  font-size: 15px;
-  transition: color 0.3s ease;
-}
-.overlay .content a:hover {
-  color: var(--link-hover, #ff5277);
-}
-
-/* 目录标题（可选，若需要） */
 .overlay .content h3 {
   margin-top: 0;
   margin-bottom: 20px;
   font-size: 18px;
   color: inherit;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+body[data-theme=light] .overlay .content h3 {
+  border-bottom-color: rgba(0, 0, 0, 0.1);
 }
 
+/* 目录列表层级样式 */
+.overlay .content ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+.overlay .content li {
+  margin-bottom: 12px;
+  padding-left: 8px;
+  border-left: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+.overlay .content li:hover {
+  border-left-color: var(--link-hover, #ff5277);
+  padding-left: 12px;
+}
+.overlay .content .toc-item-h1 {
+  font-weight: 700;
+  margin-top: 15px;
+}
+.overlay .content .toc-item-h2 {
+  margin-left: 15px;
+  font-weight: 600;
+}
+.overlay .content .toc-item-h3 {
+  margin-left: 30px;
+  font-weight: 500;
+  font-size: 0.95em;
+}
+
+/* 关闭按钮样式完善 */
 #closeButton {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
   background: transparent;
   border: none;
   color: inherit;
-  font-size: 20px;
+  font-size: 18px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+#closeButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: rotate(90deg);
+}
+body[data-theme=light] #closeButton:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* 友链页面整体容器 */
-.links-container {
+/* 友链/收藏馆卡片统一样式完善 */
+.card-container {
   max-width: 1000px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
-
-/* 友链页面标题 */
-.links-title {
+.card-title {
   text-align: center;
   font-size: 2rem;
   margin: 3rem 0 2rem;
   position: relative;
   padding-bottom: 0.5rem;
 }
-
-.links-title::after {
+.card-title::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -1999,25 +2026,13 @@ body[data-theme=light] .overlay {
   background: var(--link-hover, #ff5277);
   border-radius: 3px;
 }
-
-/* 友链分类标题 */
-.links-category {
-  font-size: 1.4rem;
-  margin: 2.5rem 0 1.5rem;
-  padding-left: 0.5rem;
-  border-left: 4px solid var(--link-hover, #ff5277);
-}
-
-/* 友链网格布局 */
-.links-grid {
+.card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
   margin-bottom: 2rem;
 }
-
-/* 友链卡片样式 */
-.link-card {
+.card {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
   border-radius: 8px;
@@ -2027,32 +2042,25 @@ body[data-theme=light] .overlay {
   display: flex;
   flex-direction: column;
 }
-
-/* 深色模式适配 */
-body[data-theme=dark] .link-card {
+body[data-theme=dark] .card {
   background: rgba(30, 30, 30, 0.7);
   border-color: rgba(60, 60, 60, 0.3);
 }
-
-/* 卡片悬停效果 */
-.link-card:hover {
+.card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
-
-body[data-theme=dark] .link-card:hover {
+body[data-theme=dark] .card:hover {
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* 友链头部（头像+名称） */
-.link-header {
+/* 友链/收藏馆卡片内部元素 */
+.card-header {
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
 }
-
-/* 友链头像 */
-.link-avatar {
+.card-avatar {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -2061,34 +2069,26 @@ body[data-theme=dark] .link-card:hover {
   border: 2px solid transparent;
   transition: border-color 0.3s ease;
 }
-
-.link-card:hover .link-avatar {
+.card:hover .card-avatar {
   border-color: var(--link-hover, #ff5277);
 }
-
-/* 友链名称 */
-.link-name {
+.card-name {
   font-weight: 600;
   font-size: 1.1rem;
   margin: 0;
   color: inherit;
 }
-
-/* 友链描述 */
-.link-desc {
+.card-desc {
   font-size: 0.9rem;
   color: #666;
   flex-grow: 1;
   margin: 0 0 1rem;
   line-height: 1.6;
 }
-
-body[data-theme=dark] .link-desc {
+body[data-theme=dark] .card-desc {
   color: #aaa;
 }
-
-/* 友链链接 */
-.link-url {
+.card-url {
   font-size: 0.85rem;
   color: var(--link-hover, #ff5277);
   text-decoration: none;
@@ -2096,179 +2096,123 @@ body[data-theme=dark] .link-desc {
   display: inline-flex;
   align-items: center;
 }
-
-.link-url::after {
+.card-url::after {
   content: '→';
   margin-left: 5px;
   transition: transform 0.3s ease;
 }
-
-.link-url:hover::after {
+.card-url:hover::after {
   transform: translateX(3px);
 }
 
-/* 响应式调整 */
+/* 响应式适配补充 */
 @media screen and (max-width: 768px) {
-  .links-grid {
+  .card-grid {
     grid-template-columns: 1fr;
   }
-  
-  .links-title {
+  .card-title {
     font-size: 1.6rem;
   }
-  
-  .links-category {
-    font-size: 1.2rem;
-  }
-}
-
-/* 档案馆页面整体容器 */
-.tags-container {
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-/* 档案馆页面标题 */
-.tags-title {
-  text-align: center;
-  font-size: 2rem;
-  margin: 3rem 0 2rem;
-  position: relative;
-  padding-bottom: 0.5rem;
-}
-
-.tags-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: var(--tag-hover, #ff5277);
-  border-radius: 3px;
-}
-
-/* 档案馆分类标题 */
-.tags-category {
-  font-size: 1.4rem;
-  margin: 2.5rem 0 1.5rem;
-  padding-left: 0.5rem;
-  border-left: 4px solid var(--tag-hover, #ff5277);
-}
-
-/* 档案馆网格布局 */
-.tags-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-/* 档案馆卡片样式 */
-.tag-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  border-radius: 8px;
-  padding: 1.2rem;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  flex-direction: column;
-}
-
-/* 深色模式适配 */
-body[data-theme=dark] .tag-card {
-  background: rgba(30, 30, 30, 0.7);
-  border-color: rgba(60, 60, 60, 0.3);
-}
-
-/* 卡片悬停效果 */
-.tag-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-}
-
-body[data-theme=dark] .tag-card:hover {
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* 档案馆头部（头像+名称） */
-.tag-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-/* 档案馆头像 */
-.tag-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 1rem;
-  object-fit: cover;
-  border: 2px solid transparent;
-  transition: border-color 0.3s ease;
-}
-
-.tag-card:hover .tag-avatar {
-  border-color: var(--tag-hover, #ff5277);
-}
-
-/* 档案馆名称 */
-.tag-name {
-  font-weight: 600;
-  font-size: 1.1rem;
-  margin: 0;
-  color: inherit;
-}
-
-/* 档案馆描述 */
-.tag-desc {
-  font-size: 0.9rem;
-  color: #666;
-  flex-grow: 1;
-  margin: 0 0 1rem;
-  line-height: 1.6;
-}
-
-body[data-theme=dark] .tag-desc {
-  color: #aaa;
-}
-
-/* 档案馆链接 */
-.tag-url {
-  font-size: 0.85rem;
-  color: var(--tag-hover, #ff5277);
-  text-decoration: none;
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-}
-
-.tag-url::after {
-  content: '→';
-  margin-left: 5px;
-  transition: transform 0.3s ease;
-}
-
-.tag-url:hover::after {
-  transform: translateX(3px);
-}
-
-/* 响应式调整 */
-@media (max-width: 768px) {
-  /* 小屏幕隐藏目录和回到顶部按钮 */
-  #toggleButton,
-  #toTopBtn,
-  #toggleButton i,
-  #toTopBtn i {
-    display: none !important; /* 强制隐藏，避免冲突 */
-  }
-  
-  /* 调整小屏幕目录样式（若需要显示） */
   .overlay {
-    width: 100%; /* 占满屏幕宽度 */
+    width: 100%; /* 小屏目录占满宽度 */
+    padding: 20px 15px;
+  }
+  .overlay .content .toc-item-h2 {
+    margin-left: 10px;
+  }
+  .overlay .content .toc-item-h3 {
+    margin-left: 20px;
+  }
+  /* 小屏文章内容边距调整 */
+  .post > p {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+/* 代码块响应式优化 */
+@media screen and (max-width: 768px) {
+  .post pre {
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+  .post code {
+    font-size: 12px;
+    padding: 2px 6px;
+  }
+}
+
+/* 暗色模式代码块文本颜色补充 */
+body[data-theme=dark] .post pre {
+  color: #e0e0e0;
+}
+body[data-theme=dark] .post pre .function .keyword,
+body[data-theme=dark] .post pre .constant {
+  color: #61aeee;
+}
+body[data-theme=dark] .post pre .keyword,
+body[data-theme=dark] .post pre .attribute {
+  color: #ffb86c;
+}
+body[data-theme=dark] .post pre .number,
+body[data-theme=dark] .post pre .literal {
+  color: #bd93f9;
+}
+body[data-theme=dark] .post pre .string,
+body[data-theme=dark] .post pre .subst {
+  color: #50fa7b;
+}
+
+/* 页面滚动条样式统一（暗色模式） */
+body[data-theme=dark] ::-webkit-scrollbar-thumb {
+  background: #4a4d56;
+}
+body[data-theme=dark] ::-webkit-scrollbar-corner {
+  background-color: #131418;
+}
+
+/* 图片容器阴影效果 */
+.post figure {
+  margin: 20px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+.post figure:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+body[data-theme=dark] .post figure {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+body[data-theme=dark] .post figure:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* 最终确保所有动画关键帧完整 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes blur {
+  from {
+    filter: blur(0px);
+  }
+  to {
+    filter: blur(4px);
+  }
+}
+@keyframes fadein {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 0.8;
   }
 }
