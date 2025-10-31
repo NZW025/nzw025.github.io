@@ -1,4 +1,9 @@
 @charset "UTF-8";
+/* 全局过渡动画变量（便于统一修改） */
+:root {
+  --transition-speed: 0.3s;
+  --transition-easing: ease;
+}
 /*----在此处修改背景图片，可为明暗模式设置不同的背景图片----*/
 /* 图片路径，请将图片存放至主题文件夹下的source/img */
 body[data-theme=dark] {
@@ -57,9 +62,18 @@ body {
   background-color: transparent;
 }
 
-* {
-  transition: background-color 75ms ease-in, border-color 75ms ease-in;
+/* 2. 统一所有交互元素的过渡效果（放在全局*过渡之前，优先级更高） */
+a, button, .link-card, .tag-card, #toTopBtn, #toggleButton, .overlay {
+  transition: all var(--transition-speed) var(--transition-easing);
 }
+
+/* 3. 原有的全局过渡（使用变量统一参数，与上面的交互元素过渡不冲突） */
+* {
+  transition: background-color var(--transition-speed) var(--transition-easing), 
+              border-color var(--transition-speed) var(--transition-easing);
+}
+
+/* 禁止过渡的类（原有代码） */
 
 .notransition {
   transition: none;
@@ -885,7 +899,7 @@ pre .xml .cdata {
 
 /* 新增深色模式代码块样式 */
 body[data-theme=dark] .post code {
-  background-color: #3333336b; /* 深色背景 */
+  color: #e0e0e0; /* 浅色文本，与深色背景对比 */
 }
 
 .post pre {
@@ -895,6 +909,8 @@ body[data-theme=dark] .post code {
   text-align: left;
   padding: 15px 25px;
   line-height: 1.5em;
+  background-color: rgba(15, 15, 15, 0.8);
+  border: 1px solid rgba(60, 60, 60, 0.3); /* 增加边框区分内容区 */
 }
 
 .post .code pre {
@@ -1516,22 +1532,6 @@ body[data-theme=dark] span.toc-text{
 }
 
 
-#toTopBtn {
-  width: 10px; /* 设置宽度 */
-  height: 10px; /* 设置高度，确保是方形 */
-  background-color: rgba(255, 255, 255, 0); /* 背景颜色 */
-  border-radius: 10px; /* 圆角半径，设置圆角效果 */
-  padding: 10px; /* 内边距 */
-  border: none; /* 边框样式 */
-  position: fixed; /* 固定定位 */
-  bottom: 20vh;
-  right: 10vh;
-  z-index: 997;
-  display: flex;
-  justify-content: center; /* 水平居中 */
-  align-items: center;     /* 垂直居中 */
-}
-
 #toTopBtn:hover {
   background-color: #c902dc;
 }
@@ -1559,10 +1559,13 @@ body[data-theme=dark] table tbody tr pre{
   background-color: #0000006b;
   backdrop-filter: blur(15px); /* 毛玻璃效果：背景模糊 */
 }
-.post pre{
-  background-color: #ffffff6b;
-  backdrop-filter: blur(15px); /* 毛玻璃效果：背景模糊 */
+/* 浅色模式代码块 */
+.post pre {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+  border-radius: 6px; /* 轻微圆角，更美观 */
 }
+
 span.type{
   color: #0049db;
 }
@@ -1852,8 +1855,9 @@ body.loaded {
   right: 30px;
   width: 40px;
   height: 40px;
+  padding: 0; /* 清除多余内边距，避免按钮过大 */
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.7); /* 深色背景 */
+  background-color: rgba(0, 0, 0, 0.7);
   color: #fff;
   border: none;
   cursor: pointer;
@@ -1861,7 +1865,7 @@ body.loaded {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, background-color 0.3s ease; /* 合并过渡效果 */
   z-index: 100;
 }
 body[data-theme=light] #toTopBtn {
@@ -1870,6 +1874,12 @@ body[data-theme=light] #toTopBtn {
 }
 #toTopBtn.visible {
   opacity: 1;
+}
+#toTopBtn:hover {
+  background-color: #c902dc; /* 保留 hover 效果 */
+}
+#toTopBtn i {
+  font-size: 20px; /* 图标尺寸适配 40px 按钮 */
 }
 
 /* 目录切换按钮 */
@@ -1917,6 +1927,40 @@ body[data-theme=light] .overlay {
 .overlay .content {
   position: relative;
 }
+
+/* 目录列表样式 */
+.overlay .content ul {
+  list-style: none; /* 移除默认列表符号 */
+  padding-left: 0;
+  margin: 0;
+}
+.overlay .content li {
+  margin-bottom: 12px;
+  padding-left: 10px;
+  border-left: 2px solid transparent; /* 左侧边框占位，hover 时显示 */
+  transition: border-color 0.3s ease;
+}
+.overlay .content li:hover {
+  border-left-color: var(--link-hover, #ff5277); /* 与链接 hover 色一致 */
+}
+.overlay .content a {
+  text-decoration: none;
+  color: inherit; /* 继承父元素颜色（适配明暗主题） */
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+.overlay .content a:hover {
+  color: var(--link-hover, #ff5277);
+}
+
+/* 目录标题（可选，若需要） */
+.overlay .content h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: inherit;
+}
+
 #closeButton {
   position: absolute;
   top: 0;
@@ -2214,16 +2258,17 @@ body[data-theme=dark] .tag-desc {
 }
 
 /* 响应式调整 */
-@media screen and (max-width: 768px) {
-  .links-grid {
-    grid-template-columns: 1fr;
+@media (max-width: 768px) {
+  /* 小屏幕隐藏目录和回到顶部按钮 */
+  #toggleButton,
+  #toTopBtn,
+  #toggleButton i,
+  #toTopBtn i {
+    display: none !important; /* 强制隐藏，避免冲突 */
   }
   
-  .links-title {
-    font-size: 1.6rem;
-  }
-  
-  .links-category {
-    font-size: 1.2rem;
+  /* 调整小屏幕目录样式（若需要显示） */
+  .overlay {
+    width: 100%; /* 占满屏幕宽度 */
   }
 }
