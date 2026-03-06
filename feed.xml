@@ -300,7 +300,172 @@
 &lt;div class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 100px; LEFT: -250px"&gt;&lt;iframe height=900 marginHeight=0 src="https://NZW025.github.io/html/english/ablessq.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
 &lt;/body&gt;
 &lt;/html&gt;</description></item><item><title>生而为人，抱歉</title><link>https://nzw025.top/jilu/riji/baoqian/</link><pubDate>Wed, 25 Feb 2026 21:16:30 +0800</pubDate><guid>https://nzw025.top/jilu/riji/baoqian/</guid><description>&lt;br&gt;
-&lt;p&gt;对于这个世界，不知怎么热爱。热闹的宴席，也不能捂暖内心的苍凉。越来越与情感隔缘，渴望和失望接踵而至，羡慕那些对世界还满腔热情的人儿，即便跌得遍体鳞伤，仍然渴望着爱与被爱。也许我读的书太少，见识太浅薄。该静下心来，多看书，多感知这个世界，看看除了等价交换，是否余留那么一点纯粹得让我为之欣喜若狂的东西。&lt;/p&gt;</description></item><item><title>生活</title><link>https://nzw025.top/jilu/shenghuo/dome/</link><pubDate>Tue, 17 Feb 2026 21:15:30 +0800</pubDate><guid>https://nzw025.top/jilu/shenghuo/dome/</guid><description/></item><item><title>语法</title><link>https://nzw025.top/xuehai/yufa/dome/</link><pubDate>Tue, 17 Feb 2026 21:15:30 +0800</pubDate><guid>https://nzw025.top/xuehai/yufa/dome/</guid><description/></item><item><title>语音</title><link>https://nzw025.top/xuehai/yuyin/dome/</link><pubDate>Tue, 17 Feb 2026 21:15:30 +0800</pubDate><guid>https://nzw025.top/xuehai/yuyin/dome/</guid><description/></item><item><title>续写情绪之愤怒</title><link>https://nzw025.top/xuehai/xiezuo/anger/</link><pubDate>Sun, 15 Feb 2026 18:13:27 +0800</pubDate><guid>https://nzw025.top/xuehai/xiezuo/anger/</guid><description>&lt;style&gt;
+&lt;p&gt;对于这个世界，不知怎么热爱。热闹的宴席，也不能捂暖内心的苍凉。越来越与情感隔缘，渴望和失望接踵而至，羡慕那些对世界还满腔热情的人儿，即便跌得遍体鳞伤，仍然渴望着爱与被爱。也许我读的书太少，见识太浅薄。该静下心来，多看书，多感知这个世界，看看除了等价交换，是否余留那么一点纯粹得让我为之欣喜若狂的东西。&lt;/p&gt;</description></item><item><title>生活</title><link>https://nzw025.top/jilu/shenghuo/dome/</link><pubDate>Tue, 17 Feb 2026 21:15:30 +0800</pubDate><guid>https://nzw025.top/jilu/shenghuo/dome/</guid><description/></item><item><title>语法</title><link>https://nzw025.top/xuehai/yufa/dome/</link><pubDate>Tue, 17 Feb 2026 21:15:30 +0800</pubDate><guid>https://nzw025.top/xuehai/yufa/dome/</guid><description/></item><item><title>语音</title><link>https://nzw025.top/xuehai/yuyin/dome/</link><pubDate>Tue, 17 Feb 2026 21:15:30 +0800</pubDate><guid>https://nzw025.top/xuehai/yuyin/dome/</guid><description/></item><item><title>续写情绪之焦虑</title><link>https://nzw025.top/xuehai/xiezuo/concern/</link><pubDate>Sun, 15 Feb 2026 20:13:27 +0800</pubDate><guid>https://nzw025.top/xuehai/xiezuo/concern/</guid><description>&lt;style&gt;
+/* 基础样式 */
+.sentence-item {
+ margin-bottom: 12px;
+ margin-left: 6px;
+ cursor: pointer;
+ line-height: 1.6;
+}
+/* 番号样式 - 统一色系 */
+.sentence-number {
+ font-weight: bold;
+ color: #2c3e50; /* 深灰蓝色（可自行修改），统一番号颜色 */
+ user-select: none; /* 禁止选中番号文字 */
+ padding: 2px 4px;
+ border-radius: 2px;
+}
+/* 点击时的hover效果（可选） */
+.sentence-number:hover {
+ background-color: #f5f7fa; /* 浅灰色背景，提示可点击 */
+}
+/* 中文句子样式 */
+.cn-sentence {
+ margin-left: 4px;
+}
+/* 英文句子样式 - 默认隐藏 */
+.en-sentence {
+ display: none;
+ margin-left: 42px; /* 与中文首字对齐 */
+ color: #666; /* 灰色区分中英文 */
+ margin-top: 4px;
+}
+/* 展开状态 */
+.sentence-item.active .en-sentence {
+ display: block;
+}
+&lt;/style&gt;
+&lt;/head&gt;&lt;/br&gt;
+&lt;body&gt;&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="sentence-list"&gt;
+ &lt;!-- 1. 担忧 (concern) --&gt;
+ &lt;div class="category-title"&gt;1. 担忧 (concern)&lt;/div&gt; &lt;/br&gt; 
+ &lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;01&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 我们对环境的担忧与日俱增。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Our concern about the environment is growing.&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;02&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她的担忧在眼神中清晰可见。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Her concern is clearly visible in her eyes.&lt;/div&gt;
+ &lt;/div&gt;&lt;/br&gt; 
+ &lt;!-- 2. 焦虑 (anxiety) --&gt;
+ &lt;div class="category-title"&gt;2. 焦虑 (anxiety)&lt;/div&gt; &lt;/br&gt; 
+ &lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;03&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他的焦虑源于工作压力。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;His anxiety comes from work pressure.&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;04&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 考试前的焦虑让他难以入眠。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Anxiety before the exam makes it hard for him to sleep.&lt;/div&gt;
+ &lt;/div&gt;&lt;/br&gt; 
+ &lt;!-- 3. 忧虑 (agitation) --&gt;
+ &lt;div class="category-title"&gt;3. 忧虑 (agitation)&lt;/div&gt; &lt;/br&gt; 
+ &lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;05&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她脸上的忧虑无法消散。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The agitation on her face won't disappear.&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;06&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他带着忧虑处理棘手问题。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;He deals with the tough problem with agitation.&lt;/div&gt;
+ &lt;/div&gt;&lt;/br&gt; 
+ &lt;!-- 4. 担忧的 (concerned) --&gt;
+ &lt;div class="category-title"&gt;4. 担忧的 (concerned)&lt;/div&gt; &lt;/br&gt; 
+ &lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;07&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 那位担忧的父亲四处寻找孩子。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The concerned father is looking for his child everywhere.&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;08&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 担忧的医生密切关注病人。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The concerned doctor pays close attention to the patient.&lt;/div&gt;
+ &lt;/div&gt;&lt;/br&gt; 
+ &lt;!-- 5. 焦虑的 (anxious) --&gt;
+ &lt;div class="category-title"&gt;5. 焦虑的 (anxious)&lt;/div&gt;&lt;/br&gt; 
+ &lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;09&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 焦虑的投资者等待着股市消息。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Anxious investors are waiting for stock market news.&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;10&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 焦虑的心情让他坐立不安。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The anxious mood makes him restless.&lt;/div&gt;
+ &lt;/div&gt;&lt;/br&gt; 
+ &lt;!-- 6. 焦虑不安的 (agitated) --&gt;
+ &lt;div class="category-title"&gt;6. 焦虑不安的 (agitated)&lt;/div&gt; &lt;/br&gt; 
+ &lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;11&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 焦虑不安的人群呼喊着口号。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The agitated crowd shouts slogans.&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;12&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他焦虑不安的状态很明显。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;His agitated state is very obvious.&lt;/div&gt;
+ &lt;/div&gt;&lt;/br&gt; 
+ &lt;!-- 7. 坐立不安的 (restless) --&gt;
+ &lt;div class="category-title"&gt;7. 坐立不安的 (restless)&lt;/div&gt; &lt;/br&gt; 
+ &lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;13&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 坐立不安的他在房间里走来走去。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Restless, he walks around in the room.&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;14&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 坐立不安的思绪困扰着他。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Restless thoughts trouble him.&lt;/div&gt;
+ &lt;/div&gt;&lt;/br&gt;
+ &lt;!-- 8. 紧张的 (nervous) --&gt;
+ &lt;div class="category-title"&gt;8. 紧张的 (nervous)&lt;/div&gt; &lt;/br&gt; 
+ &lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;15&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 紧张的运动员做着深呼吸。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The nervous athlete takes deep breaths.&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;16&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她紧张的样子让人有些心疼。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Her nervous look makes people feel a bit sorry.&lt;/div&gt;
+ &lt;/div&gt;&lt;/br&gt;
+ &lt;!-- 9. 颤抖 (shake) --&gt;
+ &lt;div class="category-title"&gt;9. 颤抖 (shake)&lt;/div&gt; &lt;/br&gt; 
+ &lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;17&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他冷得直颤抖，赶紧穿上外套。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;He shakes with cold and quickly puts on a coat.&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;18&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 地震时大地颤抖，房屋晃动。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The earth shakes during the earthquake and houses sway.&lt;/div&gt;
+ &lt;/div&gt;&lt;/br&gt;
+ &lt;!-- 10. 忧虑 (agitation)（重复项） --&gt;
+ &lt;div class="category-title"&gt;10. 忧虑 (agitation)&lt;/div&gt; &lt;/br&gt; 
+ &lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;19&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她脸上的忧虑无法消散。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The agitation on her face won't disappear.&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;20&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他带着忧虑处理棘手问题。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;He deals with the tough problem with agitation.&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;
+&lt;script&gt;
+// 实现点击交互逻辑
+document.addEventListener('DOMContentLoaded', function() {
+ // 获取所有句子项
+ const sentenceItems = document.querySelectorAll('.sentence-item');
+ 
+ // 为每个项添加点击事件
+ sentenceItems.forEach(item =&gt; {
+ const numberElement = item.querySelector('.sentence-number');
+ numberElement.addEventListener('click', function() {
+ // 切换展开/收起状态
+ item.classList.toggle('active');
+ });
+ 
+ // 可选：点击整行也能触发（体验更好）
+ item.addEventListener('click', function(e) {
+ if (e.target !== numberElement) {
+ item.classList.toggle('active');
+ }
+ });
+ });
+});
+&lt;/script&gt;
+&lt;/body&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;/html&gt;</description></item><item><title>续写情绪之愤怒</title><link>https://nzw025.top/xuehai/xiezuo/anger/</link><pubDate>Sun, 15 Feb 2026 18:13:27 +0800</pubDate><guid>https://nzw025.top/xuehai/xiezuo/anger/</guid><description>&lt;style&gt;
 /* 基础样式 */
 .sentence-item {
  margin-bottom: 12px;
@@ -468,10 +633,10 @@ document.addEventListener('DOMContentLoaded', function() {
 &lt;/html&gt;</description></item><item><title>平安喜乐 得偿所愿</title><link>https://nzw025.top/yule/yinhua/paxl/</link><pubDate>Wed, 31 Dec 2025 21:03:27 +0800</pubDate><guid>https://nzw025.top/yule/yinhua/paxl/</guid><description>&lt;!-- 核心修复：删除多余的 HTML 骨架（Hugo 会自动生成 html/head/body） --&gt;
 &lt;!-- 图片适配：添加样式让图片自适应，避免超出屏幕 --&gt;
 &lt;div style="max-width: 100%; margin: 20px auto;"&gt;
- &lt;img src="https://nzw025.top/img/7-1.jpg" alt="平安喜乐" style="width: 100%; margin: 10px 0;"&gt;&lt;/br&gt;
- &lt;img src="https://nzw025.top/img/7-2.jpg" alt="得偿所愿" style="width: 100%; margin: 10px 0;"&gt;&lt;/br&gt;
- &lt;img src="https://nzw025.top/img/7-5.gif" alt="动态图1" style="width: 100%; margin: 10px 0;"&gt;&lt;/br&gt;
- &lt;img src="https://nzw025.top/img/7-6.gif" alt="动态图2" style="width: 100%; margin: 10px 0;"&gt;&lt;/br&gt;
+ &lt;img src="https://nzw025.top/img/7-1.jpg" alt="平安喜乐";&gt;&lt;/br&gt;
+ &lt;img src="https://nzw025.top/img/7-2.jpg" alt="得偿所愿";&gt;&lt;/br&gt;
+ &lt;img src="https://nzw025.top/img/7-5.gif" alt="动态图1";&gt;&lt;/br&gt;
+ &lt;img src="https://nzw025.top/img/7-6.gif" alt="动态图2";&gt;&lt;/br&gt;
 &lt;/div&gt;
 &lt;audio id="aud" src="https://www.joy127.com/url/140816.mp3" autoplay="" loop=""&gt;&lt;/audio&gt;</description></item><item><title>我的2025</title><link>https://nzw025.top/jilu/riji/erwu/</link><pubDate>Tue, 30 Dec 2025 19:00:27 +0800</pubDate><guid>https://nzw025.top/jilu/riji/erwu/</guid><description>&lt;br&gt;
 &lt;p&gt;时间过得真快，一眨眼2025年就翻篇了。回头看这一年，算不上顺风顺水，甚至有些磕磕绊绊。身体不怎么给力，重感冒犯了两回，眼睛不舒服也缠了好几个月。人际关系也起起落落，有突如其来的温暖，也有体面说再见的时刻，还有些人和事，走着走着散了，再也不见。日子里的悲欢离合，偶尔也会让我矫情几句，但静下心来想，比起生死大事，这些都不值一提，早晚会成为过眼云烟。&lt;/p&gt;</description></item><item><title>AI重塑教师</title><link>https://nzw025.top/xuehai/xuexi/ai2/</link><pubDate>Fri, 21 Nov 2025 15:13:27 +0800</pubDate><guid>https://nzw025.top/xuehai/xuexi/ai2/</guid><description>&lt;/br&gt;
@@ -530,13 +695,4 @@ document.addEventListener('DOMContentLoaded', function() {
  &lt;/div&gt;
  &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
 &lt;/body&gt;
-&lt;/html&gt;</description></item><item><title>不染</title><link>https://nzw025.top/yule/yinhua/br/</link><pubDate>Wed, 22 Oct 2025 22:21:27 +0800</pubDate><guid>https://nzw025.top/yule/yinhua/br/</guid><description>&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
- &lt;head&gt;
- &lt;title&gt;&lt;/title&gt;
- &lt;/head&gt;
- &lt;body&gt;
- &lt;DIV class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 80px; LEFT: -250px"&gt;&lt;IFRAME height=900 marginHeight=0 src="https://windflower2022.github.io/html/img/br.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/IFRAME&gt;&lt;/DIV&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
- &lt;video style="width:0px;height:0px;" controls="" autoplay="" name="media"&gt;&lt;source src="http://music.163.com/song/media/outer/url?id=2040131120.mp3" type="audio/mpeg"&gt;&lt;/video&gt;
-	&lt;/body&gt;
 &lt;/html&gt;</description></item></channel></rss>
