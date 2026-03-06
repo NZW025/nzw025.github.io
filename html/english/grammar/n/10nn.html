@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>名词的数考点 - 文艺风题库</title>
+  <style>
+    /* 导入自定义字体 - 文艺基调核心 */
+    @font-face {
+      font-family: 'KingHwaOldSong';
+      src: url('https://cdn.jsdelivr.net/gh/yourusername/fonts/KingHwaOldSong.woff2') format('woff2'),
+           url('https://cdn.jsdelivr.net/gh/yourusername/fonts/KingHwaOldSong.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* 基础样式重置 - 全局统一无冗余 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 全局核心色系 - 温暖文艺三色调，统一所有模块 */
+:root {
+  --text-main: #4a3d2f; /* 主文字色：暖调深棕，温润有质感 */
+  --text-light: #7d6b57; /* 次要文字色：暖棕灰，柔和不突兀 */
+  --accent: #c87f44; /* 强调色：肉桂暖棕，温暖文艺 */
+  --bg-main: #f9f4eb; /* 背景色：暖调米色，温润肌理感 */
+  --border-light: #e8dcc8; /* 淡边框色：暖调米棕，自然过渡 */
+  --hover-bg: rgba(200, 127, 68, 0.05); /* hover背景：极淡肉桂棕，通透温暖 */
+  --transition-base: all 0.3s ease; /* 统一过渡动画 */
+  --spacing-sm: 0.5em;
+  --spacing-md: 1em;
+  --spacing-lg: 1.5em;
+  --spacing-xl: 2em;
+}
+
+/* 全局样式 - 统一基调，简洁文艺 */
+body {
+  color: var(--text-main);
+  font: normal 16px 'KingHwaOldSong', 'Times New Roman', serif;
+  line-height: 1.55em; /* 行高舒展，阅读舒适 */
+  letter-spacing: 0.9pt; /* 轻微字距，文艺不局促 */
+  background-color: var(--bg-main);
+  background-image: url(data:image/png;base64,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);
+  background-attachment: fixed;background-repeat: repeat;
+  padding: var(--spacing-md);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+    /* 字体控制按钮样式 */
+    .font-control {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background-color: var(--bg-main);
+      padding: var(--spacing-sm);
+      border: 1px dashed var(--border-light);
+      border-radius: 0;
+    }
+
+    .font-btn {
+      border: 1px dashed var(--border-light);
+      background-color: transparent;
+      color: var(--text-main);
+      padding: 4px 8px;
+      cursor: pointer;
+      transition: var(--transition-base);
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    .font-btn:hover, .font-btn.active {
+      background-color: var(--hover-bg);
+      color: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* 段落样式 - 文艺缩进+呼吸感 */
+    p {
+      text-indent: 2em;
+      margin-bottom: var(--spacing-md);
+    }
+
+    /* 链接样式 - 全局统一，文艺hover效果 */
+    a {
+      color: var(--text-main);
+      text-decoration: none;
+      transition: var(--transition-base);
+      letter-spacing: 0.3pt;
+    }
+
+    a:hover {
+      color: var(--accent);
+      text-decoration: underline dotted;
+      text-underline-offset: 0.3em;
+      transform: translateY(-1px);
+    }
+
+    a:active, a:visited {
+      color: var(--text-main);
+    }
+
+    /* 标题样式 - 全局统一，层级清晰文艺 */
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--text-main);
+      font-family: 'KingHwaOldSong', 'Times New Roman', serif;
+      font-weight: normal;
+      letter-spacing: 1.2pt;
+      margin-top: calc(var(--spacing-lg) + 0.3em);
+      margin-bottom: var(--spacing-md);
+    }
+
+    h1 { font-size: 24px; }
+    h2 { 
+      font-size: 20px;
+      border-bottom: 1px dashed var(--border-light);
+      padding-bottom: 6px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    h2:hover {
+      color: var(--accent);
+    }
+
+    h2::after {
+      content: '';
+      font-size: 14px;
+      color: var(--text-light);
+      margin-left: 10px;
+    }
+
+    h3 { font-size: 18px; }
+
+    /* 题目容器样式 */
+    .exercise-container {
+      max-width: 900px;
+      margin: var(--spacing-xl) auto;
+      padding: 0 var(--spacing-md);
+    }
+
+    .question-section {
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .question-item {
+      margin-bottom: var(--spacing-md);
+      padding: var(--spacing-sm);
+      border-radius: 0;
+      transition: var(--transition-base);
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .question-item:hover {
+      background-color: var(--hover-bg);
+    }
+
+    .question-number {
+      display: inline-block;
+      padding: 2px 8px;
+      margin-right: 10px;
+      color: var(--accent);
+      cursor: pointer;
+      border-bottom: 1px dashed transparent;
+      transition: var(--transition-base);
+      flex-shrink: 0;
+    }
+
+    .question-number:hover {
+      border-bottom: 1px dashed var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .question-text {
+      display: inline;
+      line-height: 1.8em;
+    }
+
+    /* 空白处样式 - 自适应答案长度 */
+    .blank-wrap {
+      display: inline-block;
+      position: relative;
+      height: 1.2em;
+      margin: 0 2px;
+      border-bottom: 1px solid var(--text-main);
+      transition: width 0.3s ease;
+      min-width: 20px;
+      vertical-align: bottom;
+    }
+
+    .answer-text {
+      position: absolute;
+      left: 0;
+      top: -10px;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      color: var(--accent);
+      font-weight: normal;
+      white-space: nowrap;
+      text-align: center;
+      font-size: 22px; /* 核心：调整答案字体大小，可改14px/18px等 */
+  /* 若想和正文字体联动，也可使用相对单位：font-size: 1em; */
+    }
+
+    .blank-wrap.show-answer .answer-text {
+      opacity: 1;
+    }
+
+    /* 深色模式 - 统一温暖色调 */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-main: #e5d9c8;
+        --text-light: #c2b4a0;
+        --accent: #d49058;
+        --bg-main: #2c2418;
+        --border-light: #4a3d2f;
+        --hover-bg: rgba(212, 144, 88, 0.1);
+      }
+
+      body { background-image: none; }
+      .blank-wrap { border-bottom-color: var(--text-main); }
+      .answer-text { color: var(--accent); }
+      .font-control { background-color: var(--bg-main); }
+    }
+
+    /* 响应式适配 */
+    @media (max-width: 768px) {
+      body {
+        padding: var(--spacing-sm);
+        max-width: 100%;
+      }
+
+      .font-control {
+        top: 10px;
+        right: 10px;
+        flex-direction: row;
+      }
+
+      .question-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .question-number {
+        margin-bottom: 5px;
+      }
+
+      h2 { font-size: 18px; }
+      h3 { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 字体控制按钮 -->
+  <div class="font-control">
+    <button class="font-btn active" data-size="base">默认字体</button>
+    <button class="font-btn" data-size="xl">更大字体</button>
+  </div>
+
+  <!-- 题库标题 -->
+  <h1 style="text-align: center; margin-top: var(--spacing-xl);">名词的数（44题）</h1>
+
+  
+  <!-- 题库主体 -->
+  <div class="exercise-container">
+    <!-- 不（可）数单复数考点 -->
+    <div class="question-section" id="section1">
+      <h2>不（可）数单复数</h2>
+
+    <div class="question-list">
+      <div class="question-item">
+        <span class="question-number" data-index="1">1</span>
+        <span class="question-text">（2025 年 1 月浙江卷） As people now choose to wear more clothes fewer 57 <span class="blank-wrap" data-answers='["times"]'><span class="answer-text"></span></span>(time), clothing rental services have become increasingly popular.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="2">2</span>
+        <span class="question-text">（2025 年全国二卷）The sun-dried clothes smell especially pleasant where I live, thanks to the absence of smog and plenty of blue sky 44 <span class="blank-wrap" data-answers='["afternoons"]'><span class="answer-text"></span></span>(afternoon) with lots of fresh air.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="3">3</span>
+        <span class="question-text">(2024 全国甲卷) They are 42<span class="blank-wrap" data-answers='["treasures"]'><span class="answer-text"></span></span>(treasure）of American heritage（遗产）.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="4">4</span>
+        <span class="question-text">(2024 新课标 Ⅱ 卷) Tang and Shakespeare were contemporaries and both died in 1616. Although they could never have met, there are common 37 <span class="blank-wrap" data-answers='["themes"]'><span class="answer-text"></span></span>(theme) in their works, said Paul Edmondson, head of research for the Shakespeare Birthplace Trust.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="5">5</span>
+        <span class="question-text">(2024 北京卷) To practise this, we need to establish clear 14 <span class="blank-wrap" data-answers='["boundaries"]'><span class="answer-text"></span></span>(boundary) in our personal and professional life.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="6">6</span>
+        <span class="question-text">(2023 年全国乙卷) But for all its ancient buildings, Beijing is also a place which welcomes the fast-paced development of modern life, with 21st-century architectural 64 <span class="blank-wrap" data-answers='["wonders"]'><span class="answer-text"></span></span>(wonder) standing side by side with historical buildings of the past.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="7">7</span>
+        <span class="question-text">(2023 年新高考全国 Ⅱ 卷) They also need to be ready to give 61 <span class="blank-wrap" data-answers='["interviews"]'><span class="answer-text"></span></span>(interview) in English with international journalists.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="8">8</span>
+        <span class="question-text">(2023 年全国甲卷) The bees,  <span class="blank-wrap" data-answers='["butterflies"]'><span class="answer-text"></span></span>(butterfly) and many other insects looked lovely and beautifully on the stamps.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="9">9</span>
+        <span class="question-text">(2023 年浙江 1 月卷) Thanks to Beijing’s long history as capital of China, almost every hutong has its stories, and some are even associated with historic 64 <span class="blank-wrap" data-answers='["events"]'><span class="answer-text"></span></span>(event).</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="10">10</span>
+        <span class="question-text">(2023 年北京卷) Mangroves can help soften waves and protect 15<span class="blank-wrap" data-answers='["cities"]'><span class="answer-text"></span></span>(city) from coastal winds.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="11">11</span>
+        <span class="question-text">(2022.6 新高考 Ⅰ 卷) The GPNP’s main goal is to improve connectivity between separate 62 <span class="blank-wrap" data-answers='["populations"]'><span class="answer-text"></span></span>(population) and homes of giant pandas, and eventually achieve a desired level of population in the wild.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="12">12</span>
+        <span class="question-text">(2022 全国乙卷) Our cities will be better places if we replace cars with  <span class="blank-wrap" data-answers='["bicycles"]'><span class="answer-text"></span></span>(bicycle).</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="13">13</span>
+        <span class="question-text">(2021 新高考 Ⅰ 卷 ) The rolling sea of clouds you see once you are at the top will remind you how tiny we 2 <span class="blank-wrap" data-answers='["humans"]'><span class="answer-text"></span></span>(human) are.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="14">14</span>
+        <span class="question-text">(2021.6 全国甲卷) Supposedly you can do it in two hours, but we stopped at the different gates and 9 <span class="blank-wrap" data-answers='["watchtowers"]'><span class="answer-text"></span></span>(watchtower) to take pictures...</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="15">15</span>
+        <span class="question-text">(2021.6 全国乙卷) 9 <span class="blank-wrap" data-answers='["Activities"]'><span class="answer-text"></span></span>(activity) there range from whale watching to hiking（远足）and accommodations aim to have a low impact on the natural environment.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="16">16</span>
+        <span class="question-text">(2021 年北京卷) Why do we dream？Scientists aren't completely sure,and they have diverse11 <span class="blank-wrap" data-answers='["ideas"]'><span class="answer-text"></span></span>(idea)．me age and can understand each other.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="17">17</span>
+        <span class="question-text">（2021 年天津卷第一次) Great improvements in public health have been brought about by  <span class="blank-wrap" data-answers='["advances"]'><span class="answer-text"></span></span>(advance) in medical science.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="18">18</span>
+        <span class="question-text">（2021.6全国甲卷）Many        <span class="blank-wrap" data-answers='["students"]'><span class="answer-text"></span></span>(student）say they will talk to their friend or classmates because they're of the same age and can understand each other.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="19">19</span>
+        <span class="question-text">(2020・新课标 Ⅰ 卷) Next I broke the eggs into a bowl and beat them quickly with  <span class="blank-wrap" data-answers='["chopsticks"]'><span class="answer-text"></span></span>(chopstick).</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="20">20</span>
+        <span class="question-text">(2020・浙江卷) Later，they learned to work with the 62 <span class="blank-wrap" data-answers='["seasons"]'><span class="answer-text"></span></span>(season)，planting at the right time and，in dry areas，making use of annual floods to irrigate (灌溉) their fields.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="21">21</span>
+        <span class="question-text">(2020 年浙江卷 1 月) For Japan, the58<span class="blank-wrap" data-answers='["numbers"]'><span class="answer-text"></span></span>(number) are more striking-22 in 1950, 46 today and 53 in 2050.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="22">22</span>
+        <span class="question-text">(2020 年北京卷) Now, lots of  7   <span class="blank-wrap" data-answers='["countries"]'><span class="answer-text"></span></span>(country) and regions are taking action to ban the sale of such bags to stop people using them.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="23">23</span>
+        <span class="question-text">(2020 年新高考全国 Ⅱ 卷（海南卷）) Also, technological know-how has become a requirement for most jobs in an increasingly digital world, as the computer has become a common tool in most39<span class="blank-wrap" data-answers='["professions"]'><span class="answer-text"></span></span>(profession）</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="24">24</span>
+        <span class="question-text">(2020・新课标 Ⅱ 卷 改错) Luckily，I will go home in two weeks for summer  <span class="blank-wrap" data-answers='["vacation"]'><span class="answer-text"></span></span>(vacation).</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="25">25</span>
+        <span class="question-text">(2019 年全国卷 Ⅰ) All the football  <span class="blank-wrap" data-answers='["players"]'><span class="answer-text"></span></span>(player) on the playground cheered loudly, saying that I had a talent for football.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="26">26</span>
+        <span class="question-text">(2019 年北京卷) No matter what you like to do，there is a way to get involved in various 6 <span class="blank-wrap" data-answers='["activities"]'><span class="answer-text"></span></span>(activity) on Earth Day. You can plant a tree，make a meal with locally grown vegetables，or save power—the possibilities are endless.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="27">27</span>
+        <span class="question-text">(2019 年全国卷 Ⅲ) I wish to have a chain of cafes in many different  <span class="blank-wrap" data-answers='["cities"]'><span class="answer-text"></span></span>(city). Each of my cafes will have a different theme and a unique style.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="28">28</span>
+        <span class="question-text">(2018・新课标卷 Ⅰ) Two of the authors of the review also made a study published in 2014 that showed a mere five to 10 minutes a day of running reduced the risk of heart disease and early deaths from all 67 <span class="blank-wrap" data-answers='["causes"]'><span class="answer-text"></span></span>(cause).</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="29">29</span>
+        <span class="question-text">(2018 年浙江卷 11 月) One study showed that 64<span class="blank-wrap" data-answers='["women"]'><span class="answer-text"></span></span>(woman) who drank a lot of coffee, like eight or more cups per day, while they were pregnant were more likely to have children with birth defects.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="30">30</span>
+        <span class="question-text">(2018 年全国 Ⅲ 卷) At that moment, I remembered that my father once said, "The classroom is a place for learning and that include leaning from textbooks, and  <span class="blank-wrap" data-answers='["mistakes"]'><span class="answer-text"></span></span>(mistake) as well."</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="31">31</span>
+        <span class="question-text">(2018 年浙江卷 6 月) Few people I know seem to have much desire or time to cook. Making Chinese 56 <span class="blank-wrap" data-answers='["dishes"]'><span class="answer-text"></span></span>(dish) is seen as especially troublesome.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="32">32</span>
+        <span class="question-text">(2017 年新课标 Ⅲ 卷) She has turned down several 67 <span class="blank-wrap" data-answers='["invitations"]'><span class="answer-text"></span></span>(invitation) to star at shows in order to concentrate on her studies.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="33">33</span>
+        <span class="question-text">(2017 年新课标 Ⅱ 卷) It ran for just under seven kilometers and allowed people to avoid terrible 　61　<span class="blank-wrap" data-answers='["crowds"]'><span class="answer-text"></span></span>(crowd) on the roads</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="34">34</span>
+        <span class="question-text">(2017 年新课标 Ⅰ 卷) This trend, which was started by the medical community（医学界）as a method of fighting heart disease, has had some unintended side 62 <span class="blank-wrap" data-answers='["effects"]'><span class="answer-text"></span></span>(effect) such as overweight and heart disease — the very thing the medical community was trying to fight.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="35">35</span>
+        <span class="question-text">(2017 年浙江卷) Last October, while tending her garden in Mora, Sweden, Lena Pahlsson pulled out a handful of small　56　<span class="blank-wrap" data-answers='["carrots"]'><span class="answer-text"></span></span>(carrot) and was about to throw them away.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="36">36</span>
+        <span class="question-text">（2017年新课标Ⅱ卷）Besides, they often get some useful       <span class="blank-wrap" data-answers='["information"]'><span class="answer-text"></span></span>(information） from the Internet.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="37">37</span>
+        <span class="question-text">（2017年新课标Ⅰ卷） The instructor kept repeating the      <span class="blank-wrap" data-answers='["words"]'><span class="answer-text"></span></span>(word）, ＂Speed up!＂ ＂Slow down!＂</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="38">38</span>
+        <span class="question-text">(2016 年新课标 Ⅰ 卷) The nursery team switches him every few 69 <span class="blank-wrap" data-answers='["days"]'><span class="answer-text"></span></span>(day) with his sister so that while one is being bottle-fed, the other is with mum — she never suspects.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="39">39</span>
+        <span class="question-text">(2016 年新课标 Ⅱ 卷) Recent　46　<span class="blank-wrap" data-answers='["studies"]'><span class="answer-text"></span></span>(study) show that we are far more productive at work if we take short breaks regularly .</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="40">40</span>
+        <span class="question-text">(2016 年新课标 Ⅲ 卷) The teenage  <span class="blank-wrap" data-answers='["years"]'><span class="answer-text"></span></span>(year) from 13 to 19 were the most difficult time for me.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="41">41</span>
+        <span class="question-text">(2016 年浙江卷) It is important to pay your electricity bill on time, as late payments may affect your <span class="blank-wrap" data-answers='["credit"]'><span class="answer-text"></span></span>(credit).</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="42">42</span>
+        <span class="question-text">(2016 年浙江卷) When my brother and I were very young  <span class="blank-wrap" data-answers='["children"]'><span class="answer-text"></span></span>(child), our father created a regular practice I remember well years later.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="43">43</span>
+        <span class="question-text">(2016 年四川卷) Any smell might attract natural　65　<span class="blank-wrap" data-answers='["enemies"]'><span class="answer-text"></span></span>(enemy) that would try to eat the little panda.</span>
+      </div>
+      <div class="question-item">
+        <span class="question-number" data-index="44">44</span>
+        <span class="question-text">(2016 年四川卷) Mom has a full-time job, but she has to do most of the <span class="blank-wrap" data-answers='["housework"]'><span class="answer-text"></span></span>(housework）.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 交互逻辑JS -->
+  <script>
+    // 1. 字体放大/缩小功能
+    const fontBtns = document.querySelectorAll('.font-btn');
+    const body = document.body;
+    const fontSizeMap = {
+      base: '16px',
+      large: '18px',
+      xl: '20px'
+    };
+
+    fontBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        fontBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const size = btn.dataset.size;
+        body.style.fontSize = fontSizeMap[size];
+      });
+    });
+
+    // 2. 点击题号逐空白显示答案（保留已显示答案，点击一次出一个）
+    const questionNumbers = document.querySelectorAll('.question-number');
+    questionNumbers.forEach(num => {
+      num.addEventListener('click', () => {
+        const questionItem = num.closest('.question-item');
+        const blankWraps = Array.from(questionItem.querySelectorAll('.blank-wrap'));
+        const blankCount = blankWraps.length;
+
+        let currentBlankIndex = Number(questionItem.dataset.currentBlankIndex || 0);
+
+        if (currentBlankIndex < blankCount) {
+          const targetWrap = blankWraps[currentBlankIndex];
+          const answers = JSON.parse(targetWrap.dataset.answers);
+          const answerText = targetWrap.querySelector('.answer-text');
+          
+          if (!answerText.textContent) {
+            answerText.textContent = answers[0]; 
+            targetWrap.classList.add('show-answer');
+            targetWrap.style.width = `${answerText.offsetWidth + 10}px`;
+          }
+
+          questionItem.dataset.currentBlankIndex = currentBlankIndex + 1;
+        } 
+      });
+    });
+
+    // 3. 点击大标题隐藏所有答案+折叠/展开题目
+    const sectionTitles = document.querySelectorAll('h2');
+    sectionTitles.forEach(title => {
+      const questionList = title.nextElementSibling;
+      
+      title.addEventListener('click', () => {
+        // 折叠/展开题目列表
+        title.classList.toggle('collapsed');
+        if (title.classList.contains('collapsed')) {
+          questionList.style.maxHeight = '0';
+          questionList.style.overflow = 'hidden';
+        } else {
+          questionList.style.maxHeight = questionList.scrollHeight + 'px';
+          questionList.style.overflow = 'visible';
+        }
+
+        // 隐藏该 section 下所有答案
+        const allBlankWraps = title.closest('.question-section').querySelectorAll('.blank-wrap');
+        allBlankWraps.forEach(wrap => {
+          wrap.classList.remove('show-answer');
+          wrap.querySelector('.answer-text').textContent = '';
+          wrap.dataset.currentIndex = 0;
+          wrap.style.width = '120px';
+        });
+
+        // 重置题目索引
+        const questionItems = title.closest('.question-section').querySelectorAll('.question-item');
+        questionItems.forEach(item => {
+          item.dataset.currentBlankIndex = 0;
+        });
+      });
+
+      // 初始化展开所有题目
+      questionList.style.maxHeight = questionList.scrollHeight + 'px';
+    });
+  </script>
+</body>
+</html>

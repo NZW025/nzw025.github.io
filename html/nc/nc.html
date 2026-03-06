@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>nc</title>
+    <style type="text/css">
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        body {
+            /*  background-color: #f7f3ea;*/
+            color: #5a5448;
+            font-family: 'Times New Roman', serif;
+            padding: 2vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 轮播容器核心样式 */
+        .hotPic {
+            width: 800px; /* 默认最小宽度 */
+            min-width: 800px;
+            position: relative;
+            overflow: visible;
+            border: 2px solid #d1c9b8;
+            box-shadow: -5px 5px 0 rgba(200, 159, 112, 0.2);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* 平滑过渡 */
+            transform: translateY(0); /* 初始位置 */
+        }
+
+        /* 悬停效果：扩展至1400px并上浮 */
+        .hotPic:hover {
+            width: 1400px; /* 悬停时宽度 */
+            transform: translateY(-10px); /* 上浮效果 */
+            box-shadow: -8px 8px 0 rgba(200, 159, 112, 0.3);
+        }
+
+        .web-content {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 0;
+            /* 关键：根据1400px宽度设置高度比例（这里假设原始比例为16:9） */
+            padding-bottom: 56.25%; /* 16:9比例 (9/16=0.5625) */
+            position: relative;
+        }
+
+        .web-content li {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .web-content li:first-child {
+            display: block;
+        }
+
+        /* iframe样式：确保内容按比例显示 */
+        .web-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            transition: all 0.6s ease;
+        }
+
+        /* 数字导航 */
+        .num {
+            position: absolute;
+            bottom: -80px; /* 放在轮播下方 */
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 5;
+        }
+
+        .num span {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            margin: 0 5px;
+            border: 1px solid #d1c9b8;
+            cursor: pointer;
+            border-radius: 3px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .num span.cur, .num span:hover {
+            background-color: #c89f70;
+            color: #f7f3ea;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 1400px) {
+            .hotPic:hover {
+                width: 90vw; /* 在小于1400px的屏幕上，悬停时占90%宽度 */
+                max-width: 1400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hotPic {
+                width: 90vw;
+                min-width: auto; /* 移动端取消最小宽度限制 */
+            }
+            
+            .hotPic:hover {
+                width: 95vw;
+            }
+            
+            .num span {
+                width: 24px;
+                height: 24px;
+                line-height: 24px;
+                font-size: 14px;
+            }
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="hotPic">
+            <div class="num">
+                <span class="cur">1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span>
+                <span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span>
+                <span>18</span>
+            </div>
+            <ul class="web-content">
+                <li><iframe class="web-frame" src="https://nzw025.github.io/html/nc/B1U1.html" title="网页1"></iframe></li>
+                <li><iframe class="web-frame" src="https://nzw025.github.io/html/nc/B1U2.html" title="网页2"></iframe></li>
+                <li><iframe class="web-frame" src="https://nzw025.github.io/html/nc/B1U3.html" title="网页3"></iframe></li>
+                <li><iframe class="web-frame" src="https://nzw025.github.io/html/nc/B1U4.html" title="网页1"></iframe></li>
+                <li><iframe class="web-frame" src="https://nzw025.github.io/html/nc/B1U5.html" title="网页2"></iframe></li>
+                <li><iframe class="web-frame" src="https://nzw025.github.io/html/nc/B1U6.html" title="网页3"></iframe></li>
+                <li><iframe class="web-frame" src="https://nzw025.github.io/html/nc/B2U1.html" title="网页1"></iframe></li>
+                <li><iframe class="web-frame" src="https://nzw025.github.io/html/nc/B2U2.html" title="网页2"></iframe></li>
+                <li><iframe class="web-frame" src="https://nzw025.github.io/html/nc/B2U3.html" title="网页3"></iframe></li>
+                <li><iframe class="web-frame" src="https://nzw025.github.io/html/nc/B2U4.html" title="网页1"></iframe></li>
+                <li><iframe class="web-frame" src="https://nzw025.github.io/html/nc/B2U5.html" title="网页2"></iframe></li>
+                <li><iframe class="web-frame" src="https://nzw025.github.io/html/nc/B2U6.html" title="网页3"></iframe></li>
+                <li><iframe class="web-frame" src="https://nzw025.github.io/html/nc/B3U1.html" title="网页1"></iframe></li>
+                <li><iframe class="web-frame" src="https://nzw025.github.io/html/nc/B3U2.html" title="网页2"></iframe></li>
+                <li><iframe class="web-frame" src="https://nzw025.github.io/html/nc/B3U3.html" title="网页3"></iframe></li>
+                <li><iframe class="web-frame" src="https://nzw025.github.io/html/nc/B3U4.html" title="网页1"></iframe></li>
+                <li><iframe class="web-frame" src="https://nzw025.github.io/html/nc/B3U5.html" title="网页2"></iframe></li>
+                <li><iframe class="web-frame" src="https://nzw025.github.io/html/nc/B3U6.html" title="网页3"></iframe></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            var sw = 0;
+            var total = $(".web-content li").length;
+            
+            // 点击导航切换
+            $(".num span").click(function(){
+                sw = $(this).index();
+                showWeb(sw);
+            });
+            
+            // 显示指定页面
+            function showWeb(index){
+                $(".num span").eq(index).addClass("cur").siblings().removeClass("cur");
+                $(".web-content li").eq(index).fadeIn(600).siblings().fadeOut(600);
+            }
+            
+            // 自动轮播
+            var autoPlay = function(){
+                sw = (sw + 1) % total;
+                showWeb(sw);
+            };
+            
+            var timer = setInterval(autoPlay, 5000);
+            
+            // 悬停暂停自动轮播
+            $(".hotPic").hover(
+                () => clearInterval(timer),
+                () => timer = setInterval(autoPlay, 5000)
+            );
+
+            // 计算并设置初始高度比例（确保等比缩放）
+            function adjustRatio() {
+                const container = $('.hotPic');
+                const content = $('.web-content');
+                // 基于1400px宽度的原始比例计算
+                const aspectRatio = 9 / 16; // 16:9比例，可根据实际需求调整
+                
+                // 确保高度始终按比例计算
+                content.css('padding-bottom', (aspectRatio * 100) + '%');
+            }
+            
+            // 初始化比例
+            adjustRatio();
+            // 窗口大小变化时重新计算
+            $(window).resize(adjustRatio);
+        });
+    </script>
+</body>
+</html>

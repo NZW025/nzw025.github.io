@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Able 单词思维导图（高中生喜爱配色+拖移+美语朗读）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            /* 高中生喜爱：清新天空蓝→薄荷绿渐变，活力不沉闷 */
+            background: linear-gradient(135deg, #7eb6ff 0%, #54e3c2 100%);
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+        
+        .mindmap {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        #connector-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .node {
+            position: absolute;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            padding: 6px 10px;
+            color: #2d3a8c;
+            font-weight: bold;
+            text-align: center;
+            /* 普通节点：清新浅蓝，柔和亮眼 */
+            background: #c7e4ff;
+            transform: translate(-50%, -50%);
+            min-width: 70px;
+            font-size: 12px;
+            z-index: 5;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            white-space: nowrap;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .node-center {
+            /* 中心节点：元气橙黄，突出核心，符合高中生审美 */
+            background: #ff9f43;
+            border-color: #e67e22;
+            font-size: 24px;
+            padding: 10px 20px;
+            z-index: 10;
+            min-width: 100px;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(230,126,34,0.3);
+        }
+        
+        .node-highlight {
+            /* 高亮样式：嫩粉渐变，醒目不刺眼，高中生喜爱 */
+            background: linear-gradient(120deg, #ffc0cb 0%, #ff8fab 100%) !important;
+            border-color: #ff6b8b !important;
+            color: #fff !important;
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 4px 8px rgba(255,107,139,0.3) !important;
+        }
+
+        .node-scaled {
+            z-index: 20 !important;
+            transform: translate(-50%, -50%) scale(3) !important;
+            transition: transform 0.3s ease;
+            box-shadow: 0 6px 12px rgba(255,107,139,0.4) !important;
+        }
+
+        /* 朗读中动画效果：元气橙脉冲，视觉反馈清晰 */
+        .node-speaking {
+            animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { box-shadow: 0 0 0 0 rgba(255,159,67,0.5); }
+            to { box-shadow: 0 0 0 8px rgba(255,159,67,0); }
+        }
+
+        /* 可拖移例句框：清新浅紫背景，亮眼边框，符合高中生审美 */
+        .example-popup {
+            position: fixed;
+            background: #f3e5f5;
+            border: 4px solid #9c27b0;
+            border-radius: 8px;
+            padding: 15px;
+            color: #4a148c;
+            font-size: 18px;
+            line-height: 1.8;
+            z-index: 999 !important;
+            width: 85%;
+            max-width: 450px;
+            display: none !important;
+            opacity: 1 !important;
+            cursor: move;
+            user-select: none;
+            box-shadow: 0 4px 16px rgba(156,39,176,0.3);
+        }
+
+        .example-popup.active {
+            display: block !important;
+        }
+
+        .example-title {
+            font-weight: bold;
+            /* 标题：深紫+粉紫下划线，醒目有层次 */
+            color: #7b1fa2;
+            margin-bottom: 10px;
+            font-size: 22px;
+            border-bottom: 2px solid #ba68c8;
+            padding-bottom: 8px;
+        }
+
+        .example-item {
+            margin-bottom: 8px;
+            padding-left: 10px;
+            border-left: 2px solid #ba68c8;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .example-item:hover {
+            /* 例句悬浮：浅紫背景，提示可点击 */
+            background: rgba(186,104,200,0.1);
+        }
+
+        .example-tag {
+            /* 标签：元气橙，和中心节点呼应 */
+            color: #fff;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 13px;
+            background: #ff9f43;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* 朗读提示标签：嫩粉背景，深紫文字，醒目引导 */
+        .speak-tip {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffc0cb;
+            color: #7b1fa2;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            box-shadow: 0 2px 8px rgba(255,192,203,0.5);
+        }
+
+        .speak-tip.show {
+            opacity: 1;
+        }
+
+        /* 触须线条样式：贴合新背景，层级区分清晰 */
+        .tentacle-line-level1 {
+            stroke-dasharray: 4, 2;
+            stroke-linecap: round;
+        }
+
+        .tentacle-line-level2 {
+            stroke-dasharray: 2, 3;
+            stroke-linecap: round;
+        }
+    </style>
+</head>
+<body>
+    <div class="mindmap" id="mindmapContainer">
+        <svg id="connector-svg"></svg>
+        <div class="example-popup" id="examplePopup"></div>
+        <div class="speak-tip" id="speakTip">点击单词/例句即可美语朗读 🎤</div>
+    </div>
+
+    <script>
+        /**************************
+         *  完整节点+例句数据（无精简）
+         **************************/
+        const nodeConfig = [
+            // 中心节点
+            { 
+                id: 'center-able', 
+                text: 'able', 
+                isCenter: true, 
+                left: '50%', 
+                top: '50%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'He is able to solve the problem independently. (2023全国卷)' },
+                    { type: '日常', content: 'She is able to speak three languages fluently.' },
+                    { type: '日常', content: 'We were able to finish the work ahead of schedule.' }
+                ]
+            },
+
+            // === 第一象限（右上）- 词性变化分支（完整保留） ===
+            { 
+                id: 'pos-change-root', 
+                text: '词性变化', 
+                isCenter: false, 
+                left: '70%', 
+                top: '20%', 
+                isHighlight: true,
+                examples: [{ type: '语法', content: 'able (adj.) → ability (n.) → enable (v.) → disable (v.)' }]
+            },
+            { 
+                id: 'pos-disable', 
+                text: 'disable v.', 
+                isCenter: false, 
+                left: '65%', 
+                top: '12%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'The virus can disable the computer system. (2022浙江卷)' },
+                    { type: '日常', content: 'You need to disable the function in settings.' }
+                ]
+            },
+            { 
+                id: 'adj-disabled', 
+                text: 'disabled a.', 
+                isCenter: false, 
+                left: '62%', 
+                top: '18%', 
+                isHighlight: true,
+                examples: [
+                    { type: '高考', content: 'We should respect disabled people. (2021全国卷)' },
+                    { type: '日常', content: 'There are special facilities for disabled passengers.' }
+                ]
+            },
+            { 
+                id: 'n-disability', 
+                text: 'disability n.', 
+                isCenter: false, 
+                left: '68%', 
+                top: '24%', 
+                isHighlight: true,
+                examples: [
+                    { type: '高考', content: 'His disability didn\'t stop him from achieving his goals. (2020江苏卷)' },
+                    { type: '日常', content: 'She has overcome her disability with courage.' }
+                ]
+            },
+            { 
+                id: 'pos-enable', 
+                text: 'enable v.', 
+                isCenter: false, 
+                left: '78%', 
+                top: '12%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'The new technology enables us to communicate better. (2022全国卷)' },
+                    { type: '日常', content: 'This app enables users to track their fitness progress.' }
+                ]
+            },
+            { 
+                id: 'phrase-enable-sb', 
+                text: 'enable sb. to do sth.', 
+                isCenter: false, 
+                left: '80%', 
+                top: '18%', 
+                isHighlight: true,
+                examples: [
+                    { type: '高考', content: 'Reading enables us to gain knowledge. (2021浙江卷)' },
+                    { type: '日常', content: 'The scholarship enabled her to study abroad.' }
+                ]
+            },
+            { 
+                id: 'n-ability', 
+                text: 'ability n.', 
+                isCenter: false, 
+                left: '75%', 
+                top: '24%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'He has the ability to finish the task well. (2023全国卷)' },
+                    { type: '日常', content: 'Leadership ability is essential for this position.' }
+                ]
+            },
+            { 
+                id: 'phrase-have-ability', 
+                text: 'have the ability to do sth.', 
+                isCenter: false, 
+                left: '78%', 
+                top: '30%', 
+                isHighlight: true,
+                examples: [
+                    { type: '高考', content: 'Everyone has the ability to learn new things. (2022全国卷)' },
+                    { type: '日常', content: 'She has the ability to stay calm under pressure.' }
+                ]
+            },
+            { 
+                id: 'phrase-be-able', 
+                text: 'be able/unable to do sth.', 
+                isCenter: false, 
+                left: '80%', 
+                top: '36%', 
+                isHighlight: true,
+                examples: [
+                    { type: '高考', content: 'I am unable to attend the meeting tomorrow. (2021全国卷)' },
+                    { type: '日常', content: 'They were unable to reach an agreement.' }
+                ]
+            },
+            { 
+                id: 'adj-unable', 
+                text: '（反）unable', 
+                isCenter: false, 
+                left: '83%', 
+                top: '42%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'He was unable to answer the question. (2020江苏卷)' },
+                    { type: '日常', content: 'I am unable to help you with this matter.' }
+                ]
+            },
+
+            // === 第二象限（左上）- 积极属性（完整保留） ===
+            { 
+                id: 'attr-positive-root', 
+                text: '积极属性', 
+                isCenter: false, 
+                left: '30%', 
+                top: '20%', 
+                isHighlight: true,
+                examples: [{ type: '语法', content: '后缀-able表示"能够……的"，多为积极属性' }]
+            },
+            { 
+                id: 'adj-valuable', 
+                text: 'valuable', 
+                isCenter: false, 
+                left: '20%', 
+                top: '12%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'Your advice is very valuable to me. (2023全国卷)' },
+                    { type: '日常', content: 'This is a valuable experience for my career.' }
+                ]
+            },
+            { 
+                id: 'adj-unforgettable', 
+                text: 'unforgettable', 
+                isCenter: false, 
+                left: '25%', 
+                top: '16%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'It was an unforgettable trip for all of us. (2022浙江卷)' },
+                    { type: '日常', content: 'The movie left an unforgettable impression on me.' }
+                ]
+            },
+            { 
+                id: 'adj-understandable', 
+                text: 'understandable', 
+                isCenter: false, 
+                left: '35%', 
+                top: '12%', 
+                isHighlight: false,
+                examples: [
+                    { type: '日常', content: 'His reaction is understandable under such circumstances.' },
+                    { type: '高考', content: 'It is understandable that you feel nervous before exams. (2021全国卷)' }
+                ]
+            },
+            { 
+                id: 'adj-sustainable', 
+                text: 'sustainable', 
+                isCenter: false, 
+                left: '40%', 
+                top: '16%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'We need to develop sustainable energy. (2023全国卷)' },
+                    { type: '日常', content: 'Sustainable development is crucial for the future.' }
+                ]
+            },
+            { 
+                id: 'adj-suitable', 
+                text: 'suitable', 
+                isCenter: false, 
+                left: '22%', 
+                top: '26%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'This dress is suitable for the party. (2022江苏卷)' },
+                    { type: '日常', content: 'Find a suitable time to discuss this issue.' }
+                ]
+            },
+            { 
+                id: 'adj-stable', 
+                text: 'stable', 
+                isCenter: false, 
+                left: '28%', 
+                top: '30%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'We need a stable economic environment. (2021全国卷)' },
+                    { type: '日常', content: 'He has a stable job and income.' }
+                ]
+            },
+            { 
+                id: 'adj-sociable', 
+                text: 'sociable', 
+                isCenter: false, 
+                left: '38%', 
+                top: '26%', 
+                isHighlight: false,
+                examples: [
+                    { type: '日常', content: 'She is a sociable person who makes friends easily.' },
+                    { type: '高考', content: 'Being sociable helps you adapt to new environments. (2020浙江卷)' }
+                ]
+            },
+            { 
+                id: 'adj-respectable', 
+                text: 'respectable', 
+                isCenter: false, 
+                left: '43%', 
+                top: '30%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'He is a respectable teacher in our school. (2023全国卷)' },
+                    { type: '日常', content: 'She comes from a respectable family.' }
+                ]
+            },
+            { 
+                id: 'adj-reliable', 
+                text: 'reliable', 
+                isCenter: false, 
+                left: '25%', 
+                top: '36%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'You need to find a reliable source of information. (2022全国卷)' },
+                    { type: '日常', content: 'He is a reliable friend who always keeps his promises.' }
+                ]
+            },
+            { 
+                id: 'adj-reasonable', 
+                text: 'reasonable', 
+                isCenter: false, 
+                left: '35%', 
+                top: '36%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'Your request is reasonable and we will consider it. (2021江苏卷)' },
+                    { type: '日常', content: 'The price is reasonable and I will take it.' }
+                ]
+            },
+
+            // === 第三象限（左下）- 其他词汇（完整保留） ===
+            { 
+                id: 'suffix-other-root', 
+                text: '其他词汇', 
+                isCenter: false, 
+                left: '30%', 
+                top: '70%', 
+                isHighlight: true,
+                examples: [{ type: '语法', content: '包含-able后缀的其他类别词汇，如table相关、消极属性等' }]
+            },
+            { 
+                id: 'table-related', 
+                text: 'table相关', 
+                isCenter: false, 
+                left: '20%', 
+                top: '62%', 
+                isHighlight: false,
+                examples: [{ type: '词汇', content: 'table (桌子) → timetable (时间表) → vegetable (蔬菜)' }]
+            },
+            { 
+                id: 'n-vegetable', 
+                text: 'vegetable', 
+                isCenter: false, 
+                left: '15%', 
+                top: '56%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'Eating more vegetables is good for health. (2023全国卷)' },
+                    { type: '日常', content: 'I need to buy some fresh vegetables from the market.' }
+                ]
+            },
+            { 
+                id: 'n-timetable', 
+                text: 'timetable', 
+                isCenter: false, 
+                left: '22%', 
+                top: '59%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'Check the timetable before you go to the station. (2022浙江卷)' },
+                    { type: '日常', content: 'The new timetable will be effective next week.' }
+                ]
+            },
+            { 
+                id: 'n-table', 
+                text: 'table', 
+                isCenter: false, 
+                left: '28%', 
+                top: '56%', 
+                isHighlight: false,
+                examples: [
+                    { type: '日常', content: 'Please put the book on the table.' },
+                    { type: '高考', content: 'There is a vase of flowers on the table. (2021江苏卷)' }
+                ]
+            },
+            { 
+                id: 'attr-negative', 
+                text: '消极属性', 
+                isCenter: false, 
+                left: '22%', 
+                top: '76%', 
+                isHighlight: false,
+                examples: [{ type: '语法', content: '-able后缀也可构成消极意义词汇，如miserable、uncomfortable等' }]
+            },
+            { 
+                id: 'adj-miserable', 
+                text: 'miserable', 
+                isCenter: false, 
+                left: '20%', 
+                top: '82%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'He felt miserable after failing the exam. (2023全国卷)' },
+                    { type: '日常', content: 'She had a miserable childhood.' }
+                ]
+            },
+            { 
+                id: 'adj-portable', 
+                text: 'portable', 
+                isCenter: false, 
+                left: '35%', 
+                top: '76%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'This is a portable computer. (2022全国卷)' },
+                    { type: '日常', content: 'I bought a portable charger for my phone.' }
+                ]
+            },
+            { 
+                id: 'adj-knowledgeable', 
+                text: 'knowledgeable', 
+                isCenter: false, 
+                left: '40%', 
+                top: '80%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'He is a knowledgeable person. (2021浙江卷)' },
+                    { type: '日常', content: 'She is knowledgeable about art and literature.' }
+                ]
+            },
+            { 
+                id: 'adj-fashionable', 
+                text: 'fashionable', 
+                isCenter: false, 
+                left: '45%', 
+                top: '76%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'She likes to wear fashionable clothes. (2020江苏卷)' },
+                    { type: '日常', content: 'This hairstyle is very fashionable this year.' }
+                ]
+            },
+
+            // === 第四象限（右下）- 更多属性（完整保留） ===
+            { 
+                id: 'attr-other-root', 
+                text: '更多属性', 
+                isCenter: false, 
+                left: '70%', 
+                top: '70%', 
+                isHighlight: true,
+                examples: [{ type: '语法', content: '-able后缀构成的其他属性词汇，如可接受的、舒适的等' }]
+            },
+            { 
+                id: 'adj-enjoyable', 
+                text: 'enjoyable', 
+                isCenter: false, 
+                left: '60%', 
+                top: '62%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'We had an enjoyable time at the party. (2023全国卷)' },
+                    { type: '日常', content: 'Reading is an enjoyable activity.' }
+                ]
+            },
+            { 
+                id: 'adj-inescapable', 
+                text: 'inescapable', 
+                isCenter: false, 
+                left: '65%', 
+                top: '66%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'Change is inevitable and inescapable. (2022全国卷)' },
+                    { type: '日常', content: 'It is an inescapable fact that we must face.' }
+                ]
+            },
+            { 
+                id: 'adj-acceptable', 
+                text: 'acceptable', 
+                isCenter: false, 
+                left: '75%', 
+                top: '62%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'Your proposal is acceptable. (2021江苏卷)' },
+                    { type: '日常', content: 'The price is acceptable to most customers.' }
+                ]
+            },
+            { 
+                id: 'adj-admirable', 
+                text: 'admirable', 
+                isCenter: false, 
+                left: '80%', 
+                top: '66%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'His courage is admirable. (2020浙江卷)' },
+                    { type: '日常', content: 'She has made admirable achievements in her career.' }
+                ]
+            },
+            { 
+                id: 'adj-affordable', 
+                text: 'affordable', 
+                isCenter: false, 
+                left: '85%', 
+                top: '62%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'We need to find affordable housing. (2023全国卷)' },
+                    { type: '日常', content: 'This restaurant provides affordable and delicious food.' }
+                ]
+            },
+            { 
+                id: 'adj-available', 
+                text: 'available', 
+                isCenter: false, 
+                left: '60%', 
+                top: '76%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'Tickets are available online. (2022全国卷)' },
+                    { type: '日常', content: 'Is this room available for rent?' }
+                ]
+            },
+            { 
+                id: 'adj-bearable', 
+                text: 'bearable', 
+                isCenter: false, 
+                left: '67%', 
+                top: '80%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'The pain is bearable. (2021江苏卷)' },
+                    { type: '日常', content: 'The heat in summer is barely bearable.' }
+                ]
+            },
+            { 
+                id: 'adj-believable', 
+                text: 'believable', 
+                isCenter: false, 
+                left: '75%', 
+                top: '76%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'His story is believable. (2020浙江卷)' },
+                    { type: '日常', content: 'The movie has a believable plot.' }
+                ]
+            },
+            { 
+                id: 'adj-capable', 
+                text: 'capable', 
+                isCenter: false, 
+                left: '82%', 
+                top: '80%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'She is capable of finishing the task. (2023全国卷)' },
+                    { type: '日常', content: 'He is capable of handling difficult situations.' }
+                ]
+            },
+            { 
+                id: 'adj-changeable', 
+                text: 'changeable', 
+                isCenter: false, 
+                left: '88%', 
+                top: '76%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'The weather in spring is changeable. (2022全国卷)' },
+                    { type: '日常', content: 'Her mood is very changeable.' }
+                ]
+            },
+            { 
+                id: 'adj-comfortable', 
+                text: 'comfortable', 
+                isCenter: false, 
+                left: '70%', 
+                top: '86%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'This chair is very comfortable. (2021江苏卷)' },
+                    { type: '日常', content: 'I feel comfortable in this room.' }
+                ]
+            },
+            { 
+                id: 'adj-considerable', 
+                text: 'considerable', 
+                isCenter: false, 
+                left: '78%', 
+                top: '90%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'We need a considerable amount of time. (2020浙江卷)' },
+                    { type: '日常', content: 'There has been a considerable improvement in his work.' }
+                ]
+            }
+        ];
+
+        /**************************
+         *  连接关系（保留层级）
+         **************************/
+        const connectionConfig = [
+            // level1：中心节点 ↔ 四大根节点（粗触须）
+            { fromId: 'center-able', toId: 'pos-change-root', level: 1 },
+            { fromId: 'center-able', toId: 'attr-positive-root', level: 1 },
+            { fromId: 'center-able', toId: 'suffix-other-root', level: 1 },
+            { fromId: 'center-able', toId: 'attr-other-root', level: 1 },
+            
+            // === 第一象限（右上）- 词性变化分支 ===
+            { fromId: 'pos-change-root', toId: 'pos-disable', level: 2 },
+            { fromId: 'pos-disable', toId: 'adj-disabled', level: 2 },
+            { fromId: 'pos-disable', toId: 'n-disability', level: 2 },
+            { fromId: 'pos-change-root', toId: 'pos-enable', level: 2 },
+            { fromId: 'pos-enable', toId: 'phrase-enable-sb', level: 2 },
+            { fromId: 'pos-change-root', toId: 'n-ability', level: 2 },
+            { fromId: 'n-ability', toId: 'phrase-have-ability', level: 2 },
+            { fromId: 'pos-change-root', toId: 'phrase-be-able', level: 2 },
+            { fromId: 'phrase-be-able', toId: 'adj-unable', level: 2 },
+            
+            // === 第二象限（左上）- 积极属性 ===
+            { fromId: 'attr-positive-root', toId: 'adj-valuable', level: 2 },
+            { fromId: 'attr-positive-root', toId: 'adj-unforgettable', level: 2 },
+            { fromId: 'attr-positive-root', toId: 'adj-understandable', level: 2 },
+            { fromId: 'attr-positive-root', toId: 'adj-sustainable', level: 2 },
+            { fromId: 'attr-positive-root', toId: 'adj-suitable', level: 2 },
+            { fromId: 'attr-positive-root', toId: 'adj-stable', level: 2 },
+            { fromId: 'attr-positive-root', toId: 'adj-sociable', level: 2 },
+            { fromId: 'adj-sociable', toId: 'adj-respectable', level: 2 },
+            { fromId: 'adj-respectable', toId: 'adj-reliable', level: 2 },
+            { fromId: 'adj-reliable', toId: 'adj-reasonable', level: 2 },
+            
+            // === 第三象限（左下）- 其他词汇 ===
+            { fromId: 'suffix-other-root', toId: 'table-related', level: 2 },
+            { fromId: 'table-related', toId: 'n-vegetable', level: 2 },
+            { fromId: 'table-related', toId: 'n-timetable', level: 2 },
+            { fromId: 'table-related', toId: 'n-table', level: 2 },
+            { fromId: 'suffix-other-root', toId: 'attr-negative', level: 2 },
+            { fromId: 'attr-negative', toId: 'adj-miserable', level: 2 },
+            { fromId: 'suffix-other-root', toId: 'adj-portable', level: 2 },
+            { fromId: 'adj-portable', toId: 'adj-knowledgeable', level: 2 },
+            { fromId: 'adj-knowledgeable', toId: 'adj-fashionable', level: 2 },
+            
+            // === 第四象限（右下）- 更多属性 ===
+            { fromId: 'attr-other-root', toId: 'adj-enjoyable', level: 2 },
+            { fromId: 'attr-other-root', toId: 'adj-inescapable', level: 2 },
+            { fromId: 'attr-other-root', toId: 'adj-acceptable', level: 2 },
+            { fromId: 'adj-acceptable', toId: 'adj-admirable', level: 2 },
+            { fromId: 'adj-admirable', toId: 'adj-affordable', level: 2 },
+            { fromId: 'adj-affordable', toId: 'adj-available', level: 2 },
+            { fromId: 'adj-available', toId: 'adj-bearable', level: 2 },
+            { fromId: 'adj-bearable', toId: 'adj-believable', level: 2 },
+            { fromId: 'adj-believable', toId: 'adj-capable', level: 2 },
+            { fromId: 'adj-capable', toId: 'adj-changeable', level: 2 },
+            { fromId: 'adj-changeable', toId: 'adj-comfortable', level: 2 },
+            { fromId: 'adj-comfortable', toId: 'adj-considerable', level: 2 }
+        ];
+
+        /**************************
+         *  美语朗读核心功能
+         **************************/
+        const speakTip = document.getElementById('speakTip');
+        let speechSynthesis = window.speechSynthesis;
+        let currentUtterance = null;
+        let speakingNode = null;
+
+        // 初始化朗读提示
+        function initSpeakTip() {
+            setTimeout(() => {
+                speakTip.classList.add('show');
+                setTimeout(() => {
+                    speakTip.classList.remove('show');
+                }, 5000);
+            }, 1000);
+        }
+
+        // 美语朗读配置
+        function speakText(text, nodeEl = null) {
+            if (currentUtterance) {
+                speechSynthesis.cancel(currentUtterance);
+                if (speakingNode) {
+                    speakingNode.classList.remove('node-speaking');
+                }
+            }
+
+            if (!text || text.trim() === '') return;
+
+            const utterance = new SpeechSynthesisUtterance(text.trim());
+            const voices = speechSynthesis.getVoices();
+            const usVoice = voices.find(voice => 
+                voice.lang === 'en-US' && voice.name.includes('American')
+            );
+            if (usVoice) {
+                utterance.voice = usVoice;
+            } else {
+                const enVoice = voices.find(voice => voice.lang.startsWith('en'));
+                if (enVoice) utterance.voice = enVoice;
+            }
+
+            utterance.rate = 0.9;
+            utterance.pitch = 1;
+            utterance.volume = 1;
+
+            utterance.onstart = () => {
+                if (nodeEl) {
+                    speakingNode = nodeEl;
+                    nodeEl.classList.add('node-speaking');
+                }
+            };
+
+            utterance.onend = () => {
+                if (speakingNode) {
+                    speakingNode.classList.remove('node-speaking');
+                    speakingNode = null;
+                }
+                currentUtterance = null;
+            };
+
+            utterance.onerror = (error) => {
+                console.error('朗读失败：', error);
+                if (speakingNode) {
+                    speakingNode.classList.remove('node-speaking');
+                    speakingNode = null;
+                }
+                currentUtterance = null;
+            };
+
+            currentUtterance = utterance;
+            speechSynthesis.speak(utterance);
+        }
+
+        // 处理单词/短语节点朗读
+        function handleNodeSpeak(nodeEl, nodeData) {
+            let speakTextContent = nodeData.text.replace(/[（）→、\u4e00-\u9fa5]/g, '').trim();
+            if (nodeData.text.includes('(') && nodeData.text.includes(')')) {
+                const enMatch = nodeData.text.match(/\([a-z]+\)/gi);
+                if (enMatch && enMatch.length > 0) {
+                    speakTextContent = enMatch.join(' ').replace(/[()]/g, '');
+                }
+            }
+            if (!speakTextContent) speakTextContent = nodeData.text.trim();
+            speakText(speakTextContent, nodeEl);
+        }
+
+        // 处理例句朗读
+        function handleExampleSpeak(exampleContent) {
+            const enContent = exampleContent.replace(/\([^)]*\)|【[^】]*】|[\u4e00-\u9fa5]/g, '').trim();
+            speakText(enContent);
+        }
+
+        /**************************
+         *  核心逻辑（保留所有原有功能）
+         **************************/
+        const examplePopup = document.getElementById('examplePopup');
+        let activeNode = null;
+        let isDragging = false;
+        let dragOffsetX = 0;
+        let dragOffsetY = 0;
+
+        // 1. 例句框拖移功能
+        function initDragablePopup() {
+            examplePopup.addEventListener('mousedown', function(e) {
+                if (examplePopup.classList.contains('active')) {
+                    isDragging = true;
+                    dragOffsetX = e.clientX - examplePopup.getBoundingClientRect().left;
+                    dragOffsetY = e.clientY - examplePopup.getBoundingClientRect().top;
+                    examplePopup.style.cursor = 'grabbing';
+                }
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (!isDragging) return;
+                let newLeft = e.clientX - dragOffsetX;
+                let newTop = e.clientY - dragOffsetY;
+
+                const popupWidth = examplePopup.offsetWidth;
+                const popupHeight = examplePopup.offsetHeight;
+                newLeft = Math.max(0, Math.min(newLeft, window.innerWidth - popupWidth));
+                newTop = Math.max(0, Math.min(newTop, window.innerHeight - popupHeight));
+
+                examplePopup.style.left = `${newLeft}px`;
+                examplePopup.style.top = `${newTop}px`;
+                examplePopup.style.transform = 'none';
+            });
+
+            document.addEventListener('mouseup', function() {
+                if (isDragging) {
+                    isDragging = false;
+                    examplePopup.style.cursor = 'move';
+                }
+            });
+
+            examplePopup.addEventListener('selectstart', function(e) {
+                e.preventDefault();
+            });
+        }
+
+        // 2. 触须式线条绘制
+        function drawTentacleConnectors() {
+            const svg = document.getElementById('connector-svg');
+            if (!svg) return;
+            svg.innerHTML = '';
+
+            connectionConfig.forEach(conn => {
+                const fromNode = document.getElementById(`node-${conn.fromId}`);
+                const toNode = document.getElementById(`node-${conn.toId}`);
+
+                if (fromNode && toNode) {
+                    const fromRect = fromNode.getBoundingClientRect();
+                    const toRect = toNode.getBoundingClientRect();
+                    const svgRect = svg.getBoundingClientRect();
+                    const fromX = fromRect.left + fromRect.width / 2 - svgRect.left;
+                    const fromY = fromRect.top + fromRect.height / 2 - svgRect.top;
+                    const toX = toRect.left + toRect.width / 2 - svgRect.left;
+                    const toY = toRect.top + toRect.height / 2 - svgRect.top;
+
+                    const dx = toX - fromX;
+                    const dy = toY - fromY;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    const controlOffset = distance * 0.3;
+                    const controlX = fromX + dx / 2 + (dy / distance) * controlOffset;
+                    const controlY = fromY + dy / 2 - (dx / distance) * controlOffset;
+
+                    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    path.setAttribute('d', `M ${fromX} ${fromY} Q ${controlX} ${controlY} ${toX} ${toY}`);
+                    path.setAttribute('fill', 'none');
+
+                    if (conn.level === 1) {
+                        // 一级线条：深紫，粗实，贴合新配色
+                        path.setAttribute('stroke', '#7b1fa2');
+                        path.setAttribute('stroke-width', '2');
+                        path.setAttribute('stroke-opacity', '0.9');
+                        path.setAttribute('stroke-dasharray', '4, 2');
+                    } else if (conn.level === 2) {
+                        // 二级线条：浅紫，细淡，层级清晰
+                        path.setAttribute('stroke', 'rgba(123,26,162,0.7)');
+                        path.setAttribute('stroke-width', '1');
+                        path.setAttribute('stroke-opacity', '0.7');
+                        path.setAttribute('stroke-dasharray', '2, 3');
+                    }
+
+                    svg.appendChild(path);
+                }
+            });
+        }
+
+        // 3. 例句显示/隐藏
+        function showExamples(nodeData) {
+            let html = `<div class="example-title">${nodeData.text} 例句</div>`;
+            if (nodeData.examples && nodeData.examples.length > 0) {
+                nodeData.examples.forEach(ex => {
+                    html += `<div class="example-item" onclick="handleExampleSpeak('${ex.content.replace(/'/g, "\\'")}')">
+                                <span class="example-tag">[${ex.type}]</span>${ex.content}
+                            </div>`;
+                });
+            } else {
+                html += `<div class="example-item">暂无相关例句</div>`;
+            }
+            examplePopup.innerHTML = html;
+            examplePopup.classList.add('active');
+
+            if (!examplePopup.style.left || !examplePopup.style.top) {
+                const popupWidth = examplePopup.offsetWidth;
+                const popupHeight = examplePopup.offsetHeight;
+                examplePopup.style.left = `${(window.innerWidth - popupWidth) / 2}px`;
+                examplePopup.style.top = `${window.innerHeight - popupHeight - 20}px`;
+                examplePopup.style.transform = 'none';
+            }
+        }
+
+        function hideExamples() {
+            examplePopup.classList.remove('active');
+            examplePopup.innerHTML = '';
+        }
+
+        // 4. 节点点击交互
+        function handleClick(node) {
+            const nodeId = node.id.replace('node-', '');
+            let nodeData = null;
+            for (let i = 0; i < nodeConfig.length; i++) {
+                if (nodeConfig[i].id === nodeId) {
+                    nodeData = nodeConfig[i];
+                    break;
+                }
+            }
+
+            if (activeNode === node) {
+                node.classList.remove('node-scaled');
+                hideExamples();
+                if (currentUtterance) {
+                    speechSynthesis.cancel(currentUtterance);
+                    if (speakingNode) {
+                        speakingNode.classList.remove('node-speaking');
+                        speakingNode = null;
+                    }
+                }
+                activeNode = null;
+            } else {
+                if (activeNode) {
+                    activeNode.classList.remove('node-scaled');
+                }
+                node.classList.add('node-scaled');
+                showExamples(nodeData || { text: '未知单词', examples: [] });
+                if (nodeData) {
+                    handleNodeSpeak(node, nodeData);
+                }
+                activeNode = node;
+            }
+        }
+
+        // 5. 渲染节点
+        function renderNodes() {
+            const container = document.getElementById('mindmapContainer');
+            if (!container) return;
+
+            nodeConfig.forEach(node => {
+                const nodeEl = document.createElement('div');
+                nodeEl.id = `node-${node.id}`;
+                nodeEl.className = 'node';
+                if (node.isCenter) nodeEl.classList.add('node-center');
+                if (node.isHighlight) nodeEl.classList.add('node-highlight');
+                nodeEl.textContent = node.text;
+                nodeEl.style.left = node.left;
+                nodeEl.style.top = node.top;
+
+                nodeEl.onclick = function() {
+                    handleClick(this);
+                };
+
+                nodeEl.onmouseover = function() {
+                    if (this !== activeNode) this.classList.add('node-highlight');
+                };
+                nodeEl.onmouseout = function() {
+                    const nodeId = this.id.replace('node-', '');
+                    const nodeData = nodeConfig.find(item => item.id === nodeId);
+                    if (this !== activeNode && (!nodeData || (!nodeData.isHighlight && !nodeData.isCenter))) {
+                        this.classList.remove('node-highlight');
+                    }
+                };
+
+                container.appendChild(nodeEl);
+            });
+        }
+
+        // 6. 初始化所有功能
+        function initMindMap() {
+            renderNodes();
+            initDragablePopup();
+            initSpeakTip();
+            setTimeout(() => {
+                drawTentacleConnectors();
+                console.log('初始化完成：高中生配色+可拖移例句框+触须线条+美语朗读');
+            }, 100);
+
+            speechSynthesis.onvoiceschanged = function() {
+                console.log('语音包加载完成，当前支持的美语语音：', 
+                    speechSynthesis.getVoices().filter(v => v.lang === 'en-US').map(v => v.name));
+            };
+        }
+
+        // 页面加载完成后执行
+        window.onload = function() {
+            if (!window.speechSynthesis) {
+                speakTip.textContent = '您的浏览器不支持朗读功能，请升级浏览器后使用 🥺';
+                speakTip.classList.add('show');
+                setTimeout(() => {
+                    speakTip.classList.remove('show');
+                }, 8000);
+            }
+            initMindMap();
+        };
+
+        window.addEventListener('resize', function() {
+            drawTentacleConnectors();
+        });
+
+        window.handleExampleSpeak = handleExampleSpeak;
+    </script>
+</body>
+</html>

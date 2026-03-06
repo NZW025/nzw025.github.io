@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>极简音乐播放器</title>
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    /* 播放器容器 - 居中紧凑布局 */
+    .music-player {
+      max-width: 300px;
+      margin: 20px auto;
+      padding: 15px;
+      background-color: transparent;
+      text-align: center;
+    }
+
+    /* 控制按钮区域 - 核心视觉焦点 */
+    .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 35px; /* 按钮间距适中 */
+      margin-bottom: 12px; /* 与标题分隔 */
+    }
+
+    /* 所有按钮统一基础样式 */
+    .control-btn {
+      background: transparent;
+      border: none; /* 移除所有按钮边框 */
+      color: #5a5448;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 上一首/下一首按钮 */
+    .prev-btn, .next-btn {
+      font-size: 18px;
+      width: 28px;
+      height: 28px;
+    }
+
+    /* 播放按钮（核心修改：去掉圆形边框，增大图标突出显示） */
+    .play-btn {
+      font-size: 18px; /* 用图标大小突出播放按钮，替代圆形边框 */
+      width: 18px;
+      height: 18px;
+    }
+
+    /* 按钮hover效果 - 统一交互反馈 */
+    .control-btn:hover {
+      color: #c89f70;
+      transform: scale(1.1); /* 轻微放大增强反馈 */
+    }
+
+    /* 歌曲标题 - 简洁清晰 */
+    .song-title {
+      color: #5a5448;
+      font-size: 15px;
+      margin: 0;
+      padding: 0 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .music-player {
+        max-width: 90%;
+        padding: 10px;
+      }
+      
+      .controls {
+        gap: 25px;
+      }
+      
+      .play-btn {
+        font-size: 24px;
+        width: 36px;
+        height: 36px;
+      }
+      
+      .prev-btn, .next-btn {
+        font-size: 20px;
+      }
+    }
+
+    /* 深色模式适配 */
+    @media (prefers-color-scheme: dark) {
+      .song-title, .control-btn {
+        color: #e8e2d5;
+      }
+      
+      .control-btn:hover {
+        color: #d4b68a;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="music-player">
+    <!-- 控制按钮区域 -->
+    <div class="controls">
+      <button class="control-btn prev-btn" id="prev-btn" title="上一首">
+        <i class="fa fa-step-backward"></i>
+      </button>
+      <button class="control-btn play-btn" id="play-btn" title="播放/暂停">
+        <i class="fa fa-play"></i>
+      </button>
+      <button class="control-btn next-btn" id="next-btn" title="下一首">
+        <i class="fa fa-step-forward"></i>
+      </button>
+    </div>
+    
+    <!-- 歌曲标题 -->
+    <div class="song-title" id="current-song">未播放音乐</div>
+  </div>
+
+  <script>
+    // 音乐列表
+    const musicList = [
+    {
+        title: "词根01",
+        url: "https://cccimg.com/view.php/289298d02dead19744480f7c9117ceb8.mp3"
+      },
+      {
+        title: "词根02",
+        url: "https://cccimg.com/view.php/d323bf3bbe3f54afc395a51c4fac85d0.mp3"
+      },
+      {
+        title: "词根03",
+        url: "https://cccimg.com/view.php/fa38f934f95f4972b6c3e32da401b26c.mp3"
+      },
+      {
+        title: "词根04",
+        url: "https://cccimg.com/view.php/a79688e055c9898946bc23c6105ae1b0.mp3"
+      },
+      {
+        title: "词根05",
+        url: "https://cccimg.com/view.php/60406e87189b5eb7968973fff76fce85.mp3"
+      },
+      {
+        title: "词根06",
+        url: "https://cccimg.com/view.php/d30913e26c85752ddd76648d8caa917c.mp3"
+      },
+      {
+        title: "词根07",
+        url: "https://cccimg.com/view.php/7492d89b14c875e9dbc198062dea138d.mp3"
+      },
+      {
+        title: "词根08",
+        url: "https://cccimg.com/view.php/0fa2c0ccdaca339041bb091448ca8feb.mp3"
+      },
+      {
+        title: "词根09",
+        url: "https://cccimg.com/view.php/9dbb9d971d7e2d7b9566a361fa6a8e6d.mp3"
+      },
+      {
+        title: "词根10",
+        url: "https://cccimg.com/view.php/f3ede5c56236b8f1296a5b6243e98afa.mp3"
+      },
+      {
+        title: "词根11",
+        url: "https://cccimg.com/view.php/fa38f934f95f4972b6c3e32da401b26c.mp3"
+      },
+      {
+        title: "词根12",
+        url: "https://cccimg.com/view.php/a79688e055c9898946bc23c6105ae1b0.mp3"
+      },
+      {
+        title: "词根13",
+        url: "https://cccimg.com/view.php/289298d02dead19744480f7c9117ceb8.mp3"
+      },
+      {
+        title: "词根14",
+        url: "https://cccimg.com/view.php/d323bf3bbe3f54afc395a51c4fac85d0.mp3"
+      },
+      {
+        title: "词根15",
+        url: "https://cccimg.com/view.php/fa38f934f95f4972b6c3e32da401b26c.mp3"
+      },
+      {
+        title: "词根16",
+        url: "https://cccimg.com/view.php/a79688e055c9898946bc23c6105ae1b0.mp3"
+      },
+      {
+        title: "词根17",
+        url: "https://cccimg.com/view.php/d323bf3bbe3f54afc395a51c4fac85d0.mp3"
+      },
+      {
+        title: "词根18",
+        url: "https://cccimg.com/view.php/d323bf3bbe3f54afc395a51c4fac85d0.mp3"
+      },
+      {
+        title: "词根19",
+        url: "https://cccimg.com/view.php/c61489f9a05d0e4c1e5dd39655bd6687.mp3"
+      },
+      {
+        title: "词根20",
+        url: "https://cccimg.com/view.php/f3ede5c56236b8f1296a5b6243e98afa.mp3"
+      },
+      {
+        title: "词根21",
+        url: "https://cccimg.com/view.php/fa38f934f95f4972b6c3e32da401b26c.mp3"
+      },
+      {
+        title: "词根22",
+        url: "https://cccimg.com/view.php/a79688e055c9898946bc23c6105ae1b0.mp3"
+      },
+      {
+        title: "词根23",
+        url: "https://cccimg.com/view.php/289298d02dead19744480f7c9117ceb8.mp3"
+      },
+      {
+        title: "词根24",
+        url: "https://cccimg.com/view.php/d323bf3bbe3f54afc395a51c4fac85d0.mp3"
+      },
+      {
+        title: "词根25",
+        url: "https://cccimg.com/view.php/fa38f934f95f4972b6c3e32da401b26c.mp3"
+      },
+      {
+        title: "词根26",
+        url: "https://cccimg.com/view.php/a79688e055c9898946bc23c6105ae1b0.mp3"
+      },
+      {
+        title: "词根27",
+        url: "https://cccimg.com/view.php/289298d02dead19744480f7c9117ceb8.mp3"
+      },
+      {
+        title: "词根28",
+        url: "https://cccimg.com/view.php/d323bf3bbe3f54afc395a51c4fac85d0.mp3"
+      },
+      {
+        title: "词根29",
+        url: "https://cccimg.com/view.php/fa38f934f95f4972b6c3e32da401b26c.mp3"
+      },
+      {
+        title: "词根30",
+        url: "https://cccimg.com/view.php/a79688e055c9898946bc23c6105ae1b0.mp3"
+      }
+      // 继续添加格式：
+      // {
+      //   title: "歌曲名称",
+      //   url: "歌曲URL"
+      // }
+    ];
+
+    // DOM元素
+    const audio = new Audio();
+    const playBtn = document.getElementById('play-btn');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const songTitleEl = document.getElementById('current-song');
+
+    let currentIndex = 0;
+    let isPlaying = false;
+
+    // 初始化播放器
+    function initPlayer() {
+      loadSong(currentIndex);
+    }
+
+    // 加载歌曲
+    function loadSong(index) {
+      const song = musicList[index];
+      audio.src = song.url;
+      songTitleEl.textContent = song.title;
+    }
+
+    // 播放/暂停切换
+    function togglePlay() {
+      isPlaying ? pauseSong() : playSong();
+    }
+
+    // 播放歌曲
+    function playSong() {
+      audio.play().catch(err => {
+        console.log("播放需要用户交互，请点击按钮后重试");
+      });
+      isPlaying = true;
+      playBtn.innerHTML = '<i class="fa fa-pause"></i>';
+    }
+
+    // 暂停歌曲
+    function pauseSong() {
+      audio.pause();
+      isPlaying = false;
+      playBtn.innerHTML = '<i class="fa fa-play"></i>';
+    }
+
+    // 上一首
+    function prevSong() {
+      currentIndex = (currentIndex - 1 + musicList.length) % musicList.length;
+      loadSong(currentIndex);
+      playSong();
+    }
+
+    // 下一首
+    function nextSong() {
+      currentIndex = (currentIndex + 1) % musicList.length;
+      loadSong(currentIndex);
+      playSong();
+    }
+
+    // 事件监听
+    playBtn.addEventListener('click', togglePlay);
+    prevBtn.addEventListener('click', prevSong);
+    nextBtn.addEventListener('click', nextSong);
+    audio.addEventListener('ended', nextSong);
+
+    // 初始化
+    initPlayer();
+  </script>
+</body>
+</html>

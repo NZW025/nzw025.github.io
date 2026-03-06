@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>句法思维导图（复古迪士尼+完整复合句）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f9f1e6 0%, #e8d5b7 100%);
+            font-family: "华文新魏", "方正楷体", "SimSun", serif;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+        
+        .mindmap {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        #connector-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .node {
+            position: absolute;
+            border: 3px solid #8b4513;
+            border-radius: 14px;
+            padding: 12px 16px;
+            color: #ffffff;
+            font-weight: bold;
+            text-align: center;
+            transform: translate(-50%, -50%);
+            min-width: 80px;
+            font-size: 14px;
+            z-index: 5;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            white-space: nowrap;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(145deg, var(--bg-light), var(--bg-dark));
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .node-type { --bg-light: #4a6fa5; --bg-dark: #3a5a8c; }
+        .node-structure { --bg-light: #c73e1d; --bg-dark: #a62f16; }
+        .node-component { --bg-light: #e6b85c; --bg-dark: #d4a046; }
+        .node-simple { --bg-light: #6b9e7d; --bg-dark: #5a8b6b; }
+        .node-complex { --bg-light: #8a6f9e; --bg-dark: #785f8d; }
+        .node-active { --bg-light: #d17b64; --bg-dark: #b96a53; }
+        .node-passive { --bg-light: #e0c989; --bg-dark: #cbae78; }
+        
+        .node-center {
+            --bg-light: #f1c232; --bg-dark: #d4ac2b;
+            border-color: #8b5a2b;
+            font-size: 36px;
+            padding: 24px 48px;
+            z-index: 10;
+            min-width: 200px;
+            color: #5a3e18;
+            box-shadow: 0 6px 12px rgba(139, 90, 43, 0.25);
+            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+        }
+        
+        .node-level1 {
+            font-size: 24px;
+            padding: 16px 24px;
+            min-width: 120px;
+            z-index: 8;
+        }
+        
+        .node-level2 {
+            font-size: 18px;
+            padding: 12px 18px;
+            min-width: 100px;
+            z-index: 7;
+        }
+        
+        .node-level3 {
+            font-size: 16px;
+            padding: 10px 14px;
+            min-width: 90px;
+            z-index: 6;
+        }
+        
+        .node-highlight {
+            --bg-light: #f8e6b3 !important; --bg-dark: #f0d48b !important;
+            border-color: #e67e22 !important;
+            color: #8b4513 !important;
+            transform: translate(-50%, -50%) scale(1.08);
+            box-shadow: 0 6px 12px rgba(230, 126, 34, 0.25) !important;
+        }
+
+        .node-scaled {
+            z-index: 20 !important;
+            transform: translate(-50%, -50%) scale(2.8) !important;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25) !important;
+        }
+
+        .detail-popup {
+            position: fixed;
+            background: linear-gradient(145deg, #f7f0e3, #ede0c5);
+            border: 4px solid #8b5a2b;
+            border-radius: 14px;
+            padding: 22px;
+            color: #4a3620;
+            font-size: 21px;
+            line-height: 1.8;
+            z-index: 999;
+            width: 85%;
+            max-width: 500px;
+            display: none;
+            cursor: move;
+            user-select: none;
+            box-shadow: 0 6px 16px rgba(139, 90, 43, 0.2);
+        }
+
+        .detail-popup.active {
+            display: block;
+            animation: popupFade 0.4s ease-out;
+        }
+
+        @keyframes popupFade {
+            from { opacity: 0; transform: translateY(15px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .detail-title {
+            font-weight: bold;
+            color: #8b4513;
+            margin-bottom: 14px;
+            font-size: 26px;
+            border-bottom: 3px solid #d4ac2b;
+            padding-bottom: 12px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+        }
+
+        .detail-item {
+            margin-bottom: 12px;
+            padding-left: 14px;
+            border-left: 3px solid #d4ac2b;
+        }
+
+        .detail-tag {
+            color: #ffffff;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 14px;
+            background: #8b5a2b;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-shadow: none;
+        }
+
+        .exam-example {
+            background: rgba(139, 90, 43, 0.05);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-top: 6px;
+            font-family: "Microsoft Yahei", sans-serif;
+            font-size: 18px;
+        }
+
+        .daily-example {
+            background: rgba(212, 172, 43, 0.05);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-top: 6px;
+            font-family: "Microsoft Yahei", sans-serif;
+            font-size: 18px;
+        }
+
+        .tentacle-line-level1 {
+            stroke: #8b5a2b;
+            stroke-width: 3px;
+            stroke-opacity: 0.8;
+            stroke-dasharray: 0;
+            stroke-linecap: round;
+            filter: url(#grain-filter);
+        }
+
+        .tentacle-line-level2 {
+            stroke: #a67c52;
+            stroke-width: 2.5px;
+            stroke-opacity: 0.7;
+            stroke-dasharray: 6, 3;
+            stroke-linecap: round;
+            filter: url(#grain-filter);
+        }
+
+        .tentacle-line-level3 {
+            stroke: #c29a6c;
+            stroke-width: 2px;
+            stroke-opacity: 0.6;
+            stroke-dasharray: 4, 4;
+            stroke-linecap: round;
+            filter: url(#grain-filter);
+        }
+
+        svg defs {
+            position: absolute;
+            width: 0;
+            height: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="mindmap" id="mindmapContainer">
+        <svg id="connector-svg">
+            <defs>
+                <filter id="grain-filter">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise"/>
+                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1" xChannelSelector="R" yChannelSelector="G"/>
+                </filter>
+            </defs>
+        </svg>
+        <div class="detail-popup" id="detailPopup"></div>
+    </div>
+
+    <script>
+        // 节点配置：新增主语从句、表语从句
+        const nodeConfig = [
+            // 中心节点
+            { 
+                id: 'center-syntax', 
+                text: '句法', 
+                isCenter: true, 
+                left: '50%', 
+                top: '50%', 
+                nodeClass: 'node-center',
+                details: [
+                    { type: '定义', content: '句法是研究句子结构的语法分支' },
+                    { type: '范围', content: '包括句子类型、句子结构、句子成分等方面' },
+                    { type: '学习意义', content: '高考英语语法填空、改错、写作核心考点，日常交流必备基础' }
+                ]
+            },
+
+            // === 类型分支（复古藏蓝）===
+            { id: 'type-branch', text: '句子类型', left: '63%', top: '39%', nodeClass: 'node-type node-level1', details: [{ type: '分类', content: '根据功能分为：陈述句、疑问句、祈使句、感叹句；根据结构分为：简单句、复合句、并列句' }] },
+            { id: 'simple-sentence', text: '简单句', left: '67%', top: '24%', nodeClass: 'node-simple node-level2', details: [
+                { type: '定义', content: '只包含一个主谓结构（主谓、主谓宾、主系表等）的句子' },
+                { type: '高考题示例', content: '（2023·全国甲卷语法填空）We ______ (have) a wonderful picnic last weekend in the park.（答案：had）', className: 'exam-example' },
+                { type: '日常例句', content: 'I finish my homework at 8 p.m. every day.（我每天晚上8点完成作业）', className: 'daily-example' }
+            ] },
+            { id: 'complex-sentence', text: '复合句', left: '67%', top: '54%', nodeClass: 'node-complex node-level2', details: [
+                { type: '定义', content: '包含一个主句和一个或多个从句（主语、表语、宾语、定语、状语从句等）的句子' },
+                { type: '高考题示例', content: '（2024·新高考I卷语法填空）She asked me whether I ______ (attend) the meeting the next day.（答案：would attend）', className: 'exam-example' },
+                { type: '日常例句', content: 'My mom told me that she would prepare my favorite dinner tonight.（妈妈告诉我她今晚做我爱吃的晚饭）', className: 'daily-example' }
+            ] },
+            // 三级节点（新增主语从句、表语从句，调整位置避免拥挤）
+            { id: 'affirmative', text: '肯定句', left: '77%', top: '14%', nodeClass: 'node-simple node-level3', details: [
+                { type: '特点', content: '陈述事实，不含否定词（not、never等）' },
+                { type: '高考题示例', content: '（2022·全国乙卷改错）He is interesting in playing basketball.（改错：interesting→interested）', className: 'exam-example' },
+                { type: '日常例句', content: 'Our school holds a sports meeting every autumn.（我们学校每年秋天举办运动会）', className: 'daily-example' }
+            ] },
+            { id: 'negative', text: '否定句', left: '82%', top: '23%', nodeClass: 'node-simple node-level3', details: [
+                { type: '特点', content: '含否定词（not、never、hardly等），表达否定含义' },
+                { type: '高考题示例', content: '（2023·新高考II卷语法填空）I ______ (not finish) the novel yet, so I can\'t lend it to you.（答案：haven\'t finished）', className: 'exam-example' },
+                { type: '日常例句', content: 'I have never been to Beijing before.（我以前从没去过北京）', className: 'daily-example' }
+            ] },
+            { id: 'general-question', text: '一般疑问句', left: '79%', top: '32%', nodeClass: 'node-simple node-level3', details: [
+                { type: '特点', content: '以助动词（be、do、have等）开头，回答用Yes/No' },
+                { type: '高考题示例', content: '（2021·全国甲卷改错）Do you know where is the nearest hospital?（改错：is the nearest hospital→the nearest hospital is）', className: 'exam-example' },
+                { type: '日常例句', content: 'Is there a library near our community?（我们小区附近有图书馆吗？）', className: 'daily-example' }
+            ] },
+            { id: 'special-question', text: '特殊疑问句', left: '74%', top: '41%', nodeClass: 'node-simple node-level3', details: [
+                { type: '特点', content: '以疑问词（what、who、how等）开头，询问具体信息' },
+                { type: '高考题示例', content: '（2024·全国乙卷语法填空）—______ did you go to the cinema yesterday? —By subway.（答案：How）', className: 'exam-example' },
+                { type: '日常例句', content: 'What time will your train arrive at the station?（你的火车几点到车站？）', className: 'daily-example' }
+            ] },
+            { id: 'imperative', text: '祈使句', left: '53%', top: '14%', nodeClass: 'node-simple node-level3', details: [
+                { type: '特点', content: '表示命令、请求、建议，主语常省略，以动词原形开头' },
+                { type: '高考题示例', content: '（2022·新高考I卷语法填空）______ (keep) quiet in the reading room, please.（答案：Keep）', className: 'exam-example' },
+                { type: '日常例句', content: 'Don\'t forget to bring your umbrella tomorrow.（明天别忘了带伞）', className: 'daily-example' }
+            ] },
+            { id: 'exclamatory', text: '感叹句', left: '52%', top: '23%', nodeClass: 'node-simple node-level3', details: [
+                { type: '特点', content: '表达强烈感情，以what或how开头' },
+                { type: '高考题示例', content: '（2023·浙江卷改错）How a beautiful sunset it is!（改错：How→What）', className: 'exam-example' },
+                { type: '日常例句', content: 'What a lovely dog it is!（这只狗真可爱啊！）', className: 'daily-example' }
+            ] },
+            { id: 'emphatic', text: '强调句', left: '51%', top: '34%', nodeClass: 'node-simple node-level3', details: [
+                { type: '特点', content: '用"It is/was + 被强调部分 + that/who..."结构强调句子成分' },
+                { type: '高考题示例', content: '（2024·天津卷语法填空）It was in the countryside ______ I spent my happy childhood.（答案：that）', className: 'exam-example' },
+                { type: '日常例句', content: 'It is my teacher who helped me build up confidence.（是我的老师帮我建立了自信）', className: 'daily-example' }
+            ] },
+            // 复合句子节点：新增主语从句、表语从句，调整原有从句位置
+            { id: 'subject-clause', text: '主语从句', left: '80%', top: '68%', nodeClass: 'node-complex node-level3', details: [
+                { type: '功能', content: '在句中作主语，常由that、whether、what、who等引导，常用it作形式主语' },
+                { type: '高考题示例', content: '（2023·新高考I卷语法填空）______ surprised us most is that she can speak five foreign languages.（答案：What）', className: 'exam-example' },
+                { type: '日常例句', content: 'It is important that we should cherish our study time.（我们应该珍惜学习时间，这很重要）', className: 'daily-example' }
+            ] },
+            { id: 'predicative-clause', text: '表语从句', left: '72%', top: '65%', nodeClass: 'node-complex node-level3', details: [
+                { type: '功能', content: '在句中作表语（与系动词连用），常由that、whether、what、how等引导' },
+                { type: '高考题示例', content: '（2024·全国甲卷语法填空）The reason why he was late is ______ he missed the early bus.（答案：that）', className: 'exam-example' },
+                { type: '日常例句', content: 'My dream is that I can become an English teacher in the future.（我的梦想是将来成为一名英语老师）', className: 'daily-example' }
+            ] },
+            { id: 'attributive-clause', text: '定语从句', left: '86%', top: '42%', nodeClass: 'node-complex node-level3', details: [
+                { type: '功能', content: '修饰名词或代词，作定语，常由关系代词（that、which、who等）或关系副词（where、when等）引导' },
+                { type: '高考题示例', content: '（2023·全国甲卷语法填空）The book ______ cover is blue was written by Mo Yan.（答案：whose）', className: 'exam-example' },
+                { type: '日常例句', content: 'This is the cafe where we met for the first time.（这是我们第一次见面的咖啡馆）', className: 'daily-example' }
+            ] },
+            { id: 'adverbial-clause', text: '状语从句', left: '85%', top: '51%', nodeClass: 'node-complex node-level3', details: [
+                { type: '功能', content: '修饰动词、形容词或整个句子，表时间、原因、条件等，由when、because、if等引导' },
+                { type: '高考题示例', content: '（2024·新高考II卷语法填空）We will go hiking tomorrow ______ the weather is fine.（答案：if）', className: 'exam-example' },
+                { type: '日常例句', content: 'I was watching TV when my best friend called me.（我正在看电视时，好朋友给我打了电话）', className: 'daily-example' }
+            ] },
+            { id: 'object-clause', text: '宾语从句', left: '84%', top: '60%', nodeClass: 'node-complex node-level3', details: [
+                { type: '功能', content: '作动词、介词或形容词的宾语，常由that、whether、what等引导，从句用陈述语序' },
+                { type: '高考题示例', content: '（2022·全国乙卷语法填空）I don\'t know why he ______ (refuse) the invitation yesterday.（答案：refused）', className: 'exam-example' },
+                { type: '日常例句', content: 'She is worried about whether she can pass the English exam.（她担心自己能否通过英语考试）', className: 'daily-example' }
+            ] },
+
+            // === 结构分支（复古暗红）===
+            { id: 'structure-branch', text: '句子结构', left: '37%', top: '39%', nodeClass: 'node-structure node-level1', details: [{ type: '分类', content: '根据主语和谓语的关系分为：主动结构、被动结构' }] },
+            { id: 'active-structure', text: '主动结构', left: '34%', top: '24%', nodeClass: 'node-active node-level2', details: [
+                { type: '特点', content: '主语是动作的执行者，谓语用主动形式' },
+                { type: '高考题示例', content: '（2023·新高考I卷语法填空）The students ______ (plant) more than 200 trees in the schoolyard since last month.（答案：have planted）', className: 'exam-example' },
+                { type: '日常例句', content: 'My dad drives me to school every Monday morning.（爸爸每周一早上开车送我上学）', className: 'daily-example' }
+            ] },
+            { id: 'passive-structure', text: '被动结构', left: '33%', top: '54%', nodeClass: 'node-passive node-level2', details: [
+                { type: '特点', content: '主语是动作的承受者，谓语用"be + 过去分词"形式' },
+                { type: '高考题示例', content: '（2024·全国甲卷语法填空）A new library ______ (build) in our school now and it will open next term.（答案：is being built）', className: 'exam-example' },
+                { type: '日常例句', content: 'The final exam will be held in June this year.（期末考试将于今年6月举行）', className: 'daily-example' }
+            ] },
+            // 三级节点
+            { id: 's-v', text: '主语 + 谓语', left: '19%', top: '12%', nodeClass: 'node-active node-level3', details: [
+                { type: '结构', content: '不及物动词作谓语，后面不接宾语' },
+                { type: '高考题示例', content: '（2022·浙江卷语法填空）The sun ______ (rise) in the east and sets in the west.（答案：rises）', className: 'exam-example' },
+                { type: '日常例句', content: 'Birds sing loudly in the forest in the morning.（早上鸟儿在森林里高声歌唱）', className: 'daily-example' }
+            ] },
+            { id: 's-be', text: '主语 + Be + 表语', left: '18%', top: '26%', nodeClass: 'node-active node-level3', details: [
+                { type: '结构', content: 'be动词（am/is/are等）作谓语，后面接表语（名词、形容词等）' },
+                { type: '高考题示例', content: '（2023·天津卷语法填空）The film is so ______ (move) that many people cried.（答案：moving）', className: 'exam-example' },
+                { type: '日常例句', content: 'My favorite subject is English because it\'s interesting.（我最喜欢的科目是英语，因为它很有趣）', className: 'daily-example' }
+            ] },
+            { id: 'there-be', text: 'There Be 句型', left: '17%', top: '38%', nodeClass: 'node-active node-level3', details: [
+                { type: '结构', content: '表示"某地有某物"，be动词单复数由后面的名词决定' },
+                { type: '高考题示例', content: '（2024·全国乙卷语法填空）There ______ (be) a lot of rain in our city last summer.（答案：was）', className: 'exam-example' },
+                { type: '日常例句', content: 'There are three bookstores in our neighborhood.（我们小区有三家书店）', className: 'daily-example' }
+            ] },
+            { id: 'be-vpp', text: 'be + 动词过去分词', left: '20%', top: '53%', nodeClass: 'node-passive node-level3', details: [
+                { type: '结构', content: '被动语态的核心结构，适用于各种时态' },
+                { type: '高考题示例', content: '（2022·新高考II卷语法填空）The letters ______ (write) by Lu Xun have been translated into many languages.（答案：written）', className: 'exam-example' },
+                { type: '日常例句', content: 'The old building was built in the 1950s.（这座老建筑建于20世纪50年代）', className: 'daily-example' }
+            ] },
+
+            // === 成分分支（复古米黄）===
+            { id: 'component-branch', text: '句子成分', left: '48%', top: '71%', nodeClass: 'node-component node-level1', details: [{ type: '分类', content: '句子的基本组成部分：主语、谓语、宾语、表语、定语、状语、补语' }] },
+            { id: 'subject', text: '主语', left: '28%', top: '90%', nodeClass: 'node-component node-level2', details: [
+                { type: '功能', content: '句子的核心，动作的执行者或被陈述的对象（名词、代词、动名词等充当）' },
+                { type: '高考题示例', content: '（2023·全国甲卷改错）To learn English well are important for our future.（改错：are→is）', className: 'exam-example' },
+                { type: '日常例句', content: 'Reading English novels helps improve our language ability.（读英语小说有助于提高语言能力）', className: 'daily-example' }
+            ] },
+            { id: 'predicate', text: '谓语（系动词）', left: '46%', top: '92%', nodeClass: 'node-component node-level2', details: [
+                { type: '功能', content: '说明主语的动作或状态（实义动词、系动词等充当）' },
+                { type: '高考题示例', content: '（2024·新高考I卷语法填空）My brother ______ (play) the piano for 10 years and he is very good at it.（答案：has played）', className: 'exam-example' },
+                { type: '日常例句', content: 'She looks happy because she got a good grade in the test.（她看起来很开心，因为考试考得好）', className: 'daily-example' }
+            ] },
+            { id: 'object', text: '宾语（表语）', left: '61%', top: '90%', nodeClass: 'node-component node-level2', details: [
+                { type: '功能', content: '宾语是动作的承受者（名词、代词等充当）；表语说明主语的身份、性质等（与系动词连用）' },
+                { type: '高考题示例', content: '（2022·全国乙卷语法填空）We should respect the ______ (elder) and care for the young.（答案：elderly）', className: 'exam-example' },
+                { type: '日常例句', content: 'He bought a new smartphone as a birthday gift for his sister.（他给妹妹买了一部新手机当生日礼物）', className: 'daily-example' }
+            ] },
+            { id: 'attribute', text: '定语', left: '21%', top: '74%', nodeClass: 'node-component node-level2', details: [
+                { type: '功能', content: '修饰名词或代词，作定语（形容词、名词、分词等充当）' },
+                { type: '高考题示例', content: '（2023·浙江卷语法填空）I met a ______ (friend) old man on my way home yesterday.（答案：friendly）', className: 'exam-example' },
+                { type: '日常例句', content: 'The girl with long hair is my deskmate in class.（长头发的女孩是我班上的同桌）', className: 'daily-example' }
+            ] },
+            { id: 'adverbial', text: '状语', left: '70%', top: '86%', nodeClass: 'node-component node-level2', details: [
+                { type: '功能', content: '修饰动词、形容词或整个句子，表时间、地点、方式等（副词、介词短语等充当）' },
+                { type: '高考题示例', content: '（2024·全国甲卷语法填空）She finished her homework ______ (quick) and went out to play.（答案：quickly）', className: 'exam-example' },
+                { type: '日常例句', content: 'We studied hard for the exam in the classroom all afternoon.（我们整个下午都在教室为考试努力学习）', className: 'daily-example' }
+            ] },
+            { id: 'complement', text: '补语', left: '77%', top: '80%', nodeClass: 'node-component node-level2', details: [
+                { type: '功能', content: '补充说明主语或宾语的状态、身份等（名词、形容词、分词等充当）' },
+                { type: '高考题示例', content: '（2022·新高考II卷语法填空）We found the story ______ (interest) and decided to read it again.（答案：interesting）', className: 'exam-example' },
+                { type: '日常例句', content: 'The teacher asked us to keep the classroom clean.（老师要求我们保持教室干净）', className: 'daily-example' }
+            ] }
+        ];
+
+        // 连接关系配置：新增复合句到主语从句、表语从句的连接
+        const connectionConfig = [
+            { fromId: 'center-syntax', toId: 'type-branch', level: 1 },
+            { fromId: 'center-syntax', toId: 'structure-branch', level: 1 },
+            { fromId: 'center-syntax', toId: 'component-branch', level: 1 },
+            { fromId: 'type-branch', toId: 'simple-sentence', level: 2 },
+            { fromId: 'type-branch', toId: 'complex-sentence', level: 2 },
+            { fromId: 'simple-sentence', toId: 'affirmative', level: 3 },
+            { fromId: 'simple-sentence', toId: 'negative', level: 3 },
+            { fromId: 'simple-sentence', toId: 'general-question', level: 3 },
+            { fromId: 'simple-sentence', toId: 'special-question', level: 3 },
+            { fromId: 'simple-sentence', toId: 'imperative', level: 3 },
+            { fromId: 'simple-sentence', toId: 'exclamatory', level: 3 },
+            { fromId: 'simple-sentence', toId: 'emphatic', level: 3 },
+            // 新增复合句与主语从句、表语从句的连接
+            { fromId: 'complex-sentence', toId: 'subject-clause', level: 3 },
+            { fromId: 'complex-sentence', toId: 'predicative-clause', level: 3 },
+            { fromId: 'complex-sentence', toId: 'attributive-clause', level: 3 },
+            { fromId: 'complex-sentence', toId: 'adverbial-clause', level: 3 },
+            { fromId: 'complex-sentence', toId: 'object-clause', level: 3 },
+            { fromId: 'structure-branch', toId: 'active-structure', level: 2 },
+            { fromId: 'structure-branch', toId: 'passive-structure', level: 2 },
+            { fromId: 'active-structure', toId: 's-v', level: 3 },
+            { fromId: 'active-structure', toId: 's-be', level: 3 },
+            { fromId: 'active-structure', toId: 'there-be', level: 3 },
+            { fromId: 'passive-structure', toId: 'be-vpp', level: 3 },
+            { fromId: 'component-branch', toId: 'subject', level: 2 },
+            { fromId: 'component-branch', toId: 'predicate', level: 2 },
+            { fromId: 'component-branch', toId: 'object', level: 2 },
+            { fromId: 'component-branch', toId: 'attribute', level: 2 },
+            { fromId: 'component-branch', toId: 'adverbial', level: 2 },
+            { fromId: 'component-branch', toId: 'complement', level: 2 }
+        ];
+
+        // 核心功能（不变）
+        const detailPopup = document.getElementById('detailPopup');
+        let activeNode = null;
+        let isDragging = false;
+        let dragOffsetX = 0;
+        let dragOffsetY = 0;
+
+        function initDragablePopup() {
+            detailPopup.addEventListener('mousedown', function(e) {
+                if (detailPopup.classList.contains('active')) {
+                    isDragging = true;
+                    dragOffsetX = e.clientX - detailPopup.getBoundingClientRect().left;
+                    dragOffsetY = e.clientY - detailPopup.getBoundingClientRect().top;
+                    detailPopup.style.cursor = 'grabbing';
+                }
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (!isDragging) return;
+                let newLeft = e.clientX - dragOffsetX;
+                let newTop = e.clientY - dragOffsetY;
+                const popupWidth = detailPopup.offsetWidth;
+                const popupHeight = detailPopup.offsetHeight;
+
+                newLeft = Math.max(0, Math.min(newLeft, window.innerWidth - popupWidth));
+                newTop = Math.max(0, Math.min(newTop, window.innerHeight - popupHeight));
+
+                detailPopup.style.left = `${newLeft}px`;
+                detailPopup.style.top = `${newTop}px`;
+                detailPopup.style.transform = 'none';
+            });
+
+            document.addEventListener('mouseup', function() {
+                if (isDragging) {
+                    isDragging = false;
+                    detailPopup.style.cursor = 'move';
+                }
+            });
+
+            detailPopup.addEventListener('selectstart', function(e) {
+                e.preventDefault();
+            });
+        }
+
+        function drawTentacleConnectors() {
+            const svg = document.getElementById('connector-svg');
+            if (!svg) return;
+            svg.innerHTML = '';
+
+            const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+            const filter = document.createElementNS('http://www.w3.org/2000/svg', 'filter');
+            filter.setAttribute('id', 'grain-filter');
+            const feTurbulence = document.createElementNS('http://www.w3.org/2000/svg', 'feTurbulence');
+            feTurbulence.setAttribute('type', 'fractalNoise');
+            feTurbulence.setAttribute('baseFrequency', '0.65');
+            feTurbulence.setAttribute('numOctaves', '3');
+            feTurbulence.setAttribute('result', 'noise');
+            const feDisplacementMap = document.createElementNS('http://www.w3.org/2000/svg', 'feDisplacementMap');
+            feDisplacementMap.setAttribute('in', 'SourceGraphic');
+            feDisplacementMap.setAttribute('in2', 'noise');
+            feDisplacementMap.setAttribute('scale', '1');
+            feDisplacementMap.setAttribute('xChannelSelector', 'R');
+            feDisplacementMap.setAttribute('yChannelSelector', 'G');
+            filter.appendChild(feTurbulence);
+            filter.appendChild(feDisplacementMap);
+            defs.appendChild(filter);
+            svg.appendChild(defs);
+
+            connectionConfig.forEach(conn => {
+                const fromNode = document.getElementById(`node-${conn.fromId}`);
+                const toNode = document.getElementById(`node-${conn.toId}`);
+
+                if (fromNode && toNode) {
+                    const fromRect = fromNode.getBoundingClientRect();
+                    const toRect = toNode.getBoundingClientRect();
+                    const svgRect = svg.getBoundingClientRect();
+                    const fromX = fromRect.left + fromRect.width / 2 - svgRect.left;
+                    const fromY = fromRect.top + fromRect.height / 2 - svgRect.top;
+                    const toX = toRect.left + toRect.width / 2 - svgRect.left;
+                    const toY = toRect.top + toRect.height / 2 - svgRect.top;
+
+                    const dx = toX - fromX;
+                    const dy = toY - fromY;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    const controlOffset = distance * 0.28;
+                    const controlX = fromX + dx / 2 + (dy / distance) * controlOffset;
+                    const controlY = fromY + dy / 2 - (dx / distance) * controlOffset;
+
+                    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    path.setAttribute('d', `M ${fromX} ${fromY} Q ${controlX} ${controlY} ${toX} ${toY}`);
+                    path.setAttribute('fill', 'none');
+                    path.classList.add(`tentacle-line-level${conn.level}`);
+                    svg.appendChild(path);
+                }
+            });
+        }
+
+        function showDetails(nodeData) {
+            let html = `<div class="detail-title">${nodeData.text} </div>`;
+            if (nodeData.details && nodeData.details.length > 0) {
+                nodeData.details.forEach(detail => {
+                    const className = detail.className || '';
+                    html += `<div class="detail-item ${className}"><span class="detail-tag">[${detail.type}]</span>${detail.content}</div>`;
+                });
+            } else {
+                html += `<div class="detail-item">暂无详细信息</div>`;
+            }
+            detailPopup.innerHTML = html;
+            detailPopup.classList.add('active');
+
+            if (!detailPopup.style.left || !detailPopup.style.top) {
+                const popupWidth = detailPopup.offsetWidth;
+                const popupHeight = detailPopup.offsetHeight;
+                detailPopup.style.left = `${(window.innerWidth - popupWidth) / 2}px`;
+                detailPopup.style.top = `${window.innerHeight - popupHeight - 40}px`;
+                detailPopup.style.transform = 'none';
+            }
+        }
+
+        function hideDetails() {
+            detailPopup.classList.remove('active');
+            detailPopup.innerHTML = '';
+        }
+
+        function handleClick(node) {
+            const nodeId = node.id.replace('node-', '');
+            const nodeData = nodeConfig.find(item => item.id === nodeId) || { text: '未知节点', details: [] };
+
+            if (activeNode === node) {
+                node.classList.remove('node-scaled');
+                hideDetails();
+                activeNode = null;
+            } else {
+                if (activeNode) {
+                    activeNode.classList.remove('node-scaled');
+                }
+                node.classList.add('node-scaled');
+                showDetails(nodeData);
+                activeNode = node;
+            }
+        }
+
+        function renderNodes() {
+            const container = document.getElementById('mindmapContainer');
+            if (!container) return;
+
+            nodeConfig.forEach(node => {
+                const nodeEl = document.createElement('div');
+                nodeEl.id = `node-${node.id}`;
+                nodeEl.className = `node ${node.nodeClass || ''}`;
+                nodeEl.textContent = node.text;
+                nodeEl.style.left = node.left;
+                nodeEl.style.top = node.top;
+
+                nodeEl.onclick = function() {
+                    handleClick(this);
+                };
+                nodeEl.onmouseover = function() {
+                    if (this !== activeNode) this.classList.add('node-highlight');
+                };
+                nodeEl.onmouseout = function() {
+                    if (this !== activeNode) this.classList.remove('node-highlight');
+                };
+
+                container.appendChild(nodeEl);
+            });
+        }
+
+        function initMindMap() {
+            renderNodes();
+            initDragablePopup();
+            setTimeout(() => {
+                drawTentacleConnectors();
+                console.log('句法思维导图（复古迪士尼+完整复合句）初始化完成');
+            }, 100);
+        }
+
+        window.onload = initMindMap;
+        window.addEventListener('resize', drawTentacleConnectors);
+    </script>
+</body>
+</html>

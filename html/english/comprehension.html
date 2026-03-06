@@ -1,0 +1,1284 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 2022-2025 阅读真题 · 四题型各10题（可缩放字体）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: transparent #F9F6F0; /* 参考图的浅米色背景 */
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .header {
+            background: transparent #F4F1EB; /* 与背景协调的极浅灰色头 */
+            color: #333333; /* 深灰色文字 */
+            padding: 18px 30px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* 更细微的阴影 */
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header-left h1 {
+            font-weight: 400;
+            font-size: 1.8rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+            text-align: center;
+        }
+        .header-left p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+        .header-right {
+            display: flex;
+            gap: 15px;
+        }
+        .font-btn {
+            background: #EAE7E0; /* 浅灰色按钮背景 */
+            border: 1px solid #DAD7D0; /* 浅灰色边框 */
+            color: #555555; /* 灰色文字 */
+            font-size: 1.2rem;
+            font-weight: 600;
+            width: 48px;
+            height: 48px;
+            border-radius: 0px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .font-btn:hover {
+            background: #DAD7D0; /* 悬停加深灰色 */
+            transform: scale(1.05);
+        }
+        .main-panel {
+            display: flex;
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
+            background: white;
+            margin: 0 20px 20px 20px;
+            border-radius: 0px;
+            box-shadow: 0 0px 0px 0px rgba(0,0,0,0.08); /* 更柔和的阴影 */
+        }
+        .origin-col {
+            flex: 1.2;
+            background: #F7F5F0; /* 极浅的米色，与body背景协调 */
+            border-right: 1px solid #EAE7E0; /* 浅灰色边框 */
+            padding: 28px 26px;
+            overflow-y: auto;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #333333; /* 深灰色文字 */
+        }
+        .source-badge {
+            display: inline-block;
+            background: #EAE7E0; /* 浅灰色标签 */
+            color: #555555; /* 灰色文字 */
+            font-weight: 600;
+            font-size: 0.74rem;
+            padding: 4px 16px;
+            border-radius: 5px;
+            margin: 0 0 12px 0;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+        .origin-block {
+            margin-bottom: 50px;
+            border-bottom: 1px dashed #EAE7E0; /* 浅灰色虚线分隔 */
+            padding-bottom: 24px;
+        }
+        .origin-block:last-child {
+            margin-bottom: 20px;
+            border-bottom: none;
+        }
+        .origin-block p {
+            margin: 0 0 12px 0;
+        }
+        .origin-locator {
+            transition: all 0.1s;
+        }
+        .underline-origin {
+            text-decoration: underline #BAB7B0 2px; /* 灰色下划线 */
+            text-underline-offset: 6px;
+            background-color: rgba(186, 183, 176, 0.1); /* 极淡的灰色背景 */
+            font-weight: 500;
+        }
+        .questions-col {
+            flex: 1;
+            background: white;
+            padding: 28px 24px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            font-size: 1rem;
+        }
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #333333; /* 深灰色标题 */
+            border-left: 8px solid #DAD7D0; /* 灰色边框 */
+            padding-left: 20px;
+            margin-bottom: 10px;
+            letter-spacing: -0.2px;
+        }
+        .q-card {
+            background: #ffffff;
+            border-radius: 0px;
+            padding: 22px 24px;
+            box-shadow: 0 0px 0px rgba(0,0,0,0.03); /* 更柔和的阴影 */
+            border: 1px solid #EAE7E0; /* 浅灰色边框 */
+            margin-bottom: 35px;
+        }
+        .q-card:last-child {
+            margin-bottom: 20px;
+        }
+        .q-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+        .q-num {
+            width: 46px;
+            height: 46px;
+            background: #F4F1EB; /* 淡灰色题号 */
+            border-radius: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #555555; /* 灰色数字 */
+            cursor: pointer;
+            transition: 0.15s;
+            user-select: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .q-num:hover {
+            background: #EAE7E0; /* 鼠标悬停加深灰色 */
+            transform: scale(1.02);
+        }
+        .q-type {
+            background: #EAE7E0; /* 灰色题型标签 */
+            color: #555555; /* 灰色文字 */
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 6px 18px;
+            border-radius: 0px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+        .q-text {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin: 0 0 16px 60px;
+            color: #333333; /* 深灰色文字 */
+        }
+        .highlight-keyword {
+            background-color: #F4F1EB; /* 淡灰色高亮背景 */
+            color: #555555; /* 灰色文字 */
+            font-weight: 700;
+            padding: 0 4px;
+            border-radius: 8px;
+        }
+        .options {
+            list-style: none;
+            margin-left: 60px;
+        }
+        .options li {
+            background: #F7F5F0; /* 极淡的米色选项背景 */
+            border: 1px solid #EAE7E0; /* 浅灰色边框 */
+            border-radius: 0px;
+            padding: 10px 20px;
+            margin: 8px 0;
+            font-size: 0.96rem;
+            transition: 0.1s;
+        }
+        .options li.correct-highlight {
+            background-color: #F0EEE9; /* 柔和的淡灰色正确答案背景 */
+            border-color: #DAD7D0; /* 灰色边框 */
+            font-weight: 500;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1); /* 灰色阴影 */
+        }
+        .reset-hint {
+            font-size: 0.9rem;
+            color: #555555; /* 灰色文字 */
+            text-align: center;
+            margin: 10px 0 5px;
+        }
+        .reset-all-btn {
+            background: white;
+            border: 1.5px solid #BAB7B0; /* 灰色按钮边框 */
+            color: #555555; /* 灰色文字 */
+            padding: 8px 32px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.1s;
+            margin-top: 5px;
+        }
+        .reset-all-btn:hover {
+            background: #F4F1EB; /* 鼠标悬停淡灰色背景 */
+        }
+        hr {
+            margin: 10px 0 20px;
+            border: 1px solid #EAE7E0; /* 浅灰色分割线 */
+        }
+        html {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-right">
+            <button class="font-btn" id="fontZoomIn" title="放大字体">A+</button>
+            <button class="font-btn" id="fontZoomOut" title="缩小字体">A-</button>
+        </div>
+    </div>
+    <div class="main-panel">
+        <div class="origin-col" id="originColumn"></div>
+        <div class="questions-col" id="questionsColumn"></div>
+    </div>
+
+    <script>
+        (function() {
+            // 字体缩放功能
+            const html = document.documentElement;
+            let currentFontSize = 16;
+            const minSize = 12;
+            const maxSize = 24;
+            document.getElementById('fontZoomIn').addEventListener('click', function() {
+                if (currentFontSize < maxSize) {
+                    currentFontSize += 2;
+                    html.style.fontSize = currentFontSize + 'px';
+                }
+            });
+            document.getElementById('fontZoomOut').addEventListener('click', function() {
+                if (currentFontSize > minSize) {
+                    currentFontSize -= 2;
+                    html.style.fontSize = currentFontSize + 'px';
+                }
+            });
+
+            // 试题数据（与之前相同，此处省略以节省篇幅）
+            const questionsData = [
+                {
+                    id: 0,
+                    type: '主旨大意题',
+                    examSource: '📌 2024 新课标I卷 · Passage B (第26题)',
+                    originParagraphs: [
+                        '"I am not crazy," says Dr. William Farber, shortly after performing acupuncture on a rabbit. "I am ahead of my time." If he seems a little defensive, it might be because even some of his coworkers occasionally laugh at his unusual methods. But Farber is certain he\'ll have the last laugh. He\'s one of a small but growing number of American veterinarians now practicing "holistic" medicine — combining traditional Western treatments with acupuncture, chiropractic and herbal medicine.',
+                        'Farber, a graduate of Colorado State University, started out as a more conventional veterinarian. He became interested in alterative treatments 20 years ago when he suffered from terrible back pain. He tried muscle-relaxing drugs but found little relief. Then he tried acupuncture, an ancient Chinese practice, and was amazed that he improved after two or three treatments. What worked on a veterinarian seemed likely to work on his patients. So, after studying the techniques for a couple of years, he began offering them to pets.',
+                        'Leigh Tindale\'s dog Charlie had a serious heart condition. After Charlie had a heart attack, Tindale says, she was prepared to put him to sleep, but Farber\'s treatments eased her dog\'s suffering so much that she was able to keep him alive for an additional five months. And Priscilla Dewing reports that her horse, Nappy, "moves more easily and rides more comfortably" after a chiropractic adjustment.',
+                        'Farber is certain that the holistic approach will grow more popular with time, and if the past is any indication, he may be right: Since 1982, membership in the American Holistic Veterinary Medical Association has grown from 30 to over 700. "Sometimes it surprises me that it works so well," he says. "I will do anything to help an animal. That\'s my job."'
+                    ],
+                    question: 'What does paragraph 3 mainly talk about?',
+                    options: [
+                        'A. Steps of a chiropractic treatment.',
+                        'B. The complexity of veterinarians\' work.',
+                        'C. Examples of rare animal diseases.',
+                        'D. The effectiveness of holistic medicine.'
+                    ],
+                    answer: 'D',
+                    keyword: 'mainly talk about',
+                    location: 'Leigh Tindale\'s dog Charlie had a serious heart condition. After Charlie had a heart attack, Tindale says, she was prepared to put him to sleep, but Farber\'s treatments eased her dog\'s suffering so much that she was able to keep him alive for an additional five months. And Priscilla Dewing reports that her horse, Nappy, "moves more easily and rides more comfortably" after a chiropractic adjustment.'
+                },
+                {
+                    id: 1,
+                    type: '主旨大意题',
+                    examSource: '📌 2023 新课标I卷 · Passage D (第32题)',
+                    originParagraphs: [
+                        'On March 7, 1907, the English statistician Francis Galton published a paper which illustrated what has come to be known as the "wisdom of crowds" effect. The experiment of estimation he conducted showed that in some cases, the average of a large number of independent estimates could be quite accurate.',
+                        'This effect capitalizes on the fact that when people make errors, those errors aren\'t always the same. Some people will tend to overestimate, and some to underestimate. When enough of these errors are averaged together, they cancel each other out, resulting in a more accurate estimate. If people are similar and tend to make the same errors, then their errors won\'t cancel each other out. In more technical terms, the wisdom of crowds requires that people\'s estimates be independent. If for whatever reasons, people\'s errors become correlated or dependent, the accuracy of the estimate will go down.',
+                        'But a new study led by Joaquin Navajas offered an interesting twist on this classic phenomenon. The key finding of the study was that when crowds were further divided into smaller groups that were allowed to have a discussion, the averages from these groups were more accurate than those from an equal number of independent individuals. For instance, the average obtained from the estimates of four discussion groups of five was significantly more accurate than the average obtained from 20 independent individuals.'
+                    ],
+                    question: 'What is paragraph 2 of the text mainly about?',
+                    options: [
+                        'A. The methods of estimation.',
+                        'B. The underlying logic of the effect.',
+                        'C. The causes of people\'s errors.',
+                        'D. The design of Galton\'s experiment.'
+                    ],
+                    answer: 'B',
+                    keyword: 'mainly about',
+                    location: 'This effect capitalizes on the fact that when people make errors, those errors aren\'t always the same. Some people will tend to overestimate, and some to underestimate. When enough of these errors are averaged together, they cancel each other out, resulting in a more accurate estimate. If people are similar and tend to make the same errors, then their errors won\'t cancel each other out. In more technical terms, the wisdom of crowds requires that people\'s estimates be independent. If for whatever reasons, people\'s errors become correlated or dependent, the accuracy of the estimate will go down.'
+                },
+                {
+                    id: 2,
+                    type: '主旨大意题',
+                    examSource: '📌 2022 新高考I卷 · Passage C (第31题)',
+                    originParagraphs: [
+                        'The elderly residents in care homes in London are being given hens to look after to stop them feeling lonely.',
+                        'The project was dreamed up by a local charity to reduce loneliness and improve elderly people\'s wellbeing. It is also being used to help patients suffering dementia, a serious illness of the mind. Staff in care homes have reported a reduction in the use of medicine where hens are in use.',
+                        'Among those taking part in the project is 80-year-old Ruth Xavier. She said: "I used to keep hens when I was younger and had to prepare their breakfast each morning before I went to school. I like the project a lot. I am down there in my wheelchair in the morning letting the hens out and down there again at night to see they\'ve gone to bed. It\'s good to have a different focus. People have been bringing their children in to see the hens and residents come and sit outside to watch them. I\'m enjoying the creative activities, and it feels great to have done something useful."',
+                        'There are now 700 elderly people looking after hens in 20 care homes in the North East, and the charity has been given financial support to roll it out countrywide.',
+                        'Wendy Wilson, extra care manager at 60 Penfold Street, one of the first to embark on the project, said: "Residents really welcome the idea of the project and the creative sessions. We are looking forward to the benefits and fun the project can bring to people here."',
+                        'Lynn Lewis, director of Notting Hill Pathways, said: "We are happy to be taking part in the project. It will really help connect our residents through a shared interest and creative activities."'
+                    ],
+                    question: 'What can we learn about the project from the last two paragraphs?',
+                    options: [
+                        'A. It is well received.',
+                        'B. It needs to be more creative.',
+                        'C. It is highly profitable.',
+                        'D. It takes ages to see the results.'
+                    ],
+                    answer: 'A',
+                    keyword: 'learn about the project',
+                    location: '"Residents really welcome the idea of the project.." "We are happy to be taking part in the project."'
+                },
+                {
+                    id: 3,
+                    type: '主旨大意题',
+                    examSource: '📌 2024 新课标Ⅱ卷 · Passage C (第31题)',
+                    originParagraphs: [
+                        'We all know fresh is best when it comes to food. However, most produce at the store went through weeks of travel and covered hundreds of miles before reaching the table. While farmer\'s markets are a solid choice to reduce the journey, Babylon Micro-Farm (BMF) shortens it even more.',
+                        'BMF is an indoor garden system. It can be set up for a family. Additionally, it could serve a larger audience such as a hospital, restaurant or school. The innovative design requires little effort to achieve a reliable weekly supply of fresh greens.',
+                        'Specifically, it\'s a farm that relies on new technology. By connecting through the Cloud, BMF is remotely monitored. Also, there is a convenient app that provides growing data in real time. Because the system is automated, it significantly reduces the amount of water needed to grow plants. Rather than watering rows of soil, the system provides just the right amount to each plant. After harvest, users simply replace the plants with a new pre-seeded pod to get the next growth cycle started.',
+                        'Moreover, having a system in the same building where it\'s eaten means zero emissions from transporting plants from soil to salad. In addition, there\'s no need for pesticides and other chemicals that pollute traditional farms and the surrounding environment.',
+                        'BMF employees live out sustainability in their everyday lives. About half of them walk or bike to work. Inside the office, they encourage recycling and waste reduction by limiting garbage cans and avoiding single-use plastic. "We are passionate about reducing waste, carbon and chemicals in our environment," said a BMF employee.'
+                    ],
+                    question: 'What does the text mainly talk about?',
+                    options: [
+                        'A. BMF\'s major strengths.',
+                        'B. BMF\'s general management.',
+                        'C. BMF\'s global influence.',
+                        'D. BMF\'s technical standards.'
+                    ],
+                    answer: 'A',
+                    keyword: 'mainly talk about',
+                    location: 'While farmer\'s markets are a solid choice to reduce the journey, Babylon Micro-Farm (BMF) shortens it even more. ... The innovative design requires little effort ... Because the system is automated, it significantly reduces the amount of water needed to grow plants. ... zero emissions ... no need for pesticides ...'
+                },
+                {
+                    id: 4,
+                    type: '主旨大意题',
+                    examSource: '📌 2022 全国甲卷 · Passage D (第32题)',
+                    originParagraphs: [
+                        'Sometime in the early 1960s, a significant thing happened in Sydney, Australia. The city discovered its harbor. Then, one after another, Sydney discovered lots of things that were just sort of there — broad parks, superb beaches, and a culturally diverse population. But it is the harbor that makes the city.',
+                        'Andrew Reynolds, a cheerful fellow in his early 30s, pilots Sydney ferryboats for a living. I spent the whole morning shuttling back and forth across the harbor. After our third run Andrew shut down the engine, and we went our separate ways — he for a lunch break, I to explore the city. "I\'ll miss these old boats," he said as we parted. "How do you mean?" I asked. "Oh, they\'re replacing them with catamarans. Catamarans are faster, but they\'re not so elegant, and they\'re not fun to pilot. But that\'s progress, I guess."',
+                        'Everywhere in Sydney these days, change and progress are the watchwords, and traditions are increasingly rare. Shirley Fitzgerald, the city\'s official historian, told me that in its rush to modernity in the 1970s, Sydney swept aside much of its past, including many of its finest buildings. "Sydney is confused about itself," she said. "We can\'t seem to make up our minds whether we want a modern city or a traditional one. It\'s a conflict that we aren\'t getting any better at resolving."',
+                        'On the other hand, being young and old at the same time has its attractions. I considered this when I met a thoughtful young businessman named Anthony. "Many people say that we lack culture in this country," he told me. "What people forget is that the Italians, when they came to Australia, brought 2000 years of their culture, the Greeks some 3000 years, and the Chinese more still. We\'ve got a foundation built on ancient cultures but with a drive and dynamism of a young country. It\'s a pretty hard combination to beat."',
+                        'He is right, but I can\'t help wishing they would keep those old ferries.'
+                    ],
+                    question: 'What is the first paragraph mainly about?',
+                    options: [
+                        'A. Sydney\'s striking architecture.',
+                        'B. The cultural diversity of Sydney.',
+                        'C. The key to Sydney\'s development.',
+                        'D. Sydney\'s tourist attractions in the 1960s.'
+                    ],
+                    answer: 'C',
+                    keyword: 'mainly about',
+                    location: 'Sometime in the early 1960s, a significant thing happened in Sydney, Australia. The city discovered its harbor. Then, one after another, Sydney discovered lots of things that were just sort of there — broad parks, superb beaches, and a culturally diverse population. But it is the harbor that makes the city.'
+                },
+                {
+                    id: 5,
+                    type: '主旨大意题',
+                    examSource: '📌 2023 全国乙卷 · Passage D (第32题)',
+                    originParagraphs: [
+                        'If you want to tell the history of the whole world, a history that does not privilege one part of humanity, you cannot do it through texts alone, because only some of the world has ever had texts, while most of the world, for most of the time, has not. Writing is one of humanity\'s later achievements, and until fairly recently even many literate societies recorded their concerns not only in writing but in things.',
+                        'Ideally a history would bring together texts and objects, and some chapters of this book are able to do just that, but in many cases we simply can\'t. The clearest example of this between literate and non-literate history is perhaps the first conflict, at Botany Bay, between Captain Cook\'s voyage and the Australian Aboriginals. From the English side, we have scientific reports and the captain\'s record of that terrible day. From the Australian side, we have only a wooden shield dropped by a man in flight after his first experience of gunshot. If we want to reconstruct what was actually going on that day, the shield must be questioned and interpreted as deeply and strictly as the written reports.',
+                        'In addition to the problem of miscomprehension from both sides, there are victories accidentally or deliberately twisted, especially when only the victors know how to write. Those who are on the losing side often have only their things to tell their stories. The Caribbean Taino, the Australian Aboriginals, the African people of Benin and the Incas, all of whom appear in this book, can speak to us now of their past achievements most powerfully through the objects they made: a history told through things gives them back a voice. When we consider contact between literate and non-literate societies such as these, all our first-hand accounts are necessarily twisted, only one half of a dialogue. If we are to find the other half of that conversation, we have to read not just the texts, but the objects.'
+                    ],
+                    question: 'What is the first paragraph mainly about?',
+                    options: [
+                        'A. How past events should be presented.',
+                        'B. What humanity is concerned about.',
+                        'C. Whether facts speak louder than words.',
+                        'D. Why written language is reliable.'
+                    ],
+                    answer: 'A',
+                    keyword: 'mainly about',
+                    location: 'If you want to tell the history of the whole world, a history that does not privilege one part of humanity, you cannot do it through texts alone, because only some of the world has ever had texts, while most of the world, for most of the time, has not. ... even many literate societies recorded their concerns not only in writing but in things.'
+                },
+                {
+                    id: 6,
+                    type: '主旨大意题',
+                    examSource: '📌 2024 全国甲卷 · Passage B (第27题)',
+                    originParagraphs: [
+                        'Animals can express their needs using a lot of ways. For instance, almost all animals have distinct vocals that they rely on to either ask for help, scare away any dangerous animals or look for shelter. But cats are special creatures who possess amazing vocalization skills. They are able to have entire conversations with humans using meows and you\'re able to interpret it. If a pet cat is hungry, it will keep meowing to attract attention and find food. However, when a cat is looking for affection, they tend to produce stretched and soft meows. Meowing starts as soon as a baby cat is brought to life and uses it to get the mother\'s attention and be fed.',
+                        'Cats have many heightened senses, but their sense of smell is quite impressive. They use their noses to assess their environment and look out for any signs of danger. They will sniff out specific areas before they choose a place to relax. However, another way the cats are able to distinguish between situations is by looking for familiar smells. Your cat will likely smell your face and store the smell in its memory and use it to recognize you in the future. That\'s why most pet cats are able to tell immediately if their owners were around any other cats, which they don\'t usually like.',
+                        'Dogs are known for their impressive fetching habit, but cats take this behavior up a notch. Many cats will find random objects outside and bring them to their owners. This is a very old habit that\'s been present in all kinds of predators. Cats bring gifts for their owners to show they love you. These adorable little hunters are just doing something that has been in their nature since the beginning of time. So just go along with it!'
+                    ],
+                    question: 'What is a suitable title for the text?',
+                    options: [
+                        'A. Tips on Finding a Smart Cat',
+                        'B. Understanding Your Cat\'s Behavior',
+                        'C. Have Fun with Your Cat',
+                        'D. How to Keep Your Cat Healthy'
+                    ],
+                    answer: 'B',
+                    keyword: 'suitable title',
+                    location: 'But cats are special creatures who possess amazing vocalization skills. ... Cats have many heightened senses, but their sense of smell is quite impressive. ... Dogs are known for their impressive fetching habit, but cats take this behavior up a notch.'
+                },
+                {
+                    id: 7,
+                    type: '主旨大意题',
+                    examSource: '📌 2025 全国一卷 · Passage C (第31题)',
+                    originParagraphs: [
+                        'While safety improvements might have been made to our streets in recent years, transport studies also show declines in pedestrian mobility, especially among young children. Many parents say there\'s too much traffic on the roads for their children to walk safely to school, so they pack them into the car instead.',
+                        'Dutch authors Thalia Verkade and Marco te Brömmelstroet are bothered by facts like these. In their new book Movement: How to Take Back Our Streets and Transform Our Lives, they call for a rethink of our streets and the role they play in our lives.',
+                        'Life on city streets started to change decades ago. Whole neighbourhoods were destroyed to make way for new road networks and kids had to play elsewhere. Some communities fought back. Most famously, a Canadian journalist who had moved her family to Manhattan in the early 1950s led a campaign to stop the destruction of her local park, Washington Square. Describing her alarm at its proposed replacement with an expressway, Jane Jacobs called on her mayor to champion "New York as a decent place to live, and not just rush through." Similar campaigns occurred in Australia in the late 1960s and 1970s as well.',
+                        'Although these campaigns were widespread, the reality is that the majority of the western cities were completely redesigned around the needs of the motor car. The number of cars on roads has been increasing rapidly. In Australia we now have over twenty million cars for just over twenty-six million people, among the highest rate of car ownership in the world.',
+                        'We invest a lot in roads that help us rush through, but we fail to account for the true costs. Do we really recognise what it costs us as a society when children can\'t move safely around our communities? The authors of Movement have it right: it\'s time to think differently about that street outside your front door.'
+                    ],
+                    question: 'What can be a suitable title for the text?',
+                    options: [
+                        'A. Why the Rush?',
+                        'B. What\'s Next?',
+                        'C. Where to Stay?',
+                        'D. Who to Blame?'
+                    ],
+                    answer: 'A',
+                    keyword: 'suitable title',
+                    location: 'Jane Jacobs called on her mayor to champion "New York as a decent place to live, and not just rush through." ... We invest a lot in roads that help us rush through, but we fail to account for the true costs.'
+                },
+                {
+                    id: 8,
+                    type: '主旨大意题',
+                    examSource: '📌 2022 新高考Ⅱ卷 · Passage C (第31题)',
+                    originParagraphs: [
+                        'Over the last seven years, most states have banned texting by drivers, and public service campaigns have tried a wide range of methods to persuade people to put down their phones when they are behind the wheel.',
+                        'Yet the problem, by just about any measure, appears to be getting worse. Americans are still texting while driving, as well as using social networks and taking photos. Road accidents, which had fallen for years, are now rising sharply.',
+                        'That is partly because people are driving more, but Mark Rosekind, the chief of the National Highway Traffic Safety Administration, said distracted driving was "only increasing, unfortunately."',
+                        '"Big change requires big ideas," he said in a speech last month, referring broadly to the need to improve road safety. So to try to change a distinctly modern behavior, lawmakers and public health experts are reaching back to an old approach: They want to treat distracted driving like drunk driving.',
+                        'An idea from lawmakers in New York is to give police officers a new device called the Textalyzer. It would work like this: An officer arriving at the scene of a crash could ask for the phones of the drivers and use the Textalyzer to check in the operating system for recent activity. The technology could determine whether a driver had just texted, emailed or done anything else that is not allowed under New York\'s hands-free driving laws.',
+                        '"We need something on the books that can change people\'s behavior," said Félix W. Ortiz, who pushed for the state\'s 2001 ban on hand-held devices by drivers. If the Textalyzer bill becomes law, he said, "people are going to be more afraid to put their hands on the cell phone."'
+                    ],
+                    question: 'What is a suitable title for the text?',
+                    options: [
+                        'A. To Drive or Not to Drive? Think Before You Start',
+                        'B. Texting and Driving? Watch Out for the Textalyzer',
+                        'C. New York Banning Hand-Held Devices by Drivers',
+                        'D. The Next Generation Cell Phone: The Textalyzer'
+                    ],
+                    answer: 'B',
+                    keyword: 'suitable title',
+                    location: 'An idea from lawmakers in New York is to give police officers a new device called the Textalyzer. ... "We need something on the books that can change people\'s behavior," ... If the Textalyzer bill becomes law, he said, "people are going to be more afraid to put their hands on the cell phone."'
+                },
+                {
+                    id: 9,
+                    type: '主旨大意题',
+                    examSource: '📌 2023 新课标Ⅱ卷 · Passage B (第27题)',
+                    originParagraphs: [
+                        'Turning soil, pulling weeds, and harvesting cabbage sound like tough work for middle and high school kids. And at first it is, says Abby Jaramillo, who with another teacher started Urban Sprouts, a school garden program at four low-income schools. The program aims to help students develop science skills, environmental awareness, and healthy lifestyles.',
+                        'Jaramillo\'s students live in neighborhoods where fresh food and green space are not easy to find and fast food restaurants outnumber grocery stores. "The kids literally come to school with bags of snacks and large bottles of soft drinks," she says. "They come to us thinking vegetables are awful, dirt is awful, insects are awful." Though some are initially scared of the insects and turned off by the dirt, most are eager to try something new.',
+                        'Urban Sprouts\' classes, at two middle schools and two high schools, include hands-on experiments such as soil testing, flower-and-seed dissection, tastings of fresh or dried produce, and work in the garden. Several times a year, students cook the vegetables they grow, and they occasionally make salads for their entire schools.',
+                        'Program evaluations show that kids eat more vegetables as a result of the classes. "We have students who say they went home and talked to their parents and now they\'re eating differently," Jaramillo says.',
+                        'She adds that the program\'s benefits go beyond nutrition. Some students get so interested in gardening that they bring home seeds to start their own vegetable gardens. Besides, working in the garden seems to have a calming effect on Jaramillo\'s special education students, many of whom have emotional control issues. "They get outside," she says, "and they feel successful."'
+                    ],
+                    question: 'What can be a suitable title for the text?',
+                    options: [
+                        'A. Rescuing School Gardens',
+                        'B. Experiencing Country Life',
+                        'C. Growing Vegetable Lovers',
+                        'D. Changing Local Landscape'
+                    ],
+                    answer: 'C',
+                    keyword: 'suitable title',
+                    location: 'The program aims to help students develop science skills, environmental awareness, and healthy lifestyles. ... Program evaluations show that kids eat more vegetables as a result of the classes. ... Some students get so interested in gardening that they bring home seeds to start their own vegetable gardens.'
+                },
+                // ********** 细节理解题 10道 **********
+                {
+                    id: 10,
+                    type: '细节理解题',
+                    examSource: '📌 2024 新课标I卷 · Passage A (第21题)',
+                    originParagraphs: [
+                        'Help restore and protect Marin\'s natural areas from the Marin Headlands to Bolinas Ridge. We\'ll explore beautiful park sites while conducting invasive plant removal, winter planting, and seed collection. Habitat Restoration Team volunteers play a vital role in restoring sensitive resources and protecting endangered species across the ridges and valleys.',
+                        'GROUPS: Groups of 5 or more require special arrangements and must be confirmed in advance. Please review the List of Available Projects and fill out the Group Project Request Form.',
+                        'AGE, SKILLS, WHAT TO BRING: Volunteers aged 10 and over are welcome. Read our Youth Policy Guidelines for youth under the age of 15. Bring your completed Volunteer Agreement Form. Volunteers under the age of 18 must have the parent/guardian approval section signed. We\'ll be working rain or shine. Wear clothes that can get dirty. Bring layers for changing weather and a raincoat if necessary. Bring a personal water bottle, sunscreen, and lunch. No experience necessary. Training and tools will be provided. Fulfills community service requirements.',
+                        'UPCOMING EVENTS: (表格略)'
+                    ],
+                    question: 'What is the aim of the Habitat Restoration Team?',
+                    options: [
+                        'A. To discover mineral resources.',
+                        'B. To develop new wildlife parks.',
+                        'C. To protect the local ecosystem.',
+                        'D. To conduct biological research.'
+                    ],
+                    answer: 'C',
+                    keyword: 'aim',
+                    location: 'Help restore and protect Marin\'s natural areas from the Marin Headlands to Bolinas Ridge. We\'ll explore beautiful park sites while conducting invasive plant removal, winter planting, and seed collection. Habitat Restoration Team volunteers play a vital role in restoring sensitive resources and protecting endangered species across the ridges and valleys.'
+                },
+                {
+                    id: 11,
+                    type: '细节理解题',
+                    examSource: '📌 2024 新课标Ⅱ卷 · Passage A (第21题)',
+                    originParagraphs: [
+                        'Choice of Walks for Beginner and Experienced Walkers',
+                        'The Carlow Autumn Walking Festival is a great opportunity for the beginner, experienced or advanced walker to enjoy the challenges of Carlow\'s mountain hikes or the peace of its woodland walks.',
+                        'Walk 1 - The Natural World: With environmentalist Eanna Lamhna as the guide, this walk promises to be an informative tour. Walkers are sure to learn lots about the habitats and natural world of the Blackstairs. Date and Time: Saturday, 1st October, at 9:00. Start Point: Scratoes Bridge. Walk Duration: 6 hours.',
+                        'Walk 2 - Introduction to Hillwalking: Emmanuel Chappard, an experienced guide, has a passion for making the great outdoors accessible to all. This mountain walk provides an insight into the skills required for hillwalking to ensure you get the most from future walking trips. Date and Time: Sunday, 2nd October, at 9:00. Start Point: Deerpark Car Park. Walk Duration: 5 hours.',
+                        'Walk 3 - Moonlight Under the Stars: Walking at night-time is a great way to step out of your comfort zone. Breathtaking views of the lowlands of Carlow can be enjoyed in the presence of welcoming guides from local walking clubs. A torch along with suitable clothing is essential for walking in the dark. Those who are dressed inappropriately will be refused permission to participate. Date and Time: Saturday, 1st October, at 18:30. Start Point: The Town Hall. Walk Duration: 3 hours.',
+                        'Walk 4 - Photographic Walk in Kilbrannish Forest: This informative walk led by Richard Smyth introduces you to the basic principles of photography in the wild. Bring along your camera and enjoy the wonderful views along this well-surfaced forest path. Date and Time: Sunday, 2nd October, at 11:45. Start Point: Kilbrannish Forest Recreation Area. Walk Duration: 1.5 hours.'
+                    ],
+                    question: 'Which walk takes the shortest time?',
+                    options: [
+                        'A. The Natural World.',
+                        'B. Introduction to Hillwalking.',
+                        'C. Moonlight Under the Stars.',
+                        'D. Photographic Walk in Kilbrannish Forest.'
+                    ],
+                    answer: 'D',
+                    keyword: 'shortest time',
+                    location: 'Walk Duration: 1.5 hours.'
+                },
+                {
+                    id: 12,
+                    type: '细节理解题',
+                    examSource: '📌 2023 新课标I卷 · Passage A (第21题)',
+                    originParagraphs: [
+                        'Welcome to Amsterdam, welcome to MacBike. You see much more from the seat of a bike! Cycling is the most economical, sustainable and fun way to explore the city, with its beautiful canals, parks, squares and countless lights. You can also bike along lovely landscapes outside of Amsterdam.',
+                        'Why MacBike: MacBike has been around for almost 30 years and is the biggest bicycle rental company in Amsterdam. With over 2,500 bikes stored in our five rental shops at strategic locations, we make sure there is always a bike available for you. We offer the newest bicycles in a wide variety, including basic bikes with foot brake, bikes with hand brake and gears, bikes with child seats, and children\'s bikes.',
+                        'Prices: (表格)',
+                        'Guided City Tours: The 2.5-hour tour covers the Gooyer Windmill, the Skinny Bridge, the Rijksmuseum, Heineken Brewery and much more. The tour departs from Dam Square every hour on the hour, starting at 1:00 pm every day. You can buy your ticket in a MacBike shop or book online.'
+                    ],
+                    question: 'What is an advantage of MacBike?',
+                    options: [
+                        'A. It gives children a discount.',
+                        'B. It offers many types of bikes.',
+                        'C. It organizes free cycle tours.',
+                        'D. It has over 2,500 rental shops.'
+                    ],
+                    answer: 'B',
+                    keyword: 'advantage',
+                    location: 'We offer the newest bicycles in a wide variety, including basic bikes with foot brake, bikes with hand brake and gears, bikes with child seats, and children\'s bikes.'
+                },
+                {
+                    id: 13,
+                    type: '细节理解题',
+                    examSource: '📌 2022 新高考I卷 · Passage A (第21题)',
+                    originParagraphs: [
+                        'Grading Policies for Introduction to Literature',
+                        'Grading Scale: 90-100, A; 80-89, B; 70-79, C; 60-69, D; Below 60, E.',
+                        'Essays (60%): Your four major essays will combine to form the main part of the grade for this course: Essay 1=10%; Essay 2=15%; Essay 3=15%; Essay 4=20%.',
+                        'Group Assignments (30%): Students will work in groups to complete four assignments during the course. All the assignments will be submitted by the assigned date through Blackboard, our online learning and course management system.',
+                        'Daily Work/In-Class Writings and Tests/Group Work/Homework (10%): Class activities will vary from day to day, but students must be ready to complete short in-class writings or tests drawn directly from assigned readings or notes from the previous class\' lecture/discussion, so it is important to take careful notes during class. Additionally, from time to time I will assign group work to be completed in class or short assignments to be completed at home, both of which will be graded.',
+                        'Late Work: An essay not submitted in class on the due date will lose a letter grade for each class period it is late. If it is not turned in by the 4th day after the due date, it will earn a zero. Daily assignments not completed during class will get a zero. Short writings missed as a result of an excused absence will be accepted.'
+                    ],
+                    question: 'Where is this text probably taken from?',
+                    options: [
+                        'A. A textbook.',
+                        'B. An exam paper.',
+                        'C. A course plan.',
+                        'D. An academic article.'
+                    ],
+                    answer: 'C',
+                    keyword: 'taken from',
+                    location: 'Grading Policies for Introduction to Literature ... Grading Scale ... Essays (60%) ... Group Assignments (30%) ... Daily Work/In-Class Writings and Tests/Group Work/Homework (10%) ... Late Work'
+                },
+                {
+                    id: 14,
+                    type: '细节理解题',
+                    examSource: '📌 2022 全国甲卷 · Passage A (第21题)',
+                    originParagraphs: [
+                        'Theatres and Entertainment',
+                        'St David\'s Hall: St David\'s Hall is the award winning National Concert Hall of Wales standing at the very heart of Cardiff\'s entertainment centre. With an impressive 2,000-seat concert hall, St David\'s Hall is home to the annual Welsh Proms Cardiff. It presents live entertainment, including pop, rock, folk, jazz, musicals, dance, world music, films and classical music. The Hayes, Cardiff CF10 1AH www.stdavidshallcardiff.co.uk',
+                        'The Glee Club: Every weekend this is "Wales" premier comedy club where having a great time is the order for both audiences and comedy stars alike. It is hard to name a comedy star who hasn\'t been on the stage here. If you are looking for the best comedies on tour and brilliant live music, you should start here. Mermaid Quay, Cardiff Bay, Cardiff CF10 5BZ www.glee.co.uk/cardiff',
+                        'Sherman Cymru: Sherman Cymru\'s theatre in the Cathays area of Cardiff reopened in February 2012. This special building is a place in which theatre is made and where children, artists, writers and anyone else have the opportunity to do creative things. Sherman Cymru is excited to present a packed programme of the very best theatre, dance, family shows and music from Wales and the rest of the world. Senghennydd Road, Cardiff CF24 4YE www.shermancymru.co.uk',
+                        'New Theatre: The New Theatre has been the home of quality drama, musicals, dance and children\'s shows for more than 100 years. Presenting the best of the West End along with the pick of the UK\'s touring shows, the New Theatre is Cardiff\'s oldest surviving traditional theatre. Be sure to pay a visit as part of your stay in the city. Park Place, Cardiff CF10 3LN www.newtheatrecardiff.co.uk'
+                    ],
+                    question: 'Where is the Welsh Proms Cardiff hosted?',
+                    options: [
+                        'A. At the New Theatre.',
+                        'B. At the Glee Club.',
+                        'C. At Sherman Cymru.',
+                        'D. At St David\'s Hall.'
+                    ],
+                    answer: 'D',
+                    keyword: 'Welsh Proms Cardiff',
+                    location: 'St David\'s Hall is home to the annual Welsh Proms Cardiff.'
+                },
+                {
+                    id: 15,
+                    type: '细节理解题',
+                    examSource: '📌 2023 全国甲卷 · Passage A (第21题)',
+                    originParagraphs: [
+                        'Where to Eat in Bangkok',
+                        'Bangkok is a highly desirable destination for food lovers. It has a seemingly bottomless well of dining options. Here are some suggestions on where to start your Bangkok eating adventure.',
+                        'Nahm: Offering Thai fine dining, Nahm provides the best of Bangkok culinary experiences. It\'s the only Thai restaurant that ranks among the top 10 of the world\'s 50 best restaurants list. Head Chef David Thompson, who received a Michelin star for his London-based Thai restaurant of the same name, opened this branch in the Metropolitan Hotel in 2010.',
+                        'Issaya Siamese Club: Issaya Siamese Club is internationally known Thai Chef Ian Kittichai\'s first flagship Bangkok restaurant. The menu in this beautiful colonial house includes traditional Thai cuisine combined with modern cooking methods.',
+                        'Bo.lan: Bo.lan has been making waves in Bangkok\'s culinary scene since it opened in 2009. Serving hard-to-find Thai dishes in an elegant atmosphere, the restaurant is true to Thai cuisine\'s roots, yet still manages to add a special twist. This place is good for a candle-lit dinner or a work meeting with colleagues who appreciate fine food. For those extremely hungry, there\'s a large set menu.',
+                        'Gaggan: Earning first place on the latest "Asia\'s 50 best restaurants" list, progressive Indian restaurant Gaggan is one of the most exciting venues to arrive in Bangkok in recent years. The best table in this two-story colonial Thai home offers a window right into the kitchen, where you can see chef Gaggan and his staff in action. Culinary theater at its best.'
+                    ],
+                    question: 'What do Nahm and Issaya Siamese Club have in common?',
+                    options: [
+                        'A. They adopt modern cooking methods.',
+                        'B. They have branches in London.',
+                        'C. They have top-class chefs.',
+                        'D. They are based in hotels.'
+                    ],
+                    answer: 'C',
+                    keyword: 'in common',
+                    location: 'Head Chef David Thompson ... internationally known Thai Chef Ian Kittichai'
+                },
+                {
+                    id: 16,
+                    type: '细节理解题',
+                    examSource: '📌 2024 全国甲卷 · Passage A (第21题)',
+                    originParagraphs: [
+                        'Each ARTS FIRST festival is a unique annual celebration of the Harvard community\'s artistic creativity. We invite you to join us for the coming ARTS FIRST. We look forward to welcoming you as we showcase the creativity of the Harvard arts community through performances, art exhibitions and art-making activities. The festival is a public event for Harvard and community members of all ages.',
+                        'Light Awash in Watercolor: Learn about the materials and qualities of watercolor paint with experts from the Harvard Art Museums Materials Lab. Try your hand at some of the painting tricks used by artists whose works will be in the upcoming exhibition of American Watercolors, 1880-1990: Into the Light.',
+                        'Spineless Artists: Invertebrate Creativity: From webs to cocoons, invertebrates create some of nature\'s most delicate and beautiful designs. Join Javier Marin from the Harvard Museum of Natural History to learn how insects and other invertebrates dance, inspire fashion and create art, while making your own spineless artists out of craft materials.',
+                        'Wheel Throwing: Join instructors from the Ceramics Program and great potters from Quincy, Cabot and Mather Houses for demonstrations using the potter\'s wheel. Then create your own masterpiece!',
+                        'Knitting and Pom-Pom Making: Join the Harvard Undergraduate Knitting Circle to make pom-poms and tassels out of thread, or pick up a pair of needles and learn to knit.'
+                    ],
+                    question: 'What do we know about ARTS FIRST?',
+                    options: [
+                        'A. It is an exhibition of oil paintings.',
+                        'B. It offers art courses for all ages.',
+                        'C. It presents recreational activities.',
+                        'D. It is a major tourist attraction.'
+                    ],
+                    answer: 'C',
+                    keyword: 'ARTS FIRST',
+                    location: 'We look forward to welcoming you as we showcase the creativity of the Harvard arts community through performances, art exhibitions and art-making activities.'
+                },
+                {
+                    id: 17,
+                    type: '细节理解题',
+                    examSource: '📌 2025 全国二卷 · Passage A (第21题)',
+                    originParagraphs: [
+                        'English Market Towns to Visit in the UK',
+                        'English market towns come in many shapes and sizes. Each has a personality shaped by the goods and services produced and traded for centuries. But each town has more to do than shop.',
+                        'Hereford, Herefordshire: Hereford has remained a lively market town since 1189. Skirting the town square, you\'ll find lovely shops, eateries, and the Black and White House Museum. The Hereford Cathedral is the most impressive building in town. It\'s also home to an ancient library. One of the four original copies of the Magna Carta is displayed there.',
+                        'Ludlow, Shropshire: Ludlow is known as the Foodie Center of England. Butcher shops, greengrocers, bakeries, and cheese shops line the town square. Bordering the square, the Ludlow Castle is a "must explore" medieval stronghold. The three-day Ludlow Food Festival is held each September.',
+                        'Shrewsbury, Shropshire: Getting to Shrewsbury Town Center from London is challenging but worth the anxiety. The River Severn has a significant turn through town, almost making an island of Shrewsbury Town Center. The shape creates a perfect market where goods could be shipped and received using the river as a highway. Flowers are everywhere — hanging baskets, window boxes, and planters — just what you imagine in an attractive English market town.',
+                        'Mevagissey, Cornwall: Even if you haven\'t been to the small fishing village Mevagissey, you\'ve probably seen it in a movie or British TV show. The working harbor took shape in 1774. Fishermen go out to sea daily and sell their fish in harbor-side markets. Don\'t leave the harbor without a traditional Cornish pie. It\'s delicious.'
+                    ],
+                    question: 'Where can you find an original copy of the Magna Carta?',
+                    options: [
+                        'A. In the Ludlow Castle.',
+                        'B. In the Foodie Center of England.',
+                        'C. In the Hereford Cathedral.',
+                        'D. In the Black and White House Museum.'
+                    ],
+                    answer: 'C',
+                    keyword: 'original copy of the Magna Carta',
+                    location: 'The Hereford Cathedral is the most impressive building in town. It\'s also home to an ancient library. One of the four original copies of the Magna Carta is displayed there.'
+                },
+                {
+                    id: 18,
+                    type: '细节理解题',
+                    examSource: '📌 2022 全国乙卷 · Passage A (第21题)',
+                    originParagraphs: [
+                        'Henry Raeburn (1756-1823)',
+                        'The Exhibition: This exhibition of some sixty masterpieces celebrating the life and work of Scotland\'s best loved painter, Sir Henry Raeburn, comes to London. Selected from collections throughout the world, it is the first major exhibition of his work to be held in over forty years.',
+                        'Lecture Series: Scottish National Portrait Gallery presents a series of lectures for the general public. They are held in the Lecture Room. Admission to lectures is free.',
+                        'Exhibition Times: Monday-Saturday 10.00-17.45 Sunday 12.00-17.45 Last admission to the exhibition: 17.15. There is no re-admission. Closed: 24-26 December and 1 January',
+                        'Admission: £4. Children under 12 years accompanied by an adult are admitted free.',
+                        'Schools and Colleges: A special low entrance charge of £2 per person is available to all in full-time education, up to and including those at first degree level, in organised groups with teachers.'
+                    ],
+                    question: 'What is the right time for attending Raeburn\'s English Contemporaries?',
+                    options: [
+                        'A. Sun. 26 Oct.',
+                        'B. Thurs. 30 Oct.',
+                        'C. Thurs. 6 Nov.',
+                        'D. Thurs. 13 Nov.'
+                    ],
+                    answer: 'B',
+                    keyword: 'Raeburn\'s English Contemporaries',
+                    location: 'Raeburn\'s English Contemporaries Thursday 30 Oct., 13.10'
+                },
+                {
+                    id: 19,
+                    type: '细节理解题',
+                    examSource: '📌 2023 新课标Ⅱ卷 · Passage A (第21题)',
+                    originParagraphs: [
+                        'Yellowstone National Park offers a variety of ranger programs throughout the park, and throughout the year. The following are descriptions of the ranger programs this summer.',
+                        'Experiencing Wildlife in Yellowstone (May 26 to September 2): Whether you\'re hiking a backcountry trail, camping, or just enjoying the park\'s amazing wildlife from the road, this quick workshop is for you and your family. Learn where to look for animals and how to safely enjoy your wildlife watching experience. Meet at the Canyon Village Store.',
+                        'Junior Ranger Wildlife Olympics (June 5 to August 21): Kids can test their skills and compare their abilities to the animals of Yellowstone. Stay for as little or as long as your plans allow. Meet in front of the Visitor Education Center.',
+                        'Canyon Talks at Artist Point (June 9 to September 2): From a classic viewpoint, enjoy Lower Falls, the Yellowstone River, and the breathtaking colors of the canyon while learning about the area\'s natural and human history. Discover why artists and photographers continue to be drawn to this special place. Meet on the lower platform at Artist Point on the South Rim Drive for this short talk.',
+                        'Photography Workshops (June 19 & July 10): Enhance your photography skills — join Yellowstone\'s park photographer for a hands-on program to inspire new and creative ways of enjoying the beauty and wonder of Yellowstone. 6/19 — Waterfalls & Wide Angles: meet at Artist Point. 7/10 — Wildflowers & White Balance: meet at Washburn Trailhead in Chittenden parking area.'
+                    ],
+                    question: 'Which of the four programs begins the earliest?',
+                    options: [
+                        'A. Photography Workshops.',
+                        'B. Junior Ranger Wildlife Olympics.',
+                        'C. Canyon Talks at Artist Point.',
+                        'D. Experiencing Wildlife in Yellowstone.'
+                    ],
+                    answer: 'D',
+                    keyword: 'begins the earliest',
+                    location: 'Experiencing Wildlife in Yellowstone (May 26 to September 2)'
+                },
+                // ********** 词义猜测题 10道 **********
+                {
+                    id: 20,
+                    type: '词义猜测题',
+                    examSource: '📌 2024 新课标I卷 · Passage C (第28题)',
+                    originParagraphs: [
+                        'Is comprehension the same whether a person reads a text onscreen or on paper? And are listening to and viewing content as effective as reading the written word when covering the same material? The answers to both questions are often "no." The reasons relate to a variety of factors, including reduced concentration, an entertainment mindset and a tendency to multitask while consuming digital content.',
+                        'When reading texts of several hundred words or more, learning is generally more successful when it\'s on paper than onscreen. A large amount of research confirms this finding. The benefits of print reading particularly shine through when experimenters move from posing simple tasks — like identifying the main idea in a reading passage — to ones that require mental abstraction — such as drawing inferences from a text.',
+                        'The differences between print and digital reading results are partly related to paper\'s physical properties. With paper, there is a literal laying on of hands, along with the visual geography of distinct pages. People often link their memory of what they\'ve read to how far into the book it was or where it was on the page.'
+                    ],
+                    question: 'What does the underlined phrase "shine through" in paragraph 2 mean?',
+                    options: [
+                        'A. Seem unlikely to last.',
+                        'B. Seem hard to explain.',
+                        'C. Become ready to use.',
+                        'D. Become easy to notice.'
+                    ],
+                    answer: 'D',
+                    keyword: 'shine through',
+                    location: 'The benefits of print reading particularly shine through when experimenters move from posing simple tasks — like identifying the main idea in a reading passage — to ones that require mental abstraction — such as drawing inferences from a text.'
+                },
+                {
+                    id: 21,
+                    type: '词义猜测题',
+                    examSource: '📌 2022 全国甲卷 · Passage C (第28题)',
+                    originParagraphs: [
+                        'As Ginni Bazlinton reached Antarctica, she found herself greeted by a group of little Gentoo penguins longing to say hello. These gentle, lovely gatekeepers welcomed her and kick-started what was to be a trip Ginni would never forget.',
+                        'Ever since her childhood, Ginni, now 71, has had a deep love for travel. Throughout her career as a professional dancer, she toured in the UK, but always longed to explore further. When she retired from dancing and her sons eventually flew the nest, she decided it was time to take the plunge.',
+                        'After taking a degree at Chichester University in Related Arts, Ginni began to travel the world, eventually getting work teaching English in Japan and Chile. And it was in Chile she discovered she could get last-minute cheap deals on ships going to Antarctica from the islands off Tierra del Fuego, the southernmost tip of the South American mainland.'
+                    ],
+                    question: 'Which of the following best explains "take the plunge" underlined in paragraph 2?',
+                    options: [
+                        'A. Try challenging things.',
+                        'B. Take a degree.',
+                        'C. Bring back lost memories.',
+                        'D. Stick to a promise.'
+                    ],
+                    answer: 'A',
+                    keyword: 'take the plunge',
+                    location: 'When she retired from dancing and her sons eventually flew the nest, she decided it was time to take the plunge.'
+                },
+                {
+                    id: 22,
+                    type: '词义猜测题',
+                    examSource: '📌 2023 新课标I卷 · Passage C (第29题)',
+                    originParagraphs: [
+                        'The goal of this book is to make the case for digital minimalism, including a detailed exploration of what it asks and why it works, and then to teach you how to adopt this philosophy if you decide it\'s right for you.',
+                        'To do so, I divided the book into two parts. In part one, I describe the philosophical foundations of digital minimalism, starting with an examination of the forces that are making so many people\'s digital lives increasingly intolerable, before moving on to a detailed discussion of the digital minimalism philosophy.',
+                        'Part one concludes by introducing my suggested method for adopting this philosophy: the digital declutter. This process requires you to step away from optional online activities for thirty days. At the end of the thirty days, you will then add back a small number of carefully chosen online activities that you believe will provide massive benefits to the things you value.',
+                        'In the final chapter of part one, I\'ll guide you through carrying out your own digital declutter. In doing so, I\'ll draw on an experiment I ran in 2018 in which over 1,600 people agreed to perform a digital declutter. You\'ll hear these participants\' stories and learn what strategies worked well for them, and what traps they encountered that you should avoid.',
+                        'The second part of this book takes a closer look at some ideas that will help you cultivate a sustainable digital minimalism lifestyle. In these chapters, I examine issues such as the importance of solitude and the necessity of cultivating high-quality leisure to replace the time most now spend on mindless device use. Each chapter concludes with a collection of practices, which are designed to help you act on the big ideas of the chapter. You can view these practices as a toolbox meant to aid your efforts to build a minimalist lifestyle that works for your particular circumstances.'
+                    ],
+                    question: 'What does the underlined word "declutter" in paragraph 3 mean?',
+                    options: [
+                        'A. Clear-up.',
+                        'B. Add-on.',
+                        'C. Check-in.',
+                        'D. Take-over.'
+                    ],
+                    answer: 'A',
+                    keyword: 'declutter',
+                    location: 'This process requires you to step away from optional online activities for thirty days.'
+                },
+                {
+                    id: 23,
+                    type: '词义猜测题',
+                    examSource: '📌 2024 新课标Ⅱ卷 · Passage D (第32题)',
+                    originParagraphs: [
+                        'Given the astonishing potential of AI to transform our lives, we all need to take action to deal with our AI-powered future, and this is where AI by Design: A Plan for Living with Artificial Intelligence comes in. This absorbing new book by Catriona Campbell is a practical roadmap addressing the challenges posed by the forthcoming AI revolution.',
+                        'In the wrong hands, such a book could prove as complicated to process as the computer code that powers AI but, thankfully, Campbell has more than two decades\' professional experience translating the heady into the understandable. She writes from the practical angle of a business person rather than as an academic, making for a guide which is highly accessible and informative and which, by the close, will make you feel almost as smart as AI.',
+                        'As we soon come to learn from AI by Design, AI is already super-smart and will become more capable, moving from the current generation of "narrow-AI" to Artificial General Intelligence. From there, Campbell says, will come Artificial Dominant Intelligence. This is why Campbell has set out to raise awareness of AI and its future now — several decades before these developments are expected to take place. She says it is essential that we keep control of artificial intelligence, or risk being sidelined and perhaps even worse.',
+                        'Campbell\'s point is to wake up those responsible for AI — the technology companies and world leaders — so they are on the same page as all the experts currently developing it. She explains we are at a "tipping point" in history and must act now to prevent an extinction-level event for humanity. We need to consider how we want our future with AI to pan out. Such structured thinking, followed by global regulation, will enable us to achieve greatness rather than our downfall.',
+                        'AI will affect us all, and if you only read one book on the subject, this is it.'
+                    ],
+                    question: 'What does the phrase "In the wrong hands" in paragraph 2 probably mean?',
+                    options: [
+                        'A. If read by someone poorly educated.',
+                        'B. If reviewed by someone ill-intentioned.',
+                        'C. If written by someone less competent.',
+                        'D. If translated by someone unacademic.'
+                    ],
+                    answer: 'C',
+                    keyword: 'In the wrong hands',
+                    location: 'In the wrong hands, such a book could prove as complicated to process as the computer code that powers AI but, thankfully, Campbell has more than two decades\' professional experience translating the heady into the understandable.'
+                },
+                {
+                    id: 24,
+                    type: '词义猜测题',
+                    examSource: '📌 2022 新高考Ⅱ卷 · Passage C (第30题)',
+                    originParagraphs: [
+                        'Over the last seven years, most states have banned texting by drivers, and public service campaigns have tried a wide range of methods to persuade people to put down their phones when they are behind the wheel.',
+                        'Yet the problem, by just about any measure, appears to be getting worse. Americans are still texting while driving, as well as using social networks and taking photos. Road accidents, which had fallen for years, are now rising sharply.',
+                        'That is partly because people are driving more, but Mark Rosekind, the chief of the National Highway Traffic Safety Administration, said distracted driving was "only increasing, unfortunately."',
+                        '"Big change requires big ideas," he said in a speech last month, referring broadly to the need to improve road safety. So to try to change a distinctly modern behavior, lawmakers and public health experts are reaching back to an old approach: They want to treat distracted driving like drunk driving.',
+                        'An idea from lawmakers in New York is to give police officers a new device called the Textalyzer. It would work like this: An officer arriving at the scene of a crash could ask for the phones of the drivers and use the Textalyzer to check in the operating system for recent activity. The technology could determine whether a driver had just texted, emailed or done anything else that is not allowed under New York\'s hands-free driving laws.',
+                        '"We need something on the books that can change people\'s behavior," said Félix W. Ortiz, who pushed for the state\'s 2001 ban on hand-held devices by drivers. If the Textalyzer bill becomes law, he said, "people are going to be more afraid to put their hands on the cell phone."'
+                    ],
+                    question: 'What does the underlined word "something" in the last paragraph refer to?',
+                    options: [
+                        'A. Advice.',
+                        'B. Data.',
+                        'C. Tests.',
+                        'D. Laws.'
+                    ],
+                    answer: 'D',
+                    keyword: 'something',
+                    location: '"We need something on the books that can change people\'s behavior," ... If the Textalyzer bill becomes law, he said, "people are going to be more afraid to put their hands on the cell phone."'
+                },
+                {
+                    id: 25,
+                    type: '词义猜测题',
+                    examSource: '📌 2023 全国乙卷 · Passage D (第34题)',
+                    originParagraphs: [
+                        'If you want to tell the history of the whole world, a history that does not privilege one part of humanity, you cannot do it through texts alone, because only some of the world has ever had texts, while most of the world, for most of the time, has not. Writing is one of humanity\'s later achievements, and until fairly recently even many literate societies recorded their concerns not only in writing but in things.',
+                        'Ideally a history would bring together texts and objects, and some chapters of this book are able to do just that, but in many cases we simply can\'t. The clearest example of this between literate and non-literate history is perhaps the first conflict, at Botany Bay, between Captain Cook\'s voyage and the Australian Aboriginals. From the English side, we have scientific reports and the captain\'s record of that terrible day. From the Australian side, we have only a wooden shield dropped by a man in flight after his first experience of gunshot. If we want to reconstruct what was actually going on that day, the shield must be questioned and interpreted as deeply and strictly as the written reports.',
+                        'In addition to the problem of miscomprehension from both sides, there are victories accidentally or deliberately twisted, especially when only the victors know how to write. Those who are on the losing side often have only their things to tell their stories. The Caribbean Taino, the Australian Aboriginals, the African people of Benin and the Incas, all of whom appear in this book, can speak to us now of their past achievements most powerfully through the objects they made: a history told through things gives them back a voice. When we consider contact between literate and non-literate societies such as these, all our first-hand accounts are necessarily twisted, only one half of a dialogue. If we are to find the other half of that conversation, we have to read not just the texts, but the objects.'
+                    ],
+                    question: 'What does the underlined word "conversation" in paragraph 3 refer to?',
+                    options: [
+                        'A. Problem.',
+                        'B. History.',
+                        'C. Voice.',
+                        'D. Society.'
+                    ],
+                    answer: 'B',
+                    keyword: 'conversation',
+                    location: 'If we are to find the other half of that conversation, we have to read not just the texts, but the objects.'
+                },
+                {
+                    id: 26,
+                    type: '词义猜测题',
+                    examSource: '📌 2022 全国乙卷 · Passage C (第29题)',
+                    originParagraphs: [
+                        'Can a small group of drones guarantee the safety and reliability of railways and, at the same time, help railway operators save billions of euros each year? That is the very likely future of applying today\'s "eyes in the sky" technology to making sure that the millions of kilometres of rail tracks and infrastructure worldwide are safe for trains on a 24/7 basis.',
+                        'Drones are already being used to examine high-tension electrical lines. They could do precisely the same thing to inspect railway lines and other vital aspects of rail infrastructure such as the correct position of railway tracks and switching points. The more regularly they can be inspected, the more railway safety, reliability and on-time performance will be improved. Costs would be cut and operations would be more efficient across the board.',
+                        'That includes huge savings in maintenance costs and better protection of railway personnel safety. It is calculated that European railways alone spend approximately 20 billion euros a year on maintenance, including sending maintenance staff, often at night, to inspect and repair the rail infrastructure. That can be dangerous work that could be avoided with drones assisting the crews\' efforts.',
+                        'By using the latest technologies, drones could also start providing higher-value services for railways, detecting faults in the rail or switches, before they can cause any safety problems. To perform these tasks, drones for rail don\'t need to be flying overhead. Engineers are now working on a new concept: the rail drones of the future. They will be moving on the track ahead of the train, and programmed to run autonomously. Very small drones with advanced sensors and AI and travelling ahead of the train could guide it like a co-pilot. With their ability to see ahead, they could signal any problem, so that fast-moving trains would be able to react in time.'
+                    ],
+                    question: 'What does "maintenance" underlined in paragraph 3 refer to?',
+                    options: [
+                        'A. Personnel safety.',
+                        'B. Assistance from drones.',
+                        'C. Inspection and repair.',
+                        'D. Construction of infrastructure.'
+                    ],
+                    answer: 'C',
+                    keyword: 'maintenance',
+                    location: 'It is calculated that European railways alone spend approximately 20 billion euros a year on maintenance, including sending maintenance staff, often at night, to inspect and repair the rail infrastructure.'
+                },
+                {
+                    id: 27,
+                    type: '词义猜测题',
+                    examSource: '📌 2024 全国甲卷 · Passage B (第26题)',
+                    originParagraphs: [
+                        'Animals can express their needs using a lot of ways. For instance, almost all animals have distinct vocals that they rely on to either ask for help, scare away any dangerous animals or look for shelter. But cats are special creatures who possess amazing vocalization skills. They are able to have entire conversations with humans using meows and you\'re able to interpret it. If a pet cat is hungry, it will keep meowing to attract attention and find food. However, when a cat is looking for affection, they tend to produce stretched and soft meows. Meowing starts as soon as a baby cat is brought to life and uses it to get the mother\'s attention and be fed.',
+                        'Cats have many heightened senses, but their sense of smell is quite impressive. They use their noses to assess their environment and look out for any signs of danger. They will sniff out specific areas before they choose a place to relax. However, another way the cats are able to distinguish between situations is by looking for familiar smells. Your cat will likely smell your face and store the smell in its memory and use it to recognize you in the future. That\'s why most pet cats are able to tell immediately if their owners were around any other cats, which they don\'t usually like.',
+                        'Dogs are known for their impressive fetching habit, but cats take this behavior up a notch. Many cats will find random objects outside and bring them to their owners. This is a very old habit that\'s been present in all kinds of predators. Cats bring gifts for their owners to show they love you. These adorable little hunters are just doing something that has been in their nature since the beginning of time. So just go along with it!'
+                    ],
+                    question: 'Which best explains the phrase "take... up a notch" in paragraph 3?',
+                    options: [
+                        'A. Perform appropriately.',
+                        'B. Move faster.',
+                        'C. Act strangely.',
+                        'D. Do better.'
+                    ],
+                    answer: 'D',
+                    keyword: 'take... up a notch',
+                    location: 'Dogs are known for their impressive fetching habit, but cats take this behavior up a notch. Many cats will find random objects outside and bring them to their owners. ... Cats bring gifts for their owners to show they love you.'
+                },
+                {
+                    id: 28,
+                    type: '词义猜测题',
+                    examSource: '📌 2022 新高考I卷 · Passage C (第30题)',
+                    originParagraphs: [
+                        'The elderly residents in care homes in London are being given hens to look after to stop them feeling lonely.',
+                        'The project was dreamed up by a local charity to reduce loneliness and improve elderly people\'s wellbeing. It is also being used to help patients suffering dementia, a serious illness of the mind. Staff in care homes have reported a reduction in the use of medicine where hens are in use.',
+                        'Among those taking part in the project is 80-year-old Ruth Xavier. She said: "I used to keep hens when I was younger and had to prepare their breakfast each morning before I went to school. I like the project a lot. I am down there in my wheelchair in the morning letting the hens out and down there again at night to see they\'ve gone to bed. It\'s good to have a different focus. People have been bringing their children in to see the hens and residents come and sit outside to watch them. I\'m enjoying the creative activities, and it feels great to have done something useful."',
+                        'There are now 700 elderly people looking after hens in 20 care homes in the North East, and the charity has been given financial support to roll it out countrywide.',
+                        'Wendy Wilson, extra care manager at 60 Penfold Street, one of the first to embark on the project, said: "Residents really welcome the idea of the project and the creative sessions. We are looking forward to the benefits and fun the project can bring to people here."',
+                        'Lynn Lewis, director of Notting Hill Pathways, said: "We are happy to be taking part in the project. It will really help connect our residents through a shared interest and creative activities."'
+                    ],
+                    question: 'What do the underlined words "embark on" mean in paragraph 7?',
+                    options: [
+                        'A. Improve.',
+                        'B. Oppose.',
+                        'C. Begin.',
+                        'D. Evaluate.'
+                    ],
+                    answer: 'C',
+                    keyword: 'embark on',
+                    location: 'Wendy Wilson, extra care manager at 60 Penfold Street, one of the first to embark on the project, said: "Residents really welcome the idea of the project and the creative sessions."'
+                },
+                {
+                    id: 29,
+                    type: '词义猜测题',
+                    examSource: '📌 2022 新高考Ⅱ卷 · Passage B (第24题)',
+                    originParagraphs: [
+                        'We journalists live in a new age of storytelling, with many new multimedia tools. Many young people don\'t even realize it\'s new. For them, it\'s just normal.',
+                        'This hit home for me as I was sitting with my 2-year-old grandson on a sofa over the Spring Festival holiday. I had brought a children\'s book to read. It had simple words and colorful pictures — a perfect match for his age.',
+                        'Picture this: my grandson sitting on my lap as I hold the book in front so he can see the pictures. As I read, he reaches out and pokes the page with his finger.',
+                        'What\'s up with that? He just likes the pictures, I thought. Then I turned the page and continued. He poked the page even harder. I nearly dropped the book. I was confused: Is there something wrong with this kid?',
+                        'Then I realized what was happening. He was actually a stranger to books. His father frequently amused the boy with a tablet computer which was loaded with colorful pictures that come alive when you poke them. He thought my storybook was like that.',
+                        'Sorry, kid. This book is not part of your high-tech world. It\'s an outdated, lifeless thing. An antique, like your grandfather.',
+                        'Well, I may be old, but I\'m not hopelessly challenged, digitally speaking. I edit video and produce audio. I use mobile payment. I\'ve even built websites.',
+                        'There\'s one notable gap in my new-media experience, however: I\'ve spent little time in front of a camera, since I have a face made for radio. But that didn\'t stop China Daily from asking me last week to share a personal story for a video project about the integration of Beijing, Tianjin and Hebei province.',
+                        'Anyway, grandpa is now an internet star — two minutes of fame! I promise not to let it go to my head. But I will make sure my 2-year-old grandson sees it on his tablet.'
+                    ],
+                    question: 'What do the underlined words "hit home for me" mean in paragraph 2?',
+                    options: [
+                        'A. Provided shelter for me.',
+                        'B. Became very clear to me.',
+                        'C. Took the pressure off me.',
+                        'D. Worked quite well on me.'
+                    ],
+                    answer: 'B',
+                    keyword: 'hit home for me',
+                    location: 'This hit home for me as I was sitting with my 2-year-old grandson on a sofa over the Spring Festival holiday.'
+                },
+                // ********** 推理判断题 10道 **********
+                {
+                    id: 30,
+                    type: '推理判断题',
+                    examSource: '📌 2024 新课标I卷 · Passage B (第25题)',
+                    originParagraphs: [
+                        '"I am not crazy," says Dr. William Farber, shortly after performing acupuncture on a rabbit. "I am ahead of my time." If he seems a little defensive, it might be because even some of his coworkers occasionally laugh at his unusual methods. But Farber is certain he\'ll have the last laugh. He\'s one of a small but growing number of American veterinarians now practicing "holistic" medicine — combining traditional Western treatments with acupuncture, chiropractic and herbal medicine.',
+                        'Farber, a graduate of Colorado State University, started out as a more conventional veterinarian. He became interested in alterative treatments 20 years ago when he suffered from terrible back pain. He tried muscle-relaxing drugs but found little relief. Then he tried acupuncture, an ancient Chinese practice, and was amazed that he improved after two or three treatments. What worked on a veterinarian seemed likely to work on his patients. So, after studying the techniques for a couple of years, he began offering them to pets.',
+                        'Leigh Tindale\'s dog Charlie had a serious heart condition. After Charlie had a heart attack, Tindale says, she was prepared to put him to sleep, but Farber\'s treatments eased her dog\'s suffering so much that she was able to keep him alive for an additional five months. And Priscilla Dewing reports that her horse, Nappy, "moves more easily and rides more comfortably" after a chiropractic adjustment.',
+                        'Farber is certain that the holistic approach will grow more popular with time, and if the past is any indication, he may be right: Since 1982, membership in the American Holistic Veterinary Medical Association has grown from 30 to over 700. "Sometimes it surprises me that it works so well," he says. "I will do anything to help an animal. That\'s my job."'
+                    ],
+                    question: 'Why did Farber decide to try acupuncture on pets?',
+                    options: [
+                        'A. He was trained in it at university.',
+                        'B. He was inspired by another veterinarian.',
+                        'C. He benefited from it as a patient.',
+                        'D. He wanted to save money for pet owners.'
+                    ],
+                    answer: 'C',
+                    keyword: 'Why did Farber decide to try acupuncture',
+                    location: 'He suffered from terrible back pain. He tried muscle-relaxing drugs but found little relief. Then he tried acupuncture, an ancient Chinese practice, and was amazed that he improved after two or three treatments. What worked on a veterinarian seemed likely to work on his patients. So, after studying the techniques for a couple of years, he began offering them to pets.'
+                },
+                {
+                    id: 31,
+                    type: '推理判断题',
+                    examSource: '📌 2024 新课标Ⅱ卷 · Passage B (第24题)',
+                    originParagraphs: [
+                        'Do you ever get to the train station and realize you forgot to bring something to read? Yes, we all have our phones, but many of us still like to go old school and read something printed.',
+                        'Well, there\'s a kiosk for that. In the San Francisco Bay Area, at least.',
+                        '"You enter the fare gates and you\'ll see a kiosk that is lit up and it tells you can get a one-minute, a three-minute, or a five-minute story," says Alicia Trost, the chief communications officer for the San Francisco Bay Area Rapid Transit — known as BART. "You choose which length you want and it gives you a receipt-like short story."',
+                        'It\'s that simple. Riders have printed nearly 20,000 short stories and poems since the program was launched last March. Some are classic short stories, and some are new original works.',
+                        'Trost also wants to introduce local writers to local riders. "We wanted to do something where we do a call to artists in the Bay Area to submit stories for a contest," Trost says. "And as of right now, we\'ve received about 120 submissions. The winning stories would go into our kiosk and then you would be a published artist."',
+                        'Ridership on transit systems across the country has been down the past half century, so could short stories save transit?',
+                        'Trost thinks so.',
+                        '"At the end of the day all transit agencies right now are doing everything they can to improve the rider experience. So I absolutely think we will get more riders just because of short stories," she says.',
+                        'And you\'ll never be without something to read.'
+                    ],
+                    question: 'Why did BART start the kiosk program?',
+                    options: [
+                        'A. To promote the local culture.',
+                        'B. To discourage phone use.',
+                        'C. To meet passengers\' needs.',
+                        'D. To reduce its running costs.'
+                    ],
+                    answer: 'C',
+                    keyword: 'Why did BART start',
+                    location: 'Do you ever get to the train station and realize you forgot to bring something to read? Yes, we all have our phones, but many of us still like to go old school and read something printed. Well, there\'s a kiosk for that.'
+                },
+                {
+                    id: 32,
+                    type: '推理判断题',
+                    examSource: '📌 2023 新课标I卷 · Passage B (第24题)',
+                    originParagraphs: [
+                        'When John Todd was a child, he loved to explore the woods around his house, observing how nature solved problems. A dirty stream, for example, often became clear after flowing through plants and along rocks where tiny creatures lived. When he got older, John started to wonder if this process could be used to clean up the messes people were making.',
+                        'After studying agriculture, medicine, and fisheries in college, John went back to observing nature and asking questions. Why can certain plants trap harmful bacteria? Which kinds of fish can eat cancer-causing chemicals? With the right combination of animals and plants, he figured, maybe he could clean up waste the way nature did. He decided to build what he would later call an eco-machine.',
+                        'The task John set for himself was to remove harmful substances from some sludge. First, he constructed a series of clear fiberglass tanks connected to each other. Then he went around to local ponds and streams and brought back some plants and animals. He placed them in the tanks and waited. Little by little, these different kinds of life got used to one another and formed their own ecosystem. After a few weeks, John added the sludge.',
+                        'He was amazed at the results. The plants and animals in the eco-machine took the sludge as food and began to eat it! Within weeks, it had all been digested, and all that was left was pure water.',
+                        'Over the years, John has taken on many big jobs. He developed a greenhouse-like facility that treated sewage from 1,600 homes in South Burlington. He also designed an eco-machine to clean canal water in Fuzhou, a city in southeast China.',
+                        '"Ecological design" is the name John gives to what he does. "Life on Earth is kind of a box of spare parts for the inventor," he says. "You put organisms in new relationships and observe what\'s happening. Then you let these new systems develop their own ways to self-repair."'
+                    ],
+                    question: 'What can we learn about John from the first two paragraphs?',
+                    options: [
+                        'A. He was fond of traveling.',
+                        'B. He enjoyed being alone.',
+                        'C. He had an inquiring mind.',
+                        'D. He longed to be a doctor.'
+                    ],
+                    answer: 'C',
+                    keyword: 'learn about John',
+                    location: 'he loved to explore the woods around his house, observing how nature solved problems. ... John went back to observing nature and asking questions.'
+                },
+                {
+                    id: 33,
+                    type: '推理判断题',
+                    examSource: '📌 2022 新高考I卷 · Passage B (第24题)',
+                    originParagraphs: [
+                        'Like most of us, I try to be mindful of food that goes to waste. The arugula was to make a nice green salad, rounding out a roast chicken dinner. But I ended up working late. Then friends called with a dinner invitation. I stuck the chicken in the freezer. But as days passed, the arugula went bad. Even worse, I had unthinkingly bought way too much; I could have made six salads with what I threw out.',
+                        'In a world where nearly 800 million people a year go hungry, "food waste goes against the moral grain," as Elizabeth Royte writes in this month\'s cover story. It\'s jaw-dropping how much perfectly good food is thrown away — from "ugly" (but quite eatable) vegetables rejected by grocers to large amounts of uneaten dishes thrown into restaurant garbage cans.',
+                        'Producing food that no one eats wastes the water, fuel, and other resources used to grow it. That makes food waste an environmental problem. In fact, Royte writes, "if food waste were a country, it would be the third largest producer of greenhouse gases in the world."',
+                        'If that\'s hard to understand, let\'s keep it as simple as the arugula at the back of my refrigerator. Mike Curtin sees my arugula story all the time — but for him, it\'s more like 12 boxes of donated strawberries nearing their last days. Curtin is CEO of DC Central Kitchen in Washington, D.C., which recovers food and turns it into healthy meals. Last year it recovered more than 807,500 pounds of food by taking donations and collecting blemished produce that otherwise would have rotted in fields. And the strawberries? Volunteers will wash, cut, and freeze or dry them for use in meals down the road.',
+                        'Such methods seem obvious, yet so often we just don\'t think. "Everyone can play a part in reducing waste, whether by not purchasing more food than necessary in your weekly shopping or by asking restaurants to not include the side dish you won\'t eat," Curtin says.'
+                    ],
+                    question: 'What does the author want to show by telling the arugula story?',
+                    options: [
+                        'A. We pay little attention to food waste.',
+                        'B. We waste food unintentionally at times.',
+                        'C. We waste more vegetables than meat.',
+                        'D. We have good reasons for wasting food.'
+                    ],
+                    answer: 'B',
+                    keyword: 'show by telling the arugula story',
+                    location: 'I try to be mindful of food that goes to waste. ... But I ended up working late. Then friends called with a dinner invitation. ... unthinkingly bought way too much'
+                },
+                {
+                    id: 34,
+                    type: '推理判断题',
+                    examSource: '📌 2022 全国甲卷 · Passage D (第33题)',
+                    originParagraphs: [
+                        'Sometime in the early 1960s, a significant thing happened in Sydney, Australia. The city discovered its harbor. Then, one after another, Sydney discovered lots of things that were just sort of there — broad parks, superb beaches, and a culturally diverse population. But it is the harbor that makes the city.',
+                        'Andrew Reynolds, a cheerful fellow in his early 30s, pilots Sydney ferryboats for a living. I spent the whole morning shuttling back and forth across the harbor. After our third run Andrew shut down the engine, and we went our separate ways — he for a lunch break, I to explore the city. "I\'ll miss these old boats," he said as we parted. "How do you mean?" I asked. "Oh, they\'re replacing them with catamarans. Catamarans are faster, but they\'re not so elegant, and they\'re not fun to pilot. But that\'s progress, I guess."',
+                        'Everywhere in Sydney these days, change and progress are the watchwords, and traditions are increasingly rare. Shirley Fitzgerald, the city\'s official historian, told me that in its rush to modernity in the 1970s, Sydney swept aside much of its past, including many of its finest buildings. "Sydney is confused about itself," she said. "We can\'t seem to make up our minds whether we want a modern city or a traditional one. It\'s a conflict that we aren\'t getting any better at resolving."',
+                        'On the other hand, being young and old at the same time has its attractions. I considered this when I met a thoughtful young businessman named Anthony. "Many people say that we lack culture in this country," he told me. "What people forget is that the Italians, when they came to Australia, brought 2000 years of their culture, the Greeks some 3000 years, and the Chinese more still. We\'ve got a foundation built on ancient cultures but with a drive and dynamism of a young country. It\'s a pretty hard combination to beat."',
+                        'He is right, but I can\'t help wishing they would keep those old ferries.'
+                    ],
+                    question: 'What can we learn about Andrew Reynolds?',
+                    options: [
+                        'A. He goes to work by boat.',
+                        'B. He looks forward to a new life.',
+                        'C. He pilots catamarans well.',
+                        'D. He is attached to the old ferries.'
+                    ],
+                    answer: 'D',
+                    keyword: 'learn about Andrew Reynolds',
+                    location: '"I\'ll miss these old boats," he said as we parted. ... "Oh, they\'re replacing them with catamarans. Catamarans are faster, but they\'re not so elegant, and they\'re not fun to pilot."'
+                },
+                {
+                    id: 35,
+                    type: '推理判断题',
+                    examSource: '📌 2023 全国乙卷 · Passage B (第26题)',
+                    originParagraphs: [
+                        'Living in Iowa and trying to become a photographer specializing in landscape can be quite a challenge, mainly because the corn state lacks geographical variation.',
+                        'Although landscapes in the Midwest tend to be quite similar, either farm fields or highways, sometimes I find distinctive character in the hills or lakes. To make some of my landscape shots, I have travelled up to four hours away to shoot within 10-minute time frame. I tend to travel with a few of my friends to state parks or to the countryside to go on adventures and take photos along the way.',
+                        'Being at the right place at the right time is decisive in any style of photography. I often leave early to seek the right destinations so I can set up early to avoid missing the moment I am attempting to photograph. I have missed plenty of beautiful sunsets/sunrises due to being on the spot only five minutes before the best moment.',
+                        'One time my friends and I drove three hours to Devil\'s Lake, Wisconsin, to climb the purple quartz rock around the lake. After we found a crazy-looking road that hung over a bunch of rocks, we decided to photograph the scene at sunset. The position enabled us to look over the lake with the sunset in the background. We managed to leave this spot to climb higher because of the spare time until sunset. However, we did not mark the route so we ended up almost missing the sunset entirely. Once we found the place, it was stressful getting lights and cameras set up in the limited time. Still looking back on the photos, they are some of my best shots though they could have been so much better if I would have been prepared and managed my time wisely.'
+                    ],
+                    question: 'What can we infer from the author\'s trip with friends to Devil\'s Lake?',
+                    options: [
+                        'A. They went crazy with the purple quartz rock.',
+                        'B. They felt stressed while waiting for the sunset.',
+                        'C. They reached the shooting spot later than expected.',
+                        'D. They had problems with their equipment.'
+                    ],
+                    answer: 'C',
+                    keyword: 'infer from the author\'s trip',
+                    location: 'However, we did not mark the route so we ended up almost missing the sunset entirely. Once we found the place, it was stressful getting lights and cameras set up in the limited time.'
+                },
+                {
+                    id: 36,
+                    type: '推理判断题',
+                    examSource: '📌 2024 全国甲卷 · Passage C (第29题)',
+                    originParagraphs: [
+                        'The Saint Lukas train doesn\'t accept passengers — it accepts only the sick. The Saint Lukas is one of five government-sponsored medical trains that travel to remote towns in central and eastern Russia. Each stop lasts an average of two days, and during that time the doctors and nurses on board provide rural populations with basic medical care, X-ray scans and prescriptions.',
+                        '"People started queuing to make an appointment early in the morning," says Emile Ducke, a German photographer who traveled with the staff of the Saint Lukas for a two-week trip in November through the vast regions of Krasnoyarsk and Khakassia.',
+                        'Russia\'s public health care service has been in serious need of modernization. The government has struggled to come up with measures to address the problem, particularly in the poorer, rural areas east of the Volga River, including arranging doctor\'s appointments by video chat and expanding financial aid programs to motivate doctors to practice medicine in remote parts of the country like Krasnoyarsk.',
+                        'The annual arrival of the Saint Lukas is another attempt to improve the situation. For 10 months every year, the train stops at about eight stations over two weeks, before returning to the regional capital to refuel and restock. Then it starts all over again the next month. Most stations wait about a year between visits.',
+                        'Doctors see up to 150 patients every day. The train\'s equipment allows for basic checkups. "I was very impressed by the doctors and their assistants working and living in such little space but still staying focused and very concerned," says Ducke. "They were the best chance for many rural people to get the treatment they want."'
+                    ],
+                    question: 'What can we infer from paragraph 3 about Krasnoyarsk?',
+                    options: [
+                        'A. It is heavily populated.',
+                        'B. It offers training for doctors.',
+                        'C. It is a modern city.',
+                        'D. It needs medical aid.'
+                    ],
+                    answer: 'D',
+                    keyword: 'infer from paragraph 3',
+                    location: 'Russia\'s public health care service has been in serious need of modernization. The government has struggled to come up with measures to address the problem, particularly in the poorer, rural areas east of the Volga River, including ... expanding financial aid programs to motivate doctors to practice medicine in remote parts of the country like Krasnoyarsk.'
+                },
+                {
+                    id: 37,
+                    type: '推理判断题',
+                    examSource: '📌 2025 全国一卷 · Passage B (第24题)',
+                    originParagraphs: [
+                        'In my ninth-grade writing class last year, I met a cowboy who saved his town, a strict father who demanded his son earn straight A\'s, and a modern-day Juliet who died of heartbreak after her parents rejected the love of her young life. More than once, I found myself wondering just how my students, who\'d created these people, knew their subjects so well.',
+                        'But things were different for their first essay, which was about the question: "Why is writing important?" Most of the essays filled less than one page, and few contained a sentence that could be interpreted as a thesis statement. I was shocked. Then I realized that the problem was the question itself. They could have written pages on the necessity of computers, but writing, in and of itself, simply didn\'t strike them as important. This would have to change.',
+                        'As a new unit started, I asked everyone to write a persuasive piece on a health-related topic of their choice. This time they found the exercise much more interesting. For the next two assignments, a personal-narrative unit followed by a creative-writing workshop, I only required that the piece meet the specifications of its genre and that it contain a thesis. The results were staggering. The students took on diverse topics and turned in stories, 10 to 20 pages each, with characters that broadened my view and touched my heart.',
+                        'I walked into class believing that writing is important as a means of communication. However, my students demonstrated something more important to me. When the final bell rang in June, I walked away with a yearbook full of messages about writing\'s most powerful significance — the ability to connect people, to put us in another\'s skin, to teach us what it means to be human.'
+                    ],
+                    question: 'Who are the people mentioned at the beginning of paragraph 1?',
+                    options: [
+                        'A. Ninth graders.',
+                        'B. Students\' parents.',
+                        'C. Modern writers.',
+                        'D. Fictional characters.'
+                    ],
+                    answer: 'D',
+                    keyword: 'people mentioned',
+                    location: 'I met a cowboy who saved his town, a strict father who demanded his son earn straight A\'s, and a modern-day Juliet ... my students, who\'d created these people'
+                },
+                {
+                    id: 38,
+                    type: '推理判断题',
+                    examSource: '📌 2022 新高考Ⅱ卷 · Passage C (第28题)',
+                    originParagraphs: [
+                        'Over the last seven years, most states have banned texting by drivers, and public service campaigns have tried a wide range of methods to persuade people to put down their phones when they are behind the wheel.',
+                        'Yet the problem, by just about any measure, appears to be getting worse. Americans are still texting while driving, as well as using social networks and taking photos. Road accidents, which had fallen for years, are now rising sharply.',
+                        'That is partly because people are driving more, but Mark Rosekind, the chief of the National Highway Traffic Safety Administration, said distracted driving was "only increasing, unfortunately."',
+                        '"Big change requires big ideas," he said in a speech last month, referring broadly to the need to improve road safety. So to try to change a distinctly modern behavior, lawmakers and public health experts are reaching back to an old approach: They want to treat distracted driving like drunk driving.',
+                        'An idea from lawmakers in New York is to give police officers a new device called the Textalyzer. It would work like this: An officer arriving at the scene of a crash could ask for the phones of the drivers and use the Textalyzer to check in the operating system for recent activity. The technology could determine whether a driver had just texted, emailed or done anything else that is not allowed under New York\'s hands-free driving laws.',
+                        '"We need something on the books that can change people\'s behavior," said Félix W. Ortiz, who pushed for the state\'s 2001 ban on hand-held devices by drivers. If the Textalyzer bill becomes law, he said, "people are going to be more afraid to put their hands on the cell phone."'
+                    ],
+                    question: 'Which of the following best describes the ban on drivers\' texting in the US?',
+                    options: [
+                        'A. Ineffective.',
+                        'B. Unnecessary.',
+                        'C. Inconsistent.',
+                        'D. Unfair.'
+                    ],
+                    answer: 'A',
+                    keyword: 'best describes the ban',
+                    location: 'Over the last seven years, most states have banned texting by drivers, and public service campaigns have tried a wide range of methods to persuade people to put down their phones ... Yet the problem, by just about any measure, appears to be getting worse.'
+                },
+                {
+                    id: 39,
+                    type: '推理判断题',
+                    examSource: '📌 2023 新课标Ⅱ卷 · Passage D (第33题)',
+                    originParagraphs: [
+                        'As cities balloon with growth, access to nature for people living in urban areas is becoming harder to find. If you\'re lucky, there might be a pocket park near where you live, but it\'s unusual to find places in a city that are relatively wild.',
+                        'Past research has found health and wellness benefits of nature for humans, but a new study shows that wildness in urban areas is extremely important for human well-being.',
+                        'The research team focused on a large urban park. They surveyed several hundred park-goers, asking them to submit a written summary online of a meaningful interaction they had with nature in the park. The researchers then examined these submissions, coding experiences into different categories. For example, one participant\'s experience of "We sat and listened to the waves at the beach for a while" was assigned the categories "sitting at beach" and "listening to waves."',
+                        'Across the 320 submissions, a pattern of categories the researchers call a "nature language" began to emerge. After the coding of all submissions, half a dozen categories were noted most often as important to visitors. These include encountering wildlife, walking along the edge of water, and following an established trail.',
+                        'Naming each nature experience creates a usable language, which helps people recognize and take part in the activities that are most satisfying and meaningful to them. For example, the experience of walking along the edge of water might be satisfying for a young professional on a weekend hike in the park. Back downtown during a workday, they can enjoy a more domestic form of this interaction by walking along a fountain on their lunch break.',
+                        '"We\'re trying to generate a language that helps bring the human-nature interactions back into our daily lives. And for that to happen, we also need to protect nature so that we can interact with it," said Peter Kahn, a senior author of the study.'
+                    ],
+                    question: 'Why did the researchers code participant submissions into categories?',
+                    options: [
+                        'A. To compare different types of park-goers.',
+                        'B. To explain why the park attracts tourists.',
+                        'C. To analyze the main features of the park.',
+                        'D. To find patterns in the visitors\' summaries.'
+                    ],
+                    answer: 'D',
+                    keyword: 'why code participant submissions',
+                    location: 'Across the 320 submissions, a pattern of categories the researchers call a "nature language" began to emerge. ... Naming each nature experience creates a usable language, which helps people recognize and take part in the activities that are most satisfying and meaningful to them.'
+                }
+            ];
+
+             // 按id排序确保顺序
+             questionsData.sort((a,b) => a.id - b.id);
+
+// 构建左侧原文
+let originHTML = '';
+questionsData.forEach((item, idx) => {
+    const originId = `origin-${idx}`;
+    let fullText = Array.isArray(item.originParagraphs) ? item.originParagraphs.join('\n\n') : item.originParagraphs;
+    if (typeof fullText !== 'string') fullText = String(fullText);
+    const loc = item.location.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`(${loc})`, 'g');
+    const markedText = fullText.replace(regex, `<span id="${originId}" class="origin-locator">$1</span>`);
+    originHTML += `
+        <div class="origin-block">
+            <div class="source-badge">${item.examSource}</div>
+            <p>${markedText.replace(/\n\n/g, '</p><p>')}</p>
+        </div>
+    `;
+});
+document.getElementById('originColumn').innerHTML = originHTML;
+
+// 按题型分组渲染右侧题目
+const types = ['主旨大意题', '细节理解题', '词义猜测题', '推理判断题'];
+let questionsHTML = '';
+types.forEach(type => {
+    const typeQuestions = questionsData.filter(q => q.type === type);
+    if (typeQuestions.length === 0) return;
+    questionsHTML += `<div class="section-title">🔍 ${type} (${typeQuestions.length}题)</div>`;
+    typeQuestions.forEach(q => {
+        const qid = q.id;
+        const optionsList = q.options.map(opt => `<li>${opt}</li>`).join('');
+        questionsHTML += `
+            <div class="q-card" id="q-card-${qid}" data-qid="${qid}">
+                <div class="q-header">
+                    <span class="q-num" id="q-num-${qid}" data-qid="${qid}">${qid+1}</span>
+                    <span class="q-type">${q.type}</span>
+                </div>
+                <div class="q-text" id="q-text-${qid}" data-original="${q.question.replace(/"/g, '&quot;')}">${q.question}</div>
+                <ul class="options" id="options-${qid}">
+                    ${optionsList}
+                </ul>
+            </div>
+        `;
+    });
+    questionsHTML += `<hr>`;
+});
+
+document.getElementById('questionsColumn').innerHTML = questionsHTML;
+
+// 交互逻辑
+const totalQuestions = questionsData.length;
+const clickCounts = new Array(totalQuestions).fill(0);
+const originalTexts = [];
+for (let i = 0; i < totalQuestions; i++) {
+    originalTexts[i] = document.getElementById(`q-text-${i}`).dataset.original;
+}
+
+document.querySelectorAll('.q-num').forEach(el => {
+    el.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const qid = parseInt(this.dataset.qid);
+        if (isNaN(qid)) return;
+        let newCount = (clickCounts[qid] + 1) % 4;
+        clickCounts[qid] = newCount;
+        applyEffect(qid, newCount);
+    });
+});
+
+function applyEffect(qid, count) {
+    const qData = questionsData[qid];
+    if (!qData) return;
+    const qTextEl = document.getElementById(`q-text-${qid}`);
+    const originSpan = document.getElementById(`origin-${qid}`);
+    const optionsLis = document.querySelectorAll(`#options-${qid} li`);
+
+    qTextEl.innerHTML = originalTexts[qid];
+    if (originSpan) originSpan.classList.remove('underline-origin');
+    optionsLis.forEach(li => li.classList.remove('correct-highlight'));
+
+    if (count >= 1) {
+        const keyword = qData.keyword;
+        const text = originalTexts[qid];
+        const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'i');
+        qTextEl.innerHTML = text.replace(regex, `<span class="highlight-keyword">$1</span>`);
+    }
+    if (count >= 2) {
+        if (originSpan) originSpan.classList.add('underline-origin');
+    }
+    if (count >= 3) {
+        const answerLetter = qData.answer.toUpperCase();
+        const letterMap = { 'A': 0, 'B': 1, 'C': 2, 'D': 3 };
+        const idx = letterMap[answerLetter];
+        if (idx !== undefined && optionsLis[idx]) {
+            optionsLis[idx].classList.add('correct-highlight');
+        }
+    }
+}
+
+// 重置按钮
+const resetBtn = document.createElement('button');
+resetBtn.className = 'reset-all-btn';
+resetBtn.id = 'resetAllBtn';
+resetBtn.textContent = '🔄 重置所有题目状态';
+const hintDiv = document.createElement('div');
+hintDiv.className = 'reset-hint';
+hintDiv.appendChild(resetBtn);
+document.getElementById('questionsColumn').appendChild(hintDiv);
+
+document.getElementById('resetAllBtn').addEventListener('click', function() {
+    for (let i = 0; i < totalQuestions; i++) {
+        clickCounts[i] = 0;
+        const qTextEl = document.getElementById(`q-text-${i}`);
+        const originSpan = document.getElementById(`origin-${i}`);
+        const optionsLis = document.querySelectorAll(`#options-${i} li`);
+        if (qTextEl) qTextEl.innerHTML = originalTexts[i];
+        if (originSpan) originSpan.classList.remove('underline-origin');
+        optionsLis.forEach(li => li.classList.remove('correct-highlight'));
+    }
+});
+})();
+</script>
+</body>
+</html>

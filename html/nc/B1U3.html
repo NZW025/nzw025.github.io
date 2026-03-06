@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教师版 - 新外研一轮复习词汇循环单B1U3</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Microsoft YaHei', 'Times New Roman', serif;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+        }
+
+          /* 新增密码框样式 */
+       .password-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .password-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        .password-input {
+            padding: 12px;
+            font-size: 16px;
+            margin: 15px 0;
+            border: 2px solid #4A90E2;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .password-btn {
+            padding: 12px 30px;
+            background: #4A90E2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .password-btn:hover {
+            background: #357ABD;
+        }
+
+
+        /* 主容器限制最大宽度并居中 */
+        .container {
+            width: 100%;
+            max-width: 1400px; /* 限制最大宽度，可根据需要调整 */
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* 词汇内容显示区 */
+        #test-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            gap: 15px;
+            overflow-y: auto;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* 控制面板（章节+字体调整） */
+        .panel {
+            height: 100px;
+            background-color: #2c3e50;
+            padding: 15px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            width: 100%;
+        }
+
+        /* 章节选择区域 */
+        .section-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* 字体调整区域 */
+        .font-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* 按钮与选择框样式 */
+        button, select {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        select {
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* 词汇分类表格样式 */
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+
+        .vocab-table th {
+            background-color: #34495e;
+            color: #fff;
+            padding: 10px;
+            text-align: left;
+            font-weight: normal;
+        }
+
+        .vocab-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+        /* 题目模块样式 */
+        .round-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .round-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        /* 选择题样式 */
+        .choice-question {
+            margin: 8px 0;
+            padding-left: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .question-number {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            background-color: #3498db;
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+
+        .question-word {
+            font-weight: bold;
+            min-width: 120px;
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            flex: 1;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .correct {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        /* 默写题样式 */
+        .dictation-item {
+            margin: 8px 0;
+            padding-left: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dictation-label {
+            min-width: 150px;
+            color: #7f8c8d;
+        }
+
+        .dictation-word {
+            flex: 1;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        /* 语境猜词样式 */
+        .context-item {
+            margin: 12px 0;
+            padding: 10px;
+            background-color: #f1f8ff;
+            border-left: 3px solid #3498db;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .context-sentence {
+            margin-bottom: 4px;
+            font-style: italic;
+        }
+
+        .context-answer {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+
+        /* 派生词样式 */
+        .derivation-item {
+            margin: 10px 0;
+            padding-left: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .derivation-chain {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            flex: 1;
+        }
+
+        .derivation-blank {
+            display: inline-block;
+            width: 120px;
+            border-bottom: 2px solid #333;
+            vertical-align: middle;
+            min-height: 1.2em;
+        }
+
+        .derivation-answer {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        /* 语法填空题样式 */
+        .grammar-item {
+            margin: 10px 0;
+            padding-left: 10px;
+        }
+
+        .grammar-sentence {
+            line-height: 1.8;
+        }
+
+        .grammar-blank {
+            display: inline-block;
+            width: 120px;
+            height: 24px;
+            margin: 0 4px;
+            border-bottom: 2px solid #333;
+            vertical-align: middle;
+        }
+
+        .blank-answer {
+            color: #e74c3c;
+            font-weight: bold;
+            display: none;
+        }
+
+        .grammar-hint {
+            color: #e74c3c;
+            font-style: italic;
+            margin-left: 8px;
+        }
+
+        /* 词块默写样式（Round6） */
+        .chunk-item {
+            margin: 8px 0;
+            padding-left: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: flex-start;
+            min-height: 24px;
+        }
+
+        .chunk-english {
+            flex: 1;
+            font-weight: bold;
+            color: #e74c3c;
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        .chunk-chinese {
+            color: #7f8c8d;
+            min-width: 200px;
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        /* 句型仿写样式 */
+        .sentence-pattern {
+            margin: 15px 0;
+            padding-left: 10px;
+        }
+
+        .pattern-title {
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 8px;
+        }
+
+        .pattern-example {
+            margin: 6px 0;
+            padding-left: 10px;
+            color: #2c3e50;
+        }
+
+        /* Round7 样式调整 */
+        .pattern-blank {
+            display: block;
+            width: 100%;
+            max-width: 1200px;
+            border-bottom: 2px solid #333;
+            vertical-align: middle;
+            min-height: 1.2em;
+            word-wrap: break-word;
+            margin-left: 0;
+            padding-left: 0;
+        }
+
+        .pattern-writing {
+            margin: 6px 0;
+            padding-left: 34px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-right: 8px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .derivation-blank {
+            display: inline-block;
+            width: 120px;
+            border-bottom: 2px solid #333;
+            vertical-align: middle;
+            min-height: 1.2em;
+        }
+
+        .pattern-answer {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        /* 微写作样式 */
+        .writing-section {
+            margin: 15px 0;
+            padding-left: 10px;
+        }
+
+        .writing-task {
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: #f1f8ff;
+            border-radius: 4px;
+        }
+
+        .writing-sample {
+            line-height: 1.8;
+            margin: 8px 0;
+        }
+
+        /* Round8 横线与答案样式 */
+        .writing-blank {
+            position: relative;
+            display: inline-block;
+            width: 120px;
+            border-bottom: 2px solid #333;
+            vertical-align: middle;
+            min-height: 1.2em;
+            padding: 0 2px;
+            box-sizing: border-box;
+        }
+
+        .writing-answer {
+            color: #e74c3c;
+            font-weight: bold;
+            display: none;
+            vertical-align: middle;
+        }
+
+        .writing-blank.active {
+            width: auto;
+            min-width: 60px;
+        }
+
+        .blank-number {
+            position: absolute;
+            right: -15px;
+            top: -8px;
+            width: 18px;
+            height: 18px;
+            line-height: 18px;
+            text-align: center;
+            background-color: #3498db;
+            color: white;
+            border-radius: 50%;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .correct-answer {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 1400px) {
+            .container {
+                padding: 0 15px; /* 中等屏幕添加左右内边距 */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0;
+            }
+            
+            .panel {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+            }
+
+            .section-control, .font-control {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .choice-question, .dictation-item, .chunk-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .question-word, .dictation-label, .chunk-chinese {
+                min-width: 100%;
+                margin-bottom: 4px;
+            }
+        }
+    </style>
+</head>
+<body>  
+    <!-- 主容器，用于限制宽度并居中 -->
+    <div class="container">
+        <!-- 词汇内容显示区 -->
+        <div id="test-content"></div>
+
+        <!-- 控制面板（章节切换+字体调整） -->
+        <div class="panel">
+            <div class="section-control">
+                <label>词汇模块：</label>
+                <select id="section-select">
+                    <option value="vocab-classify">单词分类</option>
+                    <option value="round1">Round 1 选出合适的汉语意思</option>
+                    <option value="round2">Round 2 重点词汇默写</option>
+                    <option value="round3">Round 3 语境猜词</option>
+                    <option value="round4">Round 4 重点单词派生词学习</option>
+                    <option value="round5">Round 5 派生词单句语法填空</option>
+                    <option value="round6">Round 6 主题词块默写</option>
+                    <option value="round7">Round 7 重点句式仿写训练</option>
+                    <option value="round8">Round 8 微写作翻译练习</option>
+                </select>
+                <button id="next-section">下一个模块</button>
+            </div>
+            <div class="font-control">
+                <button id="smaller-font">缩小字体</button>
+                <button id="larger-font">放大字体</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 密码验证功能
+      const CORRECT_PASSWORD = "Luna";
+     let attemptCount = 0;
+
+     function checkPassword() {
+         const input = document.getElementById('passwordInput');
+         if (input.value === CORRECT_PASSWORD) {
+             document.getElementById('passwordModal').style.display = 'none';
+             document.getElementById('mainContent').style.display = 'block';
+         } else {
+             attemptCount++;
+             alert(`密码错误（剩余尝试次数：${5 - attemptCount}）`);
+             input.value = '';
+             if (attemptCount >= 5) {
+                 alert("尝试次数过多，页面即将关闭");
+                 window.close();
+             }
+         }
+     }
+        
+        // 确保DOM加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 全局状态管理
+            const state = {
+                currentFontSize: 16,
+                sections: {
+                    "vocab-classify": "单词分类",
+                    "round1": "Round 1 选出合适的汉语意思",
+                    "round2": "Round 2 重点词汇默写",
+                    "round3": "Round 3 语境猜词",
+                    "round4": "Round 4 重点单词派生词学习",
+                    "round5": "Round 5 派生词单句语法填空",
+                    "round6": "Round 6 主题词块默写",
+                    "round7": "Round 7 重点句式仿写训练",
+                    "round8": "Round 8 微写作翻译练习"
+                },
+                currentSection: "vocab-classify",
+                answerIndex: {}
+            };
+
+            // DOM元素缓存
+            const elements = {
+                testContent: document.getElementById('test-content'),
+                sectionSelect: document.getElementById('section-select'),
+                nextSection: document.getElementById('next-section'),
+                smallerFont: document.getElementById('smaller-font'),
+                largerFont: document.getElementById('larger-font')
+            };
+
+            // 初始化
+            renderSection(state.currentSection);
+            bindEvents();
+
+            // 绑定交互事件
+            function bindEvents() {
+                // 章节切换
+                elements.sectionSelect.addEventListener('change', function() {
+                    state.currentSection = this.value;
+                    state.answerIndex = {};
+                    renderSection(state.currentSection);
+                });
+
+                // 下一个模块
+                elements.nextSection.addEventListener('click', function() {
+                    const sectionKeys = Object.keys(state.sections);
+                    const currentIndex = sectionKeys.indexOf(state.currentSection);
+                    const nextIndex = (currentIndex + 1) % sectionKeys.length;
+                    state.currentSection = sectionKeys[nextIndex];
+                    elements.sectionSelect.value = state.currentSection;
+                    state.answerIndex = {};
+                    renderSection(state.currentSection);
+                });
+
+                // 字体调整
+                elements.smallerFont.addEventListener('click', function() {
+                    if (state.currentFontSize > 12) {
+                        state.currentFontSize -= 1;
+                        elements.testContent.style.fontSize = `${state.currentFontSize}px`;
+                    }
+                });
+
+                elements.largerFont.addEventListener('click', function() {
+                    if (state.currentFontSize < 24) {
+                        state.currentFontSize += 1;
+                        elements.testContent.style.fontSize = `${state.currentFontSize}px`;
+                    }
+                });
+
+                // 答案显示/隐藏切换（委托事件）
+                elements.testContent.addEventListener('click', function(e) {
+                    // Round1: 点击题号标红正确答案
+                    if (e.target.classList.contains('round1-number')) {
+                        const questionEl = e.target.closest('.choice-question');
+                        const questionIndex = parseInt(e.target.dataset.index);
+                        const questions = getRound1Questions();
+                        const correctAnswers = questions[questionIndex].answer;
+                        
+                        const options = questionEl.querySelectorAll('.option');
+                        options.forEach((opt, i) => {
+                            if (correctAnswers.includes(String.fromCharCode(65 + i))) {
+                                opt.classList.add('correct');
+                            }
+                        });
+                    }
+
+                    // Round2: 点击题号显示答案
+                    if (e.target.classList.contains('round2-number')) {
+                        const questionEl = e.target.closest('.dictation-item');
+                        const answerEl = questionEl.querySelector('.dictation-word');
+                        answerEl.style.display = 'inline';
+                    }
+
+                    // Round3: 点击题号在句末显示红色答案
+                    if (e.target.classList.contains('round3-number')) {
+                        const questionEl = e.target.closest('.context-item');
+                        const answerEl = questionEl.querySelector('.context-answer');
+                        answerEl.style.display = 'inline';
+                    }
+
+                    // Round4: 点击题号横线上出现对应红色答案
+                    if (e.target.classList.contains('round4-number')) {
+                        const questionIndex = parseInt(e.target.dataset.index);
+                        const questionEl = e.target.closest('.derivation-item');
+                        const blanks = questionEl.querySelectorAll('.derivation-blank');
+                        const answers = getRound4Answers()[questionIndex];
+                        
+                        if (state.answerIndex[`round4-${questionIndex}`] === undefined) {
+                            state.answerIndex[`round4-${questionIndex}`] = 0;
+                        }
+                        
+                        const currentIndex = state.answerIndex[`round4-${questionIndex}`];
+                        if (currentIndex < blanks.length && currentIndex < answers.length) {
+                            blanks[currentIndex].innerHTML = `<span class="derivation-answer">${answers[currentIndex]}</span>`;
+                            state.answerIndex[`round4-${questionIndex}`] = (currentIndex + 1) % answers.length;
+                        }
+                    }
+
+                    // Round5: 点击题号依次显示多个答案
+                    if (e.target.classList.contains('round5-number')) {
+                        const questionIndex = parseInt(e.target.dataset.index);
+                        const questionEl = e.target.closest('.grammar-item');
+                        const blanks = questionEl.querySelectorAll('.grammar-blank');
+                        const answers = getRound5Answers()[questionIndex].split(',');
+                        
+                        if (state.answerIndex[`round5-${questionIndex}`] === undefined) {
+                            state.answerIndex[`round5-${questionIndex}`] = 0;
+                        }
+                        
+                        const currentIndex = state.answerIndex[`round5-${questionIndex}`];
+                        if (currentIndex < blanks.length && currentIndex < answers.length) {
+                            const answerEl = blanks[currentIndex].querySelector('.blank-answer');
+                            answerEl.textContent = answers[currentIndex].trim();
+                            answerEl.style.display = 'block';
+                            state.answerIndex[`round5-${questionIndex}`] = (currentIndex + 1) % answers.length;
+                        }
+                    }
+
+                    // Round6: 点击题号显示答案
+                    if (e.target.classList.contains('round6-number')) {
+                        const questionEl = e.target.closest('.chunk-item');
+                        const answerEl = questionEl.querySelector('.chunk-english');
+                        answerEl.style.display = 'inline';
+                    }
+
+                    // Round7: 点击题号出现红色答案
+                    if (e.target.classList.contains('round7-number')) {
+                        const questionIndex = parseInt(e.target.dataset.index);
+                        const patternEl = e.target.closest('.pattern-writing');
+                        const blanks = patternEl.querySelectorAll('.pattern-blank');
+                        const answers = getRound7Answers()[questionIndex];
+                        
+                        blanks.forEach((blank, i) => {
+                            if (i < answers.length) {
+                                blank.innerHTML = `<span class="pattern-answer">${answers[i]}</span>`;
+                            }
+                        });
+                    }
+
+                    // Round8: 点击番号显示/隐藏答案，横线自适应长度
+                    if (e.target.classList.contains('blank-number')) {
+                        const blankEl = e.target.closest('.writing-blank');
+                        if (blankEl) {
+                            const answerEl = blankEl.querySelector('.writing-answer');
+                            if (answerEl) {
+                                if (answerEl.style.display === 'inline') {
+                                    answerEl.style.display = 'none';
+                                    blankEl.classList.remove('active');
+                                } else {
+                                    answerEl.style.display = 'inline';
+                                    blankEl.classList.add('active');
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // 渲染当前模块内容
+            function renderSection(sectionKey) {
+                let html = '';
+                switch(sectionKey) {
+                    case "vocab-classify":
+                        html = renderVocabClassify();
+                        break;
+                    case "round1":
+                        html = renderRound1();
+                        break;
+                    case "round2":
+                        html = renderRound2();
+                        break;
+                    case "round3":
+                        html = renderRound3();
+                        break;
+                    case "round4":
+                        html = renderRound4();
+                        break;
+                    case "round5":
+                        html = renderRound5();
+                        break;
+                    case "round6":
+                        html = renderRound6();
+                        break;
+                    case "round7":
+                        html = renderRound7();
+                        break;
+                    case "round8":
+                        html = renderRound8();
+                        break;
+                    default:
+                        html = renderVocabClassify();
+                }
+                elements.testContent.innerHTML = html;
+                elements.testContent.style.fontSize = `${state.currentFontSize}px`;
+            }
+
+            // 1. 渲染B1U3单词分类模块
+            function renderVocabClassify() {
+                return `
+                    <div class="round-section">
+                        <div class="round-title">单词分类</div>
+                        
+                        <!-- 认知词汇 -->
+                        <div class="vocab-category">
+                            <h4 style="margin: 10px 0; color: #3498db;">一、认知词汇：熟记汉语意思</h4>
+                            <table class="vocab-table">
+                                <tr>
+                                    <th>分类</th>
+                                    <th>词汇列表</th>
+                                </tr>
+                                <tr>
+                                    <td>与家庭角色有关</td>
+                                    <td>character, lawyer, generation, nation, beard, cheek, jaw, family, responsible, respect, settle, slim, skin, powerful</td>
+                                </tr>
+                                <tr>
+                                    <td>与家庭冲突和解有关</td>
+                                    <td>conflict, ignore, settle for, apologise, forgiveness, chat, focus, advice, give a reason, sigh, extra, gap, suit, issue, style</td>
+                                </tr>
+                                <tr>
+                                    <td>与家庭活动有关</td>
+                                    <td>career, studio, court, athlete, jogging, talent, event, medal, assume, memory, stress, impact, series, track, currency, million, disqualify, observe, theme, range, curtain, approach, detail, contain, summary, triathlon, media, entire</td>
+                                </tr>
+                                <tr>
+                                    <td>其他</td>
+                                    <td>typically, individual, onto, obviously, despite, throughout, enormously, somehow, indeed</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <!-- 派生词汇 -->
+                        <div class="vocab-category" style="margin-top: 20px;">
+                            <h4 style="margin: 10px 0; color: #3498db;">二、派生词汇：了解词根词缀</h4>
+                            <p style="padding-left: 10px;">respect, generation, currently, responsible, memory, nation, observe, event, strength, admire, settle, professional, judge, apologise, assume</p>
+                        </div>
+
+                        <!-- 写作词汇 -->
+                        <div class="vocab-category" style="margin-top: 20px;">
+                            <h4 style="margin: 10px 0; color: #3498db;">三、写作词汇：掌握拼写与应用</h4>
+                            <p style="padding-left: 10px;">focus, career, assume, respect, ignore, professional, talent, regularly, responsible, memory, aim, observe, event, apologise, stress, impact, admire, settle for, in the lead, obviously, individual, contain, summary, powerful</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // 获取B1U3 Round1题目数据
+            function getRound1Questions() {
+                return [
+                    {word: "character", options: ["A. 角色", "B. 走近", "C. 聊天", "D. 集中"], answer: "A"},
+                    {word: "approach", options: ["A. 聊天", "B. 走近", "C. 职业", "D. 才能"], answer: "B"},
+                    {word: "chat", options: ["A. 法官", "B. 角色", "C. 聊天", "D. 尊敬"], answer: "C"},
+                    {word: "focus", options: ["A. 集中", "B. 才能", "C. 才能", "D. 选择"], answer: "A"},
+                    {word: "career", options: ["A. 职业", "B. 庆祝", "C. 国家", "D. 和解"], answer: "A"},
+                    {word: "lawyer", options: ["A. 否定", "B. 法庭", "C. 律师", "D. 触摸"], answer: "C"},
+                    {word: "assume", options: ["A. 职业", "B. 团队", "C. 忽视", "D. 假定"], answer: "D"},
+                    {word: "respect", options: ["A. 忽视", "B. 尊敬", "C. 影响", "D. 活动"], answer: "B"},
+                    {word: "studio", options: ["A. 法庭", "B. 角色", "C. 严格", "D. 录音室"], answer: "D"},
+                    {word: "court", options: ["A. 皮肤", "B. 法庭", "C. 技能", "D. 作品"], answer: "B"},
+                    {word: "ignore", options: ["A. 走近", "B. 支持", "C. 忽视", "D. 集中"], answer: "C"},
+                    {word: "professional", options: ["A. 职业的", "B. 天才的", "C. 业余的", "D. 初级的"], answer: "A"},
+                    {word: "suit", options: ["A. 管理", "B. 适合", "C. 领导", "D. 察觉"], answer: "B"},
+                    {word: "talent", options: ["A. 赢得", "B. 触摸", "C. 天赋", "D. 判断"], answer: "C"},
+                    {word: "option", options: ["A. 选择", "B. 成长", "C. 应用", "D. 计算"], answer: "A"},
+                    {word: "sigh", options: ["A. 投资", "B. 叹气", "C. 奖牌", "D. 可能"], answer: "B"},
+                    {word: "curtain", options: ["A. 天赋", "B. 幕布", "C. 背景", "D. 皮肤"], answer: "B"},
+                    {word: "generation", options: ["A. 一代人", "B. 记忆", "C. 像素", "D. 号码"], answer: "A"},
+                    {word: "gap", options: ["A. 页数", "B. 差距", "C. 选举", "D. 墙体"], answer: "B"},
+                    {word: "currently", options: ["A. 头脑", "B. 优势", "C. 目前", "D. 水平"], answer: "C"},
+                    {word: "responsible", options: ["A. 责任的", "B. 可靠的", "C. 逃逸的", "D. 独特的"], answer: "A"},
+                    {word: "memory", options: ["A. 擅长", "B. 从属", "C. 记忆", "D. 观点"], answer: "C"},
+                    {word: "nowadays", options: ["A. 现时", "B. 逐步", "C. 内部", "D. 虽然"], answer: "A"},
+                    {word: "jaw", options: ["A. 打扰", "B. 下巴", "C. 杯子", "D. 情绪"], answer: "B"},
+                    {word: "beard", options: ["A. 胡须", "B. 案件", "C. 场所", "D. 绳子"], answer: "A"},
+                    {word: "skin", options: ["A. 皮肤", "B. 城墙", "C. 山顶", "D. 压力"], answer: "A"},
+                    {word: "jogging", options: ["A. 紧急的", "B. 抱怨", "C. 慢跑", "D. 经验"], answer: "C"},
+                    {word: "slim", options: ["A. 渺茫的", "B. 苗条的", "C. 微薄的", "D. 缺乏的"], answer: "B"},
+                    {word: "cheek", options: ["A. 家庭", "B. 世界", "C. 选择", "D. 脸颊"], answer: "D"},
+                    {word: "nation", options: ["A. 国家", "B. 动物园", "C. 长颈鹿", "D. 火星"], answer: "A"},
+                    {word: "aim", options: ["A. 硬币", "B. 力求", "C. 情缘", "D. 桥梁"], answer: "B"},
+                    {word: "issue", options: ["A. 问题", "B. 奋斗", "C. 合适", "D. 情绪"], answer: "A"},
+                    {word: "theme", options: ["A. 颜色", "B. 星座", "C. 直观的", "D. 主题"], answer: "D"},
+                    {word: "observe", options: ["A. 水平", "B. 庆祝", "C. 百叶窗", "D. 冰川"], answer: "B"},
+                    {word: "range", options: ["A. 范围", "B. 器皿", "C. 压力", "D. 集中"], answer: "A"},
+                    {word: "event", options: ["A. 法官", "B. 狗", "C. 活动", "D. 社群"], answer: "C"},
+                    {word: "apologise", options: ["A. 旁边", "B. 道歉", "C. 系统", "D. 圆形"], answer: "B"},
+                    {word: "stress", options: ["A. 重音", "B. 水族", "C. 火车", "D. 景象"], answer: "A"},
+                    {word: "impact", options: ["A. 挂锁", "B. 影响", "C. 驱动", "D. 设计"], answer: "B"},
+                    {word: "strength", options: ["A. 强度", "B. 数量", "C. 行动", "D. 优势"], answer: "A"},
+                    {word: "admire", options: ["A. 羡慕", "B. 海底", "C. 塑料", "D. 打分"], answer: "A"},
+                    {word: "judge", options: ["A. 判断", "B. 支撑", "C. 股票", "D. 出现"], answer: "A"},
+                    {word: "settle", options: ["A. 决定", "B. 程度", "C. 费用", "D. 和解"], answer: "D"},
+                    {word: "settle for", options: ["A. 争取", "B. 将就", "C. 费心", "D. 同情"], answer: "B"},
+                    {word: "triathlon", options: ["A. 铁人三项", "B. 游泳", "C. 跑步", "D. 跳远"], answer: "A"},
+                    {word: "series", options: ["A. 系列", "B. 池子", "C. 课程", "D. 讲师"], answer: "A"},
+                    {word: "in the lead", options: ["A. 领先", "B. 破产", "C. 消失", "D. 成型"], answer: "A"},
+                    {word: "onto", options: ["A. 径直", "B. 从属", "C. 向上", "D. 秒数"], answer: "C"},
+                    {word: "track", options: ["A. 挑战", "B. 阶梯", "C. 跑道", "D. 职位"], answer: "C"},
+                    {word: "media", options: ["A. 传媒", "B. 道具", "C. 木屑", "D. 有毒"], answer: "A"},
+                    {word: "obviously", options: ["A. 讽刺地", "B. 明显地", "C. 绝对地", "D. 落后地"], answer: "B"},
+                    {word: "feature", options: ["A. 航班", "B. 自由", "C. 特写", "D. 记号"], answer: "C"},
+                    {word: "typically", options: ["A. 典型地", "B. 通常地", "C. 常规地", "D. 一贯地"], answer: "A"},
+                    {word: "individual", options: ["A. 忽视", "B. 个人的", "C. 困难", "D. 伤感"], answer: "B"},
+                    {word: "style", options: ["A. 风格", "B. 教师", "C. 购买", "D. 乳汁"], answer: "A"},
+                    {word: "extra", options: ["A. 额外的", "B. 附加的", "C. 超出的", "D. 额外收费的"], answer: "A"},
+                    {word: "detail", options: ["A. 工具", "B. 细节", "C. 证件", "D. 气息"], answer: "B"},
+                    {word: "contain", options: ["A. 包含", "B. 打算", "C. 善良", "D. 提醒"], answer: "A"},
+                    {word: "summary", options: ["A. 总结", "B. 兴趣", "C. 宣判", "D. 钞票"], answer: "A"},
+                    {word: "powerful", options: ["A. 投资的", "B. 有影响的", "C. 吃惊的", "D. 玻璃的"], answer: "B"},
+                    {word: "despite", options: ["A. 尽管", "B. 倒流", "C. 旁听", "D. 外地"], answer: "A"},
+                    {word: "throughout", options: ["A. 在整个期间", "B. 墙壁", "C. 游览", "D. 响彻"], answer: "A"},
+                    {word: "entire", options: ["A. 感恩的", "B. 整个的", "C. 承诺的", "D. 密闭的"], answer: "B"},
+                    {word: "enormously", options: ["A. 精确地", "B. 非常", "C. 反馈", "D. 乐趣"], answer: "B"},
+                    {word: "million", options: ["A. 百万", "B. 危机", "C. 天花", "D. 叶脉"], answer: "A"},
+                    {word: "disqualify", options: ["A. 取消资格", "B. 描述", "C. 装配", "D. 读取"], answer: "A"},
+                    {word: "athlete", options: ["A. 运动员", "B. 售货员", "C. 印刷工", "D. 监测员"], answer: "A"},
+                    {word: "medal", options: ["A. 奖牌", "B. 铁质", "C. 谈话", "D. 脚袜"], answer: "A"},
+                    {word: "somehow", options: ["A. 不知怎的", "B. 学徒", "C. 咖啡", "D. 毛衣"], answer: "A"},
+                    {word: "indeed", options: ["A. 确实", "B. 银子", "C. 结束", "D. 男子"], answer: "A"}
+                ];
+            }
+
+            // 2. 渲染B1U3 Round1：选出合适的汉语意思
+            function renderRound1() {
+                const questions = getRound1Questions();
+
+                let questionsHtml = '';
+                questions.forEach((q, index) => {
+                    let optionsHtml = '';
+                    q.options.forEach(opt => {
+                        optionsHtml += `<div class="option">${opt}</div>`;
+                    });
+                    questionsHtml += `
+                        <div class="choice-question">
+                            <span class="question-number round1-number" data-index="${index}">${index+1}</span>
+                            <div class="question-word">${q.word}:</div>
+                            <div class="options">${optionsHtml}</div>
+                        </div>
+                    `;
+                });
+
+                return `
+                    <div class="round-section">
+                        <div class="round-title">Round 1 选出合适的汉语意思</div>
+                        <p></p>
+                        ${questionsHtml}
+                    </div>
+                `;
+            }
+
+            // 3. 渲染B1U3 Round2：重点词汇默写
+            function renderRound2() {
+                const dictationItems = [
+                    {label: "v. 走近，靠近", word: "approach"},
+                    {label: "v.（把……）集中（于）", word: "focus"},
+                    {label: "v. 假定", word: "assume"},
+                    {label: "v. 尊敬", word: "respect"},
+                    {label: "v. 忽视", word: "ignore"},
+                    {label: "v. 适合", word: "suit"},
+                    {label: "v.力求达到", word: "aim"},
+                    {label: "v. 庆祝", word: "observe"},
+                    {label: "v.道歉", word: "apologise"},
+                    {label: "v.钦佩", word: "admire"},
+                    {label: "v. 认为，判断", word: "judge"},
+                    {label: "v. 和解", word: "settle"},
+                    {label: "v.包含，含有", word: "contain"},
+                    {label: "v. 取消……的资格", word: "disqualify"},
+                    {label: "n. 人物，角色", word: "character"},
+                    {label: "n. 闲谈，聊天", word: "chat"},
+                    {label: "n. 职业", word: "career"},
+                    {label: "n.天赋", word: "talent"},
+                    {label: "n.选择", word: "option"},
+                    {label: "n.记忆", word: "memory"},
+                    {label: "n.慢跑锻炼", word: "jogging"},
+                    {label: "n.争论的问题", word: "issue"},
+                    {label: "n.主题", word: "theme"},
+                    {label: "n.活动", word: "event"},
+                    {label: "n.作用；影响", word: "impact"},
+                    {label: "n.（报纸或杂志的）特写", word: "feature"},
+                    {label: "n. 总结，概要", word: "summary"},
+                    {label: "n. 新闻传媒", word: "media"},
+                    {label: "adj. 职业的", word: "professional"},
+                    {label: "adj.负有责任的", word: "responsible"},
+                    {label: "adj. 独特的", word: "individual"},
+                    {label: "adj.强有力的", word: "powerful"},
+                    {label: "adj.全部的", word: "entire"},
+                    {label: "adv.经常", word: "currently"},
+                    {label: "adv.现今", word: "nowadays"},
+                    {label: "adv.明显地", word: "obviously"},
+                    {label: "adv.非常，极其", word: "enormously"},
+                    {label: "adv.当然，确实", word: "indeed"},
+                    {label: "将就", word: "settle for"},
+                    {label: "领先", word: "in the lead"}
+                ];
+
+                let dictationHtml = '';
+                dictationItems.forEach((item, index) => {
+                    dictationHtml += `
+                        <div class="dictation-item">
+                            <span class="question-number round2-number" data-index="${index}">${index+1}</span>
+                            <div class="dictation-label">${item.label}</div>
+                            <div class="dictation-word" style="display: none;">${item.word}</div>
+                        </div>
+                    `;
+                });
+
+                return `
+                    <div class="round-section">
+                        <div class="round-title">Round 2 重点词汇默写</div>
+                        <p></p>
+                        ${dictationHtml}
+                    </div>
+                `;
+            }
+
+            // 4. 渲染B1U3 Round3：语境猜词
+            function renderRound3() {
+                const contextItems = [
+                    {
+                        sentence: "（2020天津）<b>Observe</b> the unknown around you.",
+                        meaning: "observe: v.观察"
+                    },
+                    {
+                        sentence: "The crowd <b>observed</b> a minute’s silence in memory of those who had died.",
+                        meaning: "observe: v.遵守"
+                    },
+                    {
+                        sentence: "Do they <b>observe</b> Christmas?",
+                        meaning: "observe: v.庆祝"
+                    },
+                    {
+                        sentence: "（2021北京）It is also highly popular due to the individualized effects on <b>stress</b> and anxiety.",
+                        meaning: "stress: n.压力"
+                    },
+                    {
+                        sentence: "（2017江苏）Here I will <b>stress</b> some smarter and more creative examples of climate adaptation.",
+                        meaning: "stress: v.强调"
+                    },
+                    {
+                        sentence: "We worked on pronunciation, <b>stress</b> and intonation.",
+                        meaning: "stress: n.重音"
+                    },
+                    {
+                        sentence: "He wants me to <b>settle</b> down, but now I want him to find an adventure.",
+                        meaning: "settle: v.定居"
+                    },
+                    {
+                        sentence: "A bit more effort, I think, and you will <b>settle</b> the problem.",
+                        meaning: "settle: v.解决"
+                    },
+                    {
+                        sentence: "（2020山东）<b>Judges</b> will choose up to 50 honorable mention winners.",
+                        meaning: "judge: n.评委"
+                    },
+                    {
+                        sentence: "（2016江苏）The Internet enables us to exchange ideas with many others to check our claims, and to <b>judge</b> our actions.",
+                        meaning: "judge: v.从……判断"
+                    }
+                ];
+
+                let contextHtml = '';
+                contextItems.forEach((item, index) => {
+                    contextHtml += `
+                        <div class="context-item">
+                            <span class="question-number round3-number" data-index="${index}">${index+1}</span>
+                            <div class="context-sentence">${item.sentence}<span class="context-answer" style="display: none;"> ${item.meaning}</span></div>
+                        </div>
+                    `;
+                });
+
+                return `
+                    <div class="round-section">
+                        <div class="round-title">Round 3 语境猜词</div>
+                        <p></p>
+                        ${contextHtml}
+                    </div>
+                `;
+            }
+
+            // 获取B1U3 Round4答案数据
+            function getRound4Answers() {
+                return [
+                    ["respectable", "respectful", "respected"],
+                    ["generational", "generate"],
+                    ["current", "currency"],
+                    ["responsibility", "irresponsibility"],
+                    ["memorable", "memorise"],
+                    ["national", "nationality", "international"],
+                    ["observation", "observer"],
+                    ["eventual", "eventful"],
+                    ["strengthen", "strong"],
+                    ["admiration", "admirable"],
+                    ["settlement", "settler"],
+                    ["profession"],
+                    ["judgment"],
+                    ["apology"],
+                    ["assumption"]
+                ];
+            }
+
+            // 5. 渲染B1U3 Round4：重点单词派生词学习
+            function renderRound4() {
+                const derivationItems = [
+                    {chain: "respect v. 尊敬 → <span class='derivation-blank'></span> adj. 可敬的 → <span class='derivation-blank'></span> adj. 恭敬的 → <span class='derivation-blank'></span> adj. 受人尊敬的"},
+                    {chain: "generation n. 一代人 → <span class='derivation-blank'></span> adj. 世代的 → <span class='derivation-blank'></span> v. 产生"},
+                    {chain: "currently adv. 目前 → <span class='derivation-blank'></span> adj. 当前的 → <span class='derivation-blank'></span> n. 货币"},
+                    {chain: "responsible adj. 负责任的 → <span class='derivation-blank'></span> n. 责任 → <span class='derivation-blank'></span> n. 不负责任"},
+                    {chain: "memory n. 记忆 → <span class='derivation-blank'></span> adj. 值得记住的 → <span class='derivation-blank'></span> v. 记住"},
+                    {chain: "nation n. 国家 → <span class='derivation-blank'></span> adj. 国家级的 → <span class='derivation-blank'></span> n. 国籍 → <span class='derivation-blank'></span> adj. 国际的"},
+                    {chain: "observe v. 观察 → <span class='derivation-blank'></span> n. 观察 → <span class='derivation-blank'></span> n. 观察者"},
+                    {chain: "event n. 活动 → <span class='derivation-blank'></span> adj. 最终的 → <span class='derivation-blank'></span> adj. 充满大事的"},
+                    {chain: "strength n. 强度 → <span class='derivation-blank'></span> v. 加强 → <span class='derivation-blank'></span> adj. 强壮的"},
+                    {chain: "admire v. 钦佩 → <span class='derivation-blank'></span> n. 钦佩 → <span class='derivation-blank'></span> adj. 令人钦佩的"},
+                    {chain: "settle v. 和解 → <span class='derivation-blank'></span> n. 解决 → <span class='derivation-blank'></span> n. 定居者"},
+                    {chain: "professional adj. 职业的 → <span class='derivation-blank'></span> n. 职业"},
+                    {chain: "judge v. 判断 → <span class='derivation-blank'></span> n. 判断"},
+                    {chain: "apologise v. 道歉 → <span class='derivation-blank'></span> n. 道歉"},
+                    {chain: "assume v. 假定 → <span class='derivation-blank'></span> n. 假设"}
+                ];
+
+                let derivationHtml = '';
+                derivationItems.forEach((item, index) => {
+                    derivationHtml += `
+                        <div class="derivation-item">
+                            <span class="question-number round4-number" data-index="${index}">${index+1}</span>
+                            <div class="derivation-chain">${item.chain}</div>
+                        </div>
+                    `;
+                });
+
+                return `
+                    <div class="round-section">
+                        <div class="round-title">Round 4 重点单词派生词学习</div>
+                        <p></p>
+                        ${derivationHtml}
+                    </div>
+                `;
+            }
+
+            // 获取B1U3 Round5答案数据
+            function getRound5Answers() {
+                return [
+                    "respected, respectful, respectable",
+                    "generation, generational, generate",
+                    "currently, current, currency",
+                    "responsible, responsibility, irresponsibility",
+                    "memorable, memorise, memory",
+                    "nation, national, nationality, international",
+                    "observe, observation, observer",
+                    "event, eventual, eventful",
+                    "strength, strengthen, strong",
+                    "admire, admiration, admirable",
+                    "settle, settlement, settler",
+                    "professional, profession",
+                    "judge, judgment",
+                    "apologise, apology",
+                    "assume, assumption"
+                ];
+            }
+
+            // 6. 渲染B1U3 Round5：派生词单句语法填空
+            function renderRound5() {
+                const grammarItems = [
+                    {
+                        sentence: "The teacher is highly <span class='grammar-blank'><span class='blank-answer'></span></span> because of her <span class='grammar-blank'><span class='blank-answer'></span></span> attitude toward everyone, which makes her a very <span class='grammar-blank'><span class='blank-answer'></span></span> figure in the school.",
+                        hint: "(respect)"
+                    },
+                    {
+                        sentence: "Each <span class='grammar-blank'><span class='blank-answer'></span></span> hopes to <span class='grammar-blank'><span class='blank-answer'></span></span> change, but not all achieve a <span class='grammar-blank'><span class='blank-answer'></span></span> impact on society.",
+                        hint: "(generate)"
+                    },
+                    {
+                        sentence: "The <span class='grammar-blank'><span class='blank-answer'></span></span> situation affects the value of <span class='grammar-blank'><span class='blank-answer'></span></span> in many countries, and it is something we need to focus on <span class='grammar-blank'><span class='blank-answer'></span></span>.",
+                        hint: "(current)"
+                    },
+                    {
+                        sentence: "He is very <span class='grammar-blank'><span class='blank-answer'></span></span> and takes his <span class='grammar-blank'><span class='blank-answer'></span></span> seriously, unlike his colleague, who often shows signs of <span class='grammar-blank'><span class='blank-answer'></span></span>.",
+                        hint: "(responsible)"
+                    },
+                    {
+                        sentence: "That was a truly <span class='grammar-blank'><span class='blank-answer'></span></span> experience, and I will always <span class='grammar-blank'><span class='blank-answer'></span></span> it in my <span class='grammar-blank'><span class='blank-answer'></span></span>.",
+                        hint: "(memory)"
+                    },
+                    {
+                        sentence: "As a proud <span class='grammar-blank'><span class='blank-answer'></span></span> of his country, he appreciates the importance of <span class='grammar-blank'><span class='blank-answer'></span></span> and values the connections with <span class='grammar-blank'><span class='blank-answer'></span></span> friends from other <span class='grammar-blank'><span class='blank-answer'></span></span>.",
+                        hint: "(nation)"
+                    },
+                    {
+                        sentence: "The scientist made a key <span class='grammar-blank'><span class='blank-answer'></span></span> during the experiment, and her role as an <span class='grammar-blank'><span class='blank-answer'></span></span> was to <span class='grammar-blank'><span class='blank-answer'></span></span> any changes carefully.",
+                        hint: "(observe)"
+                    },
+                    {
+                        sentence: "The <span class='grammar-blank'><span class='blank-answer'></span></span> turned out to be quite <span class='grammar-blank'><span class='blank-answer'></span></span>, leading to an <span class='grammar-blank'><span class='blank-answer'></span></span> conclusion that surprised everyone.",
+                        hint: "(event)"
+                    },
+                    {
+                        sentence: "He has the <span class='grammar-blank'><span class='blank-answer'></span></span> to overcome challenges, and he continues to <span class='grammar-blank'><span class='blank-answer'></span></span> his body through exercise to remain <span class='grammar-blank'><span class='blank-answer'></span></span>.",
+                        hint: "(strength)"
+                    },
+                    {
+                        sentence: "Her hard work and determination are truly <span class='grammar-blank'><span class='blank-answer'></span></span>, and I have deep <span class='grammar-blank'><span class='blank-answer'></span></span> for everything she does; many people <span class='grammar-blank'><span class='blank-answer'></span></span> her.",
+                        hint: "(admire)"
+                    },
+                    {
+                        sentence: "After a long dispute, the two parties managed to <span class='grammar-blank'><span class='blank-answer'></span></span> the issue, reaching a peaceful <span class='grammar-blank'><span class='blank-answer'></span></span> and finally feeling like they could become true <span class='grammar-blank'><span class='blank-answer'></span></span> in the new community.",
+                        hint: "(settle)"
+                    },
+                    {
+                        sentence: "She is a highly <span class='grammar-blank'><span class='blank-answer'></span></span> teacher who takes her <span class='grammar-blank'><span class='blank-answer'></span></span> very seriously.",
+                        hint: "(professional)"
+                    },
+                    {
+                        sentence: "It is important not to <span class='grammar-blank'><span class='blank-answer'></span></span> others too quickly, as our <span class='grammar-blank'><span class='blank-answer'></span></span> may be unfair.",
+                        hint: "(judge)"
+                    },
+                    {
+                        sentence: "He offered a sincere <span class='grammar-blank'><span class='blank-answer'></span></span> for his mistake and <span class='grammar-blank'><span class='blank-answer'></span></span> to everyone who was affected.",
+                        hint: "(apologize)"
+                    },
+                    {
+                        sentence: "We shouldn’t <span class='grammar-blank'><span class='blank-answer'></span></span> things without evidence because incorrect <span class='grammar-blank'><span class='blank-answer'></span></span> can lead to misunderstandings.",
+                        hint: "(assume)"
+                    }
+                ];
+
+                let grammarHtml = '';
+                grammarItems.forEach((item, index) => {
+                    grammarHtml += `
+                        <div class="grammar-item">
+                            <span class="question-number round5-number" data-index="${index}">${index+1}</span>
+                            <div class="grammar-sentence">${item.sentence}</div>
+                            <div class="grammar-hint">${item.hint}</div>
+                        </div>
+                    `;
+                });
+
+                return `
+                    <div class="round-section">
+                        <div class="round-title">Round 5 派生词单句语法填空</div>
+                        <p></p>
+                        ${grammarHtml}
+                    </div>
+                `;
+            }
+
+            // 7. 渲染B1U3 Round6：主题词块默写
+            function renderRound6() {
+                const chunkItems = [
+                    {english: "give a reason", chinese: "说明原因"},
+                    {english: "have a conflict with", chinese: "与……有冲突"},
+                    {english: "turn to sb for help", chinese: "向某人求助"},
+                    {english: "focus on /upon", chinese: "集中(注意力、精力等)于"},
+                    {english: "in/with surprise", chinese: "惊讶地"},
+                    {english: "advise sb to do sth", chinese: "建议某人做某事"},
+                    {english: "be proud of", chinese: "为……而自豪"},
+                    {english: "jump in with both feet", chinese: "不经思考或头脑一热就仓促行动"},
+                    {english: "the secret to (doing) sth", chinese: "……的秘诀/诀窍"},
+                    {english: "aim to do sth", chinese: "旨在做到某事"},
+                    {english: "most importantly", chinese: "最重要的是"},
+                    {english: "catch up", chinese: "别后叙谈"},
+                    {english: "offer forgiveness", chinese: "给予原谅/宽恕"},
+                    {english: "be certain to do sth", chinese: "一定/肯定会做某事"},
+                    {english: "in a similar situation", chinese: "处于类似情况"}
+                ];
+
+                let chunkHtml = '';
+                chunkItems.forEach((item, index) => {
+                    chunkHtml += `
+                        <div class="chunk-item">
+                            <span class="question-number round6-number" data-index="${index}">${index+1}</span>
+                            <div class="chunk-chinese">${item.chinese}</div>
+                            <div class="chunk-english" style="display: none;">${item.english}</div>
+                        </div>
+                    `;
+                });
+
+                return `
+                    <div class="round-section">
+                        <div class="round-title">Round 6 主题词块默写</div>
+                        <p></p>
+                        ${chunkHtml}
+                    </div>
+                `;
+            }
+
+            // 获取B1U3 Round7答案数据
+            function getRound7Answers() {
+                return [
+                    ["Even though the problem was difficult to solve，I didn't give it up because I firmly believed that “Where there is a will，there is a way.”"],
+                    ["The movie is touching to watch."],
+                    ["The teacher is patient to teach primary school students."],
+                    ["Reading broadens one's horizons."],
+                    ["Running every day helps maintain good health."],
+                    ["It's no use crying over spilt milk."],
+                    ["The teacher has the students hand in their homework after class."],
+                    ["The speaker's wonderful stories had the audience laughing all the time."],
+                    ["They plan to have the garden decorated before the wedding."],
+                    ["When hearing what the headmaster said, I was wild with joy, my eyes shining with excitement."],
+                    ["Looking at my report card my father nodded with satisfaction, a smile spreading across his face."],
+                    ["I felt a lump in my throat, tears clouding my eyes."]
+                ];
+            }
+
+            // 8. 渲染B1U3 Round7：重点句式仿写训练
+            function renderRound7() {
+                return `
+                    <div class="round-section">
+                        <div class="round-title">Round 7 本单元重点句式仿写训练（课文佳句）</div>
+                        
+                        <!-- 句型1：主语＋be＋adj.＋to do -->
+                        <div class="sentence-pattern">
+                            <div class="pattern-title">句型1：主语＋be＋adj.＋to do</div>
+                            <div class="pattern-example"><strong>教材原句</strong>But for Alistair, his decision was easy to explain：“Mum wouldn't have been happy if I'd left Jonny behind.”（但是对于阿利斯泰尔来说，他的决定很容易解释：“如果我不管乔尼，妈妈会不开心的。”）</div>
+                            <div class="pattern-example"><strong>用法归纳</strong></div>
+                            <div class="pattern-example">(1)“主语＋be＋adj.＋to do”结构中，不定式用主动形式表示被动意义；</div>
+                            <div class="pattern-example">(2)当 “主语＋be＋adj.＋to do” 句型中的不定式动词为不及物动词时，需在动词后加适当介词（如 live in、look at）。</div>
+                            <div class="pattern-example">(3)常用的形容词有difficult，hard，easy，good，comfortable，interesting，exciting等。</div>
+                            <div class="pattern-example"><strong>仿写训练</strong>：</div>
+                            <div class="pattern-writing">
+                                <span class="question-number round7-number" data-index="0">1</span> 即使这个问题很难解决，我也没有放弃，因为我坚信“有志者，事竟成。”(主旨升华)<br/>
+                                <span class="pattern-blank"></span>
+                            </div>
+                            <div class="pattern-writing">
+                                <span class="question-number round7-number" data-index="1">2</span> 这部电影很感人，让人想流泪。<br/>
+                                <span class="pattern-blank"></span>
+                            </div>
+                            <div class="pattern-writing">
+                                <span class="question-number round7-number" data-index="2">3</span> 这位老师很耐心，适合教小学生。<br/>
+                                <span class="pattern-blank"></span>
+                            </div>
+                        </div>
+
+                        <!-- 句型2：动词-ing形式作主语 -->
+                        <div class="sentence-pattern" style="margin-top: 20px;">
+                            <div class="pattern-title">句型2：动词-ing形式作主语</div>
+                            <div class="pattern-example"><strong>教材原句</strong>Playing in a band is not a job.（玩乐队可算不上工作。）</div>
+                            <div class="pattern-example"><strong>用法归纳</strong></div>
+                            <div class="pattern-example">1.基本结构：Doing sth. + 谓语动词 + 其他成分</div>
+                            <div class="pattern-example">2.动名词作主语时，谓语动词必须用单数。</div>
+                            <div class="pattern-example">3.用 it 作形式主语：句型结构：It + be + 形容词 / 名词 / 过去分词 + doing sth.</div>
+                            <div class="pattern-example">It's no use/good doing sth.	做某事没用 / 没好处</div>
+                            <div class="pattern-example">There's no point (in) doing sth.	做某事没有意义</div>
+                            <div class="pattern-example">It's worthwhile doing sth.	做某事值得</div>
+                            <div class="pattern-example">It's fun/a waste of time doing sth.	整天玩游戏是浪费时间</div>
+                            <div class="pattern-example"><strong>仿写训练</strong>：</div>
+                            <div class="pattern-writing">
+                                <span class="question-number round7-number" data-index="3">1</span> 阅读能拓宽人的视野。<br/>
+                                <span class="pattern-blank"></span>
+                            </div>
+                            <div class="pattern-writing">
+                                <span class="question-number round7-number" data-index="4">2</span> 每天跑步有助于保持健康。<br/>
+                                <span class="pattern-blank"></span>
+                            </div>
+                            <div class="pattern-writing">
+                                <span class="question-number round7-number" data-index="5">3</span> 覆水难收。（谚语）<br/>
+                                <span class="pattern-blank"></span>
+                            </div>
+                        </div>
+
+                        <!-- 句型3：have＋宾语＋宾语补足语(doing) -->
+                        <div class="sentence-pattern" style="margin-top: 20px;">
+                            <div class="pattern-title">句型3：have＋宾语＋宾语补足语(doing) 使 / 让某人持续做某事</div>
+                            <div class="pattern-example"><strong>教材原句</strong>Throughout my entire life, I've had my brother trying to beat me at everything I do.（在我的一生中，我让弟弟努力在我做的每件事情上都打败我。）</div>
+                            <div class="pattern-example"><strong>用法归纳（常考结构）</strong></div>
+                            <div class="pattern-example">have sb. do sth.       让某人做某事</div>
+                            <div class="pattern-example">have sb. doing sth.  让某人持续做某事</div>
+                            <div class="pattern-example">have sth. Done       让某事被做</div>
+                            <div class="pattern-example"><strong>仿写训练</strong>：</div>
+                            <div class="pattern-writing">
+                                <span class="question-number round7-number" data-index="6">1</span> 老师让学生们课后交作业。<br/>
+                                <span class="pattern-blank"></span>
+                            </div>
+                            <div class="pattern-writing">
+                                <span class="question-number round7-number" data-index="7">2</span> 演讲者精彩的故事让观众们一直大笑。<br/>
+                                <span class="pattern-blank"></span>
+                            </div>
+                            <div class="pattern-writing">
+                                <span class="question-number round7-number" data-index="8">3</span> 他们打算在婚礼前把花园装饰好。<br/>
+                                <span class="pattern-blank"></span>
+                            </div>
+                        </div>
+
+                        <!-- 句型4：with复合结构 -->
+                        <div class="sentence-pattern" style="margin-top: 20px;">
+                            <div class="pattern-title">句型4：with复合结构</div>
+                            <div class="pattern-example"><strong>教材原句</strong>With just 700 metres to go, Alistair Brownlee was in third place and his younger brother, Jonny, was in the lead.（距终点还有700米，阿利斯泰尔·布朗利排名第三，他的弟弟乔尼领先。）</div>
+                            <div class="pattern-example"><strong>用法归纳</strong></div>
+                            <div class="pattern-example">句型1：With复合结构：with +宾语+ doing/to do /done /介词短语</div>
+                            <div class="pattern-example">1. with + 宾语 + doing（主动、伴随或进行）</div>
+                            <div class="pattern-example">2. with + 宾语 + to do（未发生的动作）</div>
+                            <div class="pattern-example">3. with + 宾语 + done（被动、完成）</div>
+                            <div class="pattern-example"><strong>写作训练(作文常用高能万能句型）</strong>：</div>
+                            <div class="pattern-writing">
+                                <span class="question-number round7-number" data-index="9">1</span> 当听到校长所说的话，我欣喜若狂，双眼兴奋地闪闪发光。<br/>
+                                <span class="pattern-blank"></span>
+                            </div>
+                            <div class="pattern-writing">
+                                <span class="question-number round7-number" data-index="10">2</span> 看着我的成绩单，我爸爸满意地点了点头，脸上绽开了微笑。<br/>
+                                <span class="pattern-blank"></span>
+                            </div>
+                            <div class="pattern-writing">
+                                <span class="question-number round7-number" data-index="11">3</span> 我如鲠在喉，泪水模糊了我的眼眶。<br/>
+                                <span class="pattern-blank"></span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // 9. 渲染B1U3 Round8：微写作翻译练习
+            function renderRound8() {
+                return `
+                    <div class="round-section">
+                        <div class="round-title">Round 8 微写作翻译练习</div>
+                        
+                        <!-- 应用文翻译（浙江新高考名校联考） -->
+                        <div class="writing-section">
+                            <div class="writing-task">
+                                <strong>应用文：（浙江新高考名校联考信息卷）</strong>假定你是李华，你校英语报现面向全体学生征文，主题是“我帮父母做家务”。请你写一篇短文投稿，要点如下：1.做家务的经历；2.你的感受和收获。
+                            </div>
+                            <div class="writing-sample">
+                                1. 当我帮父母做家务时，我专注于打扫厨房，我为把它打扫得一尘不染而感到自豪。<br/>
+                                When I helped my parents with housework, I <span class="writing-blank"><span class="writing-answer">focused on cleaning</span><span class="blank-number">1</span></span>  the kitchen, and I <span class="writing-blank"><span class="writing-answer">was proud of</span><span class="blank-number">2</span></span> making it spotless.
+                            </div>
+                            <div class="writing-sample">
+                                2. 我妈妈建议我更好地安排时间，这样做家务就不会和我的学习产生冲突。<br/>
+                                My mom <span class="writing-blank"><span class="writing-answer">advised me to</span><span class="blank-number">1</span></span> organize my time better so that housework wouldn’t <span class="writing-blank"><span class="writing-answer">have a conflict with</span><span class="blank-number">2</span></span>spend the money on my studies.
+                            </div>
+                        </div>
+
+                        <!-- 微场景写作（2021浙江卷6月） -->
+                        <div class="writing-section" style="margin-top: 20px;">
+                            <div class="writing-task">
+                                <strong>微场景写作（2021年浙江卷6月）</strong>：描写主人公拿到工资后，原本想自己花钱，但看到父亲的辛劳后，内心产生矛盾，最终理解并决定把钱交给父亲，展现从自私到体谅的转变。
+                            </div>
+                            <div class="writing-sample">
+                                The pay arrived at last. I was excited and <span class="writing-blank"><span class="writing-answer">aimed to spend the money on </span><span class="blank-number">1</span></span>  things I liked. However, when I saw my dad come home, tired and covered in dust, I suddenly <span class="writing-blank"><span class="writing-answer">had a conflict with</span><span class="blank-number">2</span></span> my original thoughts. I realized that his hard work was <span class="writing-blank"><span class="writing-answer">the secret to supporting</span><span class="blank-number">3</span></span> our family. <span class="writing-blank"><span class="writing-answer">Most importantly</span><span class="blank-number">4</span></span>, I began to understand why he asked me to contribute my earnings. With a deep sigh, I decided to give him the money, feeling both proud and humbled.
+                            </div>
+                            <div class="writing-sample">
+                                工资终于发下来了，我很兴奋，打算用这些钱买自己喜欢的东西。然而，当我看到爸爸拖着疲惫的身躯回家，满身尘土时，我突然对最初的想法产生了冲突。我意识到他辛勤工作是支撑我们家庭的秘诀。最重要的是，我开始理解他为什么让我贡献我的收入。我深深叹了一口气，决定把钱交给他，心中既自豪又谦卑。
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

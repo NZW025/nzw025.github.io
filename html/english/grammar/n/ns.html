@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英语单词词形转换练习</title>
+    <style>
+        /* 导入自定义字体 - 文艺基调核心 */
+        @font-face {
+          font-family: 'KingHwaOldSong';
+          src: url('https://cdn.jsdelivr.net/gh/yourusername/fonts/KingHwaOldSong.woff2') format('woff2'),
+               url('https://cdn.jsdelivr.net/gh/yourusername/fonts/KingHwaOldSong.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+        }
+
+        /* 基础样式重置 - 全局统一无冗余 */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        /* 全局核心色系 - 温暖文艺三色调，统一所有模块 */
+        :root {
+  --text-main: #4a3d2f; /* 主文字色：暖调深棕，温润有质感 */
+  --text-light: #7d6b57; /* 次要文字色：暖棕灰，柔和不突兀 */
+  --accent: #c87f44; /* 强调色：肉桂暖棕，温暖文艺 */
+  --bg-main: #f9f4eb; /* 背景色：暖调米色，温润肌理感 */
+  --border-light: #e8dcc8; /* 淡边框色：暖调米棕，自然过渡 */
+  --hover-bg: rgba(200, 127, 68, 0.05); /* hover背景：极淡肉桂棕，通透温暖 */
+  --transition-base: all 0.3s ease; /* 统一过渡动画 */
+  --spacing-sm: 0.5em;
+  --spacing-md: 1em;
+  --spacing-lg: 1.5em;
+  --spacing-xl: 2em;
+}
+
+/* 全局样式 - 统一基调，简洁文艺 */
+body {
+  color: var(--text-main);
+  font: normal 16px 'KingHwaOldSong', 'Times New Roman', serif;
+  line-height: 1.55em; /* 行高舒展，阅读舒适 */
+  letter-spacing: 0.9pt; /* 轻微字距，文艺不局促 */
+  background-color: var(--bg-main);
+  /*  background-image:  url('https://cccimg.com/view.php/e952fe86b27edc0337db40d2d8ec778c.webp');*/
+  background-image: url(data:image/png;base64,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);
+  background-attachment: fixed;background-repeat: repeat;
+  padding: var(--spacing-md);
+  max-width: 800px;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+
+        /* 段落样式 - 文艺缩进+呼吸感 */
+        p {
+          text-indent: 2em;
+          margin-bottom: var(--spacing-md);
+        }
+
+        /* 链接样式 - 全局统一，文艺hover效果 */
+        a {
+          color: var(--text-main);
+          text-decoration: none;
+          transition: var(--transition-base);
+          letter-spacing: 0.3pt;
+        }
+
+        a:hover {
+          color: var(--accent);
+          text-decoration: underline dotted;
+          text-underline-offset: 0.3em;
+          transform: translateY(-1px);
+        }
+
+        a:active, a:visited {
+          color: var(--text-main);
+        }
+
+        /* 标题样式 - 全局统一，层级清晰文艺 */
+        h1, h2, h3, h4, h5, h6 {
+          color: var(--text-main);
+          font-family: 'KingHwaOldSong', 'Times New Roman', serif;
+          font-weight: normal;
+          letter-spacing: 1.2pt;
+          margin-top: calc(var(--spacing-lg) + 0.3em);
+          margin-bottom: var(--spacing-md);
+        }
+
+        h1 { font-size: 24px; text-align: center; }
+        h2 { 
+          font-size: 20px;
+          border-bottom: 1px dashed var(--border-light);
+          padding-bottom: 6px;
+          cursor: pointer;
+          transition: var(--transition-base);
+        }
+        h2:hover {
+          color: var(--accent);
+          border-bottom-color: var(--accent);
+        }
+        h3 { font-size: 18px; margin-left: 1em; }
+        h4 { font-size: 16px; margin-left: 2em; color: var(--text-light); }
+
+        /* 自定义单词练习容器样式 */
+        .word-section {
+          margin: var(--spacing-xl) 0;
+        }
+
+        /* 3列网格布局 */
+        .word-group {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: var(--spacing-md);
+          margin: var(--spacing-md) 0;
+        }
+
+        .word-item {
+          display: flex;
+          align-items: center;
+          gap: var(--spacing-md);
+          padding: var(--spacing-sm) var(--spacing-md);
+          border: 1px dashed var(--border-light);
+          border-radius: 0;
+          transition: var(--transition-base);
+        }
+
+        .word-item:hover {
+          background-color: var(--hover-bg);
+          transform: translateY(-1px);
+        }
+
+        .word-left {
+          font-size: 18px;
+          color: var(--accent);
+          cursor: pointer;
+          padding: 4px 8px;
+          transition: var(--transition-base);
+        }
+
+        .word-left:hover {
+          text-decoration: underline dotted var(--accent);
+          text-underline-offset: 0.3em;
+        }
+
+        .word-right {
+          font-size: 18px;
+          color: var(--text-main);
+          opacity: 0;
+          visibility: hidden;
+          transition: var(--transition-base);
+        }
+
+        .word-right.show {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 992px) {
+          .word-group {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media (max-width: 768px) {
+          .word-group {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+          }
+
+          .word-item {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+        }
+    </style>
+</head>
+<body>
+    <h1>常见名词后缀</h1>
+
+    <!-- 一、不留神就会写错的名词 -->
+    <div class="word-section">
+        <h2 onclick="hideAllWords()">一、不留神就会写错的名词</h2>
+        
+        <h3>题组一</h3>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">generous</div><div class="word-right">generosity</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">recognize</div><div class="word-right">recognition</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">explain</div><div class="word-right">explanation</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">consume</div><div class="word-right">consumption</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">assume</div><div class="word-right">assumption</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">describe</div><div class="word-right">description</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">compete</div><div class="word-right">competition</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">qualify</div><div class="word-right">qualification</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">choose</div><div class="word-right">choice</div></div>
+        </div>
+
+        <h3>题组二</h3>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">applaud</div><div class="word-right">applause</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">emphasize</div><div class="word-right">emphasis</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">lose</div><div class="word-right">loss</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">succeed</div><div class="word-right">success</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">laugh</div><div class="word-right">laughter</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">complain</div><div class="word-right">complaint</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">compare</div><div class="word-right">comparison</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">serve</div><div class="word-right">service</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">apologize</div><div class="word-right">apology</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">anxious</div><div class="word-right">anxiety</div></div>
+        </div>
+    </div>
+
+    <!-- 二、动词变名词的 -->
+    <div class="word-section">
+        <h2 onclick="hideAllWords()">二、动词变名词</h2>
+        
+        <h3>1) -ment</h3>
+        <h4>第一组：直接加-ment</h4>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">develop</div><div class="word-right">development</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">equip</div><div class="word-right">equipment</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">employ</div><div class="word-right">employment</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">treat</div><div class="word-right">treatment</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">agree</div><div class="word-right">agreement</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">assess</div><div class="word-right">assessment</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">astonish</div><div class="word-right">astonishment</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">punish</div><div class="word-right">punishment</div></div>
+        </div>
+
+        <h4>第二组：以e结尾的不去e，直接加-ment</h4>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">amaze</div><div class="word-right">amazement</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">state</div><div class="word-right">statement</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">involve</div><div class="word-right">involvement</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">move</div><div class="word-right">movement</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">retire</div><div class="word-right">retirement</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">settle</div><div class="word-right">settlement</div></div>
+        </div>
+
+        <h3>2) -ion</h3>
+        <h4>第一组：直接加-ion</h4>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">attract</div><div class="word-right">attraction</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">select</div><div class="word-right">selection</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">discuss</div><div class="word-right">discussion</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">interrupt</div><div class="word-right">interruption</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">connect</div><div class="word-right">connection</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">inspect</div><div class="word-right">inspection</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">instruct</div><div class="word-right">instruction</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">react</div><div class="word-right">reaction</div></div>
+        </div>
+
+        <h4>第二组：去e加-ion</h4>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">participate</div><div class="word-right">participation</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">calculate</div><div class="word-right">calculation</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">appreciate</div><div class="word-right">appreciation</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">separate</div><div class="word-right">separation</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">celebrate</div><div class="word-right">celebration</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">congratulate</div><div class="word-right">congratulation</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">motivate</div><div class="word-right">motivation</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">frustrate</div><div class="word-right">frustration</div></div>
+        </div>
+
+        <h3>3) -(a)tion</h3>
+        <h4>第一组：直接加-ation</h4>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">expect</div><div class="word-right">expectation</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">consider</div><div class="word-right">consideration</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">relax</div><div class="word-right">relaxation</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">tempt</div><div class="word-right">temptation</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">adapt</div><div class="word-right">adaptation</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">confirm</div><div class="word-right">confirmation</div></div>
+        </div>
+
+        <h4>第二组：去e加-ation</h4>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">conserve</div><div class="word-right">conservation</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">organize</div><div class="word-right">organization</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">examine</div><div class="word-right">examination</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">invite</div><div class="word-right">invitation</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">starve</div><div class="word-right">starvation</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">reserve</div><div class="word-right">reservation</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">prepare</div><div class="word-right">preparation</div></div>
+        </div>
+
+        <h3>4 -(s)sion（去de/d/t加-(s)sion）</h3>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">conclude</div><div class="word-right">conclusion</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">decide</div><div class="word-right">decision</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">divide</div><div class="word-right">division</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">explode</div><div class="word-right">explosion</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">extend</div><div class="word-right">extension</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">expand</div><div class="word-right">expansion</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">permit</div><div class="word-right">permission</div></div>
+        </div>
+
+        <h3>5 -ance</h3>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">appear</div><div class="word-right">appearance</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">perform</div><div class="word-right">performance</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">assist</div><div class="word-right">assistance</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">accept</div><div class="word-right">acceptance</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">resist</div><div class="word-right">resistance</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">annoy</div><div class="word-right">annoyance</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">guide</div><div class="word-right">guidance</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">enter</div><div class="word-right">entrance</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">tolerate</div><div class="word-right">tolerance</div></div>
+        </div>
+
+        <h3>6 -ence</h3>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">exist</div><div class="word-right">existence</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">prefer</div><div class="word-right">preference</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">refer</div><div class="word-right">reference</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">differ</div><div class="word-right">difference</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">occur</div><div class="word-right">occurrence</div></div>
+        </div>
+
+        <h3>7 -al（去e加-al）</h3>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">refuse</div><div class="word-right">refusal</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">arrive</div><div class="word-right">arrival</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">survive</div><div class="word-right">survival</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">revive</div><div class="word-right">revival</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">propose</div><div class="word-right">proposal</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">sign</div><div class="word-right">signal</div></div>
+        </div>
+
+        <h3>8 -ure/-ture</h3>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">press</div><div class="word-right">pressure</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">depart</div><div class="word-right">departure</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">fail</div><div class="word-right">failure</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">mix</div><div class="word-right">mixture</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">please</div><div class="word-right">pleasure</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">expose</div><div class="word-right">exposure</div></div>
+        </div>
+
+        <h3>9 -y</h3>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">discover</div><div class="word-right">discovery</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">deliver</div><div class="word-right">delivery</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">recover</div><div class="word-right">recovery</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">injure</div><div class="word-right">injury</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">sympathize</div><div class="word-right">sympathy</div></div>
+        </div>
+
+        <h3>10 -age</h3>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">pack</div><div class="word-right">package</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">pass</div><div class="word-right">passage</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">marry</div><div class="word-right">marriage</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">store</div><div class="word-right">storage</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">short</div><div class="word-right">shortage</div></div>
+        </div>
+
+        <h3>11 -dom</h3>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">free</div><div class="word-right">freedom</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">wise</div><div class="word-right">wisdom</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">king</div><div class="word-right">kingdom</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">film</div><div class="word-right">filmdom</div></div>
+        </div>
+        
+        <!-- 四、变成“人”的名词 -->
+    <div class="word-section">
+        <h2 onclick="hideAllWords()">三、形容词变名词</h2>
+        <h3> 1 -ty</h3>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">certain</div><div class="word-right">certainty</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">cruel</div><div class="word-right">cruelty</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">safe</div><div class="word-right">safety</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">loyal</div><div class="word-right">loyalty</div></div>
+        </div>
+
+        <h3> 2 -ity</h3>
+        <h4>第一组：直接加-ity</h4>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">real</div><div class="word-right">reality</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">equal</div><div class="word-right">equality</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">familiar</div><div class="word-right">familiarity</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">minor</div><div class="word-right">minority</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">major</div><div class="word-right">majority</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">active</div><div class="word-right">activity</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">sincere</div><div class="word-right">sincerity</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">secure</div><div class="word-right">security</div></div>
+        </div>
+
+        <h4>第二组：-ble变为-bility</h4>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">able</div><div class="word-right">ability</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">disable</div><div class="word-right">disability</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">capable</div><div class="word-right">capability</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">responsible</div><div class="word-right">responsibility</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">possible</div><div class="word-right">possibility</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">probable</div><div class="word-right">probability</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">stable</div><div class="word-right">stability</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">reliable</div><div class="word-right">reliability</div></div>
+        </div>
+
+        <h3> -cy（-t/-te→-cy）</h3>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">proficient</div><div class="word-right">proficiency</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">efficient</div><div class="word-right">efficiency</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">fluent</div><div class="word-right">fluency</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">frequent</div><div class="word-right">frequency</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">urgent</div><div class="word-right">urgency</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">private</div><div class="word-right">privacy</div></div>
+        </div>
+    </div>
+
+    <!-- 四、变成“人”的名词 -->
+    <div class="word-section">
+        <h2 onclick="hideAllWords()">四、变成“人”的名词</h2>
+        
+        <h3>1 -er</h3>
+        <h4>第一组：直接加-er</h4>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">report</div><div class="word-right">reporter</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">research</div><div class="word-right">researcher</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">perform</div><div class="word-right">performer</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">design</div><div class="word-right">designer</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">suffer</div><div class="word-right">sufferer</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">support</div><div class="word-right">supporter</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">discover</div><div class="word-right">discoverer</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">clean</div><div class="word-right">cleaner</div></div>
+        </div>
+
+        <h4>第二组：以e结尾的直接加-r；重读闭音节结尾双写辅音字母加-er</h4>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">advise</div><div class="word-right">adviser</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">examine</div><div class="word-right">examiner</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">observe</div><div class="word-right">observer</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">strange</div><div class="word-right">stranger</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">consume</div><div class="word-right">consumer</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">begin</div><div class="word-right">beginner</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">run</div><div class="word-right">runner</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">win</div><div class="word-right">winner</div></div>
+        </div>
+
+        <h3>2 -or（以e结尾的去e加-or）</h3>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">invent</div><div class="word-right">inventor</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">visit</div><div class="word-right">visitor</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">direct</div><div class="word-right">director</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">sail</div><div class="word-right">sailor</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">conduct</div><div class="word-right">conductor</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">instruct</div><div class="word-right">instructor</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">compete</div><div class="word-right">competitor</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">operate</div><div class="word-right">operator</div></div>
+        </div>
+
+        <h3>3 -ce</h3>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">employ</div><div class="word-right">employee</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">interview</div><div class="word-right">interviewee</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">train</div><div class="word-right">trainee</div></div>
+        </div>
+
+        <h3>4 -ian</h3>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">music</div><div class="word-right">musician</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">politics</div><div class="word-right">politician</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">physics</div><div class="word-right">physician</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">history</div><div class="word-right">historian</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">library</div><div class="word-right">librarian</div></div>
+        </div>
+
+        <h3>5 -ist（以e结尾的去e加-ist）</h3>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">art</div><div class="word-right">artist</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">science</div><div class="word-right">scientist</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">novel</div><div class="word-right">novelist</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">special</div><div class="word-right">specialist</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">cycle</div><div class="word-right">cyclist</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">type</div><div class="word-right">typist</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">piano</div><div class="word-right">pianist</div></div>
+        </div>
+
+        <h3>6 -ant</h3>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">serve</div><div class="word-right">servant</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">participate</div><div class="word-right">participant</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">assist</div><div class="word-right">assistant</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">apply</div><div class="word-right">applicant</div></div>
+        </div>
+
+        <h3>【指津】有些-er/-or结尾的单词表示物</h3>
+        <div class="word-group">
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">contain</div><div class="word-right">container</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">cook</div><div class="word-right">cooker</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">draw</div><div class="word-right">drawer</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">dry</div><div class="word-right">drier</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">sharpen</div><div class="word-right">sharpener</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">shave</div><div class="word-right">shaver</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">calculate</div><div class="word-right">calculator</div></div>
+            <div class="word-item"><div class="word-left" onclick="showRightWord(this)">tract</div><div class="word-right">tractor</div></div>
+        </div>
+    </div>
+
+    <script>
+        // 显示/隐藏单个右侧单词
+        function showRightWord(element) {
+            const rightWord = element.nextElementSibling;
+            rightWord.classList.toggle('show');
+        }
+
+        // 一键隐藏所有显示的单词（点击任意分类标题触发）
+        function hideAllWords() {
+            const allRightWords = document.querySelectorAll('.word-right.show');
+            allRightWords.forEach(word => {
+                word.classList.remove('show');
+            });
+        }
+    </script>
+</body>
+</html>
