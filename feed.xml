@@ -290,7 +290,141 @@
 	&lt;/body&gt;</description></item><item><title>人间共鸣</title><link>https://nzw025.top/qianxushiguang/yinhua/renjiangongming/</link><pubDate>Fri, 20 Feb 2026 17:00:27 +0800</pubDate><guid>https://nzw025.top/qianxushiguang/yinhua/renjiangongming/</guid><description>&lt;body&gt;
  &lt;DIV class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 120px; LEFT: -250px"&gt;&lt;IFRAME height=900 marginHeight=0 src="http://cccimg.com/view.php/ddbe14fbadd6b581aebd598ea6d5313a.webp" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/IFRAME&gt;&lt;/DIV&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
  &lt;audio id="aud" src="https://www.joy127.com/url/144516.mp3" autoplay="" loop=""&gt;&lt;/audio&gt;
-&lt;/body&gt;</description></item><item><title>生活</title><link>https://nzw025.top/dansiwuji/zixing/dome/</link><pubDate>Tue, 17 Feb 2026 21:15:30 +0800</pubDate><guid>https://nzw025.top/dansiwuji/zixing/dome/</guid><description/></item><item><title>续写情绪之愤怒</title><link>https://nzw025.top/jingxinyanxue/xiezuo/anger/</link><pubDate>Sun, 15 Feb 2026 18:13:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/xiezuo/anger/</guid><description>&lt;style&gt;
+&lt;/body&gt;</description></item><item><title>生活</title><link>https://nzw025.top/dansiwuji/zixing/dome/</link><pubDate>Tue, 17 Feb 2026 21:15:30 +0800</pubDate><guid>https://nzw025.top/dansiwuji/zixing/dome/</guid><description/></item><item><title>情绪之满意</title><link>https://nzw025.top/jingxinyanxue/xiezuo/satisfaction/</link><pubDate>Sun, 15 Feb 2026 19:13:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/xiezuo/satisfaction/</guid><description>&lt;style&gt;
+/* 基础样式 */
+.sentence-item {
+ margin-bottom: 12px;
+ margin-left: 6px;
+ cursor: pointer;
+ line-height: 1.6;
+}
+.sentence-number {
+ font-weight: bold;
+ color: #2c3e50; 
+ user-select: none; 
+ padding: 2px 4px;
+ border-radius: 2px;
+}
+.sentence-number:hover {
+ background-color: #f5f7fa; 
+}
+.cn-sentence {
+ margin-left: 4px;
+}
+.en-sentence {
+ display: none;
+ margin-left: 42px; 
+ color: #666; 
+ margin-top: 4px;
+}
+.sentence-item.active .en-sentence {
+ display: block;
+}
+.study-title {
+ font-size: 18px;
+ font-weight: bold;
+ color: var(--color-title);
+ margin: 20px 0 10px 0;
+ border-bottom: 1px dashed var(--color-border);
+ padding-bottom: 5px;
+}
+&lt;/style&gt;
+&lt;div class="sentence-list"&gt;
+&lt;div class="study-title"&gt;一. content（名词）相关&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;01&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他脸上露出了满意的神情。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Content showed on his face.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;02&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 小小的成功带来了满足感。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Small success brings a sense of content.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;03&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 内心的平静是一种高层次的满意。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Inner peace is a high - level content.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="study-title"&gt;二. satisfaction（名词）相关&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;04&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 顾客的满意是我们的目标。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Customer satisfaction is our goal.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;05&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他从工作中获得了极大的满意。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;He derives great satisfaction from his job.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;06&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 完成任务给她带来了满意。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Completing the task brought her satisfaction.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="study-title"&gt;三. satisfied（形容词）相关&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;07&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他对新手机很满意。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;He is satisfied with the new mobile phone.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;08&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她满意地看着自己的画作。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;She looked at her painting with a satisfied expression.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;09&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 我对这次购物非常满意。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;I'm very satisfied with this shopping.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="study-title"&gt;四. content（形容词）相关&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;10&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他对目前的生活状况很满意。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;He is content with his current living condition.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;11&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 老人过着满意而宁静的生活。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The old man lives a content and peaceful life.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;12&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她脸上总是带着满意的微笑。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;She always has a content smile on her face.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="study-title"&gt;五. pleased（形容词）相关&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;13&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 老师对学生的表现很满意。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The teacher is pleased with the students' performance.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;14&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他满意地接受了这个礼物。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;He accepted the gift with a pleased look.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;15&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她对新发型非常满意。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;She is very pleased with her new hairstyle.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="study-title"&gt;六. satisfy（动词）相关&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;16&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 这份工作能满足他的需求。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;This job can satisfy his needs.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;17&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 美味的食物满足了他的味蕾。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The delicious food satisfied his taste buds.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;18&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 我们努力满足客户的要求。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;We try hard to satisfy the requirements of the clients.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+ const sentenceItems = document.querySelectorAll('.sentence-item');
+ sentenceItems.forEach(item =&gt; {
+ const numberElement = item.querySelector('.sentence-number');
+ numberElement.addEventListener('click', function() {
+ item.classList.toggle('active');
+ });
+ item.addEventListener('click', function(e) {
+ if (e.target !== numberElement) {
+ item.classList.toggle('active');
+ }
+ });
+ });
+});
+&lt;/script&gt;</description></item><item><title>续写情绪之愤怒</title><link>https://nzw025.top/jingxinyanxue/xiezuo/anger/</link><pubDate>Sun, 15 Feb 2026 18:13:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/xiezuo/anger/</guid><description>&lt;style&gt;
 /* 基础样式 */
 .sentence-item {
  margin-bottom: 12px;
@@ -582,7 +716,7 @@ document.addEventListener('DOMContentLoaded', function() {
  });
  });
 });
-&lt;/script&gt;</description></item><item><title>情绪之恐惧</title><link>https://nzw025.top/jingxinyanxue/xiezuo/horror/</link><pubDate>Sun, 15 Feb 2026 16:13:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/xiezuo/horror/</guid><description>&lt;style&gt;
+&lt;/script&gt;</description></item><item><title>情绪之感动</title><link>https://nzw025.top/jingxinyanxue/xiezuo/touch/</link><pubDate>Sun, 15 Feb 2026 17:13:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/xiezuo/touch/</guid><description>&lt;style&gt;
 /* 基础样式 */
 .sentence-item {
  margin-bottom: 12px;
@@ -622,77 +756,89 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 &lt;/style&gt;
 &lt;div class="sentence-list"&gt;
-&lt;div class="study-title"&gt;一. fright相关&lt;/div&gt;
+&lt;div class="study-title"&gt;一. touch（动词）相关&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;01&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 黑暗中的怪声让她充满恐惧。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The strange noise in the dark filled her with fright.&lt;/div&gt;
+ &lt;span class="sentence-number"&gt;01&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 这个温馨的故事使我感动。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The warm story touched me.&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;02&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 突然的巨响引起了大家的恐惧。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The sudden loud noise caused everyone's fright.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;二. terror相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;03&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 恐怖袭击给城市带来了恐惧。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Terror attacks brought terror to the city.&lt;/div&gt;
+ &lt;span class="sentence-number"&gt;02&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他的善良举动总是能使我感动。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;His kind deeds always touch me.&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;04&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 那部恐怖片里的画面令人恐惧。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The scenes in that horror movie are full of terror.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;三. horror相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;05&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 犯罪现场的景象让人充满恐惧。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The sight of the crime scene filled people with horror.&lt;/div&gt;
+ &lt;span class="sentence-number"&gt;03&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 那首歌的歌词深深使她感动。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The lyrics of that song deeply touched her.&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;06&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他的噩梦充满了各种恐惧元素。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;His nightmare is filled with elements of horror.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;四. panic相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;07&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 火灾警报使人们陷入惊慌。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The fire alarm threw people into panic.&lt;/div&gt;
+ &lt;span class="sentence-number"&gt;04&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 老人的回忆使在场的人感动。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The old man's memories touched the people present.&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;08&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 股票暴跌让投资者惊慌失措。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The sharp fall of stocks made investors in panic.&lt;/div&gt;
+ &lt;span class="sentence-number"&gt;05&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 志愿者的奉献精神使大家感动。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The dedication of the volunteers touched everyone.&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="study-title"&gt;五. scared相关&lt;/div&gt;
+&lt;div class="study-title"&gt;二. move（动词）相关&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;09&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她被那只大狗吓得很害怕。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;She was really scared by that big dog.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;10&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 独自在家时他经常感到害怕。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He often feels scared when staying at home alone.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;六. Frightened相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;11&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 受惊的孩子紧紧抱住了妈妈。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The frightened child hugged his mother tightly.&lt;/div&gt;
+ &lt;span class="sentence-number"&gt;06&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 这部电影使无数观众感动。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The movie moved countless audiences.&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;12&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她被突然的闪电吓得很害怕。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;She was frightened by the sudden lightning.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;七. terrified相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;13&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她对飞行有深深的恐惧，很害怕。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;She is terrified of flying and is really scared.&lt;/div&gt;
+ &lt;span class="sentence-number"&gt;07&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他的演讲能使听众深深感动。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;His speech can move the audience deeply.&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;14&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 地震时人们都害怕得不知所措。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;People were terrified and at a loss during the earthquake.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;八. horrified相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;15&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 看到事故现场他害怕得发抖。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He was horrified and trembled at the accident scene.&lt;/div&gt;
+ &lt;span class="sentence-number"&gt;08&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 妈妈的信使远在他乡的她感动。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Mother's letter moved her far away from home.&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;16&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她对恐怖故事里的情节感到害怕。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;She was horrified by the plots in the horror story.&lt;/div&gt;
+ &lt;span class="sentence-number"&gt;09&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 那些英雄事迹使全国人民感动。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Those heroic deeds moved the people of the whole country.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;10&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 孩子的纯真笑容使老师感动。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The innocent smile of the child moved the teacher.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="study-title"&gt;三. touched（形容词）相关&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;11&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她被朋友的支持感动了。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;She was touched by her friend's support.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;12&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 我们都被这个简单的举动感动。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;We were all touched by this simple act.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;13&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他被那封充满爱意的信感动。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;He was touched by the letter full of love.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;14&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 观众们被演员的表演感动了。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The audience were touched by the actors' performance.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;15&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 老人被年轻人的礼貌感动。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The old man was touched by the young man's politeness.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="study-title"&gt;四. moved（形容词）相关&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;16&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他被那部小说里的情节感动。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;He was moved by the plot in that novel.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;17&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她被灾难中互助的场景感动。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;She was moved by the scene of mutual assistance in the disaster.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;18&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 我被他坚持不懈的精神感动。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;I was moved by his persistent spirit.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;19&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 学生们被老师的关怀感动了。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The students were moved by the teacher's care.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;20&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 战士们被群众的热情感动。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The soldiers were moved by the masses' enthusiasm.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;script&gt;
@@ -710,16 +856,255 @@ document.addEventListener('DOMContentLoaded', function() {
  });
  });
 });
-&lt;/script&gt;</description></item><item><title>平安喜乐 得偿所愿</title><link>https://nzw025.top/qianxushiguang/yinhua/paxl/</link><pubDate>Wed, 31 Dec 2025 21:03:27 +0800</pubDate><guid>https://nzw025.top/qianxushiguang/yinhua/paxl/</guid><description>&lt;!-- 核心修复：删除多余的 HTML 骨架（Hugo 会自动生成 html/head/body） --&gt;
-&lt;!-- 图片适配：添加样式让图片自适应，避免超出屏幕 --&gt;
-&lt;div style="max-width: 100%; margin: 20px auto;"&gt;
- &lt;img src="https://nzw025.top/img/7-1.jpg" alt="";&gt;&lt;/br&gt;
- &lt;img src="https://nzw025.top/img/7-2.jpg" alt="";&gt;&lt;/br&gt;
- &lt;img src="https://nzw025.top/img/7-5.gif" alt="";&gt;&lt;/br&gt;
- &lt;img src="https://nzw025.top/img/7-6.gif" alt="";&gt;&lt;/br&gt;
+&lt;/script&gt;</description></item><item><title>情绪之笑容</title><link>https://nzw025.top/jingxinyanxue/xiezuo/smile/</link><pubDate>Sun, 15 Feb 2026 15:13:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/xiezuo/smile/</guid><description>&lt;style&gt;
+/* 基础样式 */
+.sentence-item {
+ margin-bottom: 12px;
+ margin-left: 6px;
+ cursor: pointer;
+ line-height: 1.6;
+}
+.sentence-number {
+ font-weight: bold;
+ color: #2c3e50; 
+ user-select: none; 
+ padding: 2px 4px;
+ border-radius: 2px;
+}
+.sentence-number:hover {
+ background-color: #f5f7fa; 
+}
+.cn-sentence {
+ margin-left: 4px;
+}
+.en-sentence {
+ display: none;
+ margin-left: 42px; 
+ color: #666; 
+ margin-top: 4px;
+}
+.sentence-item.active .en-sentence {
+ display: block;
+}
+.study-title {
+ font-size: 18px;
+ font-weight: bold;
+ color: var(--color-title);
+ margin: 20px 0 10px 0;
+ border-bottom: 1px dashed var(--color-border);
+ padding-bottom: 5px;
+}
+&lt;/style&gt;
+&lt;div class="sentence-list"&gt;
+&lt;div class="study-title"&gt;一. 正向情绪类笑容&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;01&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 幸福的笑容使她容光焕发。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Smile of happiness brightened her face.&lt;/div&gt;
 &lt;/div&gt;
-&lt;audio id="aud" src="https://www.joy127.com/url/140816.mp3" autoplay="" loop=""&gt;&lt;/audio&gt;</description></item><item><title>多喜乐 长安宁</title><link>https://nzw025.top/qianxushiguang/yinhua/dxl/</link><pubDate>Wed, 31 Dec 2025 21:00:27 +0800</pubDate><guid>https://nzw025.top/qianxushiguang/yinhua/dxl/</guid><description>&lt;body&gt;
- &lt;DIV class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 120px; LEFT: -250px"&gt;&lt;IFRAME height=900 marginHeight=0 src="https://cccimg.com/view.php/c6f8e35a3bff158bde0e7bdc976e4267.webp" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/IFRAME&gt;&lt;/DIV&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
- &lt;audio id="aud" src="https://www.joy127.com/url/137732.mp3" autoplay="" loop=""&gt;&lt;/audio&gt;
-&lt;/body&gt;</description></item><item><title>我的2025</title><link>https://nzw025.top/dansiwuji/suibi/erwu/</link><pubDate>Tue, 30 Dec 2025 19:00:27 +0800</pubDate><guid>https://nzw025.top/dansiwuji/suibi/erwu/</guid><description>&lt;br&gt;
-&lt;p&gt;时间过得真快，一眨眼2025年就翻篇了。回头看这一年，算不上顺风顺水，甚至有些磕磕绊绊。身体不怎么给力，重感冒犯了两回，眼睛不舒服也缠了好几个月。人际关系也起起落落，有突如其来的温暖，也有体面说再见的时刻，还有些人和事，走着走着散了，再也不见。日子里的悲欢离合，偶尔也会让我矫情几句，但静下心来想，比起生死大事，这些都不值一提，早晚会成为过眼云烟。&lt;/p&gt;</description></item></channel></rss>
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;02&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 友善的笑容温暖了每个人的心。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Smile of kindness warmed everyone's heart.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;03&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 自信的笑容提升了他的士气。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Smile of confidence boosted his morale.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="study-title"&gt;二. 满足感类笑容&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;04&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 满意的笑容浮现在他的嘴角。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Smile of satisfaction showed on his lips.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;05&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 兴奋的笑容在她眼中闪耀。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Smile of excitement sparkled in her eyes.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;06&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 宽慰的笑容在他的面容上展开。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Smile of relief spread across his features.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="study-title"&gt;三. 情感表达类笑容&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;07&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 感激的笑容表达了她的谢意。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Smile of gratitude expressed her thankfulness.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;08&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 纯真的笑容让这个孩子很可爱。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Smile of innocence made the child adorable.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;09&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 爱意的笑容充满了这对夫妇的双眼。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Smile of love filled the couple's eyes.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="study-title"&gt;四. 特质类笑容&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;10&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 神秘的笑容增添了他的魅力。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Smile of mystery added to his charm.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;11&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 胜利后的得意笑容出现了。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Smile of triumph appeared after the victory.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;12&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 好奇的笑容照亮了他的脸。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Smile of curiosity lit up his face.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;13&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 谦虚的笑容让她更受尊重。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Smile of modesty made her more respected.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+ const sentenceItems = document.querySelectorAll('.sentence-item');
+ sentenceItems.forEach(item =&gt; {
+ const numberElement = item.querySelector('.sentence-number');
+ numberElement.addEventListener('click', function() {
+ item.classList.toggle('active');
+ });
+ item.addEventListener('click', function(e) {
+ if (e.target !== numberElement) {
+ item.classList.toggle('active');
+ }
+ });
+ });
+});
+&lt;/script&gt;</description></item><item><title>情绪之眼泪</title><link>https://nzw025.top/jingxinyanxue/xiezuo/tear/</link><pubDate>Sat, 14 Feb 2026 19:13:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/xiezuo/tear/</guid><description>&lt;style&gt;
+/* 基础样式 */
+.sentence-item {
+ margin-bottom: 12px;
+ margin-left: 6px;
+ cursor: pointer;
+ line-height: 1.6;
+}
+.sentence-number {
+ font-weight: bold;
+ color: #2c3e50; 
+ user-select: none; 
+ padding: 2px 4px;
+ border-radius: 2px;
+}
+.sentence-number:hover {
+ background-color: #f5f7fa; 
+}
+.cn-sentence {
+ margin-left: 4px;
+}
+.en-sentence {
+ display: none;
+ margin-left: 42px; 
+ color: #666; 
+ margin-top: 4px;
+}
+.sentence-item.active .en-sentence {
+ display: block;
+}
+.study-title {
+ font-size: 18px;
+ font-weight: bold;
+ color: var(--color-title);
+ margin: 20px 0 10px 0;
+ border-bottom: 1px dashed var(--color-border);
+ padding-bottom: 5px;
+}
+&lt;/style&gt;
+&lt;div class="sentence-list"&gt;
+&lt;div class="study-title"&gt;一. 正向情绪类眼泪&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;01&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 喜悦的泪水充满了她的眼眶。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Tears of joy filled her eyes.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;06&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 兴奋的泪水在她脸颊上闪烁。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Tears of excitement sparkled on her cheeks.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;07&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 宽慰的泪水涌上他心头。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Tears of relief washed over him.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;12&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 感激的泪水在他眼中闪耀。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Tears of gratitude shone in his eyes.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;14&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 爱的泪水在她眼中徘徊。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Tears of love lingered in her eyes.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;16&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 骄傲的泪水沾湿了他的睫毛。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Tears of pride dampened his lashes.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;19&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 希望的泪水使她的表情明亮起来。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Tears of hope brightened her expression.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="study-title"&gt;二. 负向情绪类眼泪&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;02&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 悲伤的泪水从他脸上流下。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Tears of sorrow streamed down his face.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;03&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 愤怒的泪水在他眼中燃烧。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Tears of anger burned in his eyes.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;04&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 悔恨的泪水在她内心涌起。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Tears of regret welled up within her.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;05&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 挫败的泪水模糊了他的视线。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Tears of frustration clouded his vision.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;08&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 痛苦的泪水使她的脸扭曲了。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Tears of pain made her face contorted.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;09&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 孤独的泪水浸湿了她的枕头。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Tears of loneliness soaked her pillow.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;10&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 失望的泪水从他下巴滴落。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Tears of disappointment dripped from his chin.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="study-title"&gt;三. 复杂情绪类眼泪&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;11&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 怀旧的泪水模糊了她的视线。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Tears of nostalgia blurred her sight.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;13&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 恐惧的泪水在她脸上凝固。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Tears of horror froze on her face.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;15&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 嫉妒的泪水在他的眼神中闪烁。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Tears of envy glistened in his look.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;17&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 困惑的泪水充满了他的双眼。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Tears of confusion filled his eyes.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;18&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 渴望的泪水让他心痛。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Tears of longing made his heart ache.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;20&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 害羞的泪水使她的脸颊泛红。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Tears of shyness tinted her cheeks red.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+ const sentenceItems = document.querySelectorAll('.sentence-item');
+ sentenceItems.forEach(item =&gt; {
+ const numberElement = item.querySelector('.sentence-number');
+ numberElement.addEventListener('click', function() {
+ item.classList.toggle('active');
+ });
+ item.addEventListener('click', function(e) {
+ if (e.target !== numberElement) {
+ item.classList.toggle('active');
+ }
+ });
+ });
+});
+&lt;/script&gt;</description></item></channel></rss>
