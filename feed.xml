@@ -582,6 +582,134 @@ document.addEventListener('DOMContentLoaded', function() {
  });
  });
 });
+&lt;/script&gt;</description></item><item><title>情绪之恐惧</title><link>https://nzw025.top/jingxinyanxue/xiezuo/horror/</link><pubDate>Sun, 15 Feb 2026 16:13:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/xiezuo/horror/</guid><description>&lt;style&gt;
+/* 基础样式 */
+.sentence-item {
+ margin-bottom: 12px;
+ margin-left: 6px;
+ cursor: pointer;
+ line-height: 1.6;
+}
+.sentence-number {
+ font-weight: bold;
+ color: #2c3e50; 
+ user-select: none; 
+ padding: 2px 4px;
+ border-radius: 2px;
+}
+.sentence-number:hover {
+ background-color: #f5f7fa; 
+}
+.cn-sentence {
+ margin-left: 4px;
+}
+.en-sentence {
+ display: none;
+ margin-left: 42px; 
+ color: #666; 
+ margin-top: 4px;
+}
+.sentence-item.active .en-sentence {
+ display: block;
+}
+.study-title {
+ font-size: 18px;
+ font-weight: bold;
+ color: var(--color-title);
+ margin: 20px 0 10px 0;
+ border-bottom: 1px dashed var(--color-border);
+ padding-bottom: 5px;
+}
+&lt;/style&gt;
+&lt;div class="sentence-list"&gt;
+&lt;div class="study-title"&gt;一. fright相关&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;01&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 黑暗中的怪声让她充满恐惧。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The strange noise in the dark filled her with fright.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;02&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 突然的巨响引起了大家的恐惧。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The sudden loud noise caused everyone's fright.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="study-title"&gt;二. terror相关&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;03&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 恐怖袭击给城市带来了恐惧。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;Terror attacks brought terror to the city.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;04&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 那部恐怖片里的画面令人恐惧。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The scenes in that horror movie are full of terror.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="study-title"&gt;三. horror相关&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;05&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 犯罪现场的景象让人充满恐惧。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The sight of the crime scene filled people with horror.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;06&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他的噩梦充满了各种恐惧元素。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;His nightmare is filled with elements of horror.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="study-title"&gt;四. panic相关&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;07&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 火灾警报使人们陷入惊慌。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The fire alarm threw people into panic.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;08&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 股票暴跌让投资者惊慌失措。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The sharp fall of stocks made investors in panic.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="study-title"&gt;五. scared相关&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;09&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她被那只大狗吓得很害怕。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;She was really scared by that big dog.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;10&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 独自在家时他经常感到害怕。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;He often feels scared when staying at home alone.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="study-title"&gt;六. Frightened相关&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;11&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 受惊的孩子紧紧抱住了妈妈。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The frightened child hugged his mother tightly.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;12&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她被突然的闪电吓得很害怕。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;She was frightened by the sudden lightning.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="study-title"&gt;七. terrified相关&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;13&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她对飞行有深深的恐惧，很害怕。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;She is terrified of flying and is really scared.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;14&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 地震时人们都害怕得不知所措。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;People were terrified and at a loss during the earthquake.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="study-title"&gt;八. horrified相关&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;15&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 看到事故现场他害怕得发抖。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;He was horrified and trembled at the accident scene.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
+ &lt;span class="sentence-number"&gt;16&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她对恐怖故事里的情节感到害怕。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;She was horrified by the plots in the horror story.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+ const sentenceItems = document.querySelectorAll('.sentence-item');
+ sentenceItems.forEach(item =&gt; {
+ const numberElement = item.querySelector('.sentence-number');
+ numberElement.addEventListener('click', function() {
+ item.classList.toggle('active');
+ });
+ item.addEventListener('click', function(e) {
+ if (e.target !== numberElement) {
+ item.classList.toggle('active');
+ }
+ });
+ });
+});
 &lt;/script&gt;</description></item><item><title>平安喜乐 得偿所愿</title><link>https://nzw025.top/qianxushiguang/yinhua/paxl/</link><pubDate>Wed, 31 Dec 2025 21:03:27 +0800</pubDate><guid>https://nzw025.top/qianxushiguang/yinhua/paxl/</guid><description>&lt;!-- 核心修复：删除多余的 HTML 骨架（Hugo 会自动生成 html/head/body） --&gt;
 &lt;!-- 图片适配：添加样式让图片自适应，避免超出屏幕 --&gt;
 &lt;div style="max-width: 100%; margin: 20px auto;"&gt;
@@ -594,7 +722,4 @@ document.addEventListener('DOMContentLoaded', function() {
  &lt;DIV class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 120px; LEFT: -250px"&gt;&lt;IFRAME height=900 marginHeight=0 src="https://cccimg.com/view.php/c6f8e35a3bff158bde0e7bdc976e4267.webp" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/IFRAME&gt;&lt;/DIV&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
  &lt;audio id="aud" src="https://www.joy127.com/url/137732.mp3" autoplay="" loop=""&gt;&lt;/audio&gt;
 &lt;/body&gt;</description></item><item><title>我的2025</title><link>https://nzw025.top/dansiwuji/suibi/erwu/</link><pubDate>Tue, 30 Dec 2025 19:00:27 +0800</pubDate><guid>https://nzw025.top/dansiwuji/suibi/erwu/</guid><description>&lt;br&gt;
-&lt;p&gt;时间过得真快，一眨眼2025年就翻篇了。回头看这一年，算不上顺风顺水，甚至有些磕磕绊绊。身体不怎么给力，重感冒犯了两回，眼睛不舒服也缠了好几个月。人际关系也起起落落，有突如其来的温暖，也有体面说再见的时刻，还有些人和事，走着走着散了，再也不见。日子里的悲欢离合，偶尔也会让我矫情几句，但静下心来想，比起生死大事，这些都不值一提，早晚会成为过眼云烟。&lt;/p&gt;</description></item><item><title>过火</title><link>https://nzw025.top/qianxushiguang/yinhua/guohuo/</link><pubDate>Thu, 11 Dec 2025 12:00:27 +0800</pubDate><guid>https://nzw025.top/qianxushiguang/yinhua/guohuo/</guid><description>&lt;body&gt;
- &lt;DIV class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 100px; LEFT: -250px"&gt;&lt;IFRAME height=900 marginHeight=0 src="https://pic1.imgdb.cn/item/693b96c0aef5720cf5491e07.webp" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/IFRAME&gt;&lt;/DIV&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
- &lt;audio id="aud" src="https://www.joy127.com/url/139501.mp3" autoplay="" loop=""&gt;&lt;/audio&gt;
-&lt;/body&gt;</description></item></channel></rss>
+&lt;p&gt;时间过得真快，一眨眼2025年就翻篇了。回头看这一年，算不上顺风顺水，甚至有些磕磕绊绊。身体不怎么给力，重感冒犯了两回，眼睛不舒服也缠了好几个月。人际关系也起起落落，有突如其来的温暖，也有体面说再见的时刻，还有些人和事，走着走着散了，再也不见。日子里的悲欢离合，偶尔也会让我矫情几句，但静下心来想，比起生死大事，这些都不值一提，早晚会成为过眼云烟。&lt;/p&gt;</description></item></channel></rss>
