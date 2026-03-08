@@ -476,7 +476,7 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 &lt;/style&gt;
 &lt;div class="sentence-list"&gt;
-&lt;div class="category-title"&gt;一. 担忧 (concern)&lt;/div&gt;
+&lt;div class="study-title"&gt;一. 担忧 (concern)&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;01&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 我们对环境的担忧与日俱增。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;Our concern about the environment is growing.&lt;/div&gt;
@@ -485,7 +485,7 @@ document.addEventListener('DOMContentLoaded', function() {
  &lt;span class="sentence-number"&gt;02&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她的担忧在眼神中清晰可见。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;Her concern is clearly visible in her eyes.&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="category-title"&gt;二. 焦虑 (anxiety)&lt;/div&gt;
+&lt;div class="study-title"&gt;二. 焦虑 (anxiety)&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;03&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他的焦虑源于工作压力。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;His anxiety comes from work pressure.&lt;/div&gt;
@@ -494,7 +494,7 @@ document.addEventListener('DOMContentLoaded', function() {
  &lt;span class="sentence-number"&gt;04&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 考试前的焦虑让他难以入眠。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;Anxiety before the exam makes it hard for him to sleep.&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="category-title"&gt;三. 忧虑 (agitation)&lt;/div&gt;
+&lt;div class="study-title"&gt;三. 忧虑 (agitation)&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;05&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她脸上的忧虑无法消散。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;The agitation on her face won't disappear.&lt;/div&gt;
@@ -503,7 +503,7 @@ document.addEventListener('DOMContentLoaded', function() {
  &lt;span class="sentence-number"&gt;06&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他带着忧虑处理棘手问题。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;He deals with the tough problem with agitation.&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="category-title"&gt;四. 担忧的 (concerned)&lt;/div&gt;
+&lt;div class="study-title"&gt;四. 担忧的 (concerned)&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;07&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 那位担忧的父亲四处寻找孩子。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;The concerned father is looking for his child everywhere.&lt;/div&gt;
@@ -512,7 +512,7 @@ document.addEventListener('DOMContentLoaded', function() {
  &lt;span class="sentence-number"&gt;08&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 担忧的医生密切关注病人。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;The concerned doctor pays close attention to the patient.&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="category-title"&gt;五. 焦虑的 (anxious)&lt;/div&gt;&lt;/br&gt; 
+&lt;div class="study-title"&gt;五. 焦虑的 (anxious)&lt;/div&gt; 
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;09&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 焦虑的投资者等待着股市消息。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;Anxious investors are waiting for stock market news.&lt;/div&gt;
@@ -521,7 +521,7 @@ document.addEventListener('DOMContentLoaded', function() {
  &lt;span class="sentence-number"&gt;10&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 焦虑的心情让他坐立不安。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;The anxious mood makes him restless.&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="category-title"&gt;六. 焦虑不安的 (agitated)&lt;/div&gt;
+&lt;div class="study-title"&gt;六. 焦虑不安的 (agitated)&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;11&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 焦虑不安的人群呼喊着口号。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;The agitated crowd shouts slogans.&lt;/div&gt;
@@ -530,7 +530,7 @@ document.addEventListener('DOMContentLoaded', function() {
  &lt;span class="sentence-number"&gt;12&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他焦虑不安的状态很明显。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;His agitated state is very obvious.&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="category-title"&gt;七. 坐立不安的 (restless)&lt;/div&gt;
+&lt;div class="study-title"&gt;七. 坐立不安的 (restless)&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;13&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 坐立不安的他在房间里走来走去。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;Restless, he walks around in the room.&lt;/div&gt;
@@ -539,7 +539,7 @@ document.addEventListener('DOMContentLoaded', function() {
  &lt;span class="sentence-number"&gt;14&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 坐立不安的思绪困扰着他。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;Restless thoughts trouble him.&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="category-title"&gt;八. 紧张的 (nervous)&lt;/div&gt;
+&lt;div class="study-title"&gt;八. 紧张的 (nervous)&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;15&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 紧张的运动员做着深呼吸。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;The nervous athlete takes deep breaths.&lt;/div&gt;
@@ -548,7 +548,7 @@ document.addEventListener('DOMContentLoaded', function() {
  &lt;span class="sentence-number"&gt;16&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她紧张的样子让人有些心疼。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;Her nervous look makes people feel a bit sorry.&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="category-title"&gt;九. 颤抖 (shake)&lt;/div&gt;
+&lt;div class="study-title"&gt;九. 颤抖 (shake)&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;17&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他冷得直颤抖，赶紧穿上外套。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;He shakes with cold and quickly puts on a coat.&lt;/div&gt;
@@ -557,14 +557,14 @@ document.addEventListener('DOMContentLoaded', function() {
  &lt;span class="sentence-number"&gt;18&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 地震时大地颤抖，房屋晃动。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;The earth shakes during the earthquake and houses sway.&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="category-title"&gt;十. 忧虑 (agitation)&lt;/div&gt;
+&lt;div class="study-title"&gt;十. 惶恐 (panic)&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;19&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她脸上的忧虑无法消散。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The agitation on her face won't disappear.&lt;/div&gt;
+ &lt;span class="sentence-number"&gt;19&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 突发的警报让人群陷入惶恐。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;The sudden alarm threw the crowd into panic.&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;20&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他带着忧虑处理棘手问题。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He deals with the tough problem with agitation.&lt;/div&gt;
+ &lt;span class="sentence-number"&gt;20&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她强压着内心的惶恐面对危机。&lt;/span&gt;
+ &lt;div class="en-sentence"&gt;She suppressed her inner panic to face the crisis.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;script&gt;
