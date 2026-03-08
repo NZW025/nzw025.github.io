@@ -491,9 +491,6 @@ document.addEventListener('DOMContentLoaded', function() {
  display: block;
 }
 &lt;/style&gt;
-&lt;/head&gt;&lt;/br&gt;
-&lt;body&gt;&lt;/div&gt;
- &lt;/div&gt;
 &lt;div class="sentence-list"&gt;
  &lt;!-- 1. anger相关--&gt;
  &lt;div class="category-title"&gt;1. anger相关&lt;/div&gt; &lt;/br&gt; 
@@ -618,9 +615,7 @@ document.addEventListener('DOMContentLoaded', function() {
  });
  });
 });
-&lt;/script&gt;
-&lt;/body&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
-&lt;/html&gt;</description></item><item><title>平安喜乐 得偿所愿</title><link>https://nzw025.top/qianxushiguang/yinhua/paxl/</link><pubDate>Wed, 31 Dec 2025 21:03:27 +0800</pubDate><guid>https://nzw025.top/qianxushiguang/yinhua/paxl/</guid><description>&lt;!-- 核心修复：删除多余的 HTML 骨架（Hugo 会自动生成 html/head/body） --&gt;
+&lt;/script&gt;</description></item><item><title>平安喜乐 得偿所愿</title><link>https://nzw025.top/qianxushiguang/yinhua/paxl/</link><pubDate>Wed, 31 Dec 2025 21:03:27 +0800</pubDate><guid>https://nzw025.top/qianxushiguang/yinhua/paxl/</guid><description>&lt;!-- 核心修复：删除多余的 HTML 骨架（Hugo 会自动生成 html/head/body） --&gt;
 &lt;!-- 图片适配：添加样式让图片自适应，避免超出屏幕 --&gt;
 &lt;div style="max-width: 100%; margin: 20px auto;"&gt;
  &lt;img src="https://nzw025.top/img/7-1.jpg" alt="";&gt;&lt;/br&gt;
