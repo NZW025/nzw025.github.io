@@ -290,172 +290,7 @@
 	&lt;/body&gt;</description></item><item><title>人间共鸣</title><link>https://nzw025.top/qianxushiguang/yinhua/renjiangongming/</link><pubDate>Fri, 20 Feb 2026 17:00:27 +0800</pubDate><guid>https://nzw025.top/qianxushiguang/yinhua/renjiangongming/</guid><description>&lt;body&gt;
  &lt;DIV class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 120px; LEFT: -250px"&gt;&lt;IFRAME height=900 marginHeight=0 src="http://cccimg.com/view.php/ddbe14fbadd6b581aebd598ea6d5313a.webp" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/IFRAME&gt;&lt;/DIV&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
  &lt;audio id="aud" src="https://www.joy127.com/url/144516.mp3" autoplay="" loop=""&gt;&lt;/audio&gt;
-&lt;/body&gt;</description></item><item><title>生活</title><link>https://nzw025.top/dansiwuji/zixing/dome/</link><pubDate>Tue, 17 Feb 2026 21:15:30 +0800</pubDate><guid>https://nzw025.top/dansiwuji/zixing/dome/</guid><description/></item><item><title>语音</title><link>https://nzw025.top/jingxinyanxue/yuyin/dome/</link><pubDate>Tue, 17 Feb 2026 21:15:30 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/yuyin/dome/</guid><description/></item><item><title>续写情绪之焦虑</title><link>https://nzw025.top/jingxinyanxue/xiezuo/concern2/</link><pubDate>Sun, 15 Feb 2026 20:13:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/xiezuo/concern2/</guid><description>&lt;style&gt;
-/* 基础样式 */
-.sentence-item {
- margin-bottom: 12px;
- margin-left: 6px;
- cursor: pointer;
- line-height: 1.6;
-}
-/* 番号样式 - 统一色系 */
-.sentence-number {
- font-weight: bold;
- color: #2c3e50; /* 深灰蓝色（可自行修改），统一番号颜色 */
- user-select: none; /* 禁止选中番号文字 */
- padding: 2px 4px;
- border-radius: 2px;
-}
-/* 点击时的hover效果（可选） */
-.sentence-number:hover {
- background-color: #f5f7fa; /* 浅灰色背景，提示可点击 */
-}
-/* 中文句子样式 */
-.cn-sentence {
- margin-left: 4px;
-}
-/* 英文句子样式 - 默认隐藏 */
-.en-sentence {
- display: none;
- margin-left: 42px; /* 与中文首字对齐 */
- color: #666; /* 灰色区分中英文 */
- margin-top: 4px;
-}
-/* 展开状态 */
-.sentence-item.active .en-sentence {
- display: block;
-}
-&lt;/style&gt;
-&lt;/head&gt;&lt;/br&gt;
-&lt;body&gt;&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-list"&gt;
- &lt;!-- 1. 担忧 (concern) --&gt;
- &lt;div class="category-title"&gt;1. 担忧 (concern)&lt;/div&gt; &lt;/br&gt; 
- &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;01&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 我们对环境的担忧与日俱增。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Our concern about the environment is growing.&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;02&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她的担忧在眼神中清晰可见。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Her concern is clearly visible in her eyes.&lt;/div&gt;
- &lt;/div&gt;&lt;/br&gt; 
- &lt;!-- 2. 焦虑 (anxiety) --&gt;
- &lt;div class="category-title"&gt;2. 焦虑 (anxiety)&lt;/div&gt; &lt;/br&gt; 
- &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;03&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他的焦虑源于工作压力。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;His anxiety comes from work pressure.&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;04&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 考试前的焦虑让他难以入眠。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Anxiety before the exam makes it hard for him to sleep.&lt;/div&gt;
- &lt;/div&gt;&lt;/br&gt; 
- &lt;!-- 3. 忧虑 (agitation) --&gt;
- &lt;div class="category-title"&gt;3. 忧虑 (agitation)&lt;/div&gt; &lt;/br&gt; 
- &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;05&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她脸上的忧虑无法消散。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The agitation on her face won't disappear.&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;06&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他带着忧虑处理棘手问题。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He deals with the tough problem with agitation.&lt;/div&gt;
- &lt;/div&gt;&lt;/br&gt; 
- &lt;!-- 4. 担忧的 (concerned) --&gt;
- &lt;div class="category-title"&gt;4. 担忧的 (concerned)&lt;/div&gt; &lt;/br&gt; 
- &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;07&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 那位担忧的父亲四处寻找孩子。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The concerned father is looking for his child everywhere.&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;08&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 担忧的医生密切关注病人。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The concerned doctor pays close attention to the patient.&lt;/div&gt;
- &lt;/div&gt;&lt;/br&gt; 
- &lt;!-- 5. 焦虑的 (anxious) --&gt;
- &lt;div class="category-title"&gt;5. 焦虑的 (anxious)&lt;/div&gt;&lt;/br&gt; 
- &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;09&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 焦虑的投资者等待着股市消息。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Anxious investors are waiting for stock market news.&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;10&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 焦虑的心情让他坐立不安。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The anxious mood makes him restless.&lt;/div&gt;
- &lt;/div&gt;&lt;/br&gt; 
- &lt;!-- 6. 焦虑不安的 (agitated) --&gt;
- &lt;div class="category-title"&gt;6. 焦虑不安的 (agitated)&lt;/div&gt; &lt;/br&gt; 
- &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;11&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 焦虑不安的人群呼喊着口号。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The agitated crowd shouts slogans.&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;12&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他焦虑不安的状态很明显。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;His agitated state is very obvious.&lt;/div&gt;
- &lt;/div&gt;&lt;/br&gt; 
- &lt;!-- 7. 坐立不安的 (restless) --&gt;
- &lt;div class="category-title"&gt;7. 坐立不安的 (restless)&lt;/div&gt; &lt;/br&gt; 
- &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;13&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 坐立不安的他在房间里走来走去。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Restless, he walks around in the room.&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;14&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 坐立不安的思绪困扰着他。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Restless thoughts trouble him.&lt;/div&gt;
- &lt;/div&gt;&lt;/br&gt;
- &lt;!-- 8. 紧张的 (nervous) --&gt;
- &lt;div class="category-title"&gt;8. 紧张的 (nervous)&lt;/div&gt; &lt;/br&gt; 
- &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;15&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 紧张的运动员做着深呼吸。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The nervous athlete takes deep breaths.&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;16&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她紧张的样子让人有些心疼。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Her nervous look makes people feel a bit sorry.&lt;/div&gt;
- &lt;/div&gt;&lt;/br&gt;
- &lt;!-- 9. 颤抖 (shake) --&gt;
- &lt;div class="category-title"&gt;9. 颤抖 (shake)&lt;/div&gt; &lt;/br&gt; 
- &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;17&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他冷得直颤抖，赶紧穿上外套。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He shakes with cold and quickly puts on a coat.&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;18&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 地震时大地颤抖，房屋晃动。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The earth shakes during the earthquake and houses sway.&lt;/div&gt;
- &lt;/div&gt;&lt;/br&gt;
- &lt;!-- 10. 忧虑 (agitation)（重复项） --&gt;
- &lt;div class="category-title"&gt;10. 忧虑 (agitation)&lt;/div&gt; &lt;/br&gt; 
- &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;19&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她脸上的忧虑无法消散。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The agitation on her face won't disappear.&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;20&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他带着忧虑处理棘手问题。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He deals with the tough problem with agitation.&lt;/div&gt;
- &lt;/div&gt;
- &lt;/div&gt;
-&lt;script&gt;
-// 实现点击交互逻辑
-document.addEventListener('DOMContentLoaded', function() {
- // 获取所有句子项
- const sentenceItems = document.querySelectorAll('.sentence-item');
- 
- // 为每个项添加点击事件
- sentenceItems.forEach(item =&gt; {
- const numberElement = item.querySelector('.sentence-number');
- numberElement.addEventListener('click', function() {
- // 切换展开/收起状态
- item.classList.toggle('active');
- });
- 
- // 可选：点击整行也能触发（体验更好）
- item.addEventListener('click', function(e) {
- if (e.target !== numberElement) {
- item.classList.toggle('active');
- }
- });
- });
-});
-&lt;/script&gt;
-&lt;/body&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
-&lt;/html&gt;</description></item><item><title>续写情绪之愤怒</title><link>https://nzw025.top/jingxinyanxue/xiezuo/anger/</link><pubDate>Sun, 15 Feb 2026 18:13:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/xiezuo/anger/</guid><description>&lt;style&gt;
+&lt;/body&gt;</description></item><item><title>生活</title><link>https://nzw025.top/dansiwuji/zixing/dome/</link><pubDate>Tue, 17 Feb 2026 21:15:30 +0800</pubDate><guid>https://nzw025.top/dansiwuji/zixing/dome/</guid><description/></item><item><title>语音</title><link>https://nzw025.top/jingxinyanxue/yuyin/dome/</link><pubDate>Tue, 17 Feb 2026 21:15:30 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/yuyin/dome/</guid><description/></item><item><title>续写情绪之愤怒</title><link>https://nzw025.top/jingxinyanxue/xiezuo/anger/</link><pubDate>Sun, 15 Feb 2026 18:13:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/xiezuo/anger/</guid><description>&lt;style&gt;
 /* 基础样式 */
 .sentence-item {
  margin-bottom: 12px;
@@ -495,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 &lt;/style&gt;
 &lt;div class="sentence-list"&gt;
-&lt;div class="study-title"&gt;1. anger相关&lt;/div&gt;
+&lt;div class="study-title"&gt;一. anger相关&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;01&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他的话里充满了愤怒。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;There was much anger in his words.&lt;/div&gt;
@@ -504,7 +339,7 @@ document.addEventListener('DOMContentLoaded', function() {
  &lt;span class="sentence-number"&gt;02&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她试图掩饰自己的愤怒。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;She tried to hide her anger.&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="study-title"&gt;2. rage相关&lt;/div&gt;
+&lt;div class="study-title"&gt;二. rage相关&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;03&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他的暴怒让周围的人害怕。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;His rage frightened the people around him.&lt;/div&gt;
@@ -513,7 +348,7 @@ document.addEventListener('DOMContentLoaded', function() {
  &lt;span class="sentence-number"&gt;04&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她在暴怒中摔碎了花瓶。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;She smashed the vase in a rage.&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="study-title"&gt;3. madness相关&lt;/div&gt;
+&lt;div class="study-title"&gt;三. madness相关&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;05&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 战争的残酷会带来疯狂。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;The cruelty of war can bring madness.&lt;/div&gt;
@@ -522,7 +357,7 @@ document.addEventListener('DOMContentLoaded', function() {
  &lt;span class="sentence-number"&gt;06&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他在疯狂中做出了错误决定。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;He made a wrong decision in madness.&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="study-title"&gt;4. fury相关&lt;/div&gt;
+&lt;div class="study-title"&gt;四. fury相关&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;07&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他的眼睛里闪烁着狂怒。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;There was fury in his eyes.&lt;/div&gt;
@@ -531,7 +366,7 @@ document.addEventListener('DOMContentLoaded', function() {
  &lt;span class="sentence-number"&gt;08&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 敌人的攻击激起了我们的狂怒。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;The enemy's attack aroused our fury.&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="study-title"&gt;5. angry相关&lt;/div&gt;
+&lt;div class="study-title"&gt;五. angry相关&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;09&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他因为迟到而生气。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;He is angry because he is late.&lt;/div&gt;
@@ -540,7 +375,7 @@ document.addEventListener('DOMContentLoaded', function() {
  &lt;span class="sentence-number"&gt;10&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 妈妈生气地看着调皮的孩子。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;Mother looked at the naughty child angrily.&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="study-title"&gt;6. annoyed相关&lt;/div&gt;
+&lt;div class="study-title"&gt;六. annoyed相关&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;11&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他对持续的噪音感到气恼。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;He is annoyed by the continuous noise.&lt;/div&gt;
@@ -549,7 +384,7 @@ document.addEventListener('DOMContentLoaded', function() {
  &lt;span class="sentence-number"&gt;12&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她因被误解而气恼不已。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;She is extremely annoyed by being misunderstood.&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="study-title"&gt;7. enraged相关&lt;/div&gt;
+&lt;div class="study-title"&gt;七. enraged相关&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;13&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 不公平的对待让他暴怒。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;He was enraged by the unfair treatment.&lt;/div&gt;
@@ -558,7 +393,7 @@ document.addEventListener('DOMContentLoaded', function() {
  &lt;span class="sentence-number"&gt;14&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 看到破坏的场景他暴怒起来。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;He became enraged when seeing the scene of destruction.&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="study-title"&gt;8. irritated相关&lt;/div&gt;
+&lt;div class="study-title"&gt;八. irritated相关&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;15&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 频繁的打扰让他恼怒。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;He is irritated by the frequent interruptions.&lt;/div&gt;
@@ -567,7 +402,7 @@ document.addEventListener('DOMContentLoaded', function() {
  &lt;span class="sentence-number"&gt;16&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她因计划被打乱而恼怒。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;She is irritated because the plan is disrupted.&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="study-title"&gt;9. mad相关&lt;/div&gt;
+&lt;div class="study-title"&gt;九. mad相关&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;17&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他在堵车时抓狂得大喊。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;He shouted madly during the traffic jam.&lt;/div&gt;
@@ -576,7 +411,7 @@ document.addEventListener('DOMContentLoaded', function() {
  &lt;span class="sentence-number"&gt;18&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 考试失败让他抓狂。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;He went mad because of failing the exam.&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="study-title"&gt;10. furious相关&lt;/div&gt;
+&lt;div class="study-title"&gt;十. furious相关&lt;/div&gt;
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;19&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他对这个结果狂怒不已。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;He is furious about the result.&lt;/div&gt;
@@ -601,7 +436,7 @@ document.addEventListener('DOMContentLoaded', function() {
  });
  });
 });
-&lt;/script&gt;</description></item><item><title>续写情绪之愤怒</title><link>https://nzw025.top/jingxinyanxue/xiezuo/concern/</link><pubDate>Sun, 15 Feb 2026 18:13:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/xiezuo/concern/</guid><description>&lt;style&gt;
+&lt;/script&gt;</description></item><item><title>续写情绪之焦虑</title><link>https://nzw025.top/jingxinyanxue/xiezuo/concern/</link><pubDate>Sun, 15 Feb 2026 18:13:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/xiezuo/concern/</guid><description>&lt;style&gt;
 /* 基础样式 */
 .sentence-item {
  margin-bottom: 12px;
@@ -642,96 +477,96 @@ document.addEventListener('DOMContentLoaded', function() {
 &lt;/style&gt;
 &lt;div class="sentence-list"&gt;
 &lt;div class="category-title"&gt;1. 担忧 (concern)&lt;/div&gt; &lt;/br&gt; 
- &lt;div class="sentence-item"&gt;
+&lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;01&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 我们对环境的担忧与日俱增。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;Our concern about the environment is growing.&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-item"&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;02&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她的担忧在眼神中清晰可见。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;Her concern is clearly visible in her eyes.&lt;/div&gt;
- &lt;/div&gt;&lt;/br&gt; 
- &lt;div class="category-title"&gt;2. 焦虑 (anxiety)&lt;/div&gt; &lt;/br&gt; 
- &lt;div class="sentence-item"&gt;
+&lt;/div&gt;&lt;/br&gt; 
+&lt;div class="category-title"&gt;2. 焦虑 (anxiety)&lt;/div&gt; &lt;/br&gt; 
+&lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;03&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他的焦虑源于工作压力。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;His anxiety comes from work pressure.&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-item"&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;04&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 考试前的焦虑让他难以入眠。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;Anxiety before the exam makes it hard for him to sleep.&lt;/div&gt;
- &lt;/div&gt;&lt;/br&gt; 
- &lt;div class="category-title"&gt;3. 忧虑 (agitation)&lt;/div&gt; &lt;/br&gt; 
- &lt;div class="sentence-item"&gt;
+&lt;/div&gt;&lt;/br&gt; 
+&lt;div class="category-title"&gt;3. 忧虑 (agitation)&lt;/div&gt; &lt;/br&gt; 
+&lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;05&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她脸上的忧虑无法消散。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;The agitation on her face won't disappear.&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-item"&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;06&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他带着忧虑处理棘手问题。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;He deals with the tough problem with agitation.&lt;/div&gt;
- &lt;/div&gt;&lt;/br&gt; 
- &lt;div class="category-title"&gt;4. 担忧的 (concerned)&lt;/div&gt; &lt;/br&gt; 
- &lt;div class="sentence-item"&gt;
+&lt;/div&gt;&lt;/br&gt; 
+&lt;div class="category-title"&gt;4. 担忧的 (concerned)&lt;/div&gt; &lt;/br&gt; 
+&lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;07&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 那位担忧的父亲四处寻找孩子。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;The concerned father is looking for his child everywhere.&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-item"&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;08&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 担忧的医生密切关注病人。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;The concerned doctor pays close attention to the patient.&lt;/div&gt;
- &lt;/div&gt;&lt;/br&gt; 
- &lt;div class="category-title"&gt;5. 焦虑的 (anxious)&lt;/div&gt;&lt;/br&gt; 
- &lt;div class="sentence-item"&gt;
+&lt;/div&gt;&lt;/br&gt; 
+&lt;div class="category-title"&gt;5. 焦虑的 (anxious)&lt;/div&gt;&lt;/br&gt; 
+&lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;09&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 焦虑的投资者等待着股市消息。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;Anxious investors are waiting for stock market news.&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-item"&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;10&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 焦虑的心情让他坐立不安。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;The anxious mood makes him restless.&lt;/div&gt;
- &lt;/div&gt;&lt;/br&gt; 
- &lt;div class="category-title"&gt;6. 焦虑不安的 (agitated)&lt;/div&gt; &lt;/br&gt; 
- &lt;div class="sentence-item"&gt;
+&lt;/div&gt;&lt;/br&gt; 
+&lt;div class="category-title"&gt;6. 焦虑不安的 (agitated)&lt;/div&gt; &lt;/br&gt; 
+&lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;11&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 焦虑不安的人群呼喊着口号。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;The agitated crowd shouts slogans.&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-item"&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;12&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他焦虑不安的状态很明显。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;His agitated state is very obvious.&lt;/div&gt;
- &lt;/div&gt;&lt;/br&gt; 
- &lt;div class="category-title"&gt;7. 坐立不安的 (restless)&lt;/div&gt; &lt;/br&gt; 
- &lt;div class="sentence-item"&gt;
+&lt;/div&gt;&lt;/br&gt; 
+&lt;div class="category-title"&gt;7. 坐立不安的 (restless)&lt;/div&gt; &lt;/br&gt; 
+&lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;13&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 坐立不安的他在房间里走来走去。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;Restless, he walks around in the room.&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-item"&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;14&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 坐立不安的思绪困扰着他。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;Restless thoughts trouble him.&lt;/div&gt;
- &lt;/div&gt;&lt;/br&gt;
- &lt;div class="category-title"&gt;8. 紧张的 (nervous)&lt;/div&gt; &lt;/br&gt; 
- &lt;div class="sentence-item"&gt;
+&lt;/div&gt;&lt;/br&gt;
+&lt;div class="category-title"&gt;8. 紧张的 (nervous)&lt;/div&gt; &lt;/br&gt; 
+&lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;15&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 紧张的运动员做着深呼吸。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;The nervous athlete takes deep breaths.&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-item"&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;16&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她紧张的样子让人有些心疼。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;Her nervous look makes people feel a bit sorry.&lt;/div&gt;
- &lt;/div&gt;&lt;/br&gt; 
- &lt;div class="category-title"&gt;9. 颤抖 (shake)&lt;/div&gt; &lt;/br&gt; 
- &lt;div class="sentence-item"&gt;
+&lt;/div&gt;&lt;/br&gt; 
+&lt;div class="category-title"&gt;9. 颤抖 (shake)&lt;/div&gt; &lt;/br&gt; 
+&lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;17&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他冷得直颤抖，赶紧穿上外套。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;He shakes with cold and quickly puts on a coat.&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-item"&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;18&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 地震时大地颤抖，房屋晃动。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;The earth shakes during the earthquake and houses sway.&lt;/div&gt;
- &lt;/div&gt;&lt;/br&gt;
- &lt;div class="category-title"&gt;10. 忧虑 (agitation)&lt;/div&gt; &lt;/br&gt; 
- &lt;div class="sentence-item"&gt;
+&lt;/div&gt;&lt;/br&gt;
+&lt;div class="category-title"&gt;10. 忧虑 (agitation)&lt;/div&gt; &lt;/br&gt; 
+&lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;19&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她脸上的忧虑无法消散。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;The agitation on her face won't disappear.&lt;/div&gt;
- &lt;/div&gt;
- &lt;div class="sentence-item"&gt;
+&lt;/div&gt;
+&lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;20&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他带着忧虑处理棘手问题。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;He deals with the tough problem with agitation.&lt;/div&gt;
- &lt;/div&gt;
- &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;script&gt;
 document.addEventListener('DOMContentLoaded', function() {
  const sentenceItems = document.querySelectorAll('.sentence-item');
@@ -758,4 +593,5 @@ document.addEventListener('DOMContentLoaded', function() {
 &lt;audio id="aud" src="https://www.joy127.com/url/140816.mp3" autoplay="" loop=""&gt;&lt;/audio&gt;</description></item><item><title>多喜乐 长安宁</title><link>https://nzw025.top/qianxushiguang/yinhua/dxl/</link><pubDate>Wed, 31 Dec 2025 21:00:27 +0800</pubDate><guid>https://nzw025.top/qianxushiguang/yinhua/dxl/</guid><description>&lt;body&gt;
  &lt;DIV class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 120px; LEFT: -250px"&gt;&lt;IFRAME height=900 marginHeight=0 src="https://cccimg.com/view.php/c6f8e35a3bff158bde0e7bdc976e4267.webp" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/IFRAME&gt;&lt;/DIV&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
  &lt;audio id="aud" src="https://www.joy127.com/url/137732.mp3" autoplay="" loop=""&gt;&lt;/audio&gt;
-&lt;/body&gt;</description></item></channel></rss>
+&lt;/body&gt;</description></item><item><title>我的2025</title><link>https://nzw025.top/dansiwuji/suibi/erwu/</link><pubDate>Tue, 30 Dec 2025 19:00:27 +0800</pubDate><guid>https://nzw025.top/dansiwuji/suibi/erwu/</guid><description>&lt;br&gt;
+&lt;p&gt;时间过得真快，一眨眼2025年就翻篇了。回头看这一年，算不上顺风顺水，甚至有些磕磕绊绊。身体不怎么给力，重感冒犯了两回，眼睛不舒服也缠了好几个月。人际关系也起起落落，有突如其来的温暖，也有体面说再见的时刻，还有些人和事，走着走着散了，再也不见。日子里的悲欢离合，偶尔也会让我矫情几句，但静下心来想，比起生死大事，这些都不值一提，早晚会成为过眼云烟。&lt;/p&gt;</description></item></channel></rss>
