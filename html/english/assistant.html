@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.4.8/mammoth.browser.min.js"></script>
+    <title>英语高考题型讲解助手</title>
+    <script>
+        let sections = [];
+        let waveform;
+        let audio;
+        let audioCtx;
+        let ctx;
+        let frameWidth;
+        let audioData;
+        let canvasWidth;
+        let canvasHeight;
+        let playingRegions = [];
+        let answerMap = {}; // 答案映射：key=章节名_题号，value=完整答案内容
+        let currentSection = null; // 新增：记录当前显示的章节
+    
+        window.onload = function(){
+            waveform = document.getElementById("waveform");
+            ctx = waveform.getContext("2d");
+
+            audio = document.getElementById("audio");
+            audio.addEventListener("timeupdate", function () {
+                document.getElementById("marker").style.left = ((audio.currentTime * canvasWidth) / audio.duration) + "px";
+                if (audio.getAttribute("end") && audio.currentTime >= parseFloat(audio.getAttribute("end") * audio.duration /waveform.width) ){
+                    audio.pause();
+                    audio.removeAttribute("end");
+                }
+            });
+
+            canvasWidth = waveform.parentNode.offsetWidth;
+            canvasHeight = waveform.offsetHeight;
+            waveform.width = canvasWidth;
+
+            // 字体调整事件
+            document.addEventListener("click", function(ev){
+                if (ev.target.id && (ev.target.id === "smaller-font" || ev.target.id === "larger-font")){
+                    let test_content = document.getElementById("test-content");
+                    const computedStyle = window.getComputedStyle(test_content);
+                    let current_font_size = parseInt(computedStyle.fontSize.replace("px", ""));
+                    current_font_size = (ev.target.id === "larger-font")? current_font_size + 1 : current_font_size - 1;
+                    test_content.style.fontSize = `${current_font_size}px`;
+                } else if (ev.target.id && ev.target.id === "word-file"){
+                    ev.target.value = "";
+                }
+            })
+            
+            // 文件选择/章节切换事件
+            document.addEventListener("change", function(ev){
+                if (ev.target.id && ev.target.id === "word-file"){
+                    sections.length = 0;
+                    answerMap = {}; // 重置答案映射
+                    let reader = new FileReader();
+                    reader.readAsArrayBuffer(ev.target.files[0]);
+                    reader.onload = function(){
+                        let options = {styleMap: ["i => i", "u => u", "b => b"], ignoreEmptyParagraphs: true};
+                        mammoth.convertToHtml({arrayBuffer: this.result}, options)
+                        .then (res => {
+                            let word_content = res.value; 
+                            breakIntoSections(word_content);
+                            buildAnswerMap(); // 构建答案映射
+                            let sectionOptions = "";
+                            for (let section of sections){
+                                sectionOptions += `<option value="${section.title}">${section.title}</option>`;
+                            }
+                            let sectionSelect = document.getElementById("section-select");
+                            sectionSelect.innerHTML = sectionOptions;
+                            if (sections.length > 0) {
+                                sectionSelect.options[0].selected = true;
+                                sectionSelect.dispatchEvent(new Event('change', { bubbles: true}));
+                            }
+                        });
+                    }
+                }
+                else if (ev.target.id && ev.target.id === "section-select"){
+                    currentSection = sections.find(s => s.title === ev.target.value); // 更新当前章节
+                    if (!currentSection) currentSection = sections[0];
+                    showSection(currentSection);
+                }
+                else if (ev.target.id && ev.target.id === "audio-file"){
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    let url = URL.createObjectURL(ev.target.files[0]);
+                    audio.src = url;
+
+                    fetch(url)
+                    .then((response) => response.arrayBuffer())
+                    .then((arrayBuffer) => audioCtx.decodeAudioData(arrayBuffer))
+                    .then((audioBuffer) => {
+                        audioData = audioBuffer.getChannelData(0);        
+                        drawWaveform();
+                    });
+                }
+                else if (ev.target.id && ["minValue", "minSilenceDuration", "mergeDuration"].includes(ev.target.id)) {
+                    drawWaveform();
+                }
+                else if (ev.target.id && ev.target.id === "show-script"){
+                    let passage = document.getElementById("test-content").querySelector(".passage");
+                    passage.style.visibility = ev.target.checked? "visible" : "hidden";
+                }
+                else if (ev.target.id && ev.target.id === "font-size"){
+                    let test_content = document.getElementById("test-content");
+                    test_content.style.fontSize = `${ev.target.value * 100}%`;
+                }
+            })
+
+            // 显示章节内容
+            function showSection(section){
+                let sectionHTML = createSectionsHTML(section);
+                let test_content = document.getElementById("test-content");
+                let show_script = document.getElementById("show-script");
+                show_script.disabled = true;
+                show_script.checked = false;
+                test_content.innerHTML = sectionHTML;
+                let panel = document.querySelector(".panel");
+                let body = document.getElementById("body");
+                
+                // 设置容器高度
+                const passageEl = test_content.querySelector(".passage");
+                if (passageEl) {
+                    passageEl.style.height = body.offsetHeight - panel.offsetHeight - 50 + "px";
+                    if (section.title.indexOf("听力") >= 0){
+                        passageEl.style.visibility = "hidden";
+                        show_script.disabled = false;
+                    }
+                }
+                const questionsEl = test_content.querySelector(".questions");
+                if (questionsEl) questionsEl.style.height = body.offsetHeight - panel.offsetHeight - 50 + "px";
+                
+                // 绑定点击事件
+                bindGapFillingClick(section);
+            }
+
+            // 绑定七选五/语法填空点击事件
+            function bindGapFillingClick(section) {
+                const currentSectionTitle = section.title;
+                const questionNums = document.querySelectorAll(".passage .question-num-in-text");
+                
+                questionNums.forEach(numEl => {
+                    numEl.removeEventListener("click", handleNumClick);
+                    numEl.addEventListener("click", handleNumClick);
+                    
+                    function handleNumClick() {
+                        const num = this.textContent.trim();
+                        const key = `${currentSectionTitle}_${num}`;
+                        const answer = answerMap[key];
+                        
+                        if (!answer) {
+                            this.innerHTML = `${num}: <span style="color: #f44336; font-weight: 500;">未找到答案</span>`;
+                            return;
+                        }
+
+                        // 切换显示/隐藏
+                        if (this.dataset.shown === "true") {
+                            this.innerHTML = num;
+                            this.style.color = "";
+                            this.style.fontWeight = "";
+                            this.dataset.shown = "false";
+                        } else {
+                            if (currentSectionTitle.includes("七选五")) {
+                                // 七选五：薄荷绿
+                                this.innerHTML = `${num}: <span style="color: #4CAF50; font-weight: 500; font-size: 1em;">${answer}</span>`;
+                            } else if (currentSectionTitle.includes("语法填空")) {
+                                // 语法填空：天蓝色
+                                this.innerHTML = `${num}: <span style="color: #2196F3; font-weight: 500; font-size: 1em;">${answer}</span>`;
+                            }
+                            this.dataset.shown = "true";
+                        }
+                    }
+                });
+            }
+
+            // 构建答案映射（修复七选五undefined问题）
+            function buildAnswerMap() {
+                sections.forEach(section => {
+                    const sectionTitle = section.title;
+                    
+                    // 处理七选五
+                    if (sectionTitle.includes("七选五")) {
+                        if (section.answers && section.answers.length > 0 && section.options && section.options.length > 0) {
+                            section.answers.forEach(answerItem => {
+                                if (answerItem.number) {
+                                    const key = `${sectionTitle}_${answerItem.number}`;
+                                    const answerLetter = answerItem.answer?.trim().toUpperCase();
+                                    // 根据字母找到对应的选项内容
+                                    const matchedOption = section.options.find(opt => opt.letter?.trim().toUpperCase() === answerLetter);
+                                    // 存储完整答案
+                                    answerMap[key] = matchedOption 
+                                        ? `${answerLetter}. ${matchedOption.option.trim()}` 
+                                        : `未匹配到选项（答案字母：${answerLetter}）`;
+                                }
+                            });
+                        }
+                    } 
+                    // 处理语法填空
+                    else if (sectionTitle.includes("语法填空")) {
+                        if (section.answers && section.answers.length > 0) {
+                            section.answers.forEach(answerItem => {
+                                if (answerItem.number) {
+                                    const key = `${sectionTitle}_${answerItem.number}`;
+                                    answerMap[key] = answerItem.answer?.trim() || "无答案";
+                                }
+                            });
+                        }
+                    }
+                    // 处理其他题型
+                    else {
+                        if (section.answers && section.answers.length > 0) {
+                            section.answers.forEach(answerItem => {
+                                if (answerItem.number) {
+                                    const key = `${sectionTitle}_${answerItem.number}`;
+                                    answerMap[key] = answerItem.answer?.trim() || "无答案";
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+
+            // 通用点击事件处理（含写作答案浅绿色底色）
+            document.addEventListener("click", function(ev){
+                // 题号点击（非七选五/语法填空）
+                if (ev.target.classList.contains("question-num")){
+                    let question = ev.target.parentNode;
+                    let answer = question.dataset.answer;
+                    let options = question.querySelectorAll(".option");
+                    let correctOption = null;
+                    for (let option of options){
+                        if (option.children[0].textContent === answer + "."){
+                            correctOption = option;
+                            break;
+                        }
+                    }
+                    if (correctOption){
+                        correctOption.classList.toggle("option-selected");
+                    }
+                }
+                // 选项点击
+                else if (ev.target.classList.contains("option-letter")){
+                    let options = ev.target.parentNode.parentNode.querySelectorAll(".option");
+                    for (let option of options){
+                        option.classList.remove("option-clicked");
+                        if (option.children[0].textContent === ev.target.textContent){
+                            option.classList.add("option-clicked");
+                        }
+                    }
+                }
+                // 写作答案显示/隐藏（核心：浅绿色底色设置）
+                else if (ev.target.classList.contains("show-answer")){
+                    let answerText = ev.target.nextSibling;
+                    if (answerText) {
+                        // 跳过文本节点，找到真正的答案容器
+                        while (answerText && answerText.nodeType !== 1) {
+                            answerText = answerText.nextSibling;
+                        }
+                        if (!answerText) return;
+
+                        let isHidden = answerText.style.display === "none";
+                        answerText.style.display = isHidden ? "block" : "none";
+                        
+                        // 应用文/读后续写答案区：浅绿色底色
+                        if (currentSection && (currentSection.title.includes("应用文") || currentSection.title.includes("读后续写"))) {
+                            answerText.style.backgroundColor = isHidden ? "transparent" : "#e6f4ea"; // 柔和薄荷绿
+                            answerText.style.padding = isHidden ? "0" : "10px";
+                            answerText.style.borderRadius = isHidden ? "0" : "4px";
+                            answerText.style.border = isHidden ? "none" : "1px solid #d4e6d4"; // 浅绿边框
+                            answerText.style.marginTop = "8px";
+                        }
+                    }
+                }
+                // 听力原文显示/隐藏
+                else if (ev.target.id && ev.target.id === "listening-script"){
+                    let script = ev.target.nextSibling;
+                    script.style.visibility = (script.style.visibility === "hidden")? "visible" : "hidden";
+                }
+                // 下一节
+                else if (ev.target.id && ev.target.id === "next-section"){
+                    let sectionSelect = document.getElementById("section-select");
+                    let index = sectionSelect.selectedIndex;
+                    if (index < sectionSelect.length - 1){
+                        sectionSelect.selectedIndex = index + 1;
+                        sectionSelect.dispatchEvent(new Event('change', { bubbles: true}));
+                    }
+                }
+            })
+
+            // 生成章节HTML结构
+            function createSectionsHTML(section){
+                let sectionHTML = "";
+                let passageHTML = "";
+                if (section.paragraphs){
+                    for (let paragraph of section.paragraphs){
+                        let match = paragraph.match(/^([WM])[:：](.+)$/); 
+                        if (match) {
+                            passageHTML += `<div class="listening-dialog"><div class="speaker">${match[1]}:</div><div class="dialog-content">${match[2]}</div></div>`;
+                        } else {
+                            if (/^(完形填空|七选五|语法填空)/.test(section.title)) {
+                                const className = (/^完形填空/.test(section.title))? "cloze-num-in-text": "question-num-in-text";
+                                paragraph = paragraph.replaceAll(/<u>(.*?)(\d+)\.*(.*?)<\/u>/g, (s1, s2, s3, s4) =>{
+                                    return ` ${s2.trim()} <span class="${className}" data-shown="false">${s3}</span> ${s4.trim()} `;
+                                });
+                                paragraph = paragraph.replaceAll(/_*(\d+)\.*\s*_+/g, ` <span class="${className}" data-shown="false">$1</span> `);
+                                paragraph = paragraph.replaceAll(/(\s|^)(\d+)(\s|$)/g, (s, s1, s2, s3) =>{
+                                    if (/^(七选五|语法填空)/.test(section.title)) {
+                                        return `${s1}<span class="${className}" data-shown="false">${s2}</span>${s3}`;
+                                    }
+                                    return s;
+                                });
+                            }
+                            passageHTML += `<div>${paragraph}</div>`;
+                        }
+                    }
+                }
+                let questionsHTML = "";
+                if (section.questions){
+                    for (let question of section.questions){
+                        let optionsHTML = "";
+                        if (question.options){
+                            for (let option of question.options){
+                                optionsHTML += `<div class="option"><div class="option-letter">${option.letter}.</div><div class="option-text">${option.option}</div></div>`;
+                            }
+                        }
+                        let questionContent = (question.question)? `<div class="question-content">${question.question}</div>` : "";
+                        questionsHTML += `<div class="question" data-answer="${question.answer}">
+                                        <div class="question-num">${question.number}.</div>
+                                        <div class="question-line">${questionContent}
+                                        <div class="options">${optionsHTML}</div></div></div>`;
+                    }
+                }
+                if (section.options){
+                    let optionsHTML = "";
+                    for (let option of section.options){
+                        optionsHTML += `<div class="option"><div class="option-letter">${option.letter}.</div>
+                            <div class="option-text">${option.option}</div></div>`;
+                    }
+                    questionsHTML += `<div class="question-content"></div><div class="options">${optionsHTML}</div>`;
+                }
+                let answersHTML = "";
+                let isWriting = false;
+                if (section.answers){
+                    for (let answer of section.answers){
+                        if (answer.number){
+                            answersHTML += `<div><div>${answer.number}</div><div>${answer.answer}</div></div>`;
+                        } else {
+                            answersHTML += `<div>${answer.answer}</div>`;
+                            isWriting = true;
+                        }
+                    }
+                }
+                sectionHTML = `<div class="passage">${passageHTML}</div>`;
+                if (questionsHTML) {
+                    sectionHTML += `<div class="questions">${questionsHTML}</div>`;
+                }
+                if (answersHTML) {
+                    if (isWriting) {
+                        // 写作类答案添加按钮和容器
+                        sectionHTML += `<div class="questions"><button type="button" class="show-answer">答案</button><div class="writing-answer" style="display:none">${answersHTML}</div></div>`;
+                    } else {
+                        sectionHTML += `<div class="answers" style="display:none">${answersHTML}</div>`;
+                    }
+                }
+                return sectionHTML;
+            }
+
+            // 解析Word内容为章节
+            function breakIntoSections(word_content){
+                word_content = word_content.substring(3, word_content.length - 4);
+                let parts = word_content.replaceAll("<br />", "\n")
+                    .replaceAll("　", " ")
+                    .replaceAll(/<p>/g, "\n")
+                    .replaceAll(/<\/p>/g, "")
+                    .replaceAll(/\<h.\>(.+?)\<\/h.\>/g, "$1")
+                    .replaceAll(/\d．\d/g, ".")
+                    .replaceAll("．", ". ")
+                    .replaceAll(/<img .+?>/g, "")
+                    .replaceAll("\t", "    ")
+                    .replaceAll(/\<table>/g, "<table border='1' style='font-size: 20px'>")
+                    .replaceAll(/<([^ui]+?).+?\>.+?\<\/\1\>/g, "")
+                    .replaceAll(/([\]】](<\/.+?>)?)\n/g, "$1") 
+                    .split(/\n(总答案|听力材料|听力原文)\n/);
+
+                parts = parts.filter(part => !/^(总答案|听力材料|听力原文)$/.test(part));
+
+                let previousLine = "OUT OF SECTION";
+                let currentLine = "";
+                let writingBlock = false;
+                let answerBlock = false;
+                let section;
+
+                let lines = parts[0].split(/\n/);
+                let englishCharacters;
+                let ratio;
+                let pure_line;
+                let writingTitle = "";
+                for (let line of lines){
+                    line = line.trim();
+                    line = line.replace(/^.+?(?=[WM][:：])/, "");
+                    pure_line = line.replace(/<[bui]>/, "").replace(/<\/[bui]>/, "").trim();
+                    if (line === "" || pure_line === "") continue;
+                    englishCharacters = pure_line.replaceAll(/[^\x00-\xff]/g, "");
+                    ratio = englishCharacters.length / pure_line.length;
+                    currentLine = "IN SECTION";
+                    if (/^[\[【]?(应用文写作答案|读后续写答案)[\]】]?/.test(pure_line)){
+                        pure_line = pure_line.replace(/^[\[【]?(应用文写作答案|读后续写答案)[\]】]?/, "");
+                        answerBlock = true;
+                        putAnswer(section, pure_line);
+                    } else if (pure_line === "******") {
+                        writingBlock = false;
+                        answerBlock = false;
+                        currentLine = "OUT OF SECTION";
+                    } else if (/^(\d+?|[A-G])\.\s*?[^0-9]/.test(pure_line) && ratio > 0.8){
+                        if (previousLine === "OUT OF SECTION" && currentLine === "IN SECTION"){
+                            section = new_section();
+                            sections.push(section);
+                        }
+                        let sects = pure_line.split(/ {2,}/);
+                        let question = null;
+                        for (let sect of sects){
+                            if (/^\d+?\./.test(sect)){
+                                let dotPos = sect.indexOf(".");
+                                let number = sect.substring(0, dotPos);
+                                sect = sect.substring(dotPos + 1).trim();
+                                if (!section.questions) section.questions = [];
+                                section.questions.push({number: parseInt(number)});
+                            }
+                            if (section.questions) question = section.questions[section.questions.length - 1];
+                            if (/^[A-G]\./.test(sect)){
+                                let dotPos = sect.indexOf(".");
+                                let letter = sect.substring(0, dotPos);
+                                sect = sect.substring(dotPos + 1).trim();
+                                if (question){
+                                    if (!question.options) question.options = [];
+                                     question.options.push({letter: letter, option: sect});
+                                } else if (section){
+                                    if (!section.options) section.options = [];
+                                    section.options.push({letter: letter, option: sect});
+                                }
+                            } else if (question) {
+                                question.question = sect;
+                            }
+                        }
+                    } else if (writingBlock){
+                        if (previousLine === "OUT OF SECTION" && currentLine === "IN SECTION"){
+                            section = new_section();
+                            sections.push(section);
+                        }
+                        if (!section.paragraphs) section.paragraphs = [];
+                        section.paragraphs.push(line);
+                        if (!section.title) section.title = writingTitle;
+                    } else if (answerBlock){
+                        putAnswer(section, line);
+                    } else if (/^[^\u4e00-\u9fa5]/.test(pure_line) && ratio > 0.8){
+                        if (/^[A-D]$/.test(pure_line) || previousLine === "OUT OF SECTION" && currentLine === "IN SECTION"){
+                            section = new_section();
+                            sections.push(section);
+                        }
+                        if (pure_line.length > 1){
+                            if (!section.paragraphs) section.paragraphs = [];
+                            section.paragraphs.push(line);
+                        }
+                    } else if (/^[WM][:：]/.test(pure_line)){
+                        line = line.replace(/^.+?(?=[WM][:：])/, "");
+                        if (!section.paragraphs) section.paragraphs = [];
+                        section.paragraphs.push(line);
+                    } else if (/^(应用文写作|读后续写)$/.test(pure_line)){
+                        writingBlock = true;
+                        writingTitle = pure_line;
+                        currentLine = "OUT OF SECTION";
+                    } else {
+                        let match = pure_line.match(/^.*?[\[【](.+?)[】\]].*?/); 
+                        if (match){
+                            if (/答案/.test(match[1])) putAnswer(section, pure_line);
+                        } else {
+                            currentLine = "OUT OF SECTION";
+                        }
+                    }
+                    previousLine = currentLine;
+                }
+
+                // 清除空章节
+                sections = sections.filter(section => Object.keys(section).length > 0);
+
+                // 处理单独的答案部分
+                if (parts.length >= 2){
+                    let lines = parts[1].split(/\n/);
+                    let englishCharacters;
+                    let ratio;
+                    let pure_line;
+                    let section_count = 0;
+                    previousLine = "OUT OF SECTION";
+                    currentLine = "";
+                    for (let line of lines){
+                        line = line.trim();
+                        line = line.replace(/^.+?(?=[WM][:：])/, "");
+                        pure_line = line.replace(/<[bui]>/, "").replace(/<\/[bui]>/, "").trim();
+                        if (line === "" || pure_line === "") continue;
+                        englishCharacters = pure_line.replaceAll(/[^\x00-\xff]/g, "");
+                        ratio = englishCharacters.length / pure_line.length;
+                        currentLine = "IN SECTION";
+                        if (pure_line === "******") {
+                            writingBlock = false;
+                            answerBlock = false;
+                            currentLine = "OUT OF SECTION";
+                        } else if (/[WM][:：]/.test(pure_line)){
+                            if (section && !section.paragraphs) section.paragraphs = [];
+                            section.paragraphs.push(line);
+                        } else if (/^[\[【]?(应用文写作(答案)?|读后续写(答案)?)[\]】]?/.test(pure_line) 
+                                    || answerBlock
+                                    || (/(\d+?)(\.|[-~～]+?(\d+?))\s+?(.+?)(?=(\d+?[.\s\-~～]|$))/.test(pure_line) && ratio > 0.8) 
+                                    || (/[\[【].+?[\]】]/.test(pure_line) && /答案/.test(pure_line))){
+                            if (/(应用文写作(答案)?|读后续写(答案)?)/.test(pure_line)){
+                                answerBlock = true;
+                                currentLine = "OUT OF SECTION";
+                            }else {
+                                if (previousLine === "OUT OF SECTION" && currentLine === "IN SECTION"){
+                                    section_count++;
+                                    section = sections[section_count - 1];
+                                }
+                                pure_line = pure_line.replace(/^(\d+?\.)(\S)/, "$1 $2");
+                                putAnswer(section, pure_line);
+                            }
+                        } else {
+                            let match = pure_line.match(/^.*?[\[【](.+?)[】\]].*?/); 
+                            if (!match){
+                                currentLine = "OUT OF SECTION";
+                            }
+                        }
+                        previousLine = currentLine;
+                    }
+                } 
+
+                // 处理单独的听力材料
+                if (parts.length >= 3){
+                    let lines = parts[2].split(/\n/);
+                    let pure_line;
+                    let section_count = 0;
+                    previousLine = "OUT OF SECTION";
+                    currentLine = "";
+                    for (let line of lines){
+                        line = line.trim();
+                        pure_line = line.replace(/^<[bui]>/, "").replace(/<\/[bui]>$/, "").trim();
+                        if (line === "" || pure_line === "") continue;
+                        currentLine = "OUT OF SECTION";
+                        if (/^[WM][:：]/.test(pure_line)){
+                            currentLine = "IN SECTION";
+                            if (previousLine === "OUT OF SECTION" && currentLine === "IN SECTION"){
+                                section_count++;
+                                section = sections[section_count - 1];
+                            }
+                            if (!section.paragraphs) section.paragraphs = [];
+                            section.paragraphs.push(line);
+                        }
+                        previousLine = currentLine;
+                    }
+                }
+
+                // 整理题目和答案
+                for (let section of sections){
+                    if (section.questions){
+                        for (let i = section.questions.length - 1; i >= 0; i--){
+                            if (!section.questions[i].options || section.questions[i].options.length === 0){
+                                let question = section.questions[i];
+                                if (!section.answers) section.answers = [];
+                                section.answers.push({number: question.number, answer: question.answer});
+                                section.questions.splice(i, 1);
+                            }
+                        }
+                        if (section.questions.length === 0) delete section.questions;
+                        if (section.answers) section.answers.sort((a, b) => a.number - b.number);
+                    }
+                } 
+
+                // 章节命名
+                let counts = {listening: 0, reading: 0, fiveOutOfSeven: 0, clozeTest: 0, grammarFilling: 0, application_writing: 0, continuous_writing: 0};
+                for (let section of sections){
+                    let sectionTitle = "";
+                    if (section.questions){
+                        if (section.questions[0].options){
+                            if (section.questions[0].options.length === 3) {
+                                counts.listening++;
+                                section.title = `听力${counts.listening}`;
+                            } else if (section.questions[0].options.length === 4) {
+                                if (section.questions[0].question){
+                                    counts.reading++;
+                                    section.title = `阅读${counts.reading}`;
+                                } else if (section.questions[0].options) {
+                                    counts.clozeTest++;
+                                    section.title = `完形填空${counts.clozeTest}`;
+                                }
+                            } 
+                        }
+                    } else if (section.options && section.options.length === 7){
+                        counts.fiveOutOfSeven++;
+                        section.title = `七选五${counts.fiveOutOfSeven}`;
+                    } else if (section.title === "应用文写作"){
+                        counts.application_writing++;
+                        section.title = `应用文写作${counts.application_writing}`;
+                    } else if (section.title === "读后续写"){
+                        counts.continuous_writing++;
+                        section.title = `读后续写${counts.continuous_writing}`;
+                    } else {
+                        counts.grammarFilling++;
+                        section.title = `语法填空${counts.grammarFilling}`;
+                    }
+                }    
+            }
+
+            // 解析答案到章节
+            function putAnswer(section, answerLine){
+                answerLine = answerLine.replaceAll(/\[\[【]】]/g, "").trim();
+                if (answerLine === "") return;
+
+                let matches = answerLine.matchAll(/(\d+?)(\.|[-~～]+?(\d+?))\s+?(.+?)(?=(\d+?[.\s\-~～]|$))/g);
+                let matched = false;
+                for (let match of matches){
+                    matched = true;
+                    let num1 = parseInt(match[1]);
+                    let answer = match[4].trim();
+                    if (!("questions" in section)) section.questions = [];
+                    if (!match[3]){
+                        let question = section.questions.find(q => q.number === num1);
+                        if (question){
+                            question.answer = answer;
+                        }else {
+                            section.questions.push({number: num1, answer: answer});
+                        }
+                    } else {
+                        let num2 = parseInt(match[3]);
+                        for (let i = 0; i < num2 - num1 + 1; i++){
+                            let question = section.questions.find(q => q.number === (num1 + i));
+                            if (question){
+                                question.answer = answer[i];
+                            }else {
+                                section.questions.push({number: num1 + i, question: "", answer: answer[i]});
+                            }
+                        }
+                    }
+                }
+                if (!matched){
+                    if (!("answers" in section)) section.answers = [];
+                    section.answers.push({answer: answerLine});
+                }
+            }
+
+            // 创建新章节
+            function new_section(){
+                let section = {};
+                return section;
+            }
+
+            // 波形点击事件
+            waveform.addEventListener("click", function (event) {
+                let bound = waveform.getBoundingClientRect();
+                let x = event.offsetX;
+                let found = false;
+                for (let playingRegion of playingRegions) {
+                  if (x >= playingRegion.start && x <= playingRegion.end) {
+                    audio.setAttribute("end", playingRegion.end);
+                    audio.currentTime = playingRegion.start * audio.duration / waveform.width;
+                    document.getElementById("marker").style.left = playingRegion.start + "px";
+                    found = true;
+                    audio.play();
+                    }
+                }
+                if (!found) {
+                    audio.currentTime = (x / canvasWidth) * audio.duration;
+                }
+            });
+            
+            // 绘制波形
+            function drawWaveform() {
+                ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+                drawRegions();
+
+                ctx.beginPath();
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = "#9C27B0"; // 柔和紫粉色
+                ctx.moveTo(0, canvasHeight / 2);
+
+                for (let i = 0; i < waveform.width; i++) {
+                    const j = Math.floor(i * audioData.length / waveform.width);
+                    const value = audioData[j] * canvasHeight;
+                    ctx.moveTo(i, canvasHeight / 2 - value);
+                    ctx.lineTo(i, canvasHeight / 2 + value);
+                }
+
+                ctx.stroke();
+            }
+
+            // 绘制静音区域
+            function drawRegions() {
+                let miniValue = parseFloat(document.getElementById("minValue").value);
+                let minSilenceDuration = parseFloat(document.getElementById("minSilenceDuration").value);
+
+                playing_regions(audioData, miniValue, minSilenceDuration);
+                for (let playRegion of playingRegions) {
+                    const start = Math.floor(playRegion.start);
+                    const end = Math.floor( playRegion.end);
+                    ctx.fillStyle = "rgba(169, 169, 169, 0.2)"; // 浅灰色半透明
+                    ctx.fillRect(start, 0, end - start, canvasHeight);
+                }
+            }
+
+            // 计算播放区域
+            function playing_regions(data, miniValue, minSilenceDuration) {
+                let start = 0;
+                let end = 0;
+                let playRegions = [];
+                let value;
+                for (let i = 0; i < data.length; i++) {
+                    value = Math.abs(data[i]);
+                    if (value > miniValue) {
+                    start = i * waveform.width / data.length;
+                    } else {
+                    end = i * waveform.width / data.length;
+                    if (end - start > minSilenceDuration) {
+                        playRegions.push({start: start, end: end,});
+                    }
+                    }
+                }
+
+                // 合并静音区域
+                const mergedRegions = [];
+                let lastRegion = null;
+                for (let i = 0; i < playRegions.length; i++) {
+                    if (lastRegion && playRegions[i].start - lastRegion.end < 1) {
+                    lastRegion.end = playRegions[i].end;
+                    } else {
+                    lastRegion = playRegions[i];
+                    mergedRegions.push(lastRegion);
+                    }
+                }
+
+                // 计算非静音区域
+                playingRegions.length = 0;
+                let lastEnd = 0;
+                for (let i = 0; i < mergedRegions.length; i++) {
+                    playingRegions.push({
+                    start: lastEnd,
+                    end: mergedRegions[i].start,
+                    });
+                    lastEnd = mergedRegions[i].end;
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: grid;
+            grid-template-columns: 100%;
+            grid-template-rows: calc(100vh - 135px);
+            gap: 5px;
+            height: 100vh;
+            word-wrap: break-word;
+            word-break: normal;
+            overflow: hidden;
+            hyphens: auto;
+            background-color: #F5F7FA; /* 浅灰蓝底色，护眼 */
+        }
+
+        /* 正确选项样式 - 柔和珊瑚红 */
+        .option-selected {
+            color: #E91E63;
+            font-weight: 500;
+        }
+
+        /* 点击选项样式 - 柔和天蓝色下划线 */
+        .option-clicked {
+            text-decoration: underline 4px solid #2196F3;
+            text-underline-offset: 8px;
+        }
+
+        /* 题号样式 - 清新淡红，柔和边框 */
+        .question-num-in-text {
+            color: #FF5722;
+            display: inline-block;
+            min-width: 2em;
+            border-bottom: 2px solid #607D8B;
+            text-align: center;
+            user-select: none;
+            cursor: pointer; /* 鼠标指针提示可点击 */
+            transition: all 0.2s ease;
+            padding: 0 2px;
+        }
+
+        .question-num-in-text:hover {
+            background-color: #E8F4F8; /* 浅蓝hover背景 */
+            border-radius: 3px;
+        }
+
+        /* 完形填空题号 - 柔和紫粉色 */
+        .cloze-num-in-text {
+            background-color: #9C27B0;
+            user-select: none;
+            display: inline-block;
+            color: white;
+            font-size: 0.8em;
+            font-family: Arial, Helvetica, sans-serif;
+            width: 1.25em;
+            text-align: center;
+            line-height: 1.25em;
+            border-radius: 50%;
+        }
+
+        .question, .option {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+        }
+
+        .question-num, .option-letter{
+            margin-right: 0.25em;
+            flex-grow: 0;
+            user-select: none;
+        }
+
+        .question-line {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+        }
+
+        .options{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        /* 偶数题背景 - 极浅的蓝灰色 */
+        .question:nth-of-type(even){
+            background-color: #EBF0F3;
+        }
+
+        .option {
+            width: 50%;
+            overflow: hidden;
+            flex-grow: 1;
+        }
+
+        .question-content+.options {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-content+.options:nth-of-type(even){
+            background: none;
+        }
+
+        .question-content+.options .option {
+            width: 100%;
+        }
+
+        .listening-dialog {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .speaker{
+            margin-right: 0.25em;
+        }
+
+        /* 原文容器 - 白色底+浅灰边框 */
+        .passage {
+            display: block;
+            width: 50%;
+            padding: 0.25em;
+            border: 1px solid #E0E6ED;
+            border-radius: 6px;
+            overflow: auto;
+            flex-grow: 1;
+            margin-right: 0.25em;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        /* 题目容器 - 同原文容器风格 */
+        .questions {
+            display: flex;
+            flex-grow: 1;
+            flex-direction: column;
+            align-items: start;
+            width: 50%;
+            margin-left: 0.25em;
+            padding: 0.25em;
+            border: 1px solid #E0E6ED;
+            border-radius: 6px;
+            overflow: auto;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        /* 控制面板 - 柔和青绿色 */
+        .panel {
+            justify-content: space-between;
+            font-family: 'Times New Roman', Times, serif, '宋体';
+            height: 130px;
+            background-color: #81C784; /* 薄荷绿 */
+            padding: 10px;
+            user-select: none;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        #test-content {
+            display: flex;
+            padding: 0;
+            line-height: 1.6; /* 增大行高，提升可读性 */
+            text-align: left;
+            flex-direction: row;
+            align-items: center;
+            flex-grow: 1;
+            font-family: 'Times New Roman', Times, serif, '宋体';
+            font-size: 18px; 
+            overflow: hidden;
+            background: transparent;
+        }
+
+        #waveform {
+            position: absolute;
+            background-color: white;
+            border-radius: 4px;
+        }
+
+        #marker {
+            position: absolute;
+            display: block;
+            cursor: pointer;
+            z-index: 100;
+            padding: 0;
+            width: 2px;
+            height: 70px;
+            background-color: #E91E63; /* 柔和玫红 */
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 按钮样式优化 - 清新风格 */
+        button {
+            background-color: #FFFFFF;
+            border: 1px solid #2196F3;
+            color: #2196F3;
+            padding: 4px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        /* 输入框/选择框样式优化 */
+        input[type="file"], select, input[type="number"], input[type="checkbox"] {
+            border: 1px solid #BDBDBD;
+            border-radius: 4px;
+            padding: 2px 4px;
+            background-color: white;
+        }
+
+        input[type="number"] {
+            width: 60px;
+        }
+
+        label {
+            color: #37474F; /* 深灰色文字，降低视觉刺激 */
+            font-size: 14px;
+        }
+
+        /* 写作答案容器基础样式 */
+        .writing-answer {
+            width: 100%;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+      </style>
+</head>
+<body id="body">
+    <div id="test-content"></div>
+    <div class="panel" id="waveform-container">
+        <div style="display: grid; grid-template-columns: 85% 14%; gap: 1%; line-height: 2.5; width: 100%;">
+            <div style="position: relative; width: 100%;">
+                <canvas id="waveform" height="70"></canvas>
+                <div id="marker"></div>
+            </div>
+            <div id="waveform-adjusters">
+                <label>静音阈值：<input type="number" id="minValue" min="0" max="2.0" value="0.05" step="0.05"/></label><br>
+                <label>静音间隙：<input type="number" id="minSilenceDuration" min="0.1" max="6" value="2.0" step="0.10"/></label>
+            </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(5, auto) 0.8fr; gap: 10px; font-size: 14px; width: 100%;">
+            <label>题卷：<input type="file" id="word-file" accept=".docx" style="width: 12em;"></label>
+            <label>音频：<input type="file" id="audio-file" accept="audio/*" style="width: 12em"></label>
+            <div>
+                <label>选择节：<select id="section-select"></select></label>
+                <button id="next-section">下一节</button>
+            </div>
+            <label><input type="checkbox" id="show-script">显示文本</label>
+            <div><button id="smaller-font" style="font-size: 14px; margin-right: 1em;">缩小字</button><button id="larger-font" style="font-size: 14px;">放大字</button></div>
+            <audio id="audio" controls style="height: 20px; width: 100%;"> 
+        </div>
+    </div>
+</body>
+</html>
