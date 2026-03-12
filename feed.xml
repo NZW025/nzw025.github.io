@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>宁归处</title><link>https://nzw025.top/</link><description>Recent content on 宁归处</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 12 Mar 2026 18:00:27 +0800</lastBuildDate><atom:link href="https://nzw025.top/feed.xml" rel="self" type="application/rss+xml"/><item><title>试卷评讲助手</title><link>https://nzw025.top/jingxinyanxue/jingjin/assistant/</link><pubDate>Thu, 12 Mar 2026 18:00:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/jingjin/assistant/</guid><description>&lt;body&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>宁归处</title><link>https://nzw025.top/</link><description>Recent content on 宁归处</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 12 Mar 2026 21:16:30 +0800</lastBuildDate><atom:link href="https://nzw025.top/feed.xml" rel="self" type="application/rss+xml"/><item><title>3500词根之ag|act</title><link>https://nzw025.top/jingxinyanxue/cihui/agact/</link><pubDate>Thu, 12 Mar 2026 21:16:30 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/cihui/agact/</guid><description>&lt;body&gt;
+&lt;div class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 100px; LEFT: -200px"&gt;&lt;iframe height=900 marginHeight=0 src="https://nzw025.top/html/english/tract.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 100px; LEFT: -200px"&gt;&lt;iframe height=900 marginHeight=0 src="https://nzw025.top/html/english/agandact.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 100px; LEFT: -200px"&gt;&lt;iframe height=900 marginHeight=0 src="https://nzw025.top/html/english/facficfact.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 100px; LEFT: -200px"&gt;&lt;iframe height=900 marginHeight=0 src="https://nzw025.top/html/english/age.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 100px; LEFT: -200px"&gt;&lt;iframe height=900 marginHeight=0 src="https://nzw025.top/html/english/g.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 100px; LEFT: -200px"&gt;&lt;iframe height=900 marginHeight=0 src="https://nzw025.top/html/english/others.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;/body&gt;</description></item><item><title>试卷评讲助手</title><link>https://nzw025.top/jingxinyanxue/jingjin/assistant/</link><pubDate>Thu, 12 Mar 2026 18:00:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/jingjin/assistant/</guid><description>&lt;body&gt;
  &lt;!-- &lt;p align="center" color="black"&gt;
  &lt;a href="https://windflower2022.github.io/html/img/jijing.html" target="_blank"&gt;点击全屏&lt;/a&gt;
  &lt;/p&gt;
@@ -710,146 +717,6 @@ document.addEventListener('DOMContentLoaded', function() {
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;20&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她强压着内心的惶恐面对危机。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;She suppressed her inner panic to face the crisis.&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;script&gt;
-document.addEventListener('DOMContentLoaded', function() {
- const sentenceItems = document.querySelectorAll('.sentence-item');
- sentenceItems.forEach(item =&gt; {
- const numberElement = item.querySelector('.sentence-number');
- numberElement.addEventListener('click', function() {
- item.classList.toggle('active');
- });
- item.addEventListener('click', function(e) {
- if (e.target !== numberElement) {
- item.classList.toggle('active');
- }
- });
- });
-});
-&lt;/script&gt;</description></item><item><title>情绪之感动</title><link>https://nzw025.top/jingxinyanxue/xiezuo/touch/</link><pubDate>Sun, 15 Feb 2026 17:13:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/xiezuo/touch/</guid><description>&lt;style&gt;
-/* 基础样式 */
-.sentence-item {
- margin-bottom: 12px;
- margin-left: 6px;
- cursor: pointer;
- line-height: 1.6;
-}
-.sentence-number {
- font-weight: bold;
- color: #2c3e50; 
- user-select: none; 
- padding: 2px 4px;
- border-radius: 2px;
-}
-.sentence-number:hover {
- background-color: #f5f7fa; 
-}
-.cn-sentence {
- margin-left: 4px;
-}
-.en-sentence {
- display: none;
- margin-left: 42px; 
- color: #666; 
- margin-top: 4px;
-}
-.sentence-item.active .en-sentence {
- display: block;
-}
-.study-title {
- font-size: 18px;
- font-weight: bold;
- color: var(--color-title);
- margin: 20px 0 10px 0;
- border-bottom: 1px dashed var(--color-border);
- padding-bottom: 5px;
-}
-&lt;/style&gt;
-&lt;div class="sentence-list"&gt;
-&lt;div class="study-title"&gt;一. touch（动词）相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;01&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 这个温馨的故事使我感动。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The warm story touched me.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;02&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他的善良举动总是能使我感动。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;His kind deeds always touch me.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;03&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 那首歌的歌词深深使她感动。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The lyrics of that song deeply touched her.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;04&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 老人的回忆使在场的人感动。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The old man's memories touched the people present.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;05&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 志愿者的奉献精神使大家感动。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The dedication of the volunteers touched everyone.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;二. move（动词）相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;06&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 这部电影使无数观众感动。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The movie moved countless audiences.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;07&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他的演讲能使听众深深感动。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;His speech can move the audience deeply.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;08&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 妈妈的信使远在他乡的她感动。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Mother's letter moved her far away from home.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;09&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 那些英雄事迹使全国人民感动。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Those heroic deeds moved the people of the whole country.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;10&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 孩子的纯真笑容使老师感动。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The innocent smile of the child moved the teacher.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;三. touched（形容词）相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;11&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她被朋友的支持感动了。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;She was touched by her friend's support.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;12&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 我们都被这个简单的举动感动。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;We were all touched by this simple act.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;13&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他被那封充满爱意的信感动。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He was touched by the letter full of love.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;14&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 观众们被演员的表演感动了。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The audience were touched by the actors' performance.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;15&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 老人被年轻人的礼貌感动。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The old man was touched by the young man's politeness.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;四. moved（形容词）相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;16&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他被那部小说里的情节感动。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He was moved by the plot in that novel.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;17&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她被灾难中互助的场景感动。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;She was moved by the scene of mutual assistance in the disaster.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;18&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 我被他坚持不懈的精神感动。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;I was moved by his persistent spirit.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;19&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 学生们被老师的关怀感动了。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The students were moved by the teacher's care.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;20&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 战士们被群众的热情感动。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The soldiers were moved by the masses' enthusiasm.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;script&gt;
