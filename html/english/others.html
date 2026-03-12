@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>其他高频词思维导图（高中生喜爱配色+拖移+美语朗读）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #7eb6ff 0%, #54e3c2 100%);
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+        
+        .mindmap {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        #connector-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .node {
+            position: absolute;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            padding: 6px 10px;
+            color: #2d3a8c;
+            font-weight: bold;
+            text-align: center;
+            background: #c7e4ff;
+            transform: translate(-50%, -50%);
+            min-width: 70px;
+            font-size: 12px;
+            z-index: 5;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            white-space: nowrap;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .node-center {
+            background: #ff9f43;
+            border-color: #e67e22;
+            font-size: 24px;
+            padding: 10px 20px;
+            z-index: 10;
+            min-width: 100px;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(230,126,34,0.3);
+        }
+        
+        .node-highlight {
+            background: linear-gradient(120deg, #ffc0cb 0%, #ff8fab 100%) !important;
+            border-color: #ff6b8b !important;
+            color: #fff !important;
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 4px 8px rgba(255,107,139,0.3) !important;
+        }
+
+        .node-scaled {
+            z-index: 20 !important;
+            transform: translate(-50%, -50%) scale(3) !important;
+            transition: transform 0.3s ease;
+            box-shadow: 0 6px 12px rgba(255,107,139,0.4) !important;
+        }
+
+        .node-speaking {
+            animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { box-shadow: 0 0 0 0 rgba(255,159,67,0.5); }
+            to { box-shadow: 0 0 0 8px rgba(255,159,67,0); }
+        }
+
+        .example-popup {
+            position: fixed;
+            background: #f3e5f5;
+            border: 4px solid #9c27b0;
+            border-radius: 8px;
+            padding: 15px;
+            color: #4a148c;
+            font-size: 18px;
+            line-height: 1.8;
+            z-index: 999 !important;
+            width: 85%;
+            max-width: 450px;
+            display: none;
+            opacity: 1;
+            cursor: move;
+            user-select: none;
+            box-shadow: 0 4px 16px rgba(156,39,176,0.3);
+        }
+
+        .example-popup.active {
+            display: block;
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: #7b1fa2;
+            margin-bottom: 10px;
+            font-size: 22px;
+            border-bottom: 2px solid #ba68c8;
+            padding-bottom: 8px;
+        }
+
+        .example-item {
+            margin-bottom: 8px;
+            padding-left: 10px;
+            border-left: 2px solid #ba68c8;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .example-item:hover {
+            background: rgba(186,104,200,0.1);
+        }
+
+        .example-tag {
+            color: #fff;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 13px;
+            background: #ff9f43;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .speak-tip {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffc0cb;
+            color: #7b1fa2;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            box-shadow: 0 2px 8px rgba(255,192,203,0.5);
+        }
+
+        .speak-tip.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="mindmap" id="mindmapContainer">
+        <svg id="connector-svg"></svg>
+        <div class="example-popup" id="examplePopup"></div>
+        <div class="speak-tip" id="speakTip">点击单词/例句即可美语朗读 🎤</div>
+    </div>
+
+    <script>
+        const nodeConfig = [
+            // 中心节点
+            { 
+                id: 'center-other', 
+                text: '其他高频词', 
+                isCenter: true, 
+                left: '50%', 
+                top: '50%', 
+                isHighlight: false,
+                examples: [
+                    { type: '总结', content: '零散但高考高频的核心词汇，按语义分类记忆' },
+                    { type: '技巧', content: '结合例句和场景记忆，提升应用能力' }
+                ]
+            },
+
+            // 人物/性格类分支
+            { 
+                id: 'character-root', 
+                text: '人物/性格', 
+                isCenter: false, 
+                left: '70%', 
+                top: '20%', 
+                isHighlight: true,
+                examples: [{ type: '语法', content: '描述人物性格、特征的高频词汇' }]
+            },
+            { 
+                id: 'character', 
+                text: 'character n. 性格', 
+                isCenter: false, 
+                left: '65%', 
+                top: '12%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'He is a man of strong character. (2023全国卷)' },
+                    { type: '日常', content: 'Her character is very outgoing.' }
+                ]
+            },
+            { 
+                id: 'characteristic', 
+                text: 'characteristic adj. 典型的', 
+                isCenter: false, 
+                left: '78%', 
+                top: '12%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'This is a characteristic feature of the plant. (2022浙江卷)' },
+                    { type: '日常', content: 'Kindness is a characteristic of her.' }
+                ]
+            },
+            { 
+                id: 'colleague', 
+                text: 'colleague n. 同事', 
+                isCenter: false, 
+                left: '72%', 
+                top: '28%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'He is a good colleague to work with. (2021全国卷)' },
+                    { type: '日常', content: 'I had lunch with my colleagues today.' }
+                ]
+            },
+            { 
+                id: 'eager', 
+                text: 'eager adj. 渴望的', 
+                isCenter: false, 
+                left: '80%', 
+                top: '21%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'She is eager to learn English well. (2020江苏卷)' },
+                    { type: '日常', content: 'Children are eager for the holiday.' }
+                ]
+            },
+
+            // 行为/影响类分支
+            { 
+                id: 'action-root', 
+                text: '行为/影响', 
+                isCenter: false, 
+                left: '30%', 
+                top: '20%', 
+                isHighlight: true,
+                examples: [{ type: '语法', content: '描述行为、影响、鼓励的高频词汇' }]
+            },
+            { 
+                id: 'contact', 
+                text: 'contact v. 联系', 
+                isCenter: false, 
+                left: '25%', 
+                top: '12%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'Please contact me if you have any questions. (2023全国卷)' },
+                    { type: '日常', content: 'I lost contact with him after graduation.' }
+                ]
+            },
+            { 
+                id: 'encourage', 
+                text: 'encourage v. 鼓励', 
+                isCenter: false, 
+                left: '39%', 
+                top: '16%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'Teachers encourage students to ask questions. (2022全国卷)' },
+                    { type: '日常', content: 'My parents encourage me to pursue my dreams.' }
+                ]
+            },
+            { 
+                id: 'encouragement', 
+                text: 'encouragement n. 鼓励', 
+                isCenter: false, 
+                left: '18%', 
+                top: '22%', 
+                isHighlight: false,
+                examples: [
+                    { type: '日常', content: 'Your encouragement means a lot to me.' },
+                    { type: '拓展', content: 'encouragement = encourage + ment，名词后缀' }
+                ]
+            },
+            { 
+                id: 'engage', 
+                text: 'engage v. 参与；雇佣', 
+                isCenter: false, 
+                left: '25%', 
+                top: '32%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'Students should engage in more outdoor activities. (2023全国卷)' },
+                    { type: '日常', content: 'The company engaged a new engineer last month.' }
+                ]
+            },
+            { 
+                id: 'engagement', 
+                text: 'engagement n. 参与；约会', 
+                isCenter: false, 
+                left: '38%', 
+                top: '32%', 
+                isHighlight: false,
+                examples: [
+                    { type: '日常', content: 'Her engagement in the project made her proud.' },
+                    { type: '拓展', content: 'engagement 还可表示"订婚"，是 engage 的名词形式' }
+                ]
+            },
+
+            // 状态/情感类分支
+            { 
+                id: 'emotion-root', 
+                text: '状态/情感', 
+                isCenter: false, 
+                left: '50%', 
+                top: '70%', 
+                isHighlight: true,
+                examples: [{ type: '语法', content: '描述状态、情感、结果的高频词汇' }]
+            },
+            { 
+                id: 'content', 
+                text: 'content adj. 满意的', 
+                isCenter: false, 
+                left: '30%', 
+                top: '62%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'He is content with his simple life. (2022浙江卷)' },
+                    { type: '日常', content: 'Are you content with the result?' }
+                ]
+            },
+            { 
+                id: 'content2', 
+                text: 'content n. 内容', 
+                isCenter: false, 
+                left: '40%', 
+                top: '66%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'The content of the book is very informative. (2021全国卷)' },
+                    { type: '日常', content: 'I like the content of this video.' }
+                ]
+            },
+            { 
+                id: 'grateful', 
+                text: 'grateful adj. 感激的', 
+                isCenter: false, 
+                left: '60%', 
+                top: '62%', 
+                isHighlight: false,
+                examples: [
+                    { type: '高考', content: 'I am grateful to you for your help. (2023全国卷)' },
+                    { type: '日常', content: 'We should be grateful for what we have.' }
+                ]
+            }
+        ];
+
+        const connectionConfig = [
+            // 一级连接
+            { fromId: 'center-other', toId: 'character-root', level: 1 },
+            { fromId: 'center-other', toId: 'action-root', level: 1 },
+            { fromId: 'center-other', toId: 'emotion-root', level: 1 },
+            
+            // 二级连接
+            { fromId: 'character-root', toId: 'character', level: 2 },
+            { fromId: 'character', toId: 'characteristic', level: 2 },
+            { fromId: 'character-root', toId: 'colleague', level: 2 },
+            { fromId: 'colleague', toId: 'eager', level: 2 },
+            { fromId: 'action-root', toId: 'contact', level: 2 },
+            { fromId: 'contact', toId: 'encourage', level: 2 },
+            { fromId: 'encourage', toId: 'encouragement', level: 2 },
+            { fromId: 'action-root', toId: 'engage', level: 2 },
+            { fromId: 'engage', toId: 'engagement', level: 2 },
+            { fromId: 'emotion-root', toId: 'content', level: 2 },
+            { fromId: 'content', toId: 'content2', level: 2 },
+            { fromId: 'emotion-root', toId: 'grateful', level: 2 }
+        ];
+
+        // 朗读功能
+        const speakTip = document.getElementById('speakTip');
+        let speechSynthesis = window.speechSynthesis || null;
+        let currentUtterance = null;
+        let speakingNode = null;
+
+        function initSpeakTip() {
+            setTimeout(() => {
+                speakTip.classList.add('show');
+                setTimeout(() => {
+                    speakTip.classList.remove('show');
+                }, 5000);
+            }, 1000);
+        }
+
+        // 优化语音获取逻辑
+        function getUsVoice() {
+            if (!speechSynthesis) return null;
+            const voices = speechSynthesis.getVoices();
+            // 优先找美式英语语音
+            let usVoice = voices.find(voice => voice.lang === 'en-US');
+            // 没有的话找任意英语语音
+            if (!usVoice) usVoice = voices.find(voice => voice.lang.startsWith('en'));
+            return usVoice;
+        }
+
+        function speakText(text, nodeEl = null) {
+            if (!speechSynthesis) return;
+            
+            if (currentUtterance) {
+                speechSynthesis.cancel(currentUtterance);
+                if (speakingNode) {
+                    speakingNode.classList.remove('node-speaking');
+                }
+            }
+
+            if (!text || text.trim() === '') return;
+
+            const utterance = new SpeechSynthesisUtterance(text.trim());
+            const usVoice = getUsVoice();
+            if (usVoice) {
+                utterance.voice = usVoice;
+            }
+
+            utterance.rate = 0.9;
+            utterance.pitch = 1;
+            utterance.volume = 1;
+
+            utterance.onstart = () => {
+                if (nodeEl) {
+                    speakingNode = nodeEl;
+                    nodeEl.classList.add('node-speaking');
+                }
+            };
+
+            utterance.onend = () => {
+                if (speakingNode) {
+                    speakingNode.classList.remove('node-speaking');
+                    speakingNode = null;
+                }
+                currentUtterance = null;
+            };
+
+            utterance.onerror = (error) => {
+                console.error('朗读失败：', error);
+                if (speakingNode) {
+                    speakingNode.classList.remove('node-speaking');
+                    speakingNode = null;
+                }
+                currentUtterance = null;
+            };
+
+            currentUtterance = utterance;
+            speechSynthesis.speak(utterance);
+        }
+
+        function handleNodeSpeak(nodeEl, nodeData) {
+            let speakTextContent = nodeData.text.replace(/[（）→、\u4e00-\u9fa5]/g, '').trim();
+            if (!speakTextContent) speakTextContent = nodeData.text.trim();
+            speakText(speakTextContent, nodeEl);
+        }
+
+        function handleExampleSpeak(exampleContent) {
+            const enContent = exampleContent.replace(/\([^)]*\)|【[^】]*】|[\u4e00-\u9fa5]/g, '').trim();
+            speakText(enContent);
+        }
+
+        // 核心交互
+        const examplePopup = document.getElementById('examplePopup');
+        let activeNode = null;
+        let isDragging = false;
+        let dragOffsetX = 0;
+        let dragOffsetY = 0;
+
+        function initDragablePopup() {
+            examplePopup.addEventListener('mousedown', function(e) {
+                if (examplePopup.classList.contains('active')) {
+                    isDragging = true;
+                    dragOffsetX = e.clientX - examplePopup.getBoundingClientRect().left;
+                    dragOffsetY = e.clientY - examplePopup.getBoundingClientRect().top;
+                    examplePopup.style.cursor = 'grabbing';
+                }
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (!isDragging) return;
+                let newLeft = e.clientX - dragOffsetX;
+                let newTop = e.clientY - dragOffsetY;
+
+                const popupWidth = examplePopup.offsetWidth;
+                const popupHeight = examplePopup.offsetHeight;
+                newLeft = Math.max(0, Math.min(newLeft, window.innerWidth - popupWidth));
+                newTop = Math.max(0, Math.min(newTop, window.innerHeight - popupHeight));
+
+                examplePopup.style.left = `${newLeft}px`;
+                examplePopup.style.top = `${newTop}px`;
+                examplePopup.style.transform = 'none';
+            });
+
+            document.addEventListener('mouseup', function() {
+                if (isDragging) {
+                    isDragging = false;
+                    examplePopup.style.cursor = 'move';
+                }
+            });
+
+            examplePopup.addEventListener('selectstart', function(e) {
+                e.preventDefault();
+            });
+        }
+
+        function drawTentacleConnectors() {
+            const svg = document.getElementById('connector-svg');
+            if (!svg) return;
+            svg.innerHTML = '';
+
+            connectionConfig.forEach(conn => {
+                const fromNode = document.getElementById(`node-${conn.fromId}`);
+                const toNode = document.getElementById(`node-${conn.toId}`);
+
+                if (fromNode && toNode) {
+                    const fromRect = fromNode.getBoundingClientRect();
+                    const toRect = toNode.getBoundingClientRect();
+                    const svgRect = svg.getBoundingClientRect();
+                    const fromX = fromRect.left + fromRect.width / 2 - svgRect.left;
+                    const fromY = fromRect.top + fromRect.height / 2 - svgRect.top;
+                    const toX = toRect.left + toRect.width / 2 - svgRect.left;
+                    const toY = toRect.top + toRect.height / 2 - svgRect.top;
+
+                    const dx = toX - fromX;
+                    const dy = toY - fromY;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    const controlOffset = distance * 0.3;
+                    const controlX = fromX + dx / 2 + (dy / distance) * controlOffset;
+                    const controlY = fromY + dy / 2 - (dx / distance) * controlOffset;
+
+                    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    path.setAttribute('d', `M ${fromX} ${fromY} Q ${controlX} ${controlY} ${toX} ${toY}`);
+                    path.setAttribute('fill', 'none');
+
+                    if (conn.level === 1) {
+                        path.setAttribute('stroke', '#7b1fa2');
+                        path.setAttribute('stroke-width', '2');
+                        path.setAttribute('stroke-opacity', '0.9');
+                        path.setAttribute('stroke-dasharray', '4, 2');
+                    } else if (conn.level === 2) {
+                        path.setAttribute('stroke', 'rgba(123,26,162,0.7)');
+                        path.setAttribute('stroke-width', '1');
+                        path.setAttribute('stroke-opacity', '0.7');
+                        path.setAttribute('stroke-dasharray', '2, 3');
+                    }
+
+                    svg.appendChild(path);
+                }
+            });
+        }
+
+        function showExamples(nodeData) {
+            let html = `<div class="example-title">${nodeData.text} 例句</div>`;
+            if (nodeData.examples && nodeData.examples.length > 0) {
+                nodeData.examples.forEach(ex => {
+                    html += `<div class="example-item" onclick="handleExampleSpeak('${ex.content.replace(/'/g, "\\'")}')">
+                                <span class="example-tag">[${ex.type}]</span>${ex.content}
+                            </div>`;
+                });
+            } else {
+                html += `<div class="example-item">暂无相关例句</div>`;
+            }
+            examplePopup.innerHTML = html;
+            examplePopup.classList.add('active');
+
+            if (!examplePopup.style.left || !examplePopup.style.top) {
+                const popupWidth = examplePopup.offsetWidth;
+                const popupHeight = examplePopup.offsetHeight;
+                examplePopup.style.left = `${(window.innerWidth - popupWidth) / 2}px`;
+                examplePopup.style.top = `${window.innerHeight - popupHeight - 20}px`;
+                examplePopup.style.transform = 'none';
+            }
+        }
+
+        function hideExamples() {
+            examplePopup.classList.remove('active');
+            examplePopup.innerHTML = '';
+        }
+
+        function handleClick(node) {
+            const nodeId = node.id.replace('node-', '');
+            let nodeData = nodeConfig.find(item => item.id === nodeId);
+
+            if (activeNode === node) {
+                node.classList.remove('node-scaled');
+                hideExamples();
+                if (currentUtterance && speechSynthesis) {
+                    speechSynthesis.cancel(currentUtterance);
+                    if (speakingNode) {
+                        speakingNode.classList.remove('node-speaking');
+                        speakingNode = null;
+                    }
+                }
+                activeNode = null;
+            } else {
+                if (activeNode) {
+                    activeNode.classList.remove('node-scaled');
+                }
+                node.classList.add('node-scaled');
+                showExamples(nodeData || { text: '未知单词', examples: [] });
+                if (nodeData) {
+                    handleNodeSpeak(node, nodeData);
+                }
+                activeNode = node;
+            }
+        }
+
+        function renderNodes() {
+            const container = document.getElementById('mindmapContainer');
+            if (!container) return;
+
+            nodeConfig.forEach(node => {
+                const nodeEl = document.createElement('div');
+                nodeEl.id = `node-${node.id}`;
+                nodeEl.className = 'node';
+                if (node.isCenter) nodeEl.classList.add('node-center');
+                if (node.isHighlight) nodeEl.classList.add('node-highlight');
+                nodeEl.textContent = node.text;
+                nodeEl.style.left = node.left;
+                nodeEl.style.top = node.top;
+
+                nodeEl.onclick = function() {
+                    handleClick(this);
+                };
+
+                nodeEl.onmouseover = function() {
+                    if (this !== activeNode) this.classList.add('node-highlight');
+                };
+                nodeEl.onmouseout = function() {
+                    const nodeId = this.id.replace('node-', '');
+                    const nodeData = nodeConfig.find(item => item.id === nodeId);
+                    if (this !== activeNode && (!nodeData || (!nodeData.isHighlight && !nodeData.isCenter))) {
+                        this.classList.remove('node-highlight');
+                    }
+                };
+
+                container.appendChild(nodeEl);
+            });
+        }
+
+        function initMindMap() {
+            renderNodes();
+            initDragablePopup();
+            initSpeakTip();
+            
+            // 确保DOM渲染完成后再绘制连接线
+            setTimeout(() => {
+                drawTentacleConnectors();
+                console.log('其他高频词思维导图初始化完成');
+            }, 200);
+
+            // 监听语音包加载完成事件
+            if (speechSynthesis) {
+                speechSynthesis.onvoiceschanged = function() {
+                    console.log('语音包加载完成');
+                };
+            }
+        }
+
+        window.onload = function() {
+            if (!window.speechSynthesis) {
+                speechSynthesis = null;
+                speakTip.textContent = '您的浏览器不支持朗读功能，请升级浏览器后使用 🥺';
+                speakTip.classList.add('show');
+                setTimeout(() => {
+                    speakTip.classList.remove('show');
+                }, 8000);
+            }
+            initMindMap();
+        };
+
+        window.addEventListener('resize', function() {
+            drawTentacleConnectors();
+        });
+
+        // 暴露全局方法
+        window.handleExampleSpeak = handleExampleSpeak;
+    </script>
+</body>
+</html>
