@@ -284,7 +284,9 @@
  &lt;/div&gt;</description></item><item><title>杂记</title><link>https://nzw025.top/nuanfengshiyou/zaji/dome/</link><pubDate>Thu, 26 Feb 2026 00:00:00 +0800</pubDate><guid>https://nzw025.top/nuanfengshiyou/zaji/dome/</guid><description/></item><item><title>句法思维导图</title><link>https://nzw025.top/jingxinyanxue/yufa/jufa/</link><pubDate>Wed, 25 Feb 2026 21:16:30 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/yufa/jufa/</guid><description>&lt;body&gt;
 &lt;div class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 100px; LEFT: -200px"&gt;&lt;iframe height=900 marginHeight=0 src="https://nzw025.top/html/english/ablessq.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
 &lt;/body&gt;</description></item><item><title>生而为人，抱歉</title><link>https://nzw025.top/dansiwuji/suibi/baoqian/</link><pubDate>Wed, 25 Feb 2026 21:16:30 +0800</pubDate><guid>https://nzw025.top/dansiwuji/suibi/baoqian/</guid><description>&lt;br&gt;
-&lt;p&gt;对于这个世界，不知怎么热爱。热闹的宴席，也不能捂暖内心的苍凉。越来越与情感隔缘，渴望和失望接踵而至，羡慕那些对世界还满腔热情的人儿，即便跌得遍体鳞伤，仍然渴望着爱与被爱。也许我读的书太少，见识太浅薄。该静下心来，多看书，多感知这个世界，看看除了等价交换，是否余留那么一点纯粹得让我为之欣喜若狂的东西。&lt;/p&gt;</description></item><item><title>梦底</title><link>https://nzw025.top/qianxushiguang/yinhua/mengdi/</link><pubDate>Sun, 22 Feb 2026 22:21:27 +0800</pubDate><guid>https://nzw025.top/qianxushiguang/yinhua/mengdi/</guid><description>&lt;body&gt;
+&lt;p&gt;对于这个世界，不知怎么热爱。热闹的宴席，也不能捂暖内心的苍凉。越来越与情感隔缘，渴望和失望接踵而至，羡慕那些对世界还满腔热情的人儿，即便跌得遍体鳞伤，仍然渴望着爱与被爱。也许我读的书太少，见识太浅薄。该静下心来，多看书，多感知这个世界，看看除了等价交换，是否余留那么一点纯粹得让我为之欣喜若狂的东西。&lt;/p&gt;</description></item><item><title>词汇展现思维导图</title><link>https://nzw025.top/jingxinyanxue/cihui/able/</link><pubDate>Wed, 25 Feb 2026 21:16:30 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/cihui/able/</guid><description>&lt;body&gt;
+&lt;div class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 100px; LEFT: -200px"&gt;&lt;iframe height=900 marginHeight=0 src="https://nzw025.top/html/english/ablessq.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;/body&gt;</description></item><item><title>梦底</title><link>https://nzw025.top/qianxushiguang/yinhua/mengdi/</link><pubDate>Sun, 22 Feb 2026 22:21:27 +0800</pubDate><guid>https://nzw025.top/qianxushiguang/yinhua/mengdi/</guid><description>&lt;body&gt;
  &lt;DIV class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 120px; LEFT: -250px"&gt;&lt;IFRAME height=900 marginHeight=0 src="https://nzw025.top//html/img/md.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/IFRAME&gt;&lt;/DIV&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
  &lt;audio id="aud" src="https://www.joy127.com/url/144551.mp3" autoplay="1" loop=""&gt;&lt;/audio&gt;
 	&lt;/body&gt;</description></item><item><title>人间共鸣</title><link>https://nzw025.top/qianxushiguang/yinhua/renjiangongming/</link><pubDate>Fri, 20 Feb 2026 17:00:27 +0800</pubDate><guid>https://nzw025.top/qianxushiguang/yinhua/renjiangongming/</guid><description>&lt;body&gt;
@@ -951,145 +953,6 @@ document.addEventListener('DOMContentLoaded', function() {
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;13&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 谦虚的笑容让她更受尊重。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;Smile of modesty made her more respected.&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;script&gt;
-document.addEventListener('DOMContentLoaded', function() {
- const sentenceItems = document.querySelectorAll('.sentence-item');
- sentenceItems.forEach(item =&gt; {
- const numberElement = item.querySelector('.sentence-number');
- numberElement.addEventListener('click', function() {
- item.classList.toggle('active');
- });
- item.addEventListener('click', function(e) {
- if (e.target !== numberElement) {
- item.classList.toggle('active');
- }
- });
- });
-});
-&lt;/script&gt;</description></item><item><title>情绪之眼泪</title><link>https://nzw025.top/jingxinyanxue/xiezuo/tear/</link><pubDate>Sat, 14 Feb 2026 19:13:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/xiezuo/tear/</guid><description>&lt;style&gt;
-/* 基础样式 */
-.sentence-item {
- margin-bottom: 12px;
- margin-left: 6px;
- cursor: pointer;
- line-height: 1.6;
-}
-.sentence-number {
- font-weight: bold;
- color: #2c3e50; 
- user-select: none; 
- padding: 2px 4px;
- border-radius: 2px;
-}
-.sentence-number:hover {
- background-color: #f5f7fa; 
-}
-.cn-sentence {
- margin-left: 4px;
-}
-.en-sentence {
- display: none;
- margin-left: 42px; 
- color: #666; 
- margin-top: 4px;
-}
-.sentence-item.active .en-sentence {
- display: block;
-}
-.study-title {
- font-size: 18px;
- font-weight: bold;
- color: var(--color-title);
- margin: 20px 0 10px 0;
- border-bottom: 1px dashed var(--color-border);
- padding-bottom: 5px;
-}
-&lt;/style&gt;
-&lt;div class="sentence-list"&gt;
-&lt;div class="study-title"&gt;一. 正向情绪类眼泪&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;01&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 喜悦的泪水充满了她的眼眶。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Tears of joy filled her eyes.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;06&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 兴奋的泪水在她脸颊上闪烁。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Tears of excitement sparkled on her cheeks.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;07&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 宽慰的泪水涌上他心头。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Tears of relief washed over him.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;12&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 感激的泪水在他眼中闪耀。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Tears of gratitude shone in his eyes.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;14&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 爱的泪水在她眼中徘徊。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Tears of love lingered in her eyes.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;16&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 骄傲的泪水沾湿了他的睫毛。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Tears of pride dampened his lashes.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;19&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 希望的泪水使她的表情明亮起来。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Tears of hope brightened her expression.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;二. 负向情绪类眼泪&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;02&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 悲伤的泪水从他脸上流下。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Tears of sorrow streamed down his face.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;03&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 愤怒的泪水在他眼中燃烧。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Tears of anger burned in his eyes.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;04&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 悔恨的泪水在她内心涌起。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Tears of regret welled up within her.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;05&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 挫败的泪水模糊了他的视线。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Tears of frustration clouded his vision.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;08&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 痛苦的泪水使她的脸扭曲了。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Tears of pain made her face contorted.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;09&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 孤独的泪水浸湿了她的枕头。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Tears of loneliness soaked her pillow.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;10&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 失望的泪水从他下巴滴落。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Tears of disappointment dripped from his chin.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;三. 复杂情绪类眼泪&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;11&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 怀旧的泪水模糊了她的视线。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Tears of nostalgia blurred her sight.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;13&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 恐惧的泪水在她脸上凝固。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Tears of horror froze on her face.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;15&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 嫉妒的泪水在他的眼神中闪烁。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Tears of envy glistened in his look.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;17&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 困惑的泪水充满了他的双眼。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Tears of confusion filled his eyes.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;18&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 渴望的泪水让他心痛。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Tears of longing made his heart ache.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;20&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 害羞的泪水使她的脸颊泛红。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Tears of shyness tinted her cheeks red.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;script&gt;
