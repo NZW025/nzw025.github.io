@@ -1,4 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>宁归处</title><link>https://nzw025.top/</link><description>Recent content on 宁归处</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 05 Mar 2026 20:15:30 +0800</lastBuildDate><atom:link href="https://nzw025.top/feed.xml" rel="self" type="application/rss+xml"/><item><title>高考阅读题型解题技巧</title><link>https://nzw025.top/jingxinyanxue/yuedu/type/</link><pubDate>Thu, 05 Mar 2026 20:15:30 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/yuedu/type/</guid><description>&lt;body&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>宁归处</title><link>https://nzw025.top/</link><description>Recent content on 宁归处</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 12 Mar 2026 18:00:27 +0800</lastBuildDate><atom:link href="https://nzw025.top/feed.xml" rel="self" type="application/rss+xml"/><item><title>试卷评讲助手</title><link>https://nzw025.top/jingxinyanxue/jingjin/assistant/</link><pubDate>Thu, 12 Mar 2026 18:00:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/jingjin/assistant/</guid><description>&lt;body&gt;
+ &lt;!-- &lt;p align="center" color="black"&gt;
+ &lt;a href="https://windflower2022.github.io/html/img/jijing.html" target="_blank"&gt;点击全屏&lt;/a&gt;
+ &lt;/p&gt;
+ more--&gt;
+ &lt;div class="full-width" style="position: relative; width: 100%; top: 120px; left: -250px"&gt;
+ &lt;iframe height="1000" marginHeight="0" src="https://nzw025.top/html/english/assistant.html" frameBorder="0" width="100%" marginWidth="0" scrolling="no"&gt;&lt;/iframe&gt;
+ &lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+ &lt;!--&lt;audio id="aud" src="https://www.joy127.com/audio/128658.mp3" autoplay="" loop=""&gt;&lt;/audio&gt;--&gt;
+&lt;/body&gt;</description></item><item><title>高考阅读题型解题技巧</title><link>https://nzw025.top/jingxinyanxue/yuedu/type/</link><pubDate>Thu, 05 Mar 2026 20:15:30 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/yuedu/type/</guid><description>&lt;body&gt;
  &lt;!-- &lt;p align="center" color="black"&gt;
  &lt;a href="https://windflower2022.github.io/html/img/jijing.html" target="_blank"&gt;点击全屏&lt;/a&gt;
  &lt;/p&gt;
@@ -841,118 +850,6 @@ document.addEventListener('DOMContentLoaded', function() {
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;20&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 战士们被群众的热情感动。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;The soldiers were moved by the masses' enthusiasm.&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;script&gt;
-document.addEventListener('DOMContentLoaded', function() {
- const sentenceItems = document.querySelectorAll('.sentence-item');
- sentenceItems.forEach(item =&gt; {
- const numberElement = item.querySelector('.sentence-number');
- numberElement.addEventListener('click', function() {
- item.classList.toggle('active');
- });
- item.addEventListener('click', function(e) {
- if (e.target !== numberElement) {
- item.classList.toggle('active');
- }
- });
- });
-});
-&lt;/script&gt;</description></item><item><title>情绪之笑容</title><link>https://nzw025.top/jingxinyanxue/xiezuo/smile/</link><pubDate>Sun, 15 Feb 2026 15:13:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/xiezuo/smile/</guid><description>&lt;style&gt;
-/* 基础样式 */
-.sentence-item {
- margin-bottom: 12px;
- margin-left: 6px;
- cursor: pointer;
- line-height: 1.6;
-}
-.sentence-number {
- font-weight: bold;
- color: #2c3e50; 
- user-select: none; 
- padding: 2px 4px;
- border-radius: 2px;
-}
-.sentence-number:hover {
- background-color: #f5f7fa; 
-}
-.cn-sentence {
- margin-left: 4px;
-}
-.en-sentence {
- display: none;
- margin-left: 42px; 
- color: #666; 
- margin-top: 4px;
-}
-.sentence-item.active .en-sentence {
- display: block;
-}
-.study-title {
- font-size: 18px;
- font-weight: bold;
- color: var(--color-title);
- margin: 20px 0 10px 0;
- border-bottom: 1px dashed var(--color-border);
- padding-bottom: 5px;
-}
-&lt;/style&gt;
-&lt;div class="sentence-list"&gt;
-&lt;div class="study-title"&gt;一. 正向情绪类笑容&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;01&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 幸福的笑容使她容光焕发。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Smile of happiness brightened her face.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;02&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 友善的笑容温暖了每个人的心。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Smile of kindness warmed everyone's heart.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;03&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 自信的笑容提升了他的士气。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Smile of confidence boosted his morale.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;二. 满足感类笑容&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;04&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 满意的笑容浮现在他的嘴角。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Smile of satisfaction showed on his lips.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;05&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 兴奋的笑容在她眼中闪耀。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Smile of excitement sparkled in her eyes.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;06&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 宽慰的笑容在他的面容上展开。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Smile of relief spread across his features.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;三. 情感表达类笑容&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;07&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 感激的笑容表达了她的谢意。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Smile of gratitude expressed her thankfulness.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;08&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 纯真的笑容让这个孩子很可爱。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Smile of innocence made the child adorable.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;09&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 爱意的笑容充满了这对夫妇的双眼。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Smile of love filled the couple's eyes.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;四. 特质类笑容&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;10&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 神秘的笑容增添了他的魅力。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Smile of mystery added to his charm.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;11&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 胜利后的得意笑容出现了。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Smile of triumph appeared after the victory.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;12&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 好奇的笑容照亮了他的脸。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Smile of curiosity lit up his face.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;13&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 谦虚的笑容让她更受尊重。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Smile of modesty made her more respected.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;script&gt;
