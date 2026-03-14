@@ -14,7 +14,17 @@
  &lt;iframe height="1000" marginHeight="0" src="https://nzw025.top/html/english/assistant.html" frameBorder="0" width="100%" marginWidth="0" scrolling="no"&gt;&lt;/iframe&gt;
  &lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
  &lt;!--&lt;audio id="aud" src="https://www.joy127.com/audio/128658.mp3" autoplay="" loop=""&gt;&lt;/audio&gt;--&gt;
-&lt;/body&gt;</description></item><item><title>高考阅读题型解题技巧</title><link>https://nzw025.top/jingxinyanxue/yuedu/type/</link><pubDate>Thu, 05 Mar 2026 20:15:30 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/yuedu/type/</guid><description>&lt;body&gt;
+&lt;/body&gt;</description></item><item><title>花开忘忧</title><link>https://nzw025.top/qianxushiguang/yinhua/huakaiwangyou/</link><pubDate>Mon, 09 Mar 2026 12:00:27 +0800</pubDate><guid>https://nzw025.top/qianxushiguang/yinhua/huakaiwangyou/</guid><description>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+ &lt;meta charset="UTF-8"&gt;
+ &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ &lt;DIV class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 120px; LEFT: -250px"&gt;&lt;IFRAME height=900 marginHeight=0 src="https://pic1.imgdb.cn/item/69b4e2aa963e55431f540221.webp" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/IFRAME&gt;&lt;/DIV&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+ &lt;audio id="aud" src="https://i.uik.cc/view.php/484fb64c22758e67469a260ab5a2a609.mp3" autoplay="" loop=""&gt;&lt;/audio&gt;
+&lt;/body&gt;
+&lt;/html&gt;</description></item><item><title>高考阅读题型解题技巧</title><link>https://nzw025.top/jingxinyanxue/yuedu/type/</link><pubDate>Thu, 05 Mar 2026 20:15:30 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/yuedu/type/</guid><description>&lt;body&gt;
  &lt;!-- &lt;p align="center" color="black"&gt;
  &lt;a href="https://windflower2022.github.io/html/img/jijing.html" target="_blank"&gt;点击全屏&lt;/a&gt;
  &lt;/p&gt;
@@ -571,152 +581,6 @@ document.addEventListener('DOMContentLoaded', function() {
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;20&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她因被欺骗而狂怒。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;She is furious because she is deceived.&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;script&gt;
-document.addEventListener('DOMContentLoaded', function() {
- const sentenceItems = document.querySelectorAll('.sentence-item');
- sentenceItems.forEach(item =&gt; {
- const numberElement = item.querySelector('.sentence-number');
- numberElement.addEventListener('click', function() {
- item.classList.toggle('active');
- });
- item.addEventListener('click', function(e) {
- if (e.target !== numberElement) {
- item.classList.toggle('active');
- }
- });
- });
-});
-&lt;/script&gt;</description></item><item><title>情绪之焦虑</title><link>https://nzw025.top/jingxinyanxue/xiezuo/concern/</link><pubDate>Sun, 15 Feb 2026 18:13:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/xiezuo/concern/</guid><description>&lt;style&gt;
-/* 基础样式 */
-.sentence-item {
- margin-bottom: 12px;
- margin-left: 6px;
- cursor: pointer;
- line-height: 1.6;
-}
-.sentence-number {
- font-weight: bold;
- color: #2c3e50; 
- user-select: none; 
- padding: 2px 4px;
- border-radius: 2px;
-}
-.sentence-number:hover {
- background-color: #f5f7fa; 
-}
-.cn-sentence {
- margin-left: 4px;
-}
-.en-sentence {
- display: none;
- margin-left: 42px; 
- color: #666; 
- margin-top: 4px;
-}
-.sentence-item.active .en-sentence {
- display: block;
-}
-.study-title {
- font-size: 18px;
- font-weight: bold;
- color: var(--color-title);
- margin: 20px 0 10px 0;
- border-bottom: 1px dashed var(--color-border);
- padding-bottom: 5px;
-}
-&lt;/style&gt;
-&lt;div class="sentence-list"&gt;
-&lt;div class="study-title"&gt;一. 担忧 (concern)&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;01&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 我们对环境的担忧与日俱增。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Our concern about the environment is growing.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;02&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她的担忧在眼神中清晰可见。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Her concern is clearly visible in her eyes.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;二. 焦虑 (anxiety)&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;03&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他的焦虑源于工作压力。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;His anxiety comes from work pressure.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;04&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 考试前的焦虑让他难以入眠。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Anxiety before the exam makes it hard for him to sleep.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;三. 忧虑 (agitation)&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;05&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她脸上的忧虑无法消散。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The agitation on her face won't disappear.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;06&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他带着忧虑处理棘手问题。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He deals with the tough problem with agitation.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;四. 担忧的 (concerned)&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;07&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 那位担忧的父亲四处寻找孩子。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The concerned father is looking for his child everywhere.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;08&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 担忧的医生密切关注病人。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The concerned doctor pays close attention to the patient.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;五. 焦虑的 (anxious)&lt;/div&gt; 
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;09&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 焦虑的投资者等待着股市消息。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Anxious investors are waiting for stock market news.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;10&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 焦虑的心情让他坐立不安。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The anxious mood makes him restless.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;六. 焦虑不安的 (agitated)&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;11&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 焦虑不安的人群呼喊着口号。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The agitated crowd shouts slogans.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;12&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他焦虑不安的状态很明显。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;His agitated state is very obvious.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;七. 坐立不安的 (restless)&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;13&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 坐立不安的他在房间里走来走去。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Restless, he walks around in the room.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;14&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 坐立不安的思绪困扰着他。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Restless thoughts trouble him.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;八. 紧张的 (nervous)&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;15&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 紧张的运动员做着深呼吸。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The nervous athlete takes deep breaths.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;16&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她紧张的样子让人有些心疼。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Her nervous look makes people feel a bit sorry.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;九. 颤抖 (shake)&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;17&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他冷得直颤抖，赶紧穿上外套。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He shakes with cold and quickly puts on a coat.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;18&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 地震时大地颤抖，房屋晃动。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The earth shakes during the earthquake and houses sway.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;十. 惶恐 (panic)&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;19&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 突发的警报让人群陷入惶恐。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The sudden alarm threw the crowd into panic.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;20&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她强压着内心的惶恐面对危机。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;She suppressed her inner panic to face the crisis.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;script&gt;
