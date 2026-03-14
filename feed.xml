@@ -1,4 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>宁归处</title><link>https://nzw025.top/</link><description>Recent content on 宁归处</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 12 Mar 2026 21:16:30 +0800</lastBuildDate><atom:link href="https://nzw025.top/feed.xml" rel="self" type="application/rss+xml"/><item><title>3500词根之ag|act</title><link>https://nzw025.top/jingxinyanxue/cihui/agact/</link><pubDate>Thu, 12 Mar 2026 21:16:30 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/cihui/agact/</guid><description>&lt;body&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>宁归处</title><link>https://nzw025.top/</link><description>Recent content on 宁归处</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Sat, 14 Mar 2026 15:00:27 +0800</lastBuildDate><atom:link href="https://nzw025.top/feed.xml" rel="self" type="application/rss+xml"/><item><title>碎语存档</title><link>https://nzw025.top/dansiwuji/suibi/sy/</link><pubDate>Sat, 14 Mar 2026 15:00:27 +0800</pubDate><guid>https://nzw025.top/dansiwuji/suibi/sy/</guid><description>&lt;br&gt;
+&lt;p&gt;明天带妈妈去医院检查，哥说妈妈要住院，没人照顾只能请护工了。
+2026/03/14 15:46&lt;/p&gt;
+&lt;p&gt;妈妈的病情反反复复，每次感觉她好一点，就放手让她独立完成自己的事情，这样不行，一定得细心。
+2026/03/13 15:01&lt;/p&gt;
+&lt;p&gt;周一周二模拟二诊，周三高考体检，周四班主任节。这一周只剩周五周六周日是完整的。时间不管不顾的往前走，无论我怎么使劲儿，似乎都来不及。来不及相遇，来不及道别，来不及勇敢，来不及羞涩，来不及认真的过好上半生，下半生就猝不及防匆匆而来......
+2026/03/10 07:17&lt;/p&gt;</description></item><item><title>3500词根之ag|act</title><link>https://nzw025.top/jingxinyanxue/cihui/agact/</link><pubDate>Thu, 12 Mar 2026 21:16:30 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/cihui/agact/</guid><description>&lt;body&gt;
 &lt;div class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 100px; LEFT: -200px"&gt;&lt;iframe height=900 marginHeight=0 src="https://nzw025.top/html/english/tract.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
 &lt;div class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 100px; LEFT: -200px"&gt;&lt;iframe height=900 marginHeight=0 src="https://nzw025.top/html/english/agandact.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
 &lt;div class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 100px; LEFT: -200px"&gt;&lt;iframe height=900 marginHeight=0 src="https://nzw025.top/html/english/facficfact.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
@@ -435,152 +441,6 @@
 &lt;div class="sentence-item"&gt;
  &lt;span class="sentence-number"&gt;18&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 我们努力满足客户的要求。&lt;/span&gt;
  &lt;div class="en-sentence"&gt;We try hard to satisfy the requirements of the clients.&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;script&gt;
-document.addEventListener('DOMContentLoaded', function() {
- const sentenceItems = document.querySelectorAll('.sentence-item');
- sentenceItems.forEach(item =&gt; {
- const numberElement = item.querySelector('.sentence-number');
- numberElement.addEventListener('click', function() {
- item.classList.toggle('active');
- });
- item.addEventListener('click', function(e) {
- if (e.target !== numberElement) {
- item.classList.toggle('active');
- }
- });
- });
-});
-&lt;/script&gt;</description></item><item><title>情绪之愤怒</title><link>https://nzw025.top/jingxinyanxue/xiezuo/anger/</link><pubDate>Sun, 15 Feb 2026 18:13:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/xiezuo/anger/</guid><description>&lt;style&gt;
-/* 基础样式 */
-.sentence-item {
- margin-bottom: 12px;
- margin-left: 6px;
- cursor: pointer;
- line-height: 1.6;
-}
-.sentence-number {
- font-weight: bold;
- color: #2c3e50; 
- user-select: none; 
- padding: 2px 4px;
- border-radius: 2px;
-}
-.sentence-number:hover {
- background-color: #f5f7fa; 
-}
-.cn-sentence {
- margin-left: 4px;
-}
-.en-sentence {
- display: none;
- margin-left: 42px; 
- color: #666; 
- margin-top: 4px;
-}
-.sentence-item.active .en-sentence {
- display: block;
-}
-.study-title {
- font-size: 18px;
- font-weight: bold;
- color: var(--color-title);
- margin: 20px 0 10px 0;
- border-bottom: 1px dashed var(--color-border);
- padding-bottom: 5px;
-}
-&lt;/style&gt;
-&lt;div class="sentence-list"&gt;
-&lt;div class="study-title"&gt;一. anger相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;01&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他的话里充满了愤怒。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;There was much anger in his words.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;02&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她试图掩饰自己的愤怒。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;She tried to hide her anger.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;二. rage相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;03&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他的暴怒让周围的人害怕。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;His rage frightened the people around him.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;04&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她在暴怒中摔碎了花瓶。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;She smashed the vase in a rage.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;三. madness相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;05&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 战争的残酷会带来疯狂。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The cruelty of war can bring madness.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;06&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他在疯狂中做出了错误决定。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He made a wrong decision in madness.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;四. fury相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;07&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他的眼睛里闪烁着狂怒。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;There was fury in his eyes.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;08&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 敌人的攻击激起了我们的狂怒。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The enemy's attack aroused our fury.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;五. angry相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;09&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他因为迟到而生气。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He is angry because he is late.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;10&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 妈妈生气地看着调皮的孩子。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Mother looked at the naughty child angrily.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;六. annoyed相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;11&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他对持续的噪音感到气恼。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He is annoyed by the continuous noise.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;12&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她因被误解而气恼不已。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;She is extremely annoyed by being misunderstood.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;七. enraged相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;13&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 不公平的对待让他暴怒。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He was enraged by the unfair treatment.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;14&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 看到破坏的场景他暴怒起来。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He became enraged when seeing the scene of destruction.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;八. irritated相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;15&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 频繁的打扰让他恼怒。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He is irritated by the frequent interruptions.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;16&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她因计划被打乱而恼怒。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;She is irritated because the plan is disrupted.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;九. mad相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;17&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他在堵车时抓狂得大喊。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He shouted madly during the traffic jam.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;18&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 考试失败让他抓狂。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He went mad because of failing the exam.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;十. furious相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;19&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他对这个结果狂怒不已。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He is furious about the result.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;20&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她因被欺骗而狂怒。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;She is furious because she is deceived.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;script&gt;
