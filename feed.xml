@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>宁归处</title><link>https://nzw025.top/</link><description>Recent content on 宁归处</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Sat, 14 Mar 2026 15:00:27 +0800</lastBuildDate><atom:link href="https://nzw025.top/feed.xml" rel="self" type="application/rss+xml"/><item><title>碎语存档</title><link>https://nzw025.top/dansiwuji/suibi/sy/</link><pubDate>Sat, 14 Mar 2026 15:00:27 +0800</pubDate><guid>https://nzw025.top/dansiwuji/suibi/sy/</guid><description>&lt;br&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>沈罗记</title><link>https://nzw025.top/</link><description>Recent content on 沈罗记</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Wed, 01 Apr 2026 21:46:00 +0800</lastBuildDate><atom:link href="https://nzw025.top/feed.xml" rel="self" type="application/rss+xml"/><item><title>殇</title><link>https://nzw025.top/dansiwuji/suibi/shang/</link><pubDate>Wed, 01 Apr 2026 21:46:00 +0800</pubDate><guid>https://nzw025.top/dansiwuji/suibi/shang/</guid><description>&lt;br&gt;
+&lt;p&gt;2026-3-29 08:35 |&lt;/p&gt;
+&lt;p&gt;2024年10月21日10时25分46秒，我弄丢了爸爸。
+2026年3月26日23时46分，我又弄丢了妈妈。&lt;/p&gt;
+&lt;p&gt;2026-3-29 08:36 |&lt;/p&gt;
+&lt;p&gt;哥说，你不要什么都往身上揽。
+亲戚们说，你是世间最孝的女儿。
+同事们说，你是我们学习的楷模。
+爸妈说，幸好有你，我的幺女。
+十几年来，除了上街买菜上课，我没有离开过父母一步。
+为什么我还是那么自责，还是觉得没有照顾好爸妈痛苦万分呢。
+2026我拥有那么多幸运数字
+为什么妈妈还是要离开我，不要我呢？&lt;/p&gt;</description></item><item><title>碎语存档</title><link>https://nzw025.top/dansiwuji/suibi/sy/</link><pubDate>Sat, 14 Mar 2026 15:00:27 +0800</pubDate><guid>https://nzw025.top/dansiwuji/suibi/sy/</guid><description>&lt;br&gt;
 &lt;p&gt;明天带妈妈去医院检查，哥说妈妈要住院，没人照顾只能请护工了。
 2026/03/14 15:46&lt;/p&gt;
 &lt;p&gt;妈妈的病情反反复复，每次感觉她好一点，就放手让她独立完成自己的事情，这样不行，一定得细心。
@@ -324,138 +336,4 @@
 	&lt;/body&gt;</description></item><item><title>人间共鸣</title><link>https://nzw025.top/qianxushiguang/yinhua/renjiangongming/</link><pubDate>Fri, 20 Feb 2026 17:00:27 +0800</pubDate><guid>https://nzw025.top/qianxushiguang/yinhua/renjiangongming/</guid><description>&lt;body&gt;
  &lt;DIV class="full-width" style="POSITION: relative; WIDTH: 1600px; TOP: 120px; LEFT: -250px"&gt;&lt;IFRAME height=900 marginHeight=0 src="http://cccimg.com/view.php/ddbe14fbadd6b581aebd598ea6d5313a.webp" frameBorder=0 width=1600 marginWidth=0 scrolling=no&gt;&lt;/IFRAME&gt;&lt;/DIV&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
  &lt;audio id="aud" src="https://www.joy127.com/url/144516.mp3" autoplay="" loop=""&gt;&lt;/audio&gt;
-&lt;/body&gt;</description></item><item><title>生活</title><link>https://nzw025.top/dansiwuji/zixing/dome/</link><pubDate>Tue, 17 Feb 2026 21:15:30 +0800</pubDate><guid>https://nzw025.top/dansiwuji/zixing/dome/</guid><description/></item><item><title>情绪之满意</title><link>https://nzw025.top/jingxinyanxue/xiezuo/satisfaction/</link><pubDate>Sun, 15 Feb 2026 19:13:27 +0800</pubDate><guid>https://nzw025.top/jingxinyanxue/xiezuo/satisfaction/</guid><description>&lt;style&gt;
-/* 基础样式 */
-.sentence-item {
- margin-bottom: 12px;
- margin-left: 6px;
- cursor: pointer;
- line-height: 1.6;
-}
-.sentence-number {
- font-weight: bold;
- color: #2c3e50; 
- user-select: none; 
- padding: 2px 4px;
- border-radius: 2px;
-}
-.sentence-number:hover {
- background-color: #f5f7fa; 
-}
-.cn-sentence {
- margin-left: 4px;
-}
-.en-sentence {
- display: none;
- margin-left: 42px; 
- color: #666; 
- margin-top: 4px;
-}
-.sentence-item.active .en-sentence {
- display: block;
-}
-.study-title {
- font-size: 18px;
- font-weight: bold;
- color: var(--color-title);
- margin: 20px 0 10px 0;
- border-bottom: 1px dashed var(--color-border);
- padding-bottom: 5px;
-}
-&lt;/style&gt;
-&lt;div class="sentence-list"&gt;
-&lt;div class="study-title"&gt;一. content（名词）相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;01&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他脸上露出了满意的神情。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Content showed on his face.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;02&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 小小的成功带来了满足感。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Small success brings a sense of content.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;03&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 内心的平静是一种高层次的满意。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Inner peace is a high - level content.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;二. satisfaction（名词）相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;04&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 顾客的满意是我们的目标。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Customer satisfaction is our goal.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;05&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他从工作中获得了极大的满意。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He derives great satisfaction from his job.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;06&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 完成任务给她带来了满意。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;Completing the task brought her satisfaction.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;三. satisfied（形容词）相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;07&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他对新手机很满意。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He is satisfied with the new mobile phone.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;08&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她满意地看着自己的画作。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;She looked at her painting with a satisfied expression.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;09&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 我对这次购物非常满意。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;I'm very satisfied with this shopping.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;四. content（形容词）相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;10&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他对目前的生活状况很满意。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He is content with his current living condition.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;11&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 老人过着满意而宁静的生活。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The old man lives a content and peaceful life.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;12&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她脸上总是带着满意的微笑。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;She always has a content smile on her face.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;五. pleased（形容词）相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;13&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 老师对学生的表现很满意。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The teacher is pleased with the students' performance.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;14&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 他满意地接受了这个礼物。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;He accepted the gift with a pleased look.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;15&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 她对新发型非常满意。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;She is very pleased with her new hairstyle.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="study-title"&gt;六. satisfy（动词）相关&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;16&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 这份工作能满足他的需求。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;This job can satisfy his needs.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;17&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 美味的食物满足了他的味蕾。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;The delicious food satisfied his taste buds.&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sentence-item"&gt;
- &lt;span class="sentence-number"&gt;18&lt;/span&gt;&lt;span class="cn-sentence"&gt;. 我们努力满足客户的要求。&lt;/span&gt;
- &lt;div class="en-sentence"&gt;We try hard to satisfy the requirements of the clients.&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;script&gt;
-document.addEventListener('DOMContentLoaded', function() {
- const sentenceItems = document.querySelectorAll('.sentence-item');
- sentenceItems.forEach(item =&gt; {
- const numberElement = item.querySelector('.sentence-number');
- numberElement.addEventListener('click', function() {
- item.classList.toggle('active');
- });
- item.addEventListener('click', function(e) {
- if (e.target !== numberElement) {
- item.classList.toggle('active');
- }
- });
- });
-});
-&lt;/script&gt;</description></item></channel></rss>
+&lt;/body&gt;</description></item><item><title>生活</title><link>https://nzw025.top/dansiwuji/zixing/dome/</link><pubDate>Tue, 17 Feb 2026 21:15:30 +0800</pubDate><guid>https://nzw025.top/dansiwuji/zixing/dome/</guid><description/></item></channel></rss>
